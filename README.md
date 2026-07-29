@@ -15,6 +15,8 @@ the two private Datasets documented below.
   `jiweiliu/rogii-compact-alignment-cv5-dual-t4-inference`
 - Kaggle submission: `54893107`
 - Submitted v20 public leaderboard RMSE: `6.263`
+- Best v20-derived + public-6.390 blend RMSE: `5.903`
+  (submission `54986657`)
 - Five-fold whole-well OOF RMSE: `6.189484768154311`
 
 No V5 research, post-v20 candidate, or checkpoint is included.
