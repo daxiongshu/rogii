@@ -19,6 +19,23 @@ the two private Datasets documented below.
 
 No V5 research, post-v20 candidate, or checkpoint is included.
 
+## Related best leaderboard result
+
+As of 2026-07-29, the broader project has a best public leaderboard RMSE of
+**5.899** from submission `54945744`. Conceptually, that gain came from
+combining this model lineage with the strongest public-kernel prediction:
+
+- 50% original v16, the direct predecessor of v20;
+- 50% accelerated public `6.390` V1 inference, derived from the public
+  `hengck23/cnn-sdf-example` kernel.
+
+Thus “v20-family model plus the best public kernel” is a useful shorthand,
+but the exact `5.899` submission used v16 rather than v20. The best explicitly
+v20-derived/public blend scored **5.903** as submission `54986657`; it used
+40% public V1 and 60% of the private V20/94c03d6 runtime blend. These are
+related leaderboard ensembles, not artifacts reproduced by this v20-only
+repository.
+
 ## What is covered
 
 The v20 runtime contains 17 neural families trained on five whole-well folds:
