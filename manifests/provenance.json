@@ -64,7 +64,14 @@
       5.40321499339164,
       6.214547044851526,
       7.11591858492712
-    ]
+    ],
+    "kaggle_dataset": {
+      "id": "jiweiliu/rogii-v20-oof-vault",
+      "dataset_id": 11411172,
+      "is_private": true,
+      "remote_bytes": 21344898,
+      "verified": "2026-07-29"
+    }
   },
   "kaggle_submission": {
     "reference": 54893107,

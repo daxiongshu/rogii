@@ -159,6 +159,7 @@ Large artifacts remain outside Git:
 - contributing weights: `/geo/geo_new/rogii_v20_checkpoint_vault`
 - zero-weight runtime checkpoints: `/geo/geo_new/rogii_simple/checkpoints`
 - OOF archives: `/geo/geo_new/rogii_v20_oof_vault`
+- private OOF backup: `jiweiliu/rogii-v20-oof-vault`
 - exact spatial preprocessing cache:
   `/geo/geo_new/submit/5745790-94c03d6/artifacts/oof/spatial_meta.npz`
 - competition data:
