@@ -5,6 +5,10 @@ Wellbore Geology Prediction, including frozen inference, all single-model
 training code, machine-readable training recipes, fold definitions,
 postprocessing dependencies, and non-neural artifact builders.
 
+The source is self-contained, but the large model and OOF artifacts are
+private external inputs. A fresh clone needs Kaggle credentials with access to
+the two private Datasets documented below.
+
 - Historical source commit:
   `cd2d68e9318cb04ea808b670cf6190d25c3da825`
 - Kaggle submission: `54893107`
@@ -79,11 +83,98 @@ promised to reproduce checkpoint bytes across different CUDA, cuDNN, PyTorch,
 or GPU versions. This is historical v20 parity, not the later selection-clean
 V5 protocol.
 
-## Install and verify
+## Fresh clone and artifact access
 
 ```bash
+git clone git@github.com:daxiongshu/rogii.git
+cd rogii
 python -m pip install -r requirements.txt
-python reproduce.py verify
+
+mkdir -p artifacts/runtime-weights artifacts/oof
+kaggle datasets download \
+  jiweiliu/rogii-compact-alignment-cv5-weights \
+  --unzip -p artifacts/runtime-weights
+kaggle datasets download \
+  jiweiliu/rogii-v20-oof-vault \
+  --unzip -p artifacts/oof
+```
+
+Both Datasets are private. The Kaggle account used by the CLI must be the
+owner or an authorized collaborator.
+
+The weights Dataset contains all 92 files loaded by the frozen kernel: 85
+neural checkpoints, five CatBoost models, and two reference stores. Its
+`manifest.json` is identical to `manifests/weights.json`, with SHA-256
+`145fe76ca0a4fa48003d755ddcb661786dfe48e2ecfa9a83a2bd9b9e553e19d5`.
+
+The OOF Dataset contains the exact `layout.npz` and
+`v20_prediction.npz` archives plus their manifest. Verify the OOF download
+immediately with:
+
+```bash
+python reproduce.py score-oof --oof-root artifacts/oof
+```
+
+Expected pooled OOF:
+
+```text
+6.189484768154311
+```
+
+The exact frozen inference source can use the combined remote weights layout
+directly:
+
+```bash
+ROGII_DATA_ROOT=/path/to/rogii-wellbore-geology-prediction \
+ROGII_WEIGHTS_ROOT="$PWD/artifacts/runtime-weights" \
+ROGII_OUTPUT="$PWD/submission.csv" \
+python v20/infer.py
+```
+
+Competition data is not redistributed. `ROGII_DATA_ROOT` must contain the
+competition `train/`, `test/`, and `sample_submission.csv` layout.
+
+## Full local verification
+
+The workspace verifier intentionally keeps the 87 prediction-contributing
+artifacts separate from the five zero-weight checkpoints. To create that
+layout without duplicating the downloaded files:
+
+```bash
+runtime_root="$PWD/artifacts/runtime-weights"
+functional_root="$PWD/artifacts/weights-functional"
+zero_root="$PWD/artifacts/weights-zero"
+mkdir -p "$functional_root" "$zero_root"
+
+for path in "$runtime_root"/*.{pt,cbm,npz}; do
+  name=${path##*/}
+  case "$name" in
+    alignment_longsynthetic_base12_exc2sup_fold?.pt)
+      ln -s "$path" "$zero_root/$name"
+      ;;
+    *)
+      ln -s "$path" "$functional_root/$name"
+      ;;
+  esac
+done
+```
+
+Full verification also requires the exact `spatial_meta.npz` CatBoost
+preprocessing cache. Its generator was never committed and the cache is not
+currently in either Kaggle Dataset. In this workspace it is:
+
+```text
+/geo/geo_new/submit/5745790-94c03d6/artifacts/oof/spatial_meta.npz
+```
+
+With that cache available:
+
+```bash
+python reproduce.py verify \
+  --weights-root artifacts/weights-functional \
+  --zero-weight-root artifacts/weights-zero \
+  --oof-root artifacts/oof \
+  --spatial-meta /path/to/spatial_meta.npz
 ```
 
 `verify` checks:
@@ -98,13 +189,8 @@ python reproduce.py verify
 Training-only verification is available separately:
 
 ```bash
-python reproduce.py verify-training
-```
-
-Expected pooled OOF:
-
-```text
-6.189484768154311
+python reproduce.py verify-training \
+  --spatial-meta /path/to/spatial_meta.npz
 ```
 
 ## Inspect or retrain every single model
@@ -157,6 +243,8 @@ builder and historical post-v16 staging logic.
 Large artifacts remain outside Git:
 
 - contributing weights: `/geo/geo_new/rogii_v20_checkpoint_vault`
+- private runtime-weights Dataset:
+  `jiweiliu/rogii-compact-alignment-cv5-weights`
 - zero-weight runtime checkpoints: `/geo/geo_new/rogii_simple/checkpoints`
 - OOF archives: `/geo/geo_new/rogii_v20_oof_vault`
 - private OOF backup: `jiweiliu/rogii-v20-oof-vault`
@@ -192,5 +280,6 @@ prediction-vector RMSE was `0.000009374` ft and maximum absolute drift was
 expected.
 
 The historical kernel metadata is retained in `kaggle/kernel-metadata.json`.
-This repository does not create or submit a Kaggle Dataset, kernel, or
-competition submission.
+The artifact Datasets were created separately and are read-only inputs here.
+No repository command automatically creates a Dataset or kernel, and nothing
+submits a competition entry.
