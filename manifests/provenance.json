@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "competition": "rogii-wellbore-geology-prediction",
+  "solution": "v20",
+  "historical_source_commit": "cd2d68e9318cb04ea808b670cf6190d25c3da825",
+  "inference": {
+    "path": "v20/infer.py",
+    "sha256": "ab99920a66d5112f84c313176b2ed2e30a27b4c40d9e7c7fcd9fefdb5c8a1aed"
+  },
+  "kaggle_kernel_metadata": {
+    "path": "kaggle/kernel-metadata.json",
+    "sha256": "a33542350febf53da489958e8a72e327684a3d5ccfc83d7d1e609a8e48b8dcc5"
+  },
+  "weights": {
+    "manifest": "manifests/weights.json",
+    "manifest_sha256": "145fe76ca0a4fa48003d755ddcb661786dfe48e2ecfa9a83a2bd9b9e553e19d5",
+    "functional_artifacts": 87,
+    "runtime_artifacts": 92,
+    "neural_checkpoints": 80,
+    "runtime_neural_checkpoints": 85,
+    "catboost_models": 5,
+    "reference_stores": 2,
+    "runtime_only_zero_weight_checkpoints": [
+      "alignment_longsynthetic_base12_exc2sup_fold0.pt",
+      "alignment_longsynthetic_base12_exc2sup_fold1.pt",
+      "alignment_longsynthetic_base12_exc2sup_fold2.pt",
+      "alignment_longsynthetic_base12_exc2sup_fold3.pt",
+      "alignment_longsynthetic_base12_exc2sup_fold4.pt"
+    ]
+  },
+  "oof": {
+    "layout": {
+      "filename": "layout.npz",
+      "sha256": "546a12d53498fd7a816742c351abaa4e6e96ae5536eb8885081948fbe10d4c9e"
+    },
+    "prediction": {
+      "filename": "v20_prediction.npz",
+      "sha256": "ee94cbc42d9378514fa8d3e8cb23f9a42fea999c7ec457009c99fbc65fb9ebe0"
+    },
+    "wells": 773,
+    "rows": 3783989,
+    "pooled_rmse": 6.189484768154311,
+    "original_fold_rmse": [
+      5.909213567900389,
+      6.195413020907047,
+      5.40321499339164,
+      6.214547044851526,
+      7.11591858492712
+    ]
+  },
+  "kaggle_submission": {
+    "reference": 54893107,
+    "public_rmse": 6.263,
+    "remote_submission_sha256": "a583dec5f24eb6266d25655f61fc9c3b597578f260cdc20694422713cc7cb032"
+  }
+}

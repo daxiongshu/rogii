@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+
+# Artifacts remain in checksum-locked external vaults.
+*.pt
+*.pth
+*.cbm
+*.npz
+
+# Generated inference output.
+submission.csv
