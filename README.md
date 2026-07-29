@@ -11,8 +11,10 @@ the two private Datasets documented below.
 
 - Historical source commit:
   `cd2d68e9318cb04ea808b670cf6190d25c3da825`
+- Kaggle kernel:
+  `jiweiliu/rogii-compact-alignment-cv5-dual-t4-inference`
 - Kaggle submission: `54893107`
-- Public leaderboard RMSE: `6.263`
+- Submitted v20 public leaderboard RMSE: `6.263`
 - Five-fold whole-well OOF RMSE: `6.189484768154311`
 
 No V5 research, post-v20 candidate, or checkpoint is included.
