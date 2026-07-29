@@ -1,0 +1,427 @@
+{
+  "schema_version": 1,
+  "historical_source_commit": "cd2d68e9318cb04ea808b670cf6190d25c3da825",
+  "program": "evaluate_alignment.py",
+  "folds": 5,
+  "selection_semantics": "For each family/fold, evaluate_alignment.py selects the lowest-RMSE checkpoint on that same held-out fold. This is historical v20 parity, not selection-clean nested CV.",
+  "standard_options": {
+    "epochs": 10,
+    "synthetic-pretrain-epochs": 4,
+    "repeats": 3,
+    "batch-size": 2,
+    "base": 8,
+    "prefix-points": 64,
+    "tail-points": 640,
+    "row-stride": 16,
+    "state-radius": 64,
+    "state-step": 0.5,
+    "learning-rate": 0.0003,
+    "seed": 20260719
+  },
+  "families": [
+    {
+      "id": "fixed",
+      "checkpoint_pattern": "alignment_fixed_synth_fold{fold}.pt",
+      "recipe_evidence": "README.md at the historical commit",
+      "overrides": {},
+      "stages": [
+        {
+          "name": "train",
+          "checkpoint_pattern": "alignment_fixed_synth_fold{fold}.pt",
+          "overrides": {}
+        }
+      ]
+    },
+    {
+      "id": "distractor",
+      "checkpoint_pattern": "alignment_distractor_h05_fold{fold}.pt",
+      "recipe_evidence": "HARD_NEGATIVE_VALIDATION.md at the historical commit",
+      "overrides": {
+        "synthetic-profile": "distractor",
+        "synthetic-hardness": 0.5,
+        "loader-workers": 2
+      },
+      "stages": [
+        {
+          "name": "train",
+          "checkpoint_pattern": "alignment_distractor_h05_fold{fold}.pt",
+          "overrides": {}
+        }
+      ]
+    },
+    {
+      "id": "wide",
+      "checkpoint_pattern": "alignment_wide_synth_fold{fold}.pt",
+      "recipe_evidence": "README.md at the historical commit",
+      "overrides": {
+        "state-radius": 120,
+        "state-step": 1,
+        "loader-workers": 2
+      },
+      "stages": [
+        {
+          "name": "train",
+          "checkpoint_pattern": "alignment_wide_synth_fold{fold}.pt",
+          "overrides": {}
+        }
+      ]
+    },
+    {
+      "id": "forward",
+      "checkpoint_pattern": "alignment_forward_std_fold{fold}.pt",
+      "recipe_evidence": "FORWARD_SYNTHETIC_VALIDATION.md at the historical commit",
+      "overrides": {
+        "synthetic-profile": "forward",
+        "synthetic-hardness": 0.7,
+        "loader-workers": 2
+      },
+      "stages": [
+        {
+          "name": "train",
+          "checkpoint_pattern": "alignment_forward_std_fold{fold}.pt",
+          "overrides": {}
+        }
+      ]
+    },
+    {
+      "id": "forward_distractor",
+      "checkpoint_pattern": "alignment_forward_distractor_fold{fold}.pt",
+      "recipe_evidence": "FORWARD_SYNTHETIC_VALIDATION.md at the historical commit",
+      "overrides": {
+        "synthetic-profile": "forward_distractor",
+        "synthetic-hardness": 0.7,
+        "loader-workers": 2
+      },
+      "stages": [
+        {
+          "name": "train",
+          "checkpoint_pattern": "alignment_forward_distractor_fold{fold}.pt",
+          "overrides": {}
+        }
+      ]
+    },
+    {
+      "id": "rare",
+      "checkpoint_pattern": "alignment_forward_exc4_fold{fold}.pt",
+      "recipe_evidence": "RARE_EXCURSION_VALIDATION.md at the historical commit",
+      "overrides": {
+        "synthetic-profile": "forward",
+        "synthetic-hardness": 0.7,
+        "excursion-sampling-factor": 4,
+        "excursion-quantile": 0.8,
+        "excursion-sampling-phase": "synthetic",
+        "loader-workers": 2
+      },
+      "stages": [
+        {
+          "name": "train",
+          "checkpoint_pattern": "alignment_forward_exc4_fold{fold}.pt",
+          "overrides": {}
+        }
+      ]
+    },
+    {
+      "id": "supervised",
+      "checkpoint_pattern": "alignment_forward_exc2sup_fold{fold}.pt",
+      "recipe_evidence": "SUPERVISED_EXCURSION_VALIDATION.md at the historical commit",
+      "overrides": {
+        "synthetic-profile": "forward",
+        "synthetic-hardness": 0.7,
+        "excursion-sampling-factor": 2,
+        "excursion-quantile": 0.8,
+        "excursion-sampling-phase": "supervised",
+        "loader-workers": 2
+      },
+      "stages": [
+        {
+          "name": "train",
+          "checkpoint_pattern": "alignment_forward_exc2sup_fold{fold}.pt",
+          "overrides": {}
+        }
+      ]
+    },
+    {
+      "id": "wide_forward",
+      "checkpoint_pattern": "alignment_wide_forward_extreme_fold{fold}.pt",
+      "recipe_evidence": "WIDE_FORWARD_VALIDATION.md at the historical commit",
+      "overrides": {
+        "synthetic-profile": "forward_extreme",
+        "synthetic-hardness": 0.7,
+        "state-radius": 120,
+        "state-step": 1,
+        "loader-workers": 2
+      },
+      "stages": [
+        {
+          "name": "train",
+          "checkpoint_pattern": "alignment_wide_forward_extreme_fold{fold}.pt",
+          "overrides": {}
+        }
+      ]
+    },
+    {
+      "id": "wide_supervised",
+      "checkpoint_pattern": "alignment_wide_forward_extreme_exc2sup_fold{fold}.pt",
+      "recipe_evidence": "WIDE_SUPERVISED_VALIDATION.md at the historical commit",
+      "overrides": {
+        "synthetic-profile": "forward_extreme",
+        "synthetic-hardness": 0.7,
+        "excursion-sampling-factor": 2,
+        "excursion-quantile": 0.8,
+        "excursion-sampling-phase": "supervised",
+        "state-radius": 120,
+        "state-step": 1,
+        "loader-workers": 2
+      },
+      "stages": [
+        {
+          "name": "train",
+          "checkpoint_pattern": "alignment_wide_forward_extreme_exc2sup_fold{fold}.pt",
+          "overrides": {}
+        }
+      ]
+    },
+    {
+      "id": "wide_seed3",
+      "checkpoint_pattern": "alignment_wide_supervised_seed3_fold{fold}.pt",
+      "recipe_evidence": "STOCHASTIC_WIDTH_VALIDATION.md records that only the random seed changed; the numeric seed was not committed",
+      "provenance_status": "numeric_seed_inferred",
+      "provenance_note": "20260721 is inferred from the default 20260719 family and the contemporaneous seed2/seed3 sequence. All other options are explicit historical evidence.",
+      "overrides": {
+        "synthetic-profile": "forward_extreme",
+        "synthetic-hardness": 0.7,
+        "excursion-sampling-factor": 2,
+        "excursion-quantile": 0.8,
+        "excursion-sampling-phase": "supervised",
+        "state-radius": 120,
+        "state-step": 1,
+        "loader-workers": 2,
+        "seed": 20260721
+      },
+      "stages": [
+        {
+          "name": "train",
+          "checkpoint_pattern": "alignment_wide_supervised_seed3_fold{fold}.pt",
+          "overrides": {}
+        }
+      ]
+    },
+    {
+      "id": "wide_base6",
+      "checkpoint_pattern": "alignment_wide_supervised_base6_fold{fold}.pt",
+      "recipe_evidence": "STOCHASTIC_WIDTH_VALIDATION.md records the production recipe with only base channels changed",
+      "overrides": {
+        "synthetic-profile": "forward_extreme",
+        "synthetic-hardness": 0.7,
+        "excursion-sampling-factor": 2,
+        "excursion-quantile": 0.8,
+        "excursion-sampling-phase": "supervised",
+        "state-radius": 120,
+        "state-step": 1,
+        "loader-workers": 2,
+        "base": 6
+      },
+      "stages": [
+        {
+          "name": "train",
+          "checkpoint_pattern": "alignment_wide_supervised_base6_fold{fold}.pt",
+          "overrides": {}
+        }
+      ]
+    },
+    {
+      "id": "wide_stratified",
+      "checkpoint_pattern": "alignment_wide_supervised_strat_fold{fold}.pt",
+      "recipe_evidence": "STRATIFIED_REPEATED_CV_VALIDATION.md records the production recipe with only the fold partition changed",
+      "overrides": {
+        "synthetic-profile": "forward_extreme",
+        "synthetic-hardness": 0.7,
+        "excursion-sampling-factor": 2,
+        "excursion-quantile": 0.8,
+        "excursion-sampling-phase": "supervised",
+        "state-radius": 120,
+        "state-step": 1,
+        "loader-workers": 2,
+        "fold-file": "{repo_root}/stratified_folds.json"
+      },
+      "stages": [
+        {
+          "name": "train",
+          "checkpoint_pattern": "alignment_wide_supervised_strat_fold{fold}.pt",
+          "overrides": {}
+        }
+      ]
+    },
+    {
+      "id": "ordinal",
+      "checkpoint_pattern": "alignment_ordinal_wide_fold{fold}.pt",
+      "recipe_evidence": "ORDINAL_ALIGNMENT_VALIDATION.md at the historical commit",
+      "overrides": {
+        "objective": "ordinal",
+        "synthetic-profile": "forward_extreme",
+        "synthetic-hardness": 0.7,
+        "excursion-sampling-factor": 2,
+        "excursion-quantile": 0.8,
+        "excursion-sampling-phase": "supervised",
+        "state-radius": 120,
+        "state-step": 1,
+        "validate-every": 1,
+        "loader-workers": 8
+      },
+      "stages": [
+        {
+          "name": "train",
+          "checkpoint_pattern": "alignment_ordinal_wide_fold{fold}.pt",
+          "overrides": {}
+        }
+      ]
+    },
+    {
+      "id": "wide_base12",
+      "checkpoint_pattern": "alignment_wide_base12_exc2sup_fold{fold}.pt",
+      "recipe_evidence": "WIDTH12_ALIGNMENT_VALIDATION.md at the historical commit",
+      "overrides": {
+        "synthetic-profile": "forward_extreme",
+        "synthetic-hardness": 0.7,
+        "excursion-sampling-factor": 2,
+        "excursion-quantile": 0.8,
+        "excursion-sampling-phase": "supervised",
+        "state-radius": 120,
+        "state-step": 1,
+        "validate-every": 1,
+        "loader-workers": 2,
+        "base": 12
+      },
+      "stages": [
+        {
+          "name": "train",
+          "checkpoint_pattern": "alignment_wide_base12_exc2sup_fold{fold}.pt",
+          "overrides": {}
+        }
+      ]
+    },
+    {
+      "id": "wide_base16",
+      "checkpoint_pattern": "alignment_wide_base16_exc2sup_fold{fold}.pt",
+      "recipe_evidence": "WIDTH16_ALIGNMENT_VALIDATION.md at the historical commit",
+      "overrides": {
+        "synthetic-profile": "forward_extreme",
+        "synthetic-hardness": 0.7,
+        "excursion-sampling-factor": 2,
+        "excursion-quantile": 0.8,
+        "excursion-sampling-phase": "supervised",
+        "state-radius": 120,
+        "state-step": 1,
+        "validate-every": 1,
+        "loader-workers": 2,
+        "base": 16
+      },
+      "stages": [
+        {
+          "name": "train",
+          "checkpoint_pattern": "alignment_wide_base16_exc2sup_fold{fold}.pt",
+          "overrides": {}
+        }
+      ]
+    },
+    {
+      "id": "long_synthetic",
+      "checkpoint_pattern": "alignment_longsynthetic_exc2sup_fold{fold}.pt",
+      "recipe_evidence": "LONG_SYNTHETIC_VALIDATION.md at the historical commit",
+      "overrides": {
+        "synthetic-profile": "forward_extreme",
+        "synthetic-hardness": 0.7,
+        "excursion-sampling-factor": 2,
+        "excursion-quantile": 0.8,
+        "excursion-sampling-phase": "supervised",
+        "state-radius": 120,
+        "state-step": 1,
+        "validate-every": 1,
+        "loader-workers": 2
+      },
+      "stages": [
+        {
+          "name": "synthetic_pretrain",
+          "checkpoint_pattern": "alignment_longsynthetic_pre_best_fold{fold}.pt",
+          "last_checkpoint_pattern": "alignment_longsynthetic_pre_last_fold{fold}.pt",
+          "overrides": {
+            "epochs": 16,
+            "synthetic-pretrain-epochs": 16
+          }
+        },
+        {
+          "name": "real_finetune",
+          "checkpoint_pattern": "alignment_longsynthetic_exc2sup_fold{fold}.pt",
+          "resume_pattern": "alignment_longsynthetic_pre_last_fold{fold}.pt",
+          "overrides": {
+            "epochs": 6,
+            "synthetic-pretrain-epochs": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "long_base12",
+      "checkpoint_pattern": "alignment_longsynthetic_base12_exc2sup_fold{fold}.pt",
+      "recipe_evidence": "LONG_BASE12_ALIGNMENT_VALIDATION.md at the historical commit",
+      "prediction_weight": 0,
+      "runtime_role": "The exact frozen kernel loads these checkpoints, but their v20 coefficient is zero.",
+      "overrides": {
+        "synthetic-profile": "forward_extreme",
+        "synthetic-hardness": 0.7,
+        "excursion-sampling-factor": 2,
+        "excursion-quantile": 0.8,
+        "excursion-sampling-phase": "supervised",
+        "state-radius": 120,
+        "state-step": 1,
+        "validate-every": 1,
+        "loader-workers": 2,
+        "base": 12
+      },
+      "stages": [
+        {
+          "name": "synthetic_pretrain",
+          "checkpoint_pattern": "alignment_longsynthetic_base12_pre_best_fold{fold}.pt",
+          "last_checkpoint_pattern": "alignment_longsynthetic_base12_pre_last_fold{fold}.pt",
+          "overrides": {
+            "epochs": 16,
+            "synthetic-pretrain-epochs": 16
+          }
+        },
+        {
+          "name": "real_finetune",
+          "checkpoint_pattern": "alignment_longsynthetic_base12_exc2sup_fold{fold}.pt",
+          "resume_pattern": "alignment_longsynthetic_base12_pre_last_fold{fold}.pt",
+          "overrides": {
+            "epochs": 6,
+            "synthetic-pretrain-epochs": 0
+          }
+        }
+      ]
+    }
+  ],
+  "non_neural_artifacts": {
+    "catboost_and_spatial_reference": {
+      "program": "deploy/kaggle/prepare_spatial_deployment.py",
+      "outputs": [
+        "spatial_confidence_fold0.cbm",
+        "spatial_confidence_fold1.cbm",
+        "spatial_confidence_fold2.cbm",
+        "spatial_confidence_fold3.cbm",
+        "spatial_confidence_fold4.cbm",
+        "spatial_reference.npz"
+      ],
+      "input": "spatial_meta.npz",
+      "input_sha256": "d958e70b66586e85f0b94fb3c505ff7c0f11f4f89d99ffd50546cb9c29ace45a",
+      "input_bytes": 8402753,
+      "provenance_status": "exact_cache_available_generator_not_committed",
+      "note": "The exact cache is hash-locked, but no program that originally generated spatial_meta.npz exists in the frozen source commit."
+    },
+    "ancc_reference": {
+      "program": "deploy/kaggle/stage_post_v16_deployment.py",
+      "output": "ancc_reference.npz",
+      "reference_stride": 8,
+      "provenance_status": "complete"
+    }
+  }
+}

@@ -57,6 +57,20 @@ def default_data_root() -> Path:
     )
 
 
+def default_spatial_meta() -> Path:
+    override = os.environ.get("ROGII_V20_SPATIAL_META")
+    if override:
+        return Path(override)
+    return (
+        ROOT.parent
+        / "submit"
+        / "5745790-94c03d6"
+        / "artifacts"
+        / "oof"
+        / "spatial_meta.npz"
+    )
+
+
 def load_provenance() -> dict[str, Any]:
     return json.loads(PROVENANCE_PATH.read_text(encoding="utf-8"))
 
@@ -82,7 +96,177 @@ def verify_source(provenance: dict[str, Any]) -> dict[str, str]:
             f"{observed_manifest} != {weights['manifest_sha256']}"
         )
     checked["weight_manifest"] = observed_manifest
+    training = provenance["training"]
+    for key in ("source_manifest", "recipe_manifest"):
+        path = ROOT / training[key]
+        observed = sha256(path)
+        expected = training[f"{key}_sha256"]
+        if observed != expected:
+            raise RuntimeError(
+                f"{key} changed: {observed} != {expected}"
+            )
+        checked[key] = observed
     return checked
+
+
+def verify_training_sources(provenance: dict[str, Any]) -> dict[str, Any]:
+    training = provenance["training"]
+    manifest = json.loads(
+        (ROOT / training["source_manifest"]).read_text(encoding="utf-8")
+    )
+    if (
+        manifest["historical_source_commit"]
+        != provenance["historical_source_commit"]
+    ):
+        raise RuntimeError("training-source commit does not match v20 provenance")
+    failures = []
+    total_bytes = 0
+    for relative, expected in sorted(manifest["sha256"].items()):
+        path = ROOT / relative
+        if not path.is_file():
+            failures.append(f"missing {relative}")
+            continue
+        total_bytes += path.stat().st_size
+        observed = sha256(path)
+        if observed != expected:
+            failures.append(f"changed {relative}: {observed} != {expected}")
+    if failures:
+        raise RuntimeError(
+            "historical training source verification failed: "
+            + "; ".join(failures)
+        )
+    return {
+        "files": len(manifest["sha256"]),
+        "bytes": total_bytes,
+        "historical_source_commit": manifest["historical_source_commit"],
+    }
+
+
+def verify_training_recipes(provenance: dict[str, Any]) -> dict[str, Any]:
+    training = provenance["training"]
+    recipes = json.loads(
+        (ROOT / training["recipe_manifest"]).read_text(encoding="utf-8")
+    )
+    families = recipes["families"]
+    family_ids = [family["id"] for family in families]
+    if len(family_ids) != len(set(family_ids)):
+        raise RuntimeError("duplicate family id in training recipe manifest")
+    if len(families) != training["neural_families"]:
+        raise RuntimeError(
+            f"training family count changed: {len(families)} "
+            f"!= {training['neural_families']}"
+        )
+    if recipes["folds"] != training["folds"]:
+        raise RuntimeError("training fold count changed")
+
+    final_checkpoints = {
+        family["checkpoint_pattern"].format(fold=fold)
+        for family in families
+        for fold in range(recipes["folds"])
+    }
+    weight_manifest = json.loads(
+        (ROOT / provenance["weights"]["manifest"]).read_text(encoding="utf-8")
+    )
+    frozen_checkpoints = {
+        name for name in weight_manifest["sha256"] if name.endswith(".pt")
+    }
+    if final_checkpoints != frozen_checkpoints:
+        raise RuntimeError(
+            "training recipes do not exactly cover frozen neural checkpoints: "
+            f"missing={sorted(frozen_checkpoints - final_checkpoints)}, "
+            f"extra={sorted(final_checkpoints - frozen_checkpoints)}"
+        )
+    if len(final_checkpoints) != training["neural_checkpoints"]:
+        raise RuntimeError("training checkpoint count changed")
+
+    inferred = [
+        family["id"]
+        for family in families
+        if family.get("provenance_status") != "historically_documented"
+        and "provenance_status" in family
+    ]
+    zero_weight = [
+        family["id"]
+        for family in families
+        if family.get("prediction_weight") == 0
+    ]
+    return {
+        "families": len(families),
+        "folds": recipes["folds"],
+        "final_checkpoints": len(final_checkpoints),
+        "multi_stage_families": sum(
+            len(family["stages"]) > 1 for family in families
+        ),
+        "inferred_recipe_fields": inferred,
+        "zero_weight_runtime_families": zero_weight,
+    }
+
+
+def verify_spatial_meta(
+    path: Path, provenance: dict[str, Any]
+) -> dict[str, Any]:
+    expected = provenance["training"]["spatial_meta"]
+    if not path.is_file():
+        raise FileNotFoundError(
+            f"missing exact CatBoost preprocessing cache: {path}"
+        )
+    if path.stat().st_size != expected["bytes"]:
+        raise RuntimeError(
+            f"spatial-meta size changed: {path.stat().st_size} "
+            f"!= {expected['bytes']}"
+        )
+    observed = sha256(path)
+    if observed != expected["sha256"]:
+        raise RuntimeError(
+            f"spatial-meta checksum changed: {observed} "
+            f"!= {expected['sha256']}"
+        )
+    with np.load(path, allow_pickle=False) as cache:
+        required = {
+            "X",
+            "family",
+            "target",
+            "weight",
+            "delta",
+            "fold",
+            "starts",
+            "ids",
+        }
+        if not required.issubset(cache.files):
+            raise RuntimeError(
+                f"spatial-meta keys changed: {sorted(cache.files)}"
+            )
+        shape = tuple(cache["X"].shape)
+        rows = len(cache["delta"])
+        wells = len(cache["ids"])
+        if (
+            shape != (expected["wells"], expected["features"])
+            or wells != expected["wells"]
+            or rows != expected["rows"]
+        ):
+            raise RuntimeError(
+                f"spatial-meta arrays changed: X={shape}, wells={wells}, "
+                f"rows={rows}"
+            )
+    return {
+        "path": str(path.resolve()),
+        "sha256": observed,
+        "bytes": path.stat().st_size,
+        "wells": wells,
+        "features": shape[1],
+        "rows": rows,
+        "provenance_status": expected["provenance_status"],
+    }
+
+
+def verify_training(
+    spatial_meta: Path, provenance: dict[str, Any]
+) -> dict[str, Any]:
+    return {
+        "historical_sources": verify_training_sources(provenance),
+        "recipes": verify_training_recipes(provenance),
+        "spatial_meta": verify_spatial_meta(spatial_meta, provenance),
+    }
 
 
 def functional_weight_hashes(
@@ -312,12 +496,28 @@ def command_verify(args: argparse.Namespace) -> None:
             "historical_source_commit"
         ],
         "source": verify_source(provenance),
+        "training": verify_training(args.spatial_meta, provenance),
         "weights": verify_weights(args.weights_root, provenance),
         "runtime_only_zero_weight": verify_zero_weight_runtime(
             args.zero_weight_root, provenance
         ),
         "oof": verify_oof(args.oof_root, provenance),
         "kaggle_submission": provenance["kaggle_submission"],
+    }
+    print(json.dumps(result, indent=2, sort_keys=True))
+
+
+def command_verify_training(args: argparse.Namespace) -> None:
+    provenance = load_provenance()
+    source = verify_source(provenance)
+    result = {
+        "status": "verified",
+        "source_manifests": {
+            key: value
+            for key, value in source.items()
+            if key in {"source_manifest", "recipe_manifest"}
+        },
+        "training": verify_training(args.spatial_meta, provenance),
     }
     print(json.dumps(result, indent=2, sort_keys=True))
 
@@ -381,7 +581,19 @@ def parser() -> argparse.ArgumentParser:
         type=Path,
         default=default_zero_weight_root(),
     )
+    verify.add_argument(
+        "--spatial-meta", type=Path, default=default_spatial_meta()
+    )
     verify.set_defaults(handler=command_verify)
+
+    verify_training_parser = subparsers.add_parser(
+        "verify-training",
+        help="Verify all historical training sources, recipes, and preprocessing.",
+    )
+    verify_training_parser.add_argument(
+        "--spatial-meta", type=Path, default=default_spatial_meta()
+    )
+    verify_training_parser.set_defaults(handler=command_verify_training)
 
     score = subparsers.add_parser(
         "score-oof", help="Recompute the exact frozen v20 OOF score."

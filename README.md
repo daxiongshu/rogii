@@ -1,7 +1,9 @@
-# ROGII v20 exact reproduction
+# ROGII v20 complete reproduction
 
-This repository is the minimal, immutable reproduction surface for the
-submitted ROGII Wellbore Geology Prediction v20 solution.
+This standalone repository preserves the submitted v20 ensemble from ROGII
+Wellbore Geology Prediction, including frozen inference, all single-model
+training code, machine-readable training recipes, fold definitions,
+postprocessing dependencies, and non-neural artifact builders.
 
 - Historical source commit:
   `cd2d68e9318cb04ea808b670cf6190d25c3da825`
@@ -9,66 +11,163 @@ submitted ROGII Wellbore Geology Prediction v20 solution.
 - Public leaderboard RMSE: `6.263`
 - Five-fold whole-well OOF RMSE: `6.189484768154311`
 
-`v20/infer.py` is the exact self-contained Kaggle inference source from that
-commit. Its SHA-256 is frozen in `manifests/provenance.json`. No later V5
-research, candidate model, or post-v20 artifact is included.
+No V5 research, post-v20 candidate, or checkpoint is included.
 
-## Reproduction scope
+## What is covered
 
-This repository reproduces the **frozen v20 model artifact**:
+The v20 runtime contains 17 neural families trained on five whole-well folds:
+85 final checkpoints in total. Sixteen families (80 checkpoints) contribute
+to predictions. The five long-base12 checkpoints are loaded by the historical
+kernel but have coefficient zero.
 
-1. verify every contributing checkpoint and reference store;
-2. independently reconstruct the exact historical OOF metric and fold scores;
-3. regenerate `submission.csv` from the competition test data.
+| Family | Final checkpoint prefix | Training |
+|---|---|---:|
+| Fixed legacy synthetic | `alignment_fixed_synth` | 5 folds |
+| Distractor synthetic | `alignment_distractor_h05` | 5 folds |
+| Wide legacy synthetic | `alignment_wide_synth` | 5 folds |
+| Forward synthetic | `alignment_forward_std` | 5 folds |
+| Forward distractor | `alignment_forward_distractor` | 5 folds |
+| Rare-excursion sampler | `alignment_forward_exc4` | 5 folds |
+| Supervised-excursion sampler | `alignment_forward_exc2sup` | 5 folds |
+| Wide forward-extreme | `alignment_wide_forward_extreme` | 5 folds |
+| Wide supervised | `alignment_wide_forward_extreme_exc2sup` | 5 folds |
+| Independent-seed wide supervised | `alignment_wide_supervised_seed3` | 5 folds |
+| Base-6 wide supervised | `alignment_wide_supervised_base6` | 5 folds |
+| Balanced-fold wide supervised | `alignment_wide_supervised_strat` | 5 folds |
+| Ordinal wide | `alignment_ordinal_wide` | 5 folds |
+| Base-12 wide | `alignment_wide_base12_exc2sup` | 5 folds |
+| Base-16 wide | `alignment_wide_base16_exc2sup` | 5 folds |
+| Long-synthetic base-8 | `alignment_longsynthetic_exc2sup` | 2 stages × 5 folds |
+| Long-synthetic base-12 | `alignment_longsynthetic_base12_exc2sup` | 2 stages × 5 folds, zero v20 weight |
 
-It does not claim bit-for-bit retraining of the 80 historical neural
-checkpoints. Those checkpoints arose from the earlier research and
-validation-best selection process. Re-running that research is neither
-necessary nor sufficient to reproduce the submitted v20 artifact.
+All neural families use the exact historical `evaluate_alignment.py`,
+`AlignmentUNet`, data loader, sequence construction, objectives, and fold
+logic. `manifests/training_recipes.json` records every option and intermediate
+checkpoint. `train_v20.py` renders and safely executes those recipes.
 
-## External immutable artifacts
+The remaining learned/runtime artifacts are also covered:
 
-Large artifacts are intentionally outside Git:
+- five CatBoost spatial-confidence models;
+- `spatial_reference.npz`;
+- `ancc_reference.npz`;
+- the exact self-contained Kaggle inference program;
+- the postprocessing and OOF evaluation modules it was developed from.
 
-- weights: `/geo/geo_new/rogii_v20_checkpoint_vault`
-- OOF: `/geo/geo_new/rogii_v20_oof_vault`
-- competition data:
-  `/kaggle/input/competitions/rogii-wellbore-geology-prediction`
+Every copied historical source file is hash-locked in
+`manifests/training_sources.json`. The recipe-to-artifact verifier proves that
+the 17 × 5 final checkpoint names equal the 85 neural checkpoints in the
+frozen weight manifest exactly.
 
-The defaults work with this workspace layout. Override them with
-`ROGII_V20_WEIGHTS_ROOT`, `ROGII_V20_OOF_ROOT`, and `ROGII_DATA_ROOT`, or use
-the corresponding command-line arguments.
+## Important provenance limits
 
-The weight vault must contain exactly 80 neural checkpoints, five CatBoost
-models, and two reference stores. The five historical
-`alignment_longsynthetic_base12_exc2sup_fold*.pt` checkpoints have zero v20
-weight and are deliberately excluded from that protected functional vault.
+This is the most complete reproduction the historical record permits, with
+two gaps stated explicitly:
 
-The exact frozen kernel nevertheless checked for and loaded those five inert
-files. For source-identical execution, `reproduce.py` verifies them from
-`/geo/geo_new/rogii_simple/checkpoints` and stages a temporary 92-artifact
-symlink view. They never contribute to the prediction, the protected vault is
-not modified, and the temporary view is removed after inference. Override
-their location with `ROGII_V20_ZERO_WEIGHT_ROOT` or `--zero-weight-root`.
+1. The independent-seed family documentation says only that the random seed
+   changed; it did not commit the numeric seed. The recipe records
+   `20260721`, inferred from the contemporaneous default/seed2/seed3 sequence,
+   and labels that field as inferred.
+2. The original generator of `spatial_meta.npz` was not committed. The exact
+   8,402,753-byte cache survives and is SHA-256 locked, so the five CatBoost
+   models and spatial reference store can be rebuilt from the exact historical
+   preprocessing input.
 
-## Verify and score
+Historical neural training enabled cuDNN benchmarking and selected the
+validation-best checkpoint on the same held-out fold. A full rerun therefore
+reproduces the code, data split, recipe, and artifact contract, but is not
+promised to reproduce checkpoint bytes across different CUDA, cuDNN, PyTorch,
+or GPU versions. This is historical v20 parity, not the later selection-clean
+V5 protocol.
+
+## Install and verify
 
 ```bash
+python -m pip install -r requirements.txt
 python reproduce.py verify
 ```
 
-This hashes all 87 functional artifacts and both OOF archives, then recomputes
-the pooled and five original-fold scores. A quicker OOF-only check is:
+`verify` checks:
+
+- the exact inference and historical training sources;
+- all 17 family recipes and their exact 85-checkpoint coverage;
+- the exact CatBoost preprocessing cache;
+- all 87 functional runtime artifacts;
+- the five zero-weight runtime checkpoints;
+- both frozen OOF archives and the pooled/fold metrics.
+
+Training-only verification is available separately:
 
 ```bash
-python reproduce.py score-oof
+python reproduce.py verify-training
 ```
 
-Expected pooled output:
+Expected pooled OOF:
 
 ```text
 6.189484768154311
 ```
+
+## Inspect or retrain every single model
+
+List the complete ensemble:
+
+```bash
+python train_v20.py list
+```
+
+Render a command without writing anything:
+
+```bash
+python train_v20.py commands --family wide_supervised --fold 0
+python train_v20.py commands --family long_synthetic --fold 0
+```
+
+Validated dry run:
+
+```bash
+python train_v20.py run --family all --fold all \
+  --checkpoint-root checkpoints
+```
+
+Actually train one family/fold:
+
+```bash
+python train_v20.py run --family wide_supervised --fold 0 \
+  --checkpoint-root checkpoints --execute
+```
+
+The runner refuses to overwrite checkpoints unless `--force` is explicit.
+The two long-synthetic families automatically run their 16-epoch
+synthetic-only stage, save both best and last states, then fine-tune the actual
+last state for six real-data epochs.
+
+The exact spatial builder is:
+
+```bash
+python deploy/kaggle/prepare_spatial_deployment.py \
+  --spatial-meta /geo/geo_new/submit/5745790-94c03d6/artifacts/oof/spatial_meta.npz \
+  --output checkpoints
+```
+
+`deploy/kaggle/stage_post_v16_deployment.py` contains the exact ANCC reference
+builder and historical post-v16 staging logic.
+
+## External immutable artifacts
+
+Large artifacts remain outside Git:
+
+- contributing weights: `/geo/geo_new/rogii_v20_checkpoint_vault`
+- zero-weight runtime checkpoints: `/geo/geo_new/rogii_simple/checkpoints`
+- OOF archives: `/geo/geo_new/rogii_v20_oof_vault`
+- exact spatial preprocessing cache:
+  `/geo/geo_new/submit/5745790-94c03d6/artifacts/oof/spatial_meta.npz`
+- competition data:
+  `/kaggle/input/competitions/rogii-wellbore-geology-prediction`
+
+Defaults use this workspace layout. They can be overridden with
+`ROGII_V20_WEIGHTS_ROOT`, `ROGII_V20_ZERO_WEIGHT_ROOT`,
+`ROGII_V20_OOF_ROOT`, `ROGII_V20_SPATIAL_META`, and `ROGII_DATA_ROOT`, or
+their corresponding command-line arguments.
 
 ## Regenerate the submission
 
@@ -77,29 +176,20 @@ python reproduce.py infer --output submission.csv
 ```
 
 The frozen inference code automatically uses up to two GPUs, matching the
-Kaggle dual-T4 deployment. After one successful `verify`, the redundant
-weight hashing pass may be skipped:
+Kaggle dual-T4 deployment. To skip redundant weight hashing after a successful
+verification:
 
 ```bash
 python reproduce.py infer --skip-weight-verification \
   --output submission.csv
 ```
 
-The generated CSV must contain every sample-submission ID exactly once with
-no missing prediction. Small floating-point drift across GPU architectures is
-expected; the historical remote output SHA-256 in the provenance record is a
-byte-level Kaggle reference, not a cross-hardware requirement.
-
 The standalone path was validated locally on two V100s: 14,151/14,151 rows
 were produced in 23.9 seconds. Against the archived Kaggle v20 output,
 prediction-vector RMSE was `0.000009374` ft and maximum absolute drift was
-`0.000146399` ft.
-
-## Dependencies
-
-```bash
-python -m pip install -r requirements.txt
-```
+`0.000146399` ft. Small floating-point drift across GPU architectures is
+expected.
 
 The historical kernel metadata is retained in `kaggle/kernel-metadata.json`.
-No Dataset, kernel, or competition submission is created by this repository.
+This repository does not create or submit a Kaggle Dataset, kernel, or
+competition submission.

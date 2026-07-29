@@ -1,5 +1,7 @@
 catboost>=1.2
+numba>=0.59
 numpy>=1.26
 pandas>=2.0
+scikit-learn>=1.4
 scipy>=1.11
 torch>=2.1

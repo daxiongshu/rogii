@@ -11,6 +11,24 @@
     "path": "kaggle/kernel-metadata.json",
     "sha256": "a33542350febf53da489958e8a72e327684a3d5ccfc83d7d1e609a8e48b8dcc5"
   },
+  "training": {
+    "source_manifest": "manifests/training_sources.json",
+    "source_manifest_sha256": "6397d3904fbf6e65ebdc22bce31efddeca4edefad8d8f9c49cdade88ecaf7711",
+    "recipe_manifest": "manifests/training_recipes.json",
+    "recipe_manifest_sha256": "13e9e39b521586a47757d47d185b57bfb4c34f8898055c5858c2d357d9434e0e",
+    "neural_families": 17,
+    "folds": 5,
+    "neural_checkpoints": 85,
+    "spatial_meta": {
+      "filename": "spatial_meta.npz",
+      "sha256": "d958e70b66586e85f0b94fb3c505ff7c0f11f4f89d99ffd50546cb9c29ace45a",
+      "bytes": 8402753,
+      "wells": 773,
+      "features": 31,
+      "rows": 3783989,
+      "provenance_status": "exact_cache_available_generator_not_committed"
+    }
+  },
   "weights": {
     "manifest": "manifests/weights.json",
     "manifest_sha256": "145fe76ca0a4fa48003d755ddcb661786dfe48e2ecfa9a83a2bd9b9e553e19d5",
