@@ -102,5 +102,288 @@
       "workspace_path": "/geo/geo_new/rogii_v20_limited_query/limited_query_cv/runs/v5_batch3_run_004_goal_020/sr_deployment_scaled06",
       "note": "recipe.json plus the ten routers exactly as pushed to Kaggle"
     }
+  },
+  "candidate_bank": {
+    "note": "The 18 recipe candidates are read from these caches. The producers now ship in pipeline/limited_query_cv, so they can be rebuilt from competition data and the v20 checkpoint vault.",
+    "run1_structural_shards": {
+      "label": "12 run1_struct_* candidates",
+      "files": 40,
+      "bytes": 72763137,
+      "items": [
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f0_highcap_structural/shard0.npz",
+          "bytes": 1750436,
+          "sha256": "fae8960b026fedeeb8e77764a6687cb5463dc5121771ab1b8caa24841cf94650"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f0_highcap_structural/shard1.npz",
+          "bytes": 1947874,
+          "sha256": "5885e4c1560f68ad6fc8137c94f293db6f0d1a38891866789edb32bb7c59130a"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f0_highcap_structural/shard2.npz",
+          "bytes": 1936934,
+          "sha256": "b546074d489dfc7279b19fb636d670aa2910ea98a68542e23a41fe8f0b68bb06"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f0_highcap_structural/shard3.npz",
+          "bytes": 1830065,
+          "sha256": "a38319c6d5c8acf97f0635c54360fd14bbff19df9bd45cde42294ca4c38f0fe9"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f0_highcap_structural/shard4.npz",
+          "bytes": 1778559,
+          "sha256": "8e3df0c9f2ab8019039ac1723c9d80487138dd453552e5c917762b954e8a1e53"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f0_highcap_structural/shard5.npz",
+          "bytes": 1639191,
+          "sha256": "f69fae6a9c8127c600a7d9c89b3e436898a1130e37e48a47b2b8bd0aa2d8ef32"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f0_highcap_structural/shard6.npz",
+          "bytes": 1680739,
+          "sha256": "f2f7075352808f3590241298f83681c2638ffc0560e78a9a8808488e0c05b5bd"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f0_highcap_structural/shard7.npz",
+          "bytes": 1929356,
+          "sha256": "527490b7a6c25a61d0d15a77416ea38c95b875a7040561441a53ee7a17179d95"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f1_highcap_structural/shard0.npz",
+          "bytes": 1904241,
+          "sha256": "8f2e3c8b84ba12a1fb2b10cd6e551a061df21fac74d822a460fe580942ea6c95"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f1_highcap_structural/shard1.npz",
+          "bytes": 1906457,
+          "sha256": "e773e7306a85b7d5ad2e6479d6c669ea35faebd26631d2ddff8543fbd820b4fe"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f1_highcap_structural/shard2.npz",
+          "bytes": 2046958,
+          "sha256": "95c93250603e9a782ce1afcbc7a9cbadaae26a5375fffa44bbd2becda9a37130"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f1_highcap_structural/shard3.npz",
+          "bytes": 2101619,
+          "sha256": "fef3327ffec0d16e5937e474222967d18b624cc1b669ef9713a22397347230d8"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f1_highcap_structural/shard4.npz",
+          "bytes": 1663584,
+          "sha256": "722b4e59061f95b1300a95195a702d21d25d18521c3fe9acd3e18ed05f56bf12"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f1_highcap_structural/shard5.npz",
+          "bytes": 1867650,
+          "sha256": "b5ed6d67ba20701a34c4c8d989ad282b5437718c8d391065c3bb0938c35d225d"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f1_highcap_structural/shard6.npz",
+          "bytes": 1755698,
+          "sha256": "b09d372ea8ae70a5c7aa66d42028defcc1347ad934947e11247a915d6cc0f1d1"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f1_highcap_structural/shard7.npz",
+          "bytes": 1713476,
+          "sha256": "3a2c6f6efa296e3d5e82b0e778a7082e6e2b7b9806687df548301918eece3fbb"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f2_highcap_structural/shard0.npz",
+          "bytes": 1809875,
+          "sha256": "761b110eac70c0fe0e403c72e610e09c6d5dd6b3b2e8d2852810ed53a61a0b21"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f2_highcap_structural/shard1.npz",
+          "bytes": 1899194,
+          "sha256": "de186502bbbfa6749a2e2f640ae5146fd77066d28a320a70145aee12d7370005"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f2_highcap_structural/shard2.npz",
+          "bytes": 1808262,
+          "sha256": "2a9f2ae974edd5cc78e6fc6f78856b28d69b6dbc09bcb9593bc461a63f6c4ee8"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f2_highcap_structural/shard3.npz",
+          "bytes": 1957132,
+          "sha256": "10517941cb1b4469e5b6b3a7f1e5d74fa6aac96b7fc3861eaac8ca2acbf05b40"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f2_highcap_structural/shard4.npz",
+          "bytes": 1686462,
+          "sha256": "d92cc138869f35e7fa2cfb0815c7c9667576a2a67c12706ee3e0739e695652b6"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f2_highcap_structural/shard5.npz",
+          "bytes": 1853292,
+          "sha256": "3222bc2acac873547346623200bd9a5efb3a40474ccc16101bbbdd1ad4158243"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f2_highcap_structural/shard6.npz",
+          "bytes": 1793322,
+          "sha256": "2a3239d0dde77bff4c8ad40de799698f8ed5e4cd339c83a2d8e74f98ee88159a"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f2_highcap_structural/shard7.npz",
+          "bytes": 1802997,
+          "sha256": "28697bfec93aaf0bf519e876821a2540ab3dfda7b52ae692994750930ddbb398"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f3_highcap_structural/shard0.npz",
+          "bytes": 1782763,
+          "sha256": "ad33b779552b960bcc520d5e5797098fe7d817270c850404a7f8599cc1fa9b5c"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f3_highcap_structural/shard1.npz",
+          "bytes": 1794655,
+          "sha256": "133842b29ef17d06950bdc901208a745d78a7d4338dabb4e57a2463b9fff7bc5"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f3_highcap_structural/shard2.npz",
+          "bytes": 1820687,
+          "sha256": "b8448af29a71034acd5bf59464784259768e01f783616f2a8f547534174bed0e"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f3_highcap_structural/shard3.npz",
+          "bytes": 1740437,
+          "sha256": "491b42701f6c07bc3b74701df3f1e10973c8aadf35c07426e1ef875321da8992"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f3_highcap_structural/shard4.npz",
+          "bytes": 1826790,
+          "sha256": "4a6659b06f2252b19dc6c856b304665988c4adb793c948873cf6195dceaed7e5"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f3_highcap_structural/shard5.npz",
+          "bytes": 1870698,
+          "sha256": "484a4a8745b14abee05c2fac8a7f01f269e6af2c6c2ab8e96ea6a22242c82591"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f3_highcap_structural/shard6.npz",
+          "bytes": 1714268,
+          "sha256": "28b3eb9fe9fa71b498296e1dd8878b29f30076c0289316e873a0562198f26618"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_001_goal_020/f3_highcap_structural/shard7.npz",
+          "bytes": 1765273,
+          "sha256": "264eb19f95ec741f7f9fa2d4c645209998912cb32ff1208f88c8b915a15bdf5b"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_003_goal_020/promotion_audit/candidates/f4_highcap_structural/shard0.npz",
+          "bytes": 1861654,
+          "sha256": "a3c4ea3346742376640a810a694bed89f0cd6f2c76778b4998ad45c83e597a7f"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_003_goal_020/promotion_audit/candidates/f4_highcap_structural/shard1.npz",
+          "bytes": 1873334,
+          "sha256": "e07c4e6638bcd621499193a49783edaa9b9f2eb2cfdd1e282e01bfdb4070b7c4"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_003_goal_020/promotion_audit/candidates/f4_highcap_structural/shard2.npz",
+          "bytes": 1755603,
+          "sha256": "317bb1b8d5c678abb52b11edd0e489eb4f94b8e32ba9fef111cacd7b481045f5"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_003_goal_020/promotion_audit/candidates/f4_highcap_structural/shard3.npz",
+          "bytes": 1712338,
+          "sha256": "50ae522c38916f7f7beca8d4555344fcde55969dc578b1a36058637b5614a922"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_003_goal_020/promotion_audit/candidates/f4_highcap_structural/shard4.npz",
+          "bytes": 1932110,
+          "sha256": "b4064a01bd52bde0bce7485e11dbfbd1dd9491c5ea6f6d8377b9d98a541061d3"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_003_goal_020/promotion_audit/candidates/f4_highcap_structural/shard5.npz",
+          "bytes": 1752993,
+          "sha256": "9e6ea1d0056851a4fd74292b322502322732f6972fe05ab6dc572f783d823125"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_003_goal_020/promotion_audit/candidates/f4_highcap_structural/shard6.npz",
+          "bytes": 1814917,
+          "sha256": "7157e26d19eba83116778782e84254dc3add960e89bf5e70f0f829b38a57aa2f"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_003_goal_020/promotion_audit/candidates/f4_highcap_structural/shard7.npz",
+          "bytes": 1681244,
+          "sha256": "a77f19ee9f935252a5fe6692fd7f74d4616868b269e950c29995f8e54646fe00"
+        }
+      ]
+    },
+    "run2_surface_caches": {
+      "label": "6 surface_raw_* candidates",
+      "files": 5,
+      "bytes": 41699760,
+      "items": [
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_002_goal_020/surface_f0_cache.npz",
+          "bytes": 8298744,
+          "sha256": "2683f7dfa9e19b57f76b89a6ef4000e545b4abad5f34c4cf0329fb53634fd45c"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_002_goal_020/surface_f1_cache.npz",
+          "bytes": 8596667,
+          "sha256": "d3824a029cebf30d3b26441a0c2930c764e62e632c8d155c4a3619dabd295f95"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_002_goal_020/surface_f2_cache.npz",
+          "bytes": 8398286,
+          "sha256": "52d72566711c1be1d2780613996afc61370f44d3ff4bd4818836b627214a68b2"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_002_goal_020/surface_f3_cache.npz",
+          "bytes": 8199621,
+          "sha256": "781c66d67acbbcfb6b18557b4c2c809386e68eb4104be8632ee2603363bc0ef7"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_003_goal_020/promotion_audit/candidates/surface_f4_cache.npz",
+          "bytes": 8206442,
+          "sha256": "8a4265f0eedbf48f95f6202bef163df9033b15dfe5e9da204524a19f24e50ef6"
+        }
+      ]
+    },
+    "run2_surface_selector_caches": {
+      "label": "surface_selector_* diagnostics",
+      "files": 5,
+      "bytes": 60565443,
+      "items": [
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_002_goal_020/surface_selector_f0_cache.npz",
+          "bytes": 12084388,
+          "sha256": "b8829c79620bfaeb3a79624fb63c6406e3529a99c70b21653336dc53f2f36d92"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_002_goal_020/surface_selector_f1_cache.npz",
+          "bytes": 12466107,
+          "sha256": "83f3cd40e2215df68e9a21143a77f9b66103ef073a67c28538718599e7eeb0f1"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_002_goal_020/surface_selector_f2_cache.npz",
+          "bytes": 12155528,
+          "sha256": "dfc945b050660301830e25c81587cd799e503b4176a6113ba61ad8eb43d9cbdd"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_002_goal_020/surface_selector_f3_cache.npz",
+          "bytes": 11905740,
+          "sha256": "a65d27e7264c45f7c6273da9615c7c5e6de3f6aae78b21fc86d13e2062db558b"
+        },
+        {
+          "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_003_goal_020/promotion_audit/candidates/surface_selector_f4_cache.npz",
+          "bytes": 11953680,
+          "sha256": "7fd86eee794352f3dede78ac9f085d69ddc5c457b4a190f190b64e0282f7cb2d"
+        }
+      ]
+    }
+  },
+  "pretrained_backbone": {
+    "model": "nvidia/mit-b0",
+    "used_by": [
+      "pipeline/limited_query_cv/train_v5_run6_pretrained_categorical_segformer.py",
+      "pipeline/limited_query_cv/train_v5_run6_trajectory_categorical_segformer.py"
+    ],
+    "workspace_path": "/geo/.cache/huggingface/hub/models--nvidia--mit-b0",
+    "note": "Only the SegFormer candidates in the run-6 trajectory chain load it. Set HF_HOME or pre-populate the cache for an offline rebuild."
   }
 }

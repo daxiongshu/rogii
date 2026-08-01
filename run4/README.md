@@ -57,17 +57,34 @@ observed archive value is `6.0638386078391315`.
 
 | Path | Contents |
 |---|---|
-| `pipeline/limited_query_cv/` | 49 modules — the transitive import closure of the 16 Run4 entry points, plus the hash-pinned `finish_v5_run6_trajectory_parent_gated_clean.py` chain and the two lineage-invalidation records |
+| `pipeline/limited_query_cv/` | 62 modules — the closure of the 16 Run4 entry points over both imports *and* the caches they read by path, so the candidate bank builds from scratch |
 | `pipeline/rogii/`, `pipeline/evaluate_alignment.py`, `pipeline/create_stratified_folds.py` | the V5 forms of the shared library and the v20 trainer that Run4's candidate bank imports |
 | `kernel/` | the frozen Kaggle program (`02aa6105…`), its metadata, and the deployment validation record |
 | `weights-dataset/` | the deployment recipe plus the `source/` snapshot the kernel inserts into `sys.path` at run time |
 | `records/` | selector preregistration, recipe freeze, nested verification, confirmation, promotion, and the frozen-parent alignment record |
 | `manifests/` | source hash lock, external artifact inventory, provenance |
 
-All 105 files are hash-locked in `manifests/run4_sources.json`. 103 match build
-commit `524eb22c` byte for byte; `kernel/deployment-validation.json` and
+All 119 copied files are hash-locked in `manifests/run4_sources.json`. 117 match
+build commit `524eb22c` byte for byte; `kernel/deployment-validation.json` and
 `records/run4_frozen_parent_alignment.json` are the post-submission forms from
-promotion commit `1ccb125`, and the manifest names them explicitly.
+promotion commit `1ccb125`, and the manifest names them explicitly. `README.md`,
+`reproduce_run4.py`, `requirements.txt`, and `manifests/` are written for this
+repository and are not hash-locked.
+
+### Closure over paths, not just imports
+
+Run4's candidate bank reads its 18 candidates from caches **by path**, not by
+import, so an import-only closure silently omits the code that produces them.
+The packaged closure follows both:
+
+| Candidates | Read from | Producers, all packaged here |
+|---|---|---|
+| 12 × `run1_struct_*` | `runs/v5_batch3_run_001_goal_020/f{fold}_highcap_structural/shard*.npz` | `cache_v5_batch3_highcap_path.py`, `cache_v5_batch3_datum_path.py`, `combine_v5_batch3_structural_caches.py`, `transform_v5_batch3_highcap_structural.py`, `combine_v5_batch3_named_structural_caches.py` |
+| 6 × `surface_raw_*` | `runs/v5_batch3_run_002_goal_020/surface_f{fold}_cache.npz` | `cache_v5_batch3_run2_surface.py` |
+| v20 component paths | `runs/v5_batch2_run_00{1,3}_goal_050/v20_components/fold{n}.npz` | `cache_v5_run3_v20_components.py` |
+
+With those included, the chain terminates at competition data, the v20
+checkpoint vault, and the C016 sealed prediction — nothing else is required.
 
 ### Note on `pipeline/evaluate_alignment.py` and `pipeline/rogii/`
 
@@ -137,10 +154,43 @@ Run from `run4/pipeline` with it on `PYTHONPATH`; run artifacts land under
 `run4/pipeline/limited_query_cv/runs/…`.
 
 ```bash
+python -m pip install -r run4/requirements.txt
 cd run4/pipeline
 export PYTHONPATH=$PWD
 R=limited_query_cv/runs/v5_batch3_run_004_goal_020
+R1=limited_query_cv/runs/v5_batch3_run_001_goal_020
+R2=limited_query_cv/runs/v5_batch3_run_002_goal_020
 ```
+
+**0. Rebuild the candidate bank.** Skip this only if you already hold the run-1
+and run-2 caches inventoried in `manifests/run4_artifacts.json`.
+
+```bash
+# v20 component paths, folds 0-3 (the fold-4 cache comes from the run-25 audit)
+for fold in 0 1 2 3; do
+  python limited_query_cv/cache_v5_run3_v20_components.py --fold "$fold" \
+    --output limited_query_cv/runs/v5_batch2_run_003_goal_050/v20_components/fold$fold.npz
+done
+
+# 12 run1_struct_* candidates: cache, combine, transform, name
+python limited_query_cv/cache_v5_batch3_highcap_path.py --help
+python limited_query_cv/cache_v5_batch3_datum_path.py --help
+python limited_query_cv/combine_v5_batch3_structural_caches.py \
+  --self-cache <self.npz> --datum-cache <datum.npz> --output <combined.npz>
+python limited_query_cv/transform_v5_batch3_highcap_structural.py \
+  --input <combined.npz> --output <highcap.npz>
+python limited_query_cv/combine_v5_batch3_named_structural_caches.py \
+  --output $R1/f0_highcap_structural/shard0.npz
+
+# 6 surface_raw_* candidates
+for fold in 0 1 2 3; do
+  python limited_query_cv/cache_v5_batch3_run2_surface.py --fold "$fold" \
+    --output $R2/surface_f$fold\_cache.npz
+done
+```
+
+The shard layout is per-fold and sharded; run `--help` on the two `cache_…path`
+scripts for their fold and shard arguments before launching a full rebuild.
 
 **1. Well statistics and router features** — both read the hash-pinned C016
 parent prediction.
@@ -224,12 +274,30 @@ T4s; locally the dual-GPU path took 91.1 s against 106.7 s single-GPU, with
 dual-vs-single prediction RMSE of `2.58e-09` ft
 (`kernel/deployment-validation.json`).
 
+## Dependencies
+
+`run4/requirements.txt` extends the v20 set. Run4 additionally needs `joblib`
+(the structural routers are joblib pickles), `xgboost` and `lightgbm` (routers
+and the master-frame booster), and — for the SegFormer candidates in the run-6
+trajectory chain only — `transformers`, `torchvision`, and `opencv-python`.
+
+### Pretrained backbone
+
+`train_v5_run6_pretrained_categorical_segformer.py` and
+`train_v5_run6_trajectory_categorical_segformer.py` load `nvidia/mit-b0` from
+the local HuggingFace cache. It is the one external pretrained weight in the
+chain; `manifests/run4_artifacts.json` records it under `pretrained_backbone`.
+Set `HF_HOME` or pre-populate the cache before an offline rebuild.
+
 ## External artifacts
 
 Nothing large is committed. `manifests/run4_artifacts.json` records sha256 and
-this workspace's location for the ten routers (~34 MB), the v20 component
-caches, the C016 safe-mode bank and ridge archives, the uniform nested outer
-predictions, the router feature cache, and the recorded OOF archive.
+this workspace's location for the ten routers (~34 MB), the candidate bank
+(40 run-1 structural shards, ~73 MB; five run-2 surface caches, ~42 MB; five
+selector caches, ~61 MB), the v20 component caches, the C016 safe-mode bank and
+ridge archives, the uniform nested outer predictions, the router feature cache,
+and the recorded OOF archive. Every one of these is now rebuildable by the code
+in `pipeline/`.
 
 ## Provenance limits
 
@@ -244,5 +312,13 @@ predictions, the router feature cache, and the recorded OOF archive.
 3. `records/` is the decisive audit trail, not the complete run directory. The
    full 15-role nested tree, the screening banks, and the diagnostic candidates
    stay in `rogii_v20_limited_query`.
-4. Run4 is the current frozen parent in `frozen_previous_best_v5.json`. Anything
+4. Only one v20-component builder survives in the source history. The
+   `v5_batch2_run_001_goal_050` caches, which the anchor-posterior path reads,
+   were written by an earlier form of it: identical component names, weights,
+   and parent checkpoint hashes, and an identical v20 baseline, but component
+   values differing by up to `0.000977` ft against the `v5_batch2_run_003`
+   caches the surviving builder writes. That is GPU-level rerun drift, not a
+   different recipe, and it is the one place where a rebuild cannot be
+   byte-identical to the historical input.
+5. Run4 is the current frozen parent in `frozen_previous_best_v5.json`. Anything
    promoted after it is outside this repository.
