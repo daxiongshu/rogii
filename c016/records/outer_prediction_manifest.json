@@ -1,0 +1,20 @@
+{
+  "candidate_artifact_count": 915,
+  "candidate_manifest_sha256": "1ab20f8134ba69826af4b7e5e82b57f0f0cab56d55d01506524533a24433a54f",
+  "f4_metric_computed": false,
+  "outer_folds": 5,
+  "positive_inner_weight_roles": 4,
+  "prediction": "limited_query_cv/runs/v5_batch2_run_025_goal_050/promotion_audit/sealed/outer_predictions.npz",
+  "prediction_sha256": "737711c483cc3ce81ba94fa8e5dfb9c307f75c7691fd06be33631d80c355fad1",
+  "protected_metric_computed": false,
+  "row_count": 3783989,
+  "run_id": "v5_batch2_run_025_goal_050",
+  "schema_version": 1,
+  "selector": "limited_query_cv/runs/v5_batch2_run_025_goal_050/promotion_audit/sealed/selector_record.json",
+  "selector_sha256": "d1a8097fb56a356a109e95658928b319ff78e6ae7d8b647e1d6f77498641efb2",
+  "source_sha256": "e1871a3e8eca9bb86c443d6c0a26daf80a95cd78f380d1e1a2ed2fdca41cbe29",
+  "stage": "complete_outer_prediction_manifest",
+  "status": "frozen_ready_for_single_joint_reveal",
+  "truth_stored_in_prediction": false,
+  "well_count": 773
+}

@@ -19,7 +19,13 @@ the two private Datasets documented below.
   (submission `54986657`)
 - Five-fold whole-well OOF RMSE: `6.189484768154311`
 
-No V5 research, post-v20 candidate, or checkpoint is included.
+Everything above `c016/` is v20 only: no V5 research, no post-v20 candidate,
+and no post-v20 checkpoint participates in it.
+
+`c016/` adds the one approved successor, C016, which is a correction layered on
+top of v20 rather than a replacement for it. See [c016/README.md](c016/README.md).
+It is self-contained — its own sources, recipe, kernel, manifests, and verifier
+— so the v20 hash locks and `reproduce.py verify` are unaffected by it.
 
 ## Related best leaderboard result
 
@@ -304,3 +310,20 @@ The historical kernel metadata is retained in `kaggle/kernel-metadata.json`.
 The artifact Datasets were created separately and are read-only inputs here.
 No repository command automatically creates a Dataset or kernel, and nothing
 submits a competition entry.
+
+## Approved successor: C016
+
+C016 (`clean_c016_without_quarantined_d072`, run `v5_batch2_run_025_goal_050`,
+source commit `64e1cf12320274ef2c26f2bf465e6346b57aa88a`) caches the nine
+weighted v20 component paths per fold, trains eleven small residual and
+posterior networks against the v20 baseline, and averages five clean outer
+corrections. It moved the pooled OOF from `6.189484768154311` to
+`6.1272727841976` and the public leaderboard from `6.263` to `6.127`.
+
+```bash
+python c016/reproduce_c016.py verify
+python c016/reproduce_c016.py list-recipe
+```
+
+`c016/README.md` documents the pipeline order, the external artifacts, and why
+`c016/pipeline/rogii/` exists as a separate copy of the shared library.

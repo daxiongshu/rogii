@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "run_id": "v5_batch2_run_025_goal_050",
+  "candidate": "clean_c016_without_quarantined_d072",
+  "stage": "private_kaggle_production_push",
+  "status": "private_dataset_and_kernel_complete_no_submission",
+  "source_commit": "64e1cf12320274ef2c26f2bf465e6346b57aa88a",
+  "authorization": {
+    "path": "limited_query_cv/runs/v5_batch2_run_025_goal_050/user_authorized_kaggle_production.json",
+    "sha256": "d4203b38cba52b305411d64fc5c8f12d1709c6426f0fa87fb86c87ea54c8eed6",
+    "competition_submission": false
+  },
+  "weights_dataset": {
+    "slug": "jiweiliu/rogii-v5-promoted-c016-weights",
+    "url": "https://www.kaggle.com/datasets/jiweiliu/rogii-v5-promoted-c016-weights",
+    "private": true,
+    "version": 1,
+    "remote_file_count": 13,
+    "remote_checkpoint_count": 11,
+    "remote_checkpoint_bytes": 187900137,
+    "manifest_sha256": "d2964a38985e5623ea9b006d96424b991038b696f2087186ac1bf61d0bdd121a",
+    "remote_inventory_verified": true
+  },
+  "kernel": {
+    "slug": "jiweiliu/rogii-v5-promoted-c016-dual-t4",
+    "url": "https://www.kaggle.com/code/jiweiliu/rogii-v5-promoted-c016-dual-t4",
+    "private": true,
+    "version": 1,
+    "status": "complete",
+    "internet_enabled": false,
+    "gpu_count_observed": 2,
+    "devices_observed": [
+      "cuda:0",
+      "cuda:1"
+    ],
+    "inference_elapsed_seconds": 42.8,
+    "output_rows": 14151,
+    "output_unique_ids": 14151,
+    "output_finite": true,
+    "submission_csv_sha256": "0b2dc90f1ede1c9d8755bf2bdb179f260dce2f514f9decb600f9765199b079db",
+    "kernel_log_sha256": "07cbb341f0e8cd2bdb01ca9dbe041438d5f896d4c743e95a3986cc8ca842a7fe",
+    "local_remote_prediction_rmse": 4.845577578877441e-05,
+    "local_remote_relative_rmse": 4.069525485801269e-09,
+    "local_remote_maximum_absolute_delta_ft": 0.0005859374996362021
+  },
+  "package_validation": {
+    "path": "limited_query_cv/runs/v5_batch2_run_025_goal_050/kaggle_production/package_validation.json",
+    "sha256": "621bdd372559c9eee29a1300a85703549058056822deb249796856491a30b192"
+  },
+  "competition_submission": {
+    "authorized": false,
+    "performed": false,
+    "submission_reference": null
+  }
+}

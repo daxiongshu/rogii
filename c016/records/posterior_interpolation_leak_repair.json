@@ -1,0 +1,214 @@
+{
+  "accepted": true,
+  "baseline_rmse": 6.189484768154311,
+  "bootstrap": {
+    "gain_quantile_0_10": 0.0371273237562356,
+    "gain_quantile_0_50": 0.06315065065579661,
+    "gain_quantile_0_90": 0.08759163284595523,
+    "probability_gain_positive": 0.9985,
+    "resamples": 2000,
+    "seed": 20260725,
+    "well_count": 773
+  },
+  "competition_submission_authorized": false,
+  "f4_nonnegative_gain_veto_passed": true,
+  "folds": [
+    {
+      "after_rmse": 5.825838246041426,
+      "before_rmse": 5.909213567900389,
+      "fold": 0,
+      "gain": 0.08337532185896279,
+      "rows": 755859,
+      "wells": 155
+    },
+    {
+      "after_rmse": 6.119897279692428,
+      "before_rmse": 6.195413020907047,
+      "fold": 1,
+      "gain": 0.07551574121461879,
+      "rows": 777866,
+      "wells": 155
+    },
+    {
+      "after_rmse": 5.339144043108915,
+      "before_rmse": 5.40321499339164,
+      "fold": 2,
+      "gain": 0.06407095028272547,
+      "rows": 758564,
+      "wells": 155
+    },
+    {
+      "after_rmse": 6.16663405157052,
+      "before_rmse": 6.214547044851526,
+      "fold": 3,
+      "gain": 0.04791299328100607,
+      "rows": 746299,
+      "wells": 154
+    },
+    {
+      "after_rmse": 7.071313664328342,
+      "before_rmse": 7.11591858492712,
+      "fold": 4,
+      "gain": 0.044604920598778186,
+      "rows": 745401,
+      "wells": 154
+    }
+  ],
+  "groupings": {
+    "balanced": {
+      "gain": 0.062211983956711236,
+      "held_groups": [
+        {
+          "after_rmse": 6.0787230696338534,
+          "before_rmse": 6.123530250165244,
+          "gain": 0.04480718053139032,
+          "held_group": 0,
+          "rows": 743998
+        },
+        {
+          "after_rmse": 6.073020015396968,
+          "before_rmse": 6.153453900294955,
+          "gain": 0.08043388489798708,
+          "held_group": 1,
+          "rows": 766497
+        },
+        {
+          "after_rmse": 5.43624266575483,
+          "before_rmse": 5.5235505079152185,
+          "gain": 0.08730784216038856,
+          "held_group": 2,
+          "rows": 766197
+        },
+        {
+          "after_rmse": 6.618013148122565,
+          "before_rmse": 6.629668693927855,
+          "gain": 0.011655545805290046,
+          "held_group": 3,
+          "rows": 734712
+        },
+        {
+          "after_rmse": 6.383374973172092,
+          "before_rmse": 6.473209548584829,
+          "gain": 0.08983457541273676,
+          "held_group": 4,
+          "rows": 772585
+        }
+      ],
+      "maximum_held_group_regression": 0.0
+    },
+    "independent": {
+      "gain": 0.062211983956711236,
+      "held_groups": [
+        {
+          "after_rmse": 5.70690361897019,
+          "before_rmse": 5.761480909941485,
+          "gain": 0.054577290971295156,
+          "held_group": 0,
+          "rows": 756707
+        },
+        {
+          "after_rmse": 7.081688026531581,
+          "before_rmse": 7.10064696902774,
+          "gain": 0.018958942496158926,
+          "held_group": 1,
+          "rows": 756408
+        },
+        {
+          "after_rmse": 5.7951617902981525,
+          "before_rmse": 5.887610765331044,
+          "gain": 0.09244897503289184,
+          "held_group": 2,
+          "rows": 778082
+        },
+        {
+          "after_rmse": 5.964932886003412,
+          "before_rmse": 6.0384305387936,
+          "gain": 0.07349765279018783,
+          "held_group": 3,
+          "rows": 721919
+        },
+        {
+          "after_rmse": 5.990950528905277,
+          "before_rmse": 6.071093905297681,
+          "gain": 0.08014337639240399,
+          "held_group": 4,
+          "rows": 770873
+        }
+      ],
+      "maximum_held_group_regression": 0.0
+    },
+    "original": {
+      "gain": 0.062211983956711236,
+      "held_groups": [
+        {
+          "after_rmse": 5.825838246041426,
+          "before_rmse": 5.909213567900389,
+          "gain": 0.08337532185896279,
+          "held_group": 0,
+          "rows": 755859
+        },
+        {
+          "after_rmse": 6.119897279692428,
+          "before_rmse": 6.195413020907047,
+          "gain": 0.07551574121461879,
+          "held_group": 1,
+          "rows": 777866
+        },
+        {
+          "after_rmse": 5.339144043108915,
+          "before_rmse": 5.40321499339164,
+          "gain": 0.06407095028272547,
+          "held_group": 2,
+          "rows": 758564
+        },
+        {
+          "after_rmse": 6.16663405157052,
+          "before_rmse": 6.214547044851526,
+          "gain": 0.04791299328100607,
+          "held_group": 3,
+          "rows": 746299
+        },
+        {
+          "after_rmse": 7.071313664328342,
+          "before_rmse": 7.11591858492712,
+          "gain": 0.044604920598778186,
+          "held_group": 4,
+          "rows": 745401
+        }
+      ],
+      "maximum_held_group_regression": 0.0
+    }
+  },
+  "kernel_source_sha256": "610f8f704c790d4f28a826b14d18f4bcdb7073af8f13eeecf82c93350c595121",
+  "legal_oof": "limited_query_cv/runs/v5_batch2_run_025_goal_050/kaggle_production/promotion_oof_legal_posterior_mask.npz",
+  "legal_oof_gain": 0.062211983956711236,
+  "legal_oof_rmse": 6.1272727841976,
+  "legal_oof_sha256": "9707bdb500cf869c0462c1845783cce7ad08d066a9116514b8263873ee47bbb4",
+  "maximum_held_group_regression": 0.0,
+  "original_oof": "limited_query_cv/runs/v5_batch2_run_025_goal_050/promotion_audit/promotion_oof.npz",
+  "original_oof_rmse": 6.124619174007348,
+  "original_oof_sha256": "e319f320defbf0a042d79170adcbb72e87d2a4853d6c5370c43d3d08ba2c87d3",
+  "posterior_checkpoint_sha256": "9f76986c29203837aa6e88b63097fa29a6e52c22bcda2c406bf9c05aa1eaa983",
+  "repair": {
+    "all_outer3_wells_regenerated": true,
+    "issue": "Historical posterior interpolation reused the target-derived classification-validity mask on outer-held predictions.",
+    "post_reveal_tuning_performed": false,
+    "posterior_correction_delta_max_abs": 22.246973037719727,
+    "posterior_correction_delta_rmse": 0.7928472234584044,
+    "production_rule": "Use only the label-free sampled geometry validity mask.",
+    "recipe_or_weight_changed": false
+  },
+  "run_id": "v5_batch2_run_025_goal_050",
+  "schema_version": 1,
+  "stage": "post_promotion_production_parity_repair",
+  "status": "legal_repair_complete_promotion_retained",
+  "strong_gate": {
+    "clauses": {
+      "all_grouping_gains_nonnegative": true,
+      "at_least_four_original_folds_improve": true,
+      "maximum_held_group_regression_at_most_0p01": true,
+      "pooled_gain_at_least_0p03": true
+    },
+    "passed": true
+  }
+}

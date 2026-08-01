@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "run_id": "v5_batch2_run_025_goal_050",
+  "candidate": "clean_c016_without_quarantined_d072",
+  "stage": "pre_push_kaggle_production_validation",
+  "status": "passed_ready_for_private_push",
+  "legal_production_cv": {
+    "baseline_rmse": 6.189484768154311,
+    "original_reported_oof_rmse": 6.124619174007348,
+    "legal_production_oof_rmse": 6.1272727841976,
+    "legal_production_oof_gain": 0.062211983956711236,
+    "all_five_original_folds_improve": true,
+    "all_grouping_gains_positive": true,
+    "maximum_held_group_regression": 0.0,
+    "bootstrap_probability_gain_positive": 0.9985,
+    "strong_gate_passed": true,
+    "f4_veto_passed": true,
+    "repair_record": "limited_query_cv/runs/v5_batch2_run_025_goal_050/kaggle_production/posterior_interpolation_leak_repair.json",
+    "repair_record_sha256": "b45382e7a36bb29d06b23035c205788e5522d8b2ee2d4f554ab678fb8f91c35b",
+    "recipe_or_weight_changed_by_repair": false
+  },
+  "sealed_artifact_parity": {
+    "local_checkpoint_well_count": 5,
+    "local_checkpoint_count": 10,
+    "maximum_local_prediction_rmse_ft": 5.158292333362624e-05,
+    "maximum_local_prediction_absolute_error_ft": 0.0009765625,
+    "posterior_correction_rmse_ft": 0.0005285967490635812,
+    "posterior_correction_maximum_absolute_error_ft": 0.000947117805480957,
+    "posterior_volume_rmse": 7.490174880331324e-07,
+    "posterior_volume_maximum_absolute_error": 0.00048828125
+  },
+  "single_vs_dual_gpu": {
+    "local_gpu_type": "Tesla V100-SXM2-32GB",
+    "small_public_test": {
+      "wells": 3,
+      "rows": 14151,
+      "single_gpu_seconds": 23.0,
+      "dual_gpu_seconds": 26.8,
+      "relative_prediction_rmse": 1.094472792603698e-09,
+      "maximum_absolute_prediction_delta_ft": 0.0005859374996362021,
+      "interpretation": "fixed model-loading overhead dominates three wells"
+    },
+    "expanded_throughput_test": {
+      "wells": 24,
+      "rows": 113208,
+      "single_gpu_seconds": 119.6,
+      "dual_gpu_seconds": 80.3,
+      "dual_gpu_speedup": 1.489414694894147,
+      "relative_prediction_rmse": 1.1020108085851922e-09,
+      "maximum_absolute_prediction_delta_ft": 0.0005859375014551915,
+      "row_ids_unique": true,
+      "predictions_finite": true
+    },
+    "known_truth_pseudo_test": {
+      "wells": 6,
+      "rows": 27945,
+      "single_gpu_rmse": 2.8431532440533402,
+      "dual_gpu_rmse": 2.8431509327000457,
+      "absolute_rmse_delta": 2.311353294537355e-06,
+      "relative_prediction_rmse": 2.1596409339886413e-09,
+      "maximum_absolute_prediction_delta_ft": 0.0005859374996362021
+    },
+    "dual_gpu_enabled": true
+  },
+  "weights_dataset": {
+    "slug": "jiweiliu/rogii-v5-promoted-c016-weights",
+    "private": true,
+    "checkpoint_count": 11,
+    "checkpoint_bytes": 187900137,
+    "pair_role_checkpoints_included": false,
+    "zero_weight_mode_bank_included": false,
+    "manifest_sha256": "d2964a38985e5623ea9b006d96424b991038b696f2087186ac1bf61d0bdd121a",
+    "recipe_sha256": "6ac625d8fcfc941cbfaaeff3d1bba8726472c8b2f91669ae2e12a7be564c84c3",
+    "metadata_sha256": "6da0e31cf0dfc4f72c56732fc85af69263b05653318e255949dacc58fb5b80e0"
+  },
+  "kernel": {
+    "slug": "jiweiliu/rogii-v5-promoted-c016-dual-t4",
+    "private": true,
+    "internet_enabled": false,
+    "competition_submission_call_present": false,
+    "inference_source_sha256": "610f8f704c790d4f28a826b14d18f4bcdb7073af8f13eeecf82c93350c595121",
+    "metadata_sha256": "45e61c7a360a51046f9ba1652880386ecf956032c8006b6291adce9f8e7976fa"
+  },
+  "competition_submission_authorized": false
+}

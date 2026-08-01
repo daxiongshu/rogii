@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "candidate": "clean_c016_without_quarantined_d072",
+  "run_id": "v5_batch2_run_025_goal_050",
+  "note": "Large C016 inputs and outputs stay outside Git, matching the v20 convention. Paths below are this workspace; sha256 is the contract.",
+  "v20_parent": {
+    "role": "C016 is a correction on top of v20; every stage consumes v20 output",
+    "checkpoint_vault": "/geo/geo_new/rogii_v20_checkpoint_vault",
+    "oof_vault": "/geo/geo_new/rogii_v20_oof_vault",
+    "weight_manifest_sha256": "145fe76ca0a4fa48003d755ddcb661786dfe48e2ecfa9a83a2bd9b9e553e19d5",
+    "kaggle_dataset": "jiweiliu/rogii-compact-alignment-cv5-weights",
+    "pooled_oof_rmse": 6.189484768154311
+  },
+  "production_checkpoints": {
+    "count": 11,
+    "bytes": 187900137,
+    "kaggle_dataset": "jiweiliu/rogii-v5-promoted-c016-weights",
+    "workspace_path": "/geo/geo_new/rogii_v20_limited_query/deploy/kaggle/c016-weights-dataset",
+    "manifest": "weights-dataset/c016_manifest.json",
+    "manifest_sha256": "d2964a38985e5623ea9b006d96424b991038b696f2087186ac1bf61d0bdd121a"
+  },
+  "stage_inputs": {
+    "v20_component_caches": [
+      {
+        "workspace_path": "/geo/geo_new/rogii_v20_limited_query/limited_query_cv/runs/v5_batch2_run_003_goal_050/v20_components/fold0.npz",
+        "repository_relative_path": "limited_query_cv/runs/v5_batch2_run_003_goal_050/v20_components/fold0.npz",
+        "bytes": 12902538,
+        "sha256": "47cb9d8429db8d6c87ae520a701cf1f2555f7011c94dd3463ecdfdafce2205b6"
+      },
+      {
+        "workspace_path": "/geo/geo_new/rogii_v20_limited_query/limited_query_cv/runs/v5_batch2_run_003_goal_050/v20_components/fold1.npz",
+        "repository_relative_path": "limited_query_cv/runs/v5_batch2_run_003_goal_050/v20_components/fold1.npz",
+        "bytes": 13341909,
+        "sha256": "d2772918b7f385daeb5a5574b184bdc6a0480a0ff9dd919c35b5a0df8a59f3aa"
+      },
+      {
+        "workspace_path": "/geo/geo_new/rogii_v20_limited_query/limited_query_cv/runs/v5_batch2_run_003_goal_050/v20_components/fold2.npz",
+        "repository_relative_path": "limited_query_cv/runs/v5_batch2_run_003_goal_050/v20_components/fold2.npz",
+        "bytes": 12988471,
+        "sha256": "3d8c20b4a29363247cca163d1f8131186cf6aee7cf1fefed769d48646461ebf3"
+      },
+      {
+        "workspace_path": "/geo/geo_new/rogii_v20_limited_query/limited_query_cv/runs/v5_batch2_run_003_goal_050/v20_components/fold3.npz",
+        "repository_relative_path": "limited_query_cv/runs/v5_batch2_run_003_goal_050/v20_components/fold3.npz",
+        "bytes": 12787323,
+        "sha256": "59710459b5240853ac734f8cd43f26c81bd3bac0992f5504c982b605d6f9ee8a"
+      },
+      {
+        "workspace_path": "/geo/geo_new/rogii_v20_limited_query/limited_query_cv/runs/v5_batch2_run_025_goal_050/promotion_audit/caches/v20_components_fold4.npz",
+        "repository_relative_path": "limited_query_cv/runs/v5_batch2_run_025_goal_050/promotion_audit/caches/v20_components_fold4.npz",
+        "bytes": 11929528,
+        "sha256": "f59f632c2a404f225ba9121421103d5e01bfd95571bc54fdc01d879d8de677d3"
+      }
+    ],
+    "protected_posterior_volumes": [
+      {
+        "workspace_path": "/geo/geo_new/rogii_v20_limited_query/limited_query_cv/runs/v5_batch2_run_006_goal_050/protected_posterior_volume_fold0.npz",
+        "repository_relative_path": "limited_query_cv/runs/v5_batch2_run_006_goal_050/protected_posterior_volume_fold0.npz",
+        "bytes": 145327539,
+        "sha256": "eb12c7ac801eda8837c611ec7832f8df6c4a175893bd9f9d84d512982b33c0aa"
+      },
+      {
+        "workspace_path": "/geo/geo_new/rogii_v20_limited_query/limited_query_cv/runs/v5_batch2_run_006_goal_050/protected_posterior_volume_fold1.npz",
+        "repository_relative_path": "limited_query_cv/runs/v5_batch2_run_006_goal_050/protected_posterior_volume_fold1.npz",
+        "bytes": 148238047,
+        "sha256": "43dbec13717c746d29939d1eb18922ff2ec36d56aedfd3d7da8b006ac8df95a6"
+      },
+      {
+        "workspace_path": "/geo/geo_new/rogii_v20_limited_query/limited_query_cv/runs/v5_batch2_run_006_goal_050/protected_posterior_volume_fold2.npz",
+        "repository_relative_path": "limited_query_cv/runs/v5_batch2_run_006_goal_050/protected_posterior_volume_fold2.npz",
+        "bytes": 154105365,
+        "sha256": "f7c9267a79bc7ea808db7bd28a511f0767d66813700f874529eff5b187a62eb9"
+      },
+      {
+        "workspace_path": "/geo/geo_new/rogii_v20_limited_query/limited_query_cv/runs/v5_batch2_run_006_goal_050/protected_posterior_volume_fold3.npz",
+        "repository_relative_path": "limited_query_cv/runs/v5_batch2_run_006_goal_050/protected_posterior_volume_fold3.npz",
+        "bytes": 154332288,
+        "sha256": "9376052566eb521cba17ca77a2d2c5bc594bd71c3088ee2928fbca3338d919bb"
+      },
+      {
+        "workspace_path": "/geo/geo_new/rogii_v20_limited_query/limited_query_cv/runs/v5_batch2_run_025_goal_050/promotion_audit/caches/protected_posterior_volume_fold4.npz",
+        "repository_relative_path": "limited_query_cv/runs/v5_batch2_run_025_goal_050/promotion_audit/caches/protected_posterior_volume_fold4.npz",
+        "bytes": 155813391,
+        "sha256": "12056309240e56f909a8ae232f53927c5a46f2eb04f64c9c53db99af95b710e7"
+      }
+    ]
+  },
+  "stage_outputs": {
+    "sealed_outer_predictions": {
+      "workspace_path": "/geo/geo_new/rogii_v20_limited_query/limited_query_cv/runs/v5_batch2_run_025_goal_050/promotion_audit/sealed/outer_predictions.npz",
+      "repository_relative_path": "limited_query_cv/runs/v5_batch2_run_025_goal_050/promotion_audit/sealed/outer_predictions.npz",
+      "bytes": 30283343,
+      "sha256": "737711c483cc3ce81ba94fa8e5dfb9c307f75c7691fd06be33631d80c355fad1"
+    },
+    "promotion_oof": {
+      "workspace_path": "/geo/geo_new/rogii_v20_limited_query/limited_query_cv/runs/v5_batch2_run_025_goal_050/promotion_audit/promotion_oof.npz",
+      "repository_relative_path": "limited_query_cv/runs/v5_batch2_run_025_goal_050/promotion_audit/promotion_oof.npz",
+      "bytes": 34564067,
+      "sha256": "e319f320defbf0a042d79170adcbb72e87d2a4853d6c5370c43d3d08ba2c87d3"
+    },
+    "legal_production_oof": {
+      "workspace_path": "/geo/geo_new/rogii_v20_limited_query/limited_query_cv/runs/v5_batch2_run_025_goal_050/kaggle_production/promotion_oof_legal_posterior_mask.npz",
+      "repository_relative_path": "limited_query_cv/runs/v5_batch2_run_025_goal_050/kaggle_production/promotion_oof_legal_posterior_mask.npz",
+      "bytes": 34563939,
+      "sha256": "9707bdb500cf869c0462c1845783cce7ad08d066a9116514b8263873ee47bbb4"
+    }
+  }
+}
