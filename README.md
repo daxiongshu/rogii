@@ -19,13 +19,21 @@ the two private Datasets documented below.
   (submission `54986657`)
 - Five-fold whole-well OOF RMSE: `6.189484768154311`
 
-Everything above `c016/` is v20 only: no V5 research, no post-v20 candidate,
-and no post-v20 checkpoint participates in it.
+Everything outside `c016/` and `run4/` is v20 only: no V5 research, no post-v20
+candidate, and no post-v20 checkpoint participates in it.
 
-`c016/` adds the one approved successor, C016, which is a correction layered on
-top of v20 rather than a replacement for it. See [c016/README.md](c016/README.md).
-It is self-contained — its own sources, recipe, kernel, manifests, and verifier
-— so the v20 hash locks and `reproduce.py verify` are unaffected by it.
+`c016/` and `run4/` add the two approved successors, each a correction layered
+on the one before it rather than a replacement for it:
+
+| Solution | Parent | Pooled OOF | Public LB | Directory |
+|---|---|---:|---:|---|
+| v20 | — | 6.189484768154311 | 6.263 | this repository root |
+| C016 | v20 | 6.1272727841976 | 6.127 | [c016/](c016/README.md) |
+| Run4 | C016 | 6.066500604210546 | 5.962 | [run4/](run4/README.md) |
+
+Each is self-contained — its own sources, recipe, kernel, manifests, and
+verifier — so the v20 hash locks and `reproduce.py verify` are unaffected by
+either.
 
 ## Related best leaderboard result
 
@@ -327,3 +335,22 @@ python c016/reproduce_c016.py list-recipe
 
 `c016/README.md` documents the pipeline order, the external artifacts, and why
 `c016/pipeline/rogii/` exists as a separate copy of the shared library.
+
+## Current frozen parent: Run4
+
+Run4 (`run4_structural_surface_router_s06`, run `v5_batch3_run_004_goal_020`,
+build commit `524eb22ceb56503eaf1bdca0762c67119eb68916`) routes each well
+between a structural candidate blend and a raw surface candidate blend and adds
+the selected correction to the C016 parent at production scale `0.6`. Its
+deploy-parity OOF is `6.066500604210546` and its public leaderboard score is
+`5.962` (submission `55147410`).
+
+```bash
+python run4/reproduce_run4.py verify
+python run4/reproduce_run4.py list-recipe
+```
+
+Run4 consumes the C016 sealed prediction as a hash-pinned input and reads the
+v20 component caches directly, so verifying it exercises all three generations.
+`run4/README.md` explains the deploy-parity reconstruction, the deployment
+source snapshot the kernel loads at run time, and the pipeline order.

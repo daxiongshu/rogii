@@ -1,0 +1,25 @@
+{
+  "batch": 3,
+  "effective_readiness_target": 0.2,
+  "goal_environment_variable": "ROGII_V5_DEVELOPMENT_GOAL",
+  "goal_source": "environment",
+  "kickstart_prompt": {
+    "authorization_role": "audit metadata only",
+    "path": "limited_query_cv/runs/v5_batch3_run_004_goal_020/kickstart_prompt.txt",
+    "saved": true,
+    "scope": "literal user kickstart message only",
+    "sha256": "9121ac80b1e8c4d92e1a07e74156622854ed85122b4a44cdaf463b5790832cb4",
+    "validation_gate": false
+  },
+  "policy": "limited_query_cv/cv_protocol_v5.json",
+  "policy_sha256": "5795ff45df0e9af90ecba05bd6200c1d3a7327535565a40fe060c47979d8015d",
+  "protocol_floor": 0.2,
+  "protocol_name": "cv-protocol-v5",
+  "protocol_revision": 11,
+  "requested_development_rmse_gain": 0.2,
+  "run_directory": "limited_query_cv/runs/v5_batch3_run_004_goal_020",
+  "run_id": "v5_batch3_run_004_goal_020",
+  "run_number": 4,
+  "run_numbering_epoch": 2,
+  "schema_version": 1
+}

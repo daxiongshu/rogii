@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "status": "active_lineage_quarantine",
+  "protocol_name": "cv-protocol-v5",
+  "batch": 2,
+  "discovered_utc": "2026-07-26",
+  "discovered_before_protected_outer_reveal": true,
+  "protected_outer_reveal_spent": false,
+  "f4_opened_by_discovery": false,
+  "root_cause": {
+    "artifact": "limited_query_cv/runs/v5_batch2_run_006_goal_050/purece_strat_clean.npz",
+    "artifact_sha256": "9e6f935f4fb6a831b9355d3db4c553be55a48c7899dfe3f75fc05f2335945f89",
+    "status_record": "limited_query_cv/runs/v5_batch2_run_006_goal_050/purece_strat_clean.json",
+    "status_record_sha256": "5321a4e34e803a9b71df16b31680d33d52bddd50bd21c1c575315641d7c3d308",
+    "status": "invalid_provenance_do_not_select_package_or_deploy",
+    "reason": "The stratified-fold parent checkpoint index was treated as an original-fold index. Most nominal original held-role wells were therefore seen during parent training.",
+    "seen_held_well_fraction_by_original_fold": {
+      "0": 0.8129032258064516,
+      "1": 0.8451612903225807,
+      "2": 0.7741935483870968,
+      "3": 0.7532467532467533
+    },
+    "prior_quarantine_record": "limited_query_cv/runs/v5_batch2_run_006_goal_050/TRIAL_LEDGER.md#D073"
+  },
+  "missed_fail_closed_check": {
+    "consumer": "limited_query_cv/evaluate_v5_run6_clean_family_utility_router.py",
+    "behavior": "The consumer pinned the quarantined NPZ hash but did not load and reject the associated invalid-status JSON.",
+    "observed_run13_route_usage": {
+      "purece_strat_wells": 543,
+      "development_wells": 619
+    }
+  },
+  "direct_invalid_consumers": [
+    {
+      "json": "limited_query_cv/runs/v5_batch2_run_006_goal_050/clean_family_utility_router.json",
+      "json_sha256": "ea4721df235649bff58f7747bd4fa88c228703482fe4ef92bfee4352d072eb65",
+      "npz": "limited_query_cv/runs/v5_batch2_run_006_goal_050/clean_family_utility_router.npz",
+      "npz_sha256": "0691a03b5e0d150ea75154d4f4866287dc9fb8709f24a0f094bd5e0b2acea823"
+    },
+    {
+      "json": "limited_query_cv/runs/v5_batch2_run_006_goal_050/gr_evidence_amplitude_router.json",
+      "json_sha256": "5ab79d38d3a9ade2fa7ca9f4bcce10376f9c34f2de5b2143c4dde6c1afda4401",
+      "npz": "limited_query_cv/runs/v5_batch2_run_006_goal_050/gr_evidence_amplitude_router.npz",
+      "npz_sha256": "53f7b885cc6b358d78dbffc21730f97c0619a04f27e9d914c9be05e665c3e5b3"
+    }
+  ],
+  "representative_downstream_invalid_results": [
+    {
+      "run_id": "v5_batch2_run_010_goal_050",
+      "json": "limited_query_cv/runs/v5_batch2_run_010_goal_050/a960_wellwise_amplitude_clean.json",
+      "json_sha256": "638af3b151baf37eb854b2c444b3f6edc79b074785f1a3a726c1f128eb7510af",
+      "npz": "limited_query_cv/runs/v5_batch2_run_010_goal_050/a960_wellwise_amplitude_clean.npz",
+      "npz_sha256": "f26ee53a807794c5bc421d6d27df86819e58a61240feaa7b73732448307dca6c"
+    },
+    {
+      "run_id": "v5_batch2_run_012_goal_050",
+      "json": "limited_query_cv/runs/v5_batch2_run_012_goal_050/four_direction_ridge_clean.json",
+      "json_sha256": "ed0017086dd8e1e2ec77d79bb4156d9092450701758d7aa8e4f77855852b0661",
+      "npz": "limited_query_cv/runs/v5_batch2_run_012_goal_050/four_direction_ridge_clean.npz",
+      "npz_sha256": "cdd3aabf152b681f0bbf96ebcb558ad21cc16b3b823b1205ba317e7254708a8c"
+    },
+    {
+      "run_id": "v5_batch2_run_013_goal_050",
+      "json": "limited_query_cv/runs/v5_batch2_run_013_goal_050/block_proposal_clean.json",
+      "json_sha256": "727b1a3a4abf2dc68fed6072477c56f373955a1fe8352b0b9bd64bfcf42476e4",
+      "npz": "limited_query_cv/runs/v5_batch2_run_013_goal_050/block_proposal_clean.npz",
+      "npz_sha256": "45fb92804b7d2271d414c5a332bd4edeab45dc1d0abea3c73ef6e72460c08475"
+    },
+    {
+      "run_id": "v5_batch2_run_013_goal_050",
+      "json": "limited_query_cv/runs/v5_batch2_run_013_goal_050/confirmations_clean.json",
+      "json_sha256": "3e604098e910007be14a380f75752a046e20057ac414befe14a3e08b121f25c5",
+      "npz": "limited_query_cv/runs/v5_batch2_run_013_goal_050/confirmations_clean.npz",
+      "npz_sha256": "00d90058ea0539df752dfcbbb58965b53dfc0f61e20bdf3e7abec416460086ae"
+    }
+  ],
+  "quarantine_scope": "Every metric, prediction, feature cache, router, ensemble, or confirmation transitively derived from purece_strat_clean.npz is invalid for selection, readiness, promotion, packaging, deployment, or citation as valid evidence.",
+  "allowed_use": "Readable only for provenance audit and bug diagnosis. It may not be used as a model input, feature, target, parent, direction, candidate, or comparison baseline.",
+  "recovery": "Start a new development run from a clean ancestor. Any replacement categorical route must use original-fold-safe training lineage and rerun all dependent routers and ensemble stages from scratch."
+}

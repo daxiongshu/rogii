@@ -1,0 +1,27 @@
+{
+  "id": "jiweiliu/rogii-v5-run4-sr-dual-t4",
+  "title": "ROGII V5 Run4 SR Dual-T4",
+  "code_file": "infer.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "machine_shape": "NvidiaTeslaT4",
+  "keywords": [
+    "geology",
+    "unet",
+    "surface"
+  ],
+  "dataset_sources": [
+    "jiweiliu/rogii-compact-alignment-cv5-weights",
+    "jiweiliu/rogii-v5-promoted-c016-weights",
+    "jiweiliu/rogii-v5-run4-structural-surface-router"
+  ],
+  "kernel_sources": [],
+  "competition_sources": [
+    "rogii-wellbore-geology-prediction"
+  ],
+  "model_sources": []
+}

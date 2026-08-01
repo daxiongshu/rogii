@@ -1,0 +1,21 @@
+{
+  "F4_metric_recomputed": false,
+  "disabled_base_solver_residue_max": 1.5202278973447392e-06,
+  "disabled_route_weights_nonzero": 0,
+  "hidden_truth_stored": false,
+  "kaggle_submission_authorized": false,
+  "outer_manifest_sha256": "2e74a5b485406dae2aae2998527f99bfd6206e87d52ea2a8322f2967328abbd8",
+  "physics_manifest_sha256": "9ae8ed2e96bcf058fe1df7d82d9993d6a759c87f7304915a1f84a4db0f06bdf5",
+  "prediction_archives": 75,
+  "protected_metric_computed": false,
+  "protocol_name": "cv-protocol-v5",
+  "protocol_revision": 11,
+  "records": 165,
+  "roles": 15,
+  "rows": 3783989,
+  "run_id": "v5_batch3_run_004_goal_020",
+  "schema_version": 1,
+  "status": "uniform_nested_artifacts_verified_without_metric",
+  "validator_source_sha256": "336d3799461f1839b9a276643482c7c0821ca74f89ca290eebf20aa6cb3bcdcf",
+  "wells": 773
+}

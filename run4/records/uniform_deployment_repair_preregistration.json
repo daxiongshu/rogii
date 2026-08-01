@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "protocol_name": "cv-protocol-v5",
+  "protocol_revision": 11,
+  "run_id": "v5_batch3_run_004_goal_020",
+  "stage": "uniform_deployment_repair_preregistration",
+  "status": "frozen_before_nested_training",
+  "candidate": "uniform deployable physics router",
+  "authorized_candidate_specific_readiness_threshold": 0.17,
+  "authorization": "limited_query_cv/runs/v5_batch3_run_004_goal_020/user_authorized_boosted_router_exception_promotion.json",
+  "authorization_sha256": "4e84af897010b8fa9b9a7abd2f58e57baf5e5c141aa9e5550053aa9b94ddf433",
+  "development_result": "limited_query_cv/runs/v5_batch3_run_004_goal_020/uniform_deployable_physics_router_development.json",
+  "development_result_sha256": "b79bf8d7bf7a90f99789bbab4a253c255849b94abae8866506cc03593459e8ee",
+  "minimum_exposed_geometry_gain": 0.1709145647550674,
+  "worst_held_group_gain": 0.045395781709507865,
+  "uniform_candidate_contract": {
+    "kept_reverse_directions": [
+      "reverse_physics_prior_mixed",
+      "ramped_reverse_physics_prior_mixed",
+      "reverse_protected_mode_maximin",
+      "ramped_reverse_protected_mode_maximin"
+    ],
+    "uniformly_disabled_reverse_families": [
+      "local_residual_seed_bag",
+      "multiscale_residual_bag",
+      "target_surface",
+      "local_residual_snapshot_bag",
+      "multi_anchor_phase",
+      "hardtail",
+      "mtp",
+      "trajectory_direction_projection"
+    ],
+    "disabled_for_every_outer_context_and_test": true,
+    "fold_specific_missing_artifact_fallback": false
+  },
+  "physics_recipe": {
+    "architecture": "AlignmentUNet",
+    "base": 12,
+    "input_channels": 23,
+    "epochs": 16,
+    "snapshots": [2, 4, 8, 12, 16],
+    "temperatures": [0.5, 0.75, 1.0, 1.5, 2.0],
+    "blend_weights": [0.0, 0.01, 0.02, 0.03, 0.05, 0.075, 0.1, 0.15, 0.2],
+    "seed": 20261183,
+    "repeats": 3,
+    "synthetic_probability": 0.5,
+    "synthetic_prior_profile": "mixed",
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "classification_weight": 1.0,
+    "regression_kind": "huber",
+    "regression_weight": 0.5,
+    "residual_radius_ft": 32.0,
+    "residual_step_ft": 1.0
+  },
+  "nested_training": {
+    "unique_symmetric_pair_roles": 10,
+    "outer_roles": 5,
+    "total_unique_trainings": 15,
+    "pair_role_training_folds": 3,
+    "outer_role_training_folds": 4,
+    "same_seed_and_recipe_for_every_role": true,
+    "held_fold_truth_read_for_prediction": false,
+    "prediction_archives_store_truth": false
+  },
+  "post_reveal_boundary": {
+    "existing_batch3_reveal_remains_spent": true,
+    "F4_metric_must_not_be_recomputed": true,
+    "F4_result_must_not_select_or_tune_this_repair": true,
+    "sealed_F4_inner_role_labels_may_select_other_outer_roles": true,
+    "selector_output_suppressed_until_all_roles_are_frozen": true
+  },
+  "sources": {
+    "development_evaluator": "limited_query_cv/evaluate_v5_batch3_run4_uniform_deployable.py",
+    "development_evaluator_sha256": "57a8b7bba9a70095a225579c4a347bc475e0c69e057d8f32154eb45d54928f3d",
+    "nested_trainer": "limited_query_cv/train_v5_batch3_run4_physics_nested.py",
+    "nested_trainer_sha256": "31bd4325f182a416691e01c72d5ba6f7add64dc115f932a800d587cda3c08e42",
+    "development_route_sha256": "22fbce3af3a0f39f2e32d8c4c2a01cf0d1e3fed29297d8f59191afaf117369d9"
+  },
+  "kaggle_dataset_authorized": false,
+  "kaggle_kernel_authorized": false,
+  "kaggle_submission_authorized": false
+}

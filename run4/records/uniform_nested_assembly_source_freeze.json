@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "protocol_name": "cv-protocol-v5",
+  "protocol_revision": 11,
+  "run_id": "v5_batch3_run_004_goal_020",
+  "stage": "uniform_nested_assembly_source_freeze",
+  "status": "frozen_before_assembly",
+  "selector_preregistration": "limited_query_cv/runs/v5_batch3_run_004_goal_020/uniform_nested_selector_preregistration.json",
+  "selector_preregistration_sha256": "6fd30823ddbf8c20ae6831712983cc1bf47b662ed0c6e126802d216eacbe329b",
+  "assembly_source": "limited_query_cv/assemble_v5_batch3_run4_uniform_nested.py",
+  "assembly_source_sha256": "b3315f03fcbb90b09d3428e601b84a7e3e2f8a4458a563734a08d666778a7f67",
+  "uniformly_disabled_candidate_indices": [30, 31, 33, 34, 35, 36, 37, 38, 40, 41, 43, 44, 45, 46, 47, 48],
+  "physics_candidate_indices": [29, 39],
+  "protected_mode_candidate_indices": [32, 42],
+  "outer_held_truth_selects_own_router": false,
+  "prediction_output_stores_truth": false,
+  "F4_metric_must_not_be_recomputed": true,
+  "kaggle_submission_authorized": false
+}

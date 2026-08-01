@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "solution_id": "run4_structural_surface_router_s06",
+  "run_id": "v5_batch3_run_004_goal_020",
+  "note": "Large Run4 inputs and outputs stay outside Git, matching the v20 and C016 convention. Paths are this workspace; sha256 is the contract.",
+  "lineage": {
+    "chain": "v20 -> c016 -> run4",
+    "parent_solution": "c016",
+    "parent_prediction": {
+      "workspace_path": "/geo/geo_new/rogii_v20_limited_query/limited_query_cv/runs/v5_batch2_run_025_goal_050/promotion_audit/sealed/outer_predictions.npz",
+      "repository_relative_path": "limited_query_cv/runs/v5_batch2_run_025_goal_050/promotion_audit/sealed/outer_predictions.npz",
+      "bytes": 30283343,
+      "sha256": "737711c483cc3ce81ba94fa8e5dfb9c307f75c7691fd06be33631d80c355fad1"
+    },
+    "parent_prediction_pinned_by": "pipeline/limited_query_cv/v5_batch3_run4_clean_bank.py (PARENT_SHA256)",
+    "parent_legal_prediction": {
+      "workspace_path": "/geo/geo_new/rogii_v20_limited_query/limited_query_cv/runs/v5_batch2_run_025_goal_050/kaggle_production/promotion_oof_legal_posterior_mask.npz",
+      "repository_relative_path": "limited_query_cv/runs/v5_batch2_run_025_goal_050/kaggle_production/promotion_oof_legal_posterior_mask.npz",
+      "bytes": 34563939,
+      "sha256": "9707bdb500cf869c0462c1845783cce7ad08d066a9116514b8263873ee47bbb4"
+    },
+    "grandparent_solution": "v20",
+    "v20_oof_vault": "/geo/geo_new/rogii_v20_oof_vault",
+    "v20_checkpoint_vault": "/geo/geo_new/rogii_v20_checkpoint_vault"
+  },
+  "production_routers": {
+    "count": 10,
+    "kaggle_dataset": "jiweiliu/rogii-v5-run4-structural-surface-router",
+    "workspace_path": "/geo/geo_new/rogii_v20_limited_query/deploy/kaggle/run4-sr-weights-dataset",
+    "note": "Five structural routers (.joblib, ~4.9 MB each) and five surface routers (.json, ~2.0 MB each). Every sha256 is pinned inside weights-dataset/recipe.json under outer_records."
+  },
+  "stage_inputs": {
+    "v20_component_caches": [
+      {
+        "workspace_path": "/geo/geo_new/rogii_v20_limited_query/limited_query_cv/runs/v5_batch2_run_003_goal_050/v20_components/fold0.npz",
+        "repository_relative_path": "limited_query_cv/runs/v5_batch2_run_003_goal_050/v20_components/fold0.npz",
+        "bytes": 12902538,
+        "sha256": "47cb9d8429db8d6c87ae520a701cf1f2555f7011c94dd3463ecdfdafce2205b6"
+      },
+      {
+        "workspace_path": "/geo/geo_new/rogii_v20_limited_query/limited_query_cv/runs/v5_batch2_run_003_goal_050/v20_components/fold1.npz",
+        "repository_relative_path": "limited_query_cv/runs/v5_batch2_run_003_goal_050/v20_components/fold1.npz",
+        "bytes": 13341909,
+        "sha256": "d2772918b7f385daeb5a5574b184bdc6a0480a0ff9dd919c35b5a0df8a59f3aa"
+      },
+      {
+        "workspace_path": "/geo/geo_new/rogii_v20_limited_query/limited_query_cv/runs/v5_batch2_run_003_goal_050/v20_components/fold2.npz",
+        "repository_relative_path": "limited_query_cv/runs/v5_batch2_run_003_goal_050/v20_components/fold2.npz",
+        "bytes": 12988471,
+        "sha256": "3d8c20b4a29363247cca163d1f8131186cf6aee7cf1fefed769d48646461ebf3"
+      },
+      {
+        "workspace_path": "/geo/geo_new/rogii_v20_limited_query/limited_query_cv/runs/v5_batch2_run_003_goal_050/v20_components/fold3.npz",
+        "repository_relative_path": "limited_query_cv/runs/v5_batch2_run_003_goal_050/v20_components/fold3.npz",
+        "bytes": 12787323,
+        "sha256": "59710459b5240853ac734f8cd43f26c81bd3bac0992f5504c982b605d6f9ee8a"
+      },
+      {
+        "workspace_path": "/geo/geo_new/rogii_v20_limited_query/limited_query_cv/runs/v5_batch2_run_025_goal_050/promotion_audit/caches/v20_components_fold4.npz",
+        "repository_relative_path": "limited_query_cv/runs/v5_batch2_run_025_goal_050/promotion_audit/caches/v20_components_fold4.npz",
+        "bytes": 11929528,
+        "sha256": "f59f632c2a404f225ba9121421103d5e01bfd95571bc54fdc01d879d8de677d3"
+      }
+    ],
+    "c016_safe_mode_bank": {
+      "workspace_path": "/geo/geo_new/rogii_v20_limited_query/limited_query_cv/runs/v5_batch2_run_025_goal_050/original_safe_mode_bank_clean.npz",
+      "repository_relative_path": "limited_query_cv/runs/v5_batch2_run_025_goal_050/original_safe_mode_bank_clean.npz",
+      "bytes": 13158202,
+      "sha256": "1dc2c98f971f5b66a31b3499685e6aadf5eddfe0c63a9be365d43457228673df"
+    },
+    "c016_multimodel_ridge": {
+      "workspace_path": "/geo/geo_new/rogii_v20_limited_query/limited_query_cv/runs/v5_batch2_run_025_goal_050/clean_multimodel_ridge_clean.npz",
+      "repository_relative_path": "limited_query_cv/runs/v5_batch2_run_025_goal_050/clean_multimodel_ridge_clean.npz",
+      "bytes": 27722708,
+      "sha256": "82cc3319a6752273973599bfcc0725790a24936e39d04139a422f6f10ffffbd1"
+    },
+    "v20_layout": {
+      "workspace_path": "/geo/geo_new/rogii_v20_oof_vault/layout.npz",
+      "sha256": "546a12d53498fd7a816742c351abaa4e6e96ae5536eb8885081948fbe10d4c9e"
+    }
+  },
+  "stage_outputs": {
+    "uniform_nested_outer_predictions": {
+      "workspace_path": "/geo/geo_new/rogii_v20_limited_query/limited_query_cv/runs/v5_batch3_run_004_goal_020/uniform_nested_outer_predictions.npz",
+      "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_004_goal_020/uniform_nested_outer_predictions.npz",
+      "bytes": 18169486,
+      "sha256": "2caca7016f6398f0c58aceca6d41f327c355e922bca49c6b4c0000807b05b1fb"
+    },
+    "router_features": {
+      "workspace_path": "/geo/geo_new/rogii_v20_limited_query/limited_query_cv/runs/v5_batch3_run_004_goal_020/router_features.npz",
+      "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_004_goal_020/router_features.npz",
+      "bytes": 1230438,
+      "sha256": "91a83fdb331d6f6eebc679eb01a8d706c4f0085087db8dc8e6f09e41991ef9e5"
+    },
+    "recorded_oof_prediction": {
+      "workspace_path": "/geo/geo_new/rogii_v20_limited_query/limited_query_cv/runs/v5_batch3_run_004_goal_020/sr_deployment_scaled06/oof_prediction.npz",
+      "repository_relative_path": "limited_query_cv/runs/v5_batch3_run_004_goal_020/sr_deployment_scaled06/oof_prediction.npz",
+      "bytes": 18171800,
+      "sha256": "612406f454f9d639978ea778bc2754ae5d8ed985567ad66a0c639e634135d2bc"
+    },
+    "deployment_package": {
+      "workspace_path": "/geo/geo_new/rogii_v20_limited_query/limited_query_cv/runs/v5_batch3_run_004_goal_020/sr_deployment_scaled06",
+      "note": "recipe.json plus the ten routers exactly as pushed to Kaggle"
+    }
+  }
+}

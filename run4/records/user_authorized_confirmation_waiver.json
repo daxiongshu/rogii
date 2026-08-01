@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "protocol_name": "cv-protocol-v5",
+  "protocol_revision": 11,
+  "run_id": "v5_batch3_run_004_goal_020",
+  "batch": 3,
+  "candidate": "clean boosted whole-well utility router",
+  "status": "authorized_failed_confirmation_waiver_and_F4_reveal",
+  "authorized_utc": "2026-07-31",
+  "user_instruction": "Authorize waiving the Run 4 fresh-confirmation failure and opening the Batch 3 F4 promotion audit. Do not submit.",
+  "failed_confirmation": {
+    "path": "limited_query_cv/runs/v5_batch3_run_004_goal_020/promotion_confirmation_result.json",
+    "sha256": "89918fd0bdb8734792bc11b7b8d1e3f083c0f7e75e51a442490fdb67e468c5ac",
+    "pooled_gain_over_clean_C016": 0.11873195272778769,
+    "worst_group_gain": -0.06297710334639106,
+    "preserved_as_adverse_evidence": true,
+    "waived_only_as_a_pre_F4_entry_veto": true
+  },
+  "pre_reveal_deployment_completeness": {
+    "discovered_after_authorization": true,
+    "issue": "Nine development reverse-direction archives contain F0-F3 OOF predictions but no target-free F4/test prediction.",
+    "fail_closed_rule": "A reverse candidate without a checksum-verified target-free prediction supplies an exact zero correction and cannot alter the prediction.",
+    "rule_frozen_before_F4": true,
+    "available_F4_reverse_candidate": "reverse_protected_mode_maximin from promoted C016 outer artifacts",
+    "unavailable_F4_reverse_candidates": 9,
+    "post_reveal_regeneration_or_replacement_allowed": false
+  },
+  "ordinary_outer_promotion_gates_changed": false,
+  "F4_nonnegative_gain_veto_retained": true,
+  "protected_F4_reveal_authorized": true,
+  "maximum_protected_reveals": 1,
+  "previous_protected_reveals_spent_in_batch3": 0,
+  "kaggle_dataset_authorized": false,
+  "kaggle_kernel_authorized": false,
+  "kaggle_submission_authorized": false
+}
