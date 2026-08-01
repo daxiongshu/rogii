@@ -123,7 +123,8 @@ V5 protocol.
 ```bash
 git clone git@github.com:daxiongshu/rogii.git
 cd rogii
-python -m pip install -r requirements.txt
+python -m pip install -r requirements.txt   # v20 and C016
+python -m pip install -r run4/requirements.txt   # adds what Run4 needs
 
 mkdir -p artifacts/runtime-weights artifacts/oof
 kaggle datasets download \
@@ -352,5 +353,14 @@ python run4/reproduce_run4.py list-recipe
 
 Run4 consumes the C016 sealed prediction as a hash-pinned input and reads the
 v20 component caches directly, so verifying it exercises all three generations.
+
+Its pipeline is closed over both imports and the caches its candidate bank
+reads by path, so the 18 candidates rebuild from competition data rather than
+being assumed present. That costs extra dependencies — `joblib`, `xgboost`,
+`lightgbm`, and for the SegFormer candidates `transformers`, `torchvision`,
+`opencv-python` — which is why `run4/requirements.txt` exists, and one external
+pretrained backbone, `nvidia/mit-b0`.
+
 `run4/README.md` explains the deploy-parity reconstruction, the deployment
-source snapshot the kernel loads at run time, and the pipeline order.
+source snapshot the kernel loads at run time, the path-versus-import closure,
+and the pipeline order.
