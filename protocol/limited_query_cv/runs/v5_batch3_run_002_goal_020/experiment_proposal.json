@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "protocol_name": "cv-protocol-v5",
+  "protocol_revision": 11,
+  "run_id": "v5_batch3_run_002_goal_020",
+  "status": "frozen_before_implementation_or_target_metric",
+  "family": "c016_buda_delayed_dip_cluster_surface",
+  "parent": "promoted_clean_c016",
+  "hypothesis": "A role-purged BUDA spatial surface, delayed dip response, and label-free typewell cluster conditioning contain complementary absolute-geometry signal that can correct the clean C016 trajectory without reading a held well's train-only columns.",
+  "development_goal": {
+    "baseline": "original_clean_c016_selection_clean_F0_F3",
+    "baseline_rmse": 5.869105573928044,
+    "requested_incremental_rmse_gain": 0.2,
+    "maximum_candidate_rmse": 5.669105573928044,
+    "equivalent_minimum_gain_over_protected_v20": 0.2710854363677842
+  },
+  "legal_held_inference_inputs": [
+    "MD",
+    "X",
+    "Y",
+    "Z",
+    "GR",
+    "TVT_input",
+    "typewell_TVT",
+    "typewell_GR",
+    "fold_safe_clean_C016_prediction",
+    "role_training_well_fitted_surface_parameters"
+  ],
+  "training_only_sources_with_role_purge": [
+    "BUDA from role-training horizontal wells",
+    "TVT from role-training horizontal wells",
+    "visible-prefix TVT_input from excluded or held wells"
+  ],
+  "forbidden": [
+    "held_well_BUDA",
+    "held_well_ANCC",
+    "held_well_hidden_TVT",
+    "full_data_buda_pool.npz",
+    "full_data_cluster_enrich.pkl",
+    "F4_target_derived_evidence_before_joint_reveal",
+    "public_LB_feedback_for_selection"
+  ],
+  "registered_components": [
+    "role_purged_buda_surface",
+    "delayed_dip_residual",
+    "typewell_cluster_surface",
+    "combined_surface_residual"
+  ],
+  "metric_free_controls": [
+    "exact_C016_zero_share",
+    "held_train_only_column_replacement_invariance",
+    "held_well_pool_exclusion_invariance",
+    "train_test_schema_inference_parity",
+    "synthetic_spatial_surface_recovery",
+    "synthetic_delayed_dip_recovery",
+    "typewell_cluster_identity_target_invariance",
+    "finite_and_bounded_output"
+  ],
+  "development_staging": {
+    "metric_free_gate_first": true,
+    "fixed_batch_overfit_required_for_trainable_residual": true,
+    "F0_component_falsification_after_gate": true,
+    "F0_F3_expansion_for_surviving_components": true,
+    "at_least_three_meaningful_variants": true,
+    "two_F0_F3_confirmation_regroupings_required": true,
+    "ten_pair_plus_five_outer_rerun_required_after_global_freeze": true
+  },
+  "protected_reveal": {
+    "batch3_reveals_added": 0,
+    "reuse_unspent_batch3_reveal": true,
+    "maximum_batch3_reveals": 1,
+    "spent_at_registration": false
+  },
+  "kaggle_dataset_authorized": false,
+  "kaggle_kernel_authorized": false,
+  "kaggle_submission_authorized": false
+}

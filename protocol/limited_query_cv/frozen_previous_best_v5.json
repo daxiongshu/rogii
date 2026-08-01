@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "protocol_name": "cv-protocol-v5",
+  "active_parent_id": "run4_structural_surface_router_s06",
+  "activation_policy": {
+    "automatic": false,
+    "promotion_changes_parent": false,
+    "submission_changes_parent": false,
+    "required_trigger": "explicit user approval after reviewing the submitted solution's CV-LB consistency",
+    "update_method": "agent manually updates this JSON and commits the change",
+    "effective_scope": "future runs only"
+  },
+  "parents": {
+    "v20": {
+      "solution_id": "v20",
+      "role": "root_baseline",
+      "status": "historical",
+      "user_approved": true,
+      "approval_note": "Established V5 root baseline",
+      "activation_basis": "initial V5 root parent",
+      "source_commit": "cd2d68e9318cb04ea808b670cf6190d25c3da825",
+      "selection_clean_pooled_oof_rmse": 6.189484768154311,
+      "fold_rmse": {
+        "F0": 5.909213567900389,
+        "F1": 6.195413020907047,
+        "F2": 5.40321499339164,
+        "F3": 6.214547044851526,
+        "F4": 7.11591858492712
+      },
+      "kaggle_submission_reference": 54893107,
+      "public_lb_rmse": 6.263,
+      "checkpoint_vault": "/geo/geo_new/rogii_v20_checkpoint_vault",
+      "oof_vault": "/geo/geo_new/rogii_v20_oof_vault"
+    },
+    "c016": {
+      "solution_id": "c016",
+      "candidate": "clean_c016_without_quarantined_d072",
+      "parent_solution_id": "v20",
+      "role": "frozen_previous_best",
+      "status": "historical",
+      "user_approved": true,
+      "approval_note": "User confirmed C016 is better than v20 in both CV and public LB.",
+      "approved_utc": "2026-07-31",
+      "source_commit": "64e1cf12320274ef2c26f2bf465e6346b57aa88a",
+      "selection_clean_pooled_oof_rmse": 6.1272727841976,
+      "original_promotion_oof_rmse": 6.124619174007348,
+      "cv_gain_vs_parent": 0.062211983956711236,
+      "fold_rmse": {
+        "F0": 5.825838246041426,
+        "F1": 6.119897279692428,
+        "F2": 5.339144043108915,
+        "F3": 6.16663405157052,
+        "F4": 7.071313664328342
+      },
+      "legal_oof": "limited_query_cv/runs/v5_batch2_run_025_goal_050/kaggle_production/promotion_oof_legal_posterior_mask.npz",
+      "legal_oof_sha256": "9707bdb500cf869c0462c1845783cce7ad08d066a9116514b8263873ee47bbb4",
+      "production_manifest": "deploy/kaggle/c016-weights-dataset/c016_manifest.json",
+      "production_manifest_sha256": "d2964a38985e5623ea9b006d96424b991038b696f2087186ac1bf61d0bdd121a",
+      "kaggle_dataset": "jiweiliu/rogii-v5-promoted-c016-weights",
+      "kaggle_kernel": "jiweiliu/rogii-v5-promoted-c016-dual-t4",
+      "kaggle_submission_reference": 55115834,
+      "submission_description": "12 min CV 6.12",
+      "submitted_utc": "2026-07-30T17:35:25.720000",
+      "public_lb_rmse": 6.127,
+      "public_lb_gain_vs_parent": 0.136,
+      "submission_csv_sha256": "0b2dc90f1ede1c9d8755bf2bdb179f260dce2f514f9decb600f9765199b079db"
+    },
+    "run4_structural_surface_router_s06": {
+      "solution_id": "run4_structural_surface_router_s06",
+      "candidate": "uniform_structural_raw_surface_deployment",
+      "parent_solution_id": "c016",
+      "role": "frozen_previous_best",
+      "status": "active",
+      "user_approved": true,
+      "approval_note": "User confirmed the latest kernel beats C016 after reviewing the returned LB score.",
+      "approved_utc": "2026-07-31",
+      "source_commit": "524eb22ceb56503eaf1bdca0762c67119eb68916",
+      "selection_clean_pooled_oof_rmse": 6.066500604210546,
+      "recorded_pre_parent_repair_oof_rmse": 6.063838803353486,
+      "cv_gain_vs_parent": 0.060772179987053754,
+      "fold_rmse": {
+        "F0": 5.740045887841642,
+        "F1": 6.075739763736813,
+        "F2": 5.192867954211614,
+        "F3": 6.116793471813314,
+        "F4": 7.070397615630352
+      },
+      "alignment_record": "limited_query_cv/runs/v5_batch3_run_004_goal_020/run4_frozen_parent_alignment.json",
+      "alignment_record_sha256": "e5151ab2f074d88b73131f3ddc37ba00326597ca7e3004022d31cf3004dee7a7",
+      "production_recipe": "deploy/kaggle/run4-sr-weights-dataset/recipe.json",
+      "production_recipe_sha256": "5ac99301d817893182885ff578826e144ad09c3a8e15e5dfe88c60c00aab3343",
+      "kaggle_dataset": "jiweiliu/rogii-v5-run4-structural-surface-router",
+      "kaggle_kernel": "jiweiliu/rogii-v5-run4-sr-dual-t4",
+      "kaggle_submission_reference": 55147410,
+      "submission_description": "1 hour Run4 structural-surface router s0.6; clean OOF 6.063839; +0.060780 vs C016",
+      "submitted_utc": "2026-07-31T21:38:40.137000",
+      "public_lb_rmse": 5.962,
+      "public_lb_gain_vs_parent": 0.165,
+      "submission_csv_sha256": "943261344aa765dd819a773d854ded1d3297a0a2c445a1d553afa7fabb72df05"
+    }
+  },
+  "activation_history": [
+    {
+      "solution_id": "v20",
+      "action": "initialize_root_parent",
+      "effective_utc": "2026-07-31",
+      "basis": "V5 starts from the established v20 CV-LB baseline"
+    },
+    {
+      "solution_id": "c016",
+      "previous_parent_id": "v20",
+      "action": "user_approved_parent_update",
+      "effective_utc": "2026-07-31",
+      "basis": "C016 improved legal production CV from 6.189485 to 6.127273 and public LB from 6.263 to 6.127"
+    },
+    {
+      "solution_id": "run4_structural_surface_router_s06",
+      "previous_parent_id": "c016",
+      "action": "user_approved_parent_update",
+      "effective_utc": "2026-07-31",
+      "basis": "Run4 improved deploy-parity CV from 6.127273 to 6.066501 and public LB from 6.127 to 5.962"
+    }
+  ]
+}

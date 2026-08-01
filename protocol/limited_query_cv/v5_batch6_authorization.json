@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "protocol_name": "cv-protocol-v5",
+  "protocol_revision": 14,
+  "status": "authorized",
+  "authorized_utc": "2026-08-01",
+  "authorization": "User requested a new experiment after the completed Batch 5 promotion.",
+  "scope": {
+    "batch": 6,
+    "requested_development_rmse_gain": 0.2,
+    "additional_protected_joint_outer_reveals": 1,
+    "maximum_candidate_families": 5,
+    "private_kaggle_dataset_and_kernel_authorized_only_if_accepted": true,
+    "kaggle_competition_submission_authorized": false
+  },
+  "frozen_parent": "run4_structural_surface_router_s06",
+  "validation_boundary": "limited_query_cv/v5_batch6_representative_boundary.json",
+  "target_derived_boundary_selection": false
+}

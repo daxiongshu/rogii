@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "protocol_name": "cv-protocol-v5",
+  "amendment_id": "post-promotion-checkpoint-refinement",
+  "status": "active",
+  "effective_from_batch": 2,
+  "authorized_utc": "2026-07-25",
+  "documentation": "limited_query_cv/V5_POST_PROMOTION_CHECKPOINT_REFINEMENT.md",
+  "historical_boundary": {
+    "batch_1_result": "limited_query_cv/v5_batch1_result.json",
+    "batch_1_result_sha256": "77182c39d3f43e4c2329eeb74b69bfb5a1d7810b0ffe8e14567de7ff616074d9",
+    "batch_1_may_be_reinterpreted": false,
+    "batch_1_may_be_reconfirmed": false
+  },
+  "supersedes": {
+    "policy": "limited_query_cv/cv_protocol_v5_fold_ensemble_amendment.json",
+    "policy_sha256": "0a84b809cff3457b272955341446190db7efd1cc8dbe3f52c6b9a8dfb0ef53f6",
+    "only_clauses": [
+      "absolute prohibition on packaging a same-held-fold-selected snapshot",
+      "absolute prohibition on post-reveal checkpoint choice when every eligible snapshot and prediction was preregistered and frozen"
+    ],
+    "unchanged_clauses": [
+      "selection-clean official promotion gate",
+      "five logical outer-fold contributions",
+      "no full-data refit",
+      "inner checkpoints are not packaged",
+      "fold recipes and weights are frozen before reveal"
+    ]
+  },
+  "clean_view": {
+    "checkpoint_selected_without_corresponding_outer_fold": true,
+    "official_oof_score": true,
+    "promotion_eligible": true,
+    "ensemble_weight_source": true,
+    "family_order_source": true
+  },
+  "snapshot_registration": {
+    "ordered_grid_required": true,
+    "selection_metric_required": true,
+    "selection_direction_required": true,
+    "tie_break": "earliest registered snapshot",
+    "family_enable_flag_required": true,
+    "eligible_window": "inner-selected clean snapshot plus immediate predecessor and successor in the registered ordered grid",
+    "maximum_eligible_snapshots_per_fold": 3,
+    "window_determined_without_held_outer_fold": true
+  },
+  "freeze_boundary": {
+    "outer_model_trained_without_held_outer_fold": true,
+    "every_eligible_snapshot_frozen_before_reveal": true,
+    "every_eligible_held_prediction_frozen_before_reveal": true,
+    "checksum_manifest_required": true,
+    "regeneration_after_reveal_allowed": false
+  },
+  "conditional_production_selection": {
+    "requires_clean_gate_pass": true,
+    "rejected_family_held_selection_authorized": false,
+    "held_outer_fold_may_select": [
+      "checkpoint epoch or training step within its frozen eligible window"
+    ],
+    "held_outer_fold_may_not_select": [
+      "architecture or configuration",
+      "seed",
+      "augmentation",
+      "temperature or decoder",
+      "postprocessing",
+      "ensemble weight",
+      "blend policy"
+    ],
+    "clean_fold_weight_retained": true,
+    "missing_or_invalid_snapshot_fallback": "package the clean checkpoint for that fold",
+    "retraining_after_reveal_allowed": false
+  },
+  "reporting": {
+    "official_score": "selection-clean OOF",
+    "held_selected_score_label": "production-parity diagnostic",
+    "held_selected_score_is_unbiased": false,
+    "held_selected_score_may_change_gate": false,
+    "fold_snapshot_choices_required": true,
+    "eligible_window_sizes_required": true
+  },
+  "production": {
+    "mode": "conditional-held-selected-outer-fold-ensemble",
+    "normal_deployed_checkpoints_per_accepted_trainable_family": 5,
+    "full_data_retraining": false,
+    "inner_checkpoints_packaged": false,
+    "fold_contribution": "(1 - clean_weight_h) * protected_v20_prediction + clean_weight_h * held_selected_candidate_prediction_h",
+    "test_aggregation": "arithmetic mean of five logical fold contributions"
+  }
+}

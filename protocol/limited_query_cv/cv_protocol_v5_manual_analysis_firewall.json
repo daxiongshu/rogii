@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "protocol_name": "cv-protocol-v5",
+  "amendment_id": "manual-analysis-firewall-and-symmetric-pair-rerun",
+  "status": "active",
+  "effective_from_batch": 2,
+  "authorized_utc": "2026-07-25",
+  "authorization": "User authorized unrestricted hand analysis on F0-F3, a prospective F4 manual-analysis firewall, and a frozen rerun across all outer folds with reciprocal inner-role reuse.",
+  "documentation": "limited_query_cv/V5_MANUAL_ANALYSIS_FIREWALL.md",
+  "historical_boundary": {
+    "batch_1_remains_immutable": true,
+    "batch_1_result": "limited_query_cv/v5_batch1_result.json",
+    "batch_1_result_sha256": "77182c39d3f43e4c2329eeb74b69bfb5a1d7810b0ffe8e14567de7ff616074d9",
+    "audit_fold_was_examined_in_historical_research": true,
+    "firewall_is_prospective_only": true
+  },
+  "manual_development": {
+    "development_folds": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "audit_fold": 4,
+    "whole_well_grouping_required": true,
+    "iterations_limited_by_protocol": false,
+    "target_derived_error_analysis_allowed_on_development_folds": true,
+    "allowed_adjustments": [
+      "architecture",
+      "features",
+      "target representation",
+      "loss",
+      "augmentation",
+      "curriculum",
+      "capacity",
+      "optimizer",
+      "schedule",
+      "seed policy",
+      "checkpoint selector",
+      "decoder",
+      "postprocessing",
+      "test-time augmentation",
+      "residual learning",
+      "ensemble rule"
+    ]
+  },
+  "development_readiness": {
+    "view": "four-fold whole-well cross-fit restricted to F0-F3",
+    "minimum_pooled_rmse_gain": 0.2,
+    "minimum_improved_development_folds": 3,
+    "development_fold_count": 4,
+    "maximum_development_fold_rmse_regression": 0.03,
+    "minimum_confirmation_regrouping_gain": 0.1,
+    "all_registered_confirmation_regroupings_positive": true,
+    "maximum_single_development_fold_share_of_positive_sse_reduction": 0.6,
+    "applies_to_final_batch_ensemble": true,
+    "subthreshold_component_may_trigger_reveal": false
+  },
+  "audit_firewall": {
+    "audit_fold": 4,
+    "pre_reveal_target_derived_access_by_agent": false,
+    "pre_reveal_forbidden_outputs": [
+      "targets or target summaries",
+      "candidate or baseline target errors",
+      "RMSE or target-derived loss",
+      "residual plots",
+      "well or segment rankings",
+      "target-derived subgroup metrics",
+      "automatic selector outcomes based on audit-fold labels"
+    ],
+    "pre_reveal_label_free_checks_allowed": [
+      "input schema",
+      "missingness",
+      "shape",
+      "runtime",
+      "prediction completeness",
+      "finite predictions",
+      "preregistered prediction-range safety"
+    ],
+    "sealed_automated_label_use_after_global_freeze": {
+      "allowed": true,
+      "uses": [
+        "training data for outer contexts other than F4",
+        "inner validation for outer contexts other than F4"
+      ],
+      "agent_facing_target_derived_output_before_all_outer_caches_frozen": false,
+      "pipeline_change_from_sealed_result_allowed": false
+    }
+  },
+  "global_pipeline_freeze": {
+    "required_before_full_nested_rerun": true,
+    "one_pipeline_for_all_outer_contexts": true,
+    "fold_specific_manual_edits_allowed": false,
+    "frozen_items": [
+      "legal inputs and preprocessing",
+      "architecture and capacity",
+      "target representation and loss",
+      "augmentation and curriculum",
+      "optimizer and schedule",
+      "seed policy",
+      "ordered snapshot grid",
+      "automatic checkpoint selector and tie-breaks",
+      "decoder and calibration",
+      "postprocessing and test-time augmentation",
+      "candidate-to-v20 weight mode",
+      "ensemble-selection rule",
+      "error-derived heuristics",
+      "source commit and environment",
+      "fold assignments and data fingerprint"
+    ],
+    "development_cache_reuse": "Allowed only when byte-reproducible under the frozen source, configuration, seed, fold assignment, and data fingerprint."
+  },
+  "nested_rerun": {
+    "outer_folds_m": 5,
+    "inner_roles_per_outer_n": 4,
+    "logical_inner_roles": 20,
+    "unordered_excluded_fold_pairs": 10,
+    "unique_inner_training_trajectories": 10,
+    "reciprocal_role_reuse": "Train once on the other three folds for unordered pair {Fi,Fj}; predict both Fi and Fj.",
+    "outer_training_trajectories": 5,
+    "total_logical_training_roles": 25,
+    "total_unique_model_training_trajectories": 15,
+    "multiple_snapshots_require_additional_training": false,
+    "all_inner_and_outer_outputs_frozen_before_joint_reveal": true,
+    "all_five_outer_predictions_required": true
+  },
+  "joint_reveal_and_promotion": {
+    "joint_outer_reveals": 1,
+    "official_view": "concatenated five-fold selection-clean OOF",
+    "official_view_disclosure_label": "selection-clean, development-exposed",
+    "existing_strong_or_small_diverse_gate_required": true,
+    "audit_fold_reported_separately": true,
+    "audit_fold_rmse_gain_must_be_nonnegative": true,
+    "audit_fold_regression_vetoes_promotion": true,
+    "audit_fold_paired_well_bootstrap_reported": true,
+    "audit_fold_bootstrap_additional_threshold": null,
+    "post_promotion_checkpoint_refinement_remains_active": true
+  },
+  "production": {
+    "normal_deployed_outer_checkpoints_per_accepted_trainable_family": 5,
+    "inner_training_trajectories_packaged": false,
+    "inner_snapshots_packaged": false,
+    "full_data_retraining": false,
+    "kaggle_dataset_or_kernel_authorized_by_amendment": false,
+    "competition_submission_requires_separate_user_instruction": true
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "protocol_name": "cv-protocol-v5",
+  "amendment_id": "batch3-run2-buda-dip-family-extension",
+  "status": "active",
+  "effective_from_batch": 3,
+  "authorized_utc": "2026-07-30",
+  "authorization": "limited_query_cv/v5_batch3_run2_authorization.json",
+  "documentation": "limited_query_cv/V5_BATCH3_RUN2_FAMILY_EXTENSION.md",
+  "budget": {
+    "batch3_reveal_previously_authorized": 1,
+    "batch3_reveals_previously_spent": 0,
+    "batch3_reveals_added": 0,
+    "maximum_joint_outer_oof_reveals_for_batch3": 1,
+    "reuse_unspent_reveal": true,
+    "fold_pilot_reveals_allowed": false,
+    "post_reveal_recipe_changes_allowed": false
+  },
+  "candidate_scope": {
+    "run_id": "v5_batch3_run_002_goal_020",
+    "family": "c016_buda_delayed_dip_cluster_surface",
+    "parent": "promoted_clean_c016",
+    "readiness_baseline": "original_clean_c016_selection_clean_F0_F3",
+    "readiness_baseline_rmse": 5.869105573928044,
+    "requested_incremental_rmse_gain": 0.2,
+    "maximum_candidate_rmse": 5.669105573928044,
+    "equivalent_minimum_gain_over_protected_v20": 0.2710854363677842
+  },
+  "feature_firewall": {
+    "legal_horizontal_inference_columns": [
+      "MD",
+      "X",
+      "Y",
+      "Z",
+      "GR",
+      "TVT_input"
+    ],
+    "buda_is_train_only": true,
+    "buda_allowed_as_role_purged_training_surface": true,
+    "held_well_buda_may_enter_held_prediction": false,
+    "ancc_is_train_only": true,
+    "ancc_required_at_inference": false,
+    "held_well_ancc_may_enter_held_prediction": false,
+    "held_hidden_tvt_may_enter_held_prediction": false,
+    "label_free_typewell_identity_matching_allowed": true,
+    "horizontal_target_contributions_role_purged": true
+  },
+  "unchanged_boundaries": {
+    "development_folds": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "audit_fold": 4,
+    "f4_manual_analysis_before_reveal": false,
+    "symmetric_pair_nested_rerun_required": true,
+    "all_five_outer_predictions_frozen_before_reveal": true,
+    "f4_nonnegative_gain_veto": true,
+    "strong_and_small_diverse_promotion_gates": true,
+    "kaggle_dataset_authorized": false,
+    "kaggle_kernel_authorized": false,
+    "kaggle_submission_authorized": false
+  }
+}

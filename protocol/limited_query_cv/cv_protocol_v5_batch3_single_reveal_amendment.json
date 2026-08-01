@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "protocol_name": "cv-protocol-v5",
+  "amendment_id": "batch3-single-reveal-extension",
+  "status": "active",
+  "effective_from_batch": 3,
+  "authorized_utc": "2026-07-30",
+  "authorization": "limited_query_cv/v5_batch3_authorization.json",
+  "documentation": "limited_query_cv/V5_BATCH3_SINGLE_REVEAL_AMENDMENT.md",
+  "budget": {
+    "previous_maximum_batches": 2,
+    "new_maximum_batches": 3,
+    "maximum_joint_outer_oof_reveals_for_batch3": 1,
+    "maximum_total_joint_outer_oof_reveals": 3,
+    "fold_pilot_reveals_allowed": false,
+    "post_reveal_recipe_changes_allowed": false
+  },
+  "candidate_scope": {
+    "family": "c016_residual_gr_path_pool",
+    "parent": "promoted_clean_c016",
+    "requested_development_rmse_gain": 0.2,
+    "effective_readiness_target": 0.2,
+    "source_review": "limited_query_cv/KA_E80_C016_SOURCE_REVIEW.md",
+    "experiment_proposal": "limited_query_cv/ka_e80_c016_experiment_proposal.json"
+  },
+  "unchanged_boundaries": {
+    "development_folds": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "audit_fold": 4,
+    "f4_manual_analysis_before_reveal": false,
+    "symmetric_pair_nested_rerun_required": true,
+    "all_five_outer_predictions_frozen_before_reveal": true,
+    "f4_nonnegative_gain_veto": true,
+    "strong_and_small_diverse_promotion_gates": true,
+    "kaggle_dataset_authorized": false,
+    "kaggle_kernel_authorized": false,
+    "kaggle_submission_authorized": false
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "protocol_name": "cv-protocol-v5",
+  "authorized_utc": "2026-08-01",
+  "status": "authorized",
+  "literal_user_authorization": "go ahead",
+  "interpreted_scope": "Start the proposed V5 Batch 5 with development goal +0.20, use a new target-free cluster-balanced validation boundary, push a private Kaggle Dataset and kernel only if accepted, and do not submit.",
+  "scope": {
+    "batch": 5,
+    "requested_development_rmse_gain": 0.2,
+    "effective_readiness_target": 0.2,
+    "additional_protected_joint_outer_reveals": 1,
+    "maximum_protected_joint_outer_reveals_for_batch": 1,
+    "frozen_parent_id": "run4_structural_surface_router_s06",
+    "frozen_parent_registry": "limited_query_cv/frozen_previous_best_v5.json",
+    "frozen_parent_registry_sha256": "123500b4e31110243a13e55d5998e33676eed169df4bcac0c8b85039a56e190b",
+    "new_validation_boundary": "limited_query_cv/v5_batch5_target_free_boundary.json",
+    "new_validation_boundary_sha256": "8111b07d378f2ec52daecb31371e46fcfd8ccdc5686c3e186f773c4a44e2b0df",
+    "kaggle_dataset_authorized_if_accepted": true,
+    "kaggle_kernel_authorized_if_accepted": true,
+    "kaggle_competition_submission_authorized": false
+  },
+  "unchanged_boundaries": {
+    "complete_well_splitting": true,
+    "same_typewell_cluster_kept_inside_one_fold": true,
+    "manual_target_derived_development_folds": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "manual_audit_fold": 4,
+    "new_audit_fold_target_derived_access_before_global_freeze": false,
+    "all_outer_predictions_frozen_before_joint_reveal": true,
+    "post_reveal_recipe_changes": false,
+    "accepted_solution_must_improve_the_frozen_parent": true,
+    "kaggle_competition_submission_authorized": false
+  }
+}

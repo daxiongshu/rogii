@@ -1,0 +1,508 @@
+{
+  "schema_version": 1,
+  "protocol_name": "cv-protocol-v5",
+  "protocol_revision": 14,
+  "status": "active_development",
+  "activated_utc": "2026-07-25",
+  "authorization": "User explicitly requested that the inner-exploration/outer-confirmation method be named CV Protocol v5, documented, and activated.",
+  "documentation": "limited_query_cv/CV_PROTOCOL_V5.md",
+  "ledger": "limited_query_cv/cv_query_ledger_v5.json",
+  "frozen_previous_best_registry": "limited_query_cv/frozen_previous_best_v5.json",
+  "amendments": [
+    {
+      "id": "fold-ensemble-production",
+      "status": "active",
+      "effective_from_batch": 2,
+      "policy": "limited_query_cv/cv_protocol_v5_fold_ensemble_amendment.json",
+      "policy_sha256": "0a84b809cff3457b272955341446190db7efd1cc8dbe3f52c6b9a8dfb0ef53f6",
+      "documentation": "limited_query_cv/V5_FOLD_ENSEMBLE_AMENDMENT.md",
+      "documentation_sha256": "5c6a86e7c5c6a990e641328b3b449771d1fa1e5564487d4361cdcefaff03c14b"
+    },
+    {
+      "id": "post-promotion-checkpoint-refinement",
+      "status": "active",
+      "effective_from_batch": 2,
+      "policy": "limited_query_cv/cv_protocol_v5_post_promotion_checkpoint_refinement.json",
+      "policy_sha256": "2879746e08f706d0f92826a24b416b3b84ab8e79b3afe997be2de87eae858ab2",
+      "documentation": "limited_query_cv/V5_POST_PROMOTION_CHECKPOINT_REFINEMENT.md",
+      "documentation_sha256": "910ca5278c8df083f2914faf43722430eb831225104a1e6e117715a9a6f1e35c"
+    },
+    {
+      "id": "manual-analysis-firewall-and-symmetric-pair-rerun",
+      "status": "active",
+      "effective_from_batch": 2,
+      "policy": "limited_query_cv/cv_protocol_v5_manual_analysis_firewall.json",
+      "policy_sha256": "630f3af53439bb13117540b2eea335841289c202c46c7d6ae0a16f7c53a9607e",
+      "documentation": "limited_query_cv/V5_MANUAL_ANALYSIS_FIREWALL.md",
+      "documentation_sha256": "13ab448b71171482f5971eb1612d2a3a0353cc0e17d78df0f78516936b247dff"
+    },
+    {
+      "id": "kickstart-configurable-development-goal",
+      "status": "active",
+      "effective_from_batch": 2,
+      "policy": "limited_query_cv/cv_protocol_v5_kickstart_goal_amendment.json",
+      "policy_sha256": "8a2a824fc014a2cc54747b93d230509ddca38d1a46d4a8fe5b1950c56aa6af9c",
+      "documentation": "limited_query_cv/V5_KICKSTART_GOAL_AMENDMENT.md",
+      "documentation_sha256": "775be271ad5d4e07aaa1c887e5b60c83b8e3474b6559b24ea9d38576b53c5885"
+    },
+    {
+      "id": "batch3-single-reveal-extension",
+      "status": "active",
+      "effective_from_batch": 3,
+      "policy": "limited_query_cv/cv_protocol_v5_batch3_single_reveal_amendment.json",
+      "policy_sha256": "cdf6e8cd09749285a2b53b4df822b4ff25302eb66598dfc1b8c353b9fc6146fe",
+      "documentation": "limited_query_cv/V5_BATCH3_SINGLE_REVEAL_AMENDMENT.md",
+      "documentation_sha256": "35d8d359444abc968a5c9ec506fcf7bfd9989be2517f160b035f7c986b43b6d5"
+    },
+    {
+      "id": "batch3-run2-buda-dip-family-extension",
+      "status": "active",
+      "effective_from_batch": 3,
+      "policy": "limited_query_cv/cv_protocol_v5_batch3_run2_family_extension.json",
+      "policy_sha256": "47a8bf46ac180d6ed9253baa0795bc1bfaddae5a4619a647da23b1f7e00ef275",
+      "documentation": "limited_query_cv/V5_BATCH3_RUN2_FAMILY_EXTENSION.md",
+      "documentation_sha256": "68c202d7cbdf8d8fa24912659c2fa2e6d0dcf6cc037a506c0b16a9a37a874332"
+    },
+    {
+      "id": "batch5-target-free-boundary-extension",
+      "status": "active",
+      "effective_from_batch": 5,
+      "policy": "limited_query_cv/cv_protocol_v5_batch5_boundary_extension.json",
+      "policy_sha256": "6d4af68d2dd4e0693ad6bb2117c79de4562b855b95d096505c8a4040144866b9",
+      "documentation": "limited_query_cv/V5_BATCH5_BOUNDARY_EXTENSION.md",
+      "documentation_sha256": "acb1e91f442c7e1b5f4d978819d691e238105b3c1cfce49b4b71fb1511bc17d4"
+    },
+    {
+      "id": "batch6-single-reveal-extension",
+      "status": "active",
+      "effective_from_batch": 6,
+      "policy": "limited_query_cv/cv_protocol_v5_batch6_single_reveal_amendment.json",
+      "policy_sha256": "43f27b74d9429eb9f986b8847519535792b9ad71bf351870b687dceca02350fc",
+      "documentation": "limited_query_cv/V5_BATCH6_SINGLE_REVEAL_AMENDMENT.md",
+      "documentation_sha256": "23d2d2a2ff0d2d4588faf7adba264cdc4337838b6bd57f0d1729e35c6651d3ad"
+    }
+  ],
+  "revision_14_supersession": {
+    "scope": "numeric development, promotion, and exact-F4-sign gates only",
+    "numeric_thresholds_are_diagnostics": true,
+    "structural_integrity_rules_remain_active": true,
+    "historical_amendment_files_remain_immutable": true
+  },
+  "agent_startup_surface": {
+    "required_human_reading": [
+      "COOKBOOK.md",
+      "limited_query_cv/CV_PROTOCOL_V5.md"
+    ],
+    "machine_sources": [
+      "limited_query_cv/cv_protocol_v5.json",
+      "limited_query_cv/cv_query_ledger_v5.json",
+      "limited_query_cv/frozen_previous_best_v5.json",
+      "limited_query_cv/verify_active_cv_protocol.py"
+    ],
+    "startup_command": "python limited_query_cv/verify_active_cv_protocol.py",
+    "amendment_files_are_required_startup_reading": false,
+    "historical_policy_and_result_files_are_required_startup_reading": false,
+    "amendment_and_history_role": "append-only provenance checked by the verifier; inspect only to resolve an ambiguity or audit history"
+  },
+  "naming_boundary": {
+    "protocol_version": 5,
+    "follows_completed_validation_era_policy_generations": true,
+    "sealed_historical_policy_v3": "limited_query_cv/policy_v3.json",
+    "sealed_historical_policy_v4": "limited_query_cv/policy_v4.json",
+    "sealed_predecessor_result": "limited_query_cv/v4_batch1_result.json",
+    "sealed_predecessor_result_sha256": "550677c823b22d9ba55f3198bf46292319d885e30cf8f2cadfe179c33be53f57"
+  },
+  "baseline": {
+    "commit": "cd2d68e9318cb04ea808b670cf6190d25c3da825",
+    "submission_reference": 54893107,
+    "historical_v20_parity_oof_rmse": 6.189484768154311,
+    "public_lb_rmse": 6.263,
+    "wells": 773,
+    "hidden_rows": 3783989,
+    "checkpoint_vault": "/geo/geo_new/rogii_v20_checkpoint_vault",
+    "oof_vault": "/geo/geo_new/rogii_v20_oof_vault"
+  },
+  "parent_activation": {
+    "automatic": false,
+    "promotion_changes_parent": false,
+    "submission_changes_parent": false,
+    "requires_explicit_user_approval_after_submitted_solution_cv_lb_review": true,
+    "update_method": "agent manually updates frozen_previous_best_registry and commits the change",
+    "effective_scope": "future runs only"
+  },
+  "validation_layers": {
+    "training_only_gate": {
+      "trainable_family_requirements": [
+        "fixed-batch overfit curve",
+        "prediction range",
+        "gradient health",
+        "underfit or overfit diagnosis"
+      ],
+      "training_free_family_requirements": [
+        "exact no-op control",
+        "boundary control",
+        "mechanism-appropriate synthetic recovery control"
+      ],
+      "protected_oof_available": false,
+      "adjustment_allowed": true
+    },
+    "inner_grouped_development": {
+      "outer_folds": 5,
+      "outer_group": "well_identifier",
+      "manual_development_folds": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "manual_audit_fold": 4,
+      "audit_fold_target_derived_evidence_available_before_reveal": false,
+      "default_discovery": "Four-fold whole-well cross-fit restricted to F0-F3.",
+      "required_confirmation": "Preregistered whole-well regroupings restricted to F0-F3 before the global pipeline freeze.",
+      "minimum_meaningful_variants_per_trainable_family": 3,
+      "development_family_record_required": [
+        "mechanism",
+        "legal input contract",
+        "trial ledger"
+      ],
+      "global_pipeline_registration_required_before_sealed_nested_rerun": [
+        "final search outcome",
+        "training recipe",
+        "automatic checkpoint selector",
+        "stopping rule",
+        "tie-breaks",
+        "ensemble rule"
+      ],
+      "fold_local_search_isolation": "Manual search is confined to F0-F3. After one global freeze, the identical automatic selector runs opaquely for every outer context.",
+      "outer_checkpoint_selection": "For fold h, select its epoch or checkpoint using only the other four folds or a preregistered label-independent fixed rule; fold h may not select its own checkpoint.",
+      "trial_log_required": true,
+      "allowed_adjustments": [
+        "architecture",
+        "features",
+        "loss",
+        "augmentation",
+        "capacity",
+        "optimizer",
+        "schedule",
+        "seed policy",
+        "checkpoint",
+        "within-family variant blend",
+        "incremental ensemble weight"
+      ]
+    },
+    "protected_outer_confirmation": {
+      "for_fold_h": "Select using only the other four folds, retrain on those four folds, and predict fold h once.",
+      "held_outer_fold_may_select_checkpoint_for_clean_view": false,
+      "same_held_fold_selection_promotion_eligible": false,
+      "same_held_fold_selection_package_eligible_without_clean_gate": false,
+      "bounded_post_promotion_checkpoint_refinement_allowed": true,
+      "all_predictions_frozen_before_reveal": true,
+      "checkpoint_manifest_required": true,
+      "prediction_manifest_required": true,
+      "hidden_truth_masked_during_prediction": true,
+      "fold_safe_baseline_prediction_allowed_when_preregistered": true,
+      "baseline_target_error_unavailable_during_prediction": true,
+      "protected_oof_metrics_unavailable_during_prediction": true
+    }
+  },
+  "manual_analysis_firewall": {
+    "effective_from_batch": 2,
+    "development_folds": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "prospective_audit_fold": 4,
+    "audit_fold_historically_pristine": false,
+    "target_derived_manual_analysis_allowed_on_development_folds": true,
+    "target_derived_audit_fold_access_before_joint_reveal": false,
+    "label_free_audit_fold_inference_checks_allowed": true,
+    "sealed_automated_audit_label_use_after_global_freeze": true,
+    "agent_facing_audit_metrics_before_all_outer_artifacts_frozen": false,
+    "global_pipeline_change_after_freeze": false,
+    "development_readiness": {
+      "prompt_parameter": "requested_development_rmse_gain",
+      "goal_environment_variable": "ROGII_V5_DEVELOPMENT_GOAL",
+      "goal_resolver": "limited_query_cv/resolve_v5_goal.py",
+      "automatic_run_allocation_flag": "--new-run",
+      "prompt_capture_flag": "--prompt-save",
+      "prompt_capture_filename": "kickstart_prompt.txt",
+      "prompt_capture_scope": "literal user kickstart message only",
+      "prompt_digest_computed_by_resolver": true,
+      "prompt_metadata_is_validation_gate": false,
+      "prompt_metadata_mismatch_may_consume_run_number": false,
+      "pre_revision8_hash_only_records_grandfathered": true,
+      "run_directory_pattern": "limited_query_cv/runs/v5_batch{batch}_run_{run:03d}_goal_{goal_code}",
+      "protected_batch_and_development_run_are_independent": true,
+      "run_numbering_epoch_required": true,
+      "current_run_numbering_epoch": 2,
+      "run_number_unique_scope": "within protected batch and numbering epoch",
+      "run_number_high_watermark_is_durable": true,
+      "run_number_reuse_after_cleanup": false,
+      "explicit_user_authorized_full_numbering_reset_allowed": true,
+      "full_numbering_reset_requires_empty_run_namespace": true,
+      "archived_numbering_epoch_1_high_watermark": 9,
+      "prompt_selected_goal_allowed": true,
+      "default_requested_goal": 0.2,
+      "protocol_floor": 0.2,
+      "effective_readiness_target": "max(requested_development_rmse_gain, protocol_floor)",
+      "effective_readiness_target_role": "research aspiration and prioritization; not a reveal or promotion cutoff",
+      "repository_policy_edit_required_for_clear_prompt_value": false,
+      "frozen_goal_record_required_before_target_derived_metrics": true,
+      "selection_clean_pooled_development_gain_must_be_positive_to_advance": true,
+      "advance_below_effective_readiness_target_allowed": true,
+      "diagnostic_reference_values": {
+        "improved_development_folds": 3,
+        "development_fold_rmse_regression": 0.03,
+        "each_confirmation_regrouping_gain": 0.1,
+        "single_fold_share_of_positive_sse_reduction": 0.6
+      },
+      "diagnostic_reference_values_are_hard_gates": false
+    },
+    "policy": "limited_query_cv/cv_protocol_v5_manual_analysis_firewall.json",
+    "goal_policy": "limited_query_cv/cv_protocol_v5_kickstart_goal_amendment.json"
+  },
+  "symmetric_pair_nested_rerun": {
+    "required_after_global_pipeline_freeze": true,
+    "outer_folds_m": 5,
+    "inner_roles_per_outer_n": 4,
+    "logical_inner_roles": 20,
+    "unique_unordered_excluded_pairs": 10,
+    "unique_inner_training_trajectories": 10,
+    "outer_training_trajectories": 5,
+    "total_logical_training_roles": 25,
+    "total_unique_model_training_trajectories": 15,
+    "reciprocal_pair_model_predicts_both_excluded_folds": true,
+    "all_five_outer_caches_frozen_before_joint_reveal": true
+  },
+  "batch_policy": {
+    "target_candidate_families_per_batch": [
+      3,
+      5
+    ],
+    "minimum_candidate_families_without_explicit_user_exception": 2,
+    "maximum_candidate_families_per_batch": 5,
+    "maximum_batches": 6,
+    "maximum_joint_outer_oof_reveals_per_batch": 1,
+    "fold_pilot_reveals_allowed": false,
+    "post_reveal_recipe_changes_allowed": false
+  },
+  "ensemble_selection": {
+    "exactly_one_weight_mode_must_be_preregistered": true,
+    "dense_grid": [
+      0,
+      0.01,
+      0.02,
+      0.03,
+      0.05,
+      0.075,
+      0.1,
+      0.15,
+      0.2
+    ],
+    "nonnegative_ridge": {
+      "allowed": true,
+      "regularization_grid_must_be_preregistered": true,
+      "maximum_candidate_weight": 0.2
+    },
+    "outer_fold_selection": "For outer fold h, use cross-fitted predictions only inside its four-fold training pool. Compute one weight under each required grouping, take their median, and apply it unchanged to outer fold h.",
+    "inner_weight_groupings": [
+      "original",
+      "balanced",
+      "independent"
+    ],
+    "fold_local_inner_weight_estimates": 15,
+    "grid_rounding": "Round the fold-local median down to the dense grid.",
+    "production_weight_rule": "Effective batch 2: keep each fold-local inner-selected weight with its frozen outer checkpoint and average the five fold-adjusted predictions on test. No full-data or protected-outer refit is allowed.",
+    "standalone_rmse_role": "diagnostic_only"
+  },
+  "uncertainty": {
+    "unit": "well_identifier",
+    "method": "paired bootstrap of wells with replacement; recompute pooled row-level RMSE",
+    "resamples": 2000,
+    "seed": 20260725,
+    "reported_quantiles": [
+      0.1,
+      0.5,
+      0.9
+    ],
+    "report_probability_gain_positive": true
+  },
+  "promotion_rules": {
+    "numeric_thresholds_role": "diagnostic_only",
+    "legacy_diagnostics": {
+      "strong": {
+        "minimum_pooled_rmse_gain": 0.03,
+        "minimum_improved_original_folds": 4,
+        "all_three_nested_regrouping_gains_nonnegative": true,
+        "maximum_held_group_rmse_regression": 0.01
+      },
+      "small_diverse": {
+        "pooled_gain_positive": true,
+        "all_three_nested_regrouping_gains_positive": true,
+        "minimum_positive_fold_local_inner_weight_estimates": 10,
+        "fold_local_inner_weight_estimate_count": 15,
+        "maximum_held_group_rmse_regression": 0.01,
+        "minimum_bootstrap_probability_gain_positive": 0.8,
+        "minimum_bootstrap_gain_quantile_0_10": -0.005
+      }
+    },
+    "accept": {
+      "selection_clean_pooled_gain_over_frozen_previous_best_must_be_positive": true,
+      "integrity_rules_must_pass": true,
+      "no_material_overfitting_or_transfer_reversal": true,
+      "deployment_must_be_valid": true
+    },
+    "hold": "pooled gain is positive but uncertainty or instability is substantial; do not package and seek genuinely new evidence",
+    "reject": "pooled gain is not positive, integrity fails, or protected evidence materially reverses development",
+    "prospective_audit": {
+      "fold": 4,
+      "paired_well_bootstrap_reported": true,
+      "exact_sign_is_hard_gate": false,
+      "tiny_regression_within_uncertainty_may_be_accepted": true,
+      "material_regression_or_transfer_reversal_rejects": true
+    },
+    "public_leaderboard": {
+      "used_for_in_run_tuning": false,
+      "automatic_parent_activation": false,
+      "manual_parent_activation_requires_user_cv_lb_approval": true,
+      "single_small_regression_may_be_accepted": true,
+      "repeated_cv_up_lb_down_triggers_validation_review": true
+    },
+    "failure_does_not_exhaust_mechanism": true,
+    "production_promotion_requires_accept_decision": true
+  },
+  "historical_batch_1_production": {
+    "status": "sealed_unexercised",
+    "reason": "Batch 1 preregistered a full-data refit but no family promoted.",
+    "result": "limited_query_cv/v5_batch1_result.json",
+    "result_sha256": "77182c39d3f43e4c2329eeb74b69bfb5a1d7810b0ffe8e14567de7ff616074d9",
+    "may_be_reinterpreted": false
+  },
+  "fold_ensemble_production": {
+    "effective_from_batch": 2,
+    "mode": "selection-clean-outer-fold-ensemble",
+    "procedure_frozen_before_outer_reveal": true,
+    "outer_folds_m": 5,
+    "inner_folds_per_outer_n": 4,
+    "logical_inner_roles_per_configuration": 20,
+    "unique_symmetric_pair_inner_trainings_per_configuration": 10,
+    "outer_trainings_per_configuration": 5,
+    "total_unique_trainings_per_configuration": 15,
+    "normal_deployed_checkpoints_per_accepted_trainable_family": 5,
+    "inner_checkpoints_packaged": false,
+    "full_data_retraining": false,
+    "reuse_frozen_outer_checkpoints": true,
+    "clean_checkpoint_set_is_official_and_default": true,
+    "bounded_held_selected_snapshot_set_allowed_after_clean_promotion": true,
+    "test_aggregation": "arithmetic mean of five logical fold contributions",
+    "fold_contribution": "(1 - weight_h) * frozen_parent_prediction_h + weight_h * candidate_prediction_h",
+    "zero_weight_checkpoint_may_be_omitted": true,
+    "forbidden_selection_evidence": [
+      "same held outer fold targets or metrics for clean promotion, clean weight selection, or any production parameter except the bounded post-promotion epoch or step",
+      "outer-fold scores",
+      "public leaderboard feedback"
+    ]
+  },
+  "post_promotion_checkpoint_refinement": {
+    "effective_from_batch": 2,
+    "requires_family_preregistration": true,
+    "requires_clean_gate_pass": true,
+    "maximum_eligible_snapshots_per_fold": 3,
+    "eligible_window": "clean inner-selected snapshot plus its immediate predecessor and successor in the ordered registered grid",
+    "every_snapshot_and_held_prediction_frozen_before_reveal": true,
+    "held_fold_may_change_only": "checkpoint epoch or training step",
+    "clean_fold_weight_retained": true,
+    "held_selected_score_role": "optimistic production-parity diagnostic only",
+    "rejected_family_refinement_authorized": false,
+    "missing_artifact_fallback": "clean checkpoint",
+    "regeneration_after_reveal_allowed": false,
+    "policy": "limited_query_cv/cv_protocol_v5_post_promotion_checkpoint_refinement.json"
+  },
+  "kaggle_boundary": {
+    "promote_authorizes_private_dataset_create_or_update": true,
+    "promote_authorizes_private_kernel_create_or_update_and_run": true,
+    "private_packaging_requires_accept_decision": true,
+    "hold_or_reject_forbids_private_dataset_and_kernel_push": true,
+    "private_artifacts_require_separate_followup_after_promote": false,
+    "public_artifact_requires_separate_user_instruction": true,
+    "competition_submission_requires_separate_user_instruction": true,
+    "competition_submission_trigger": "submit",
+    "currently_authorized_submissions": 0
+  },
+  "promotion_command_semantics": {
+    "triggers": [
+      "promote this candidate",
+      "<score> is good enough, promote"
+    ],
+    "scope": "current named or frozen candidate",
+    "terminal_workflow": true,
+    "numeric_score_is_research_context_not_hard_gate": true,
+    "authorizes_remaining_standard_validation": true,
+    "authorizes_one_candidate_specific_protected_audit_when_needed": true,
+    "creates_reusable_reveal_budget": false,
+    "ledger_must_record_audit_before_reveal": true,
+    "authorizes_uniform_deployment_completeness_repairs": true,
+    "authorizes_local_remote_parity_and_runtime_checks": true,
+    "authorizes_private_dataset_create_or_update": true,
+    "authorizes_private_kernel_create_or_update_and_run": true,
+    "authorizes_normal_technical_retries_without_reasking": true,
+    "must_continue_past_intermediate_ready_states": true,
+    "requires_final_legitimacy_verdict": true,
+    "final_verdict_labels": [
+      "LEGIT SUBMISSION: YES",
+      "LEGIT SUBMISSION: NO"
+    ],
+    "private_packaging_gate": "promotion_rules decision is accept",
+    "hold_or_reject_action": "return LEGIT SUBMISSION: NO; do not create or push a Kaggle Dataset or kernel",
+    "repairable_engineering_failure_action": "repair and rerun affected checks without requesting another authorization",
+    "final_report_previous_best_comparison": {
+      "required_for_legit_submission_yes": true,
+      "required_for_every_completed_protected_audit": true,
+      "reference": "active parent in frozen_previous_best_registry frozen before candidate reveal",
+      "reference_must_not_be_selected_after_candidate_reveal": true,
+      "reference_must_not_change_during_run": true,
+      "identical_folds_rows_masks_and_metric_required": true,
+      "rows": [
+        "F0",
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "pooled"
+      ],
+      "columns": [
+        "previous_best_rmse",
+        "candidate_rmse",
+        "gain"
+      ],
+      "gain_definition": "previous_best_rmse - candidate_rmse; positive is improvement",
+      "reference_name_and_immutable_artifact_or_commit_required": true
+    },
+    "does_not_authorize_publication": true,
+    "does_not_authorize_competition_submission": true,
+    "does_not_waive": [
+      "data leakage checks",
+      "selection-clean validation",
+      "inference schema validity",
+      "deployment parity",
+      "submission schema validity"
+    ],
+    "failure_behavior": "finish safe evidence, return LEGIT SUBMISSION: NO with one concrete reason and best recovery action; do not chain authorization requests"
+  },
+  "forbidden_inputs_and_actions": [
+    "same-held-outer-fold model or checkpoint selection used for promotion",
+    "same-held-outer-fold-selected checkpoint packaged outside the bounded preregistered post-promotion refinement",
+    "batch-2-or-later full-data refit without a new explicit amendment",
+    "post-reveal tuning against the same protected OOF evidence",
+    "leaderboard-selected blend weights",
+    "public-LB probe offsets",
+    "automatic frozen-parent changes after promotion or submission",
+    "unpreregistered post-v20 checkpoints or OOF predictions",
+    "best-of-many outer-OOF reporting without query accounting",
+    "target-derived F4 evidence exposed to interactive development before the revision-4 joint reveal",
+    "fold-specific hand edits after the revision-4 global pipeline freeze",
+    "silent reduction of a run's effective readiness target after target-derived development metrics"
+  ]
+}

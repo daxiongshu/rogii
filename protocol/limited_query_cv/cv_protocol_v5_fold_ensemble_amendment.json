@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "protocol_name": "cv-protocol-v5",
+  "amendment_id": "fold-ensemble-production",
+  "status": "active",
+  "effective_from_batch": 2,
+  "authorized_utc": "2026-07-25",
+  "documentation": "limited_query_cv/V5_FOLD_ENSEMBLE_AMENDMENT.md",
+  "historical_boundary": {
+    "batch_1_complete_before_amendment": true,
+    "batch_1_result": "limited_query_cv/v5_batch1_result.json",
+    "batch_1_result_sha256": "77182c39d3f43e4c2329eeb74b69bfb5a1d7810b0ffe8e14567de7ff616074d9",
+    "batch_1_may_be_reinterpreted": false,
+    "batch_1_may_be_reconfirmed": false,
+    "batch_1_full_data_rule_exercised": false
+  },
+  "fold_geometry": {
+    "outer_folds_m": 5,
+    "inner_folds_per_outer_n": 4,
+    "normal_deployed_checkpoints_per_accepted_trainable_family": 5,
+    "inner_checkpoints_packaged": false,
+    "n_times_m_checkpoints_packaged": false
+  },
+  "checkpoint_selection": {
+    "held_outer_fold_available": false,
+    "held_outer_fold_may_select_its_checkpoint": false,
+    "selection_evidence": "Only the four inner folds belonging to the outer-training pool.",
+    "selected_items": [
+      "architecture or registered variant",
+      "epoch or registered checkpoint",
+      "seed policy",
+      "decoder",
+      "augmentation and postprocessing",
+      "incremental ensemble weight"
+    ],
+    "same_held_fold_view": "Preregistered diagnostic only; never promotion-eligible or package-eligible.",
+    "all_outer_checkpoints_and_recipes_frozen_before_reveal": true
+  },
+  "production": {
+    "mode": "selection-clean-outer-fold-ensemble",
+    "full_data_retraining": false,
+    "reuse_frozen_outer_checkpoints": true,
+    "fold_contribution": "(1 - weight_h) * protected_v20_prediction + weight_h * candidate_prediction_h",
+    "test_aggregation": "arithmetic mean of all five logical fold contributions",
+    "fold_weight_source": "fold h's inner grouped selector; never fold h target or protected outer score",
+    "zero_weight_fold": "Contributes protected v20 exactly; physical candidate checkpoint may be omitted while the logical contribution remains in the five-way mean.",
+    "oof_limitation": "Each labeled well has one leakage-free outer member prediction, so OOF does not directly measure the variance reduction of averaging five members on test."
+  },
+  "packaging": {
+    "outer_checkpoint_manifest_required": true,
+    "fold_recipe_manifest_required": true,
+    "fold_weight_manifest_required": true,
+    "kernel_must_reproduce_five_way_mean": true,
+    "post_reveal_checkpoint_or_recipe_change_allowed": false
+  }
+}

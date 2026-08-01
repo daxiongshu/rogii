@@ -35,6 +35,11 @@ Each is self-contained — its own sources, recipe, kernel, manifests, and
 verifier — so the v20 hash locks and `reproduce.py verify` are unaffected by
 either.
 
+`protocol/` snapshots the CV Protocol v5 governance surface those three were
+developed under: the cookbook, the protocol specification, the machine policy,
+the query ledger, the frozen-parent registry, and every active amendment. See
+[protocol/README.md](protocol/README.md).
+
 ## Related best leaderboard result
 
 As of 2026-07-29, the broader project has a best public leaderboard RMSE of
@@ -364,3 +369,25 @@ pretrained backbone, `nvidia/mit-b0`.
 `run4/README.md` explains the deploy-parity reconstruction, the deployment
 source snapshot the kernel loads at run time, the path-versus-import closure,
 and the pipeline order.
+
+## Protocol snapshot
+
+The three subtrees preserve artifacts; `protocol/` preserves the process. It is
+a point-in-time copy of CV Protocol v5 revision 14 as of source commit
+`c34b92124faad762b469aba6408f00f224addf29` — 55 hash-locked files covering the
+cookbook, the specification, the policy, the ledger, the frozen-parent registry,
+the 8 active amendments with their documentation and authorizations, the
+validation boundaries and their builders, and the per-run source reviews the
+ledger cites.
+
+```bash
+python protocol/verify_protocol_snapshot.py verify
+```
+
+Besides the hashes, that check asserts the frozen-parent registry still records
+`v20 -> c016 -> run4` with user-approved-only activation, and that each entry's
+score agrees with the matching subtree's provenance manifest. If the
+reproductions and the governance record ever drift apart, it fails.
+
+The ledger, registry, and amendment set are live files in the source
+repository. This is what they contained at the snapshot commit, not a mirror.

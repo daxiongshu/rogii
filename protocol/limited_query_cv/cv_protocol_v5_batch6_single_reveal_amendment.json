@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "protocol_name": "cv-protocol-v5",
+  "protocol_revision": 14,
+  "amendment_id": "batch6-single-reveal-extension",
+  "status": "active",
+  "effective_from_batch": 6,
+  "authorization": "limited_query_cv/v5_batch6_authorization.json",
+  "budget": {
+    "previous_maximum_batches": 5,
+    "new_maximum_batches": 6,
+    "additional_protected_joint_outer_reveals": 1,
+    "maximum_total_joint_outer_oof_reveals": 6,
+    "fold_pilot_reveals_allowed": false,
+    "post_reveal_recipe_changes_allowed": false
+  },
+  "validation_boundary": {
+    "boundary": "limited_query_cv/v5_batch6_representative_boundary.json",
+    "boundary_sha256": "c211e4ee771bba49209d53990043f6912a94237e3e69d8ca5fa44f96be1bafae",
+    "source": "limited_query_cv/build_v5_batch6_representative_boundary.py",
+    "source_sha256": "7dfbd7ace294829e76a5cd4571dadc2a65c99f0d09c469c6530e0a5bf511718e",
+    "target_fields_read": false,
+    "complete_well_split": true,
+    "development_folds": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "prospective_audit_fold": 4,
+    "audit_well_count": 155,
+    "assignment_rule": "target-free balancing of inference-visible well summaries with proportional typewell-cluster representation"
+  },
+  "unchanged_boundaries": {
+    "frozen_parent_activation_policy": true,
+    "same_held_fold_selection_forbidden": true,
+    "all_five_outer_predictions_frozen_before_reveal": true,
+    "public_leaderboard_tuning_forbidden": true,
+    "kaggle_submission_authorized": false
+  }
+}
