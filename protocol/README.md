@@ -48,6 +48,14 @@ after reviewing CV-LB consistency rather than promoting automatically.
 
 All 55 match the source repository at the snapshot commit byte for byte.
 
+## Diagrams
+
+`diagrams/` holds seven 16:9 SVGs explaining the validation strategy — the run
+loop, folds and groupings, roles and pair models, selection-clean choice, the
+reveal and decision, weights and production, and the query budget. See
+[diagrams/README.md](diagrams/README.md). Their numbers are read from the
+artifacts and the ledger at this snapshot commit, not drawn illustratively.
+
 ## Verification
 
 ```bash

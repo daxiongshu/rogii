@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title>CV Protocol v5 — the reveal and the decision</title>
+  <desc>What must be frozen and checksummed before protected truth is opened, what the reveal reports, and how Accept, Hold and Reject are decided. Public leaderboard feedback is monitoring evidence only, and the frozen parent changes only on explicit user approval.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#8a8983"/></marker>
+    <g id="tick"><path d="M 0 4 L 3.4 7.4 L 9 0.6" fill="none" stroke="#1baf7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+  </defs>
+  <rect width="1600" height="900" fill="#fcfcfb"/>
+
+  <text x="48" y="52" font-size="26" font-weight="600" fill="#0b0b0b">05 · The reveal — one measurement, then a decision</text>
+  <text x="48" y="78" font-size="14" fill="#52514e">Everything is frozen and hashed first. Then protected truth opens once, for all five folds and several families together.</text>
+  <line x1="48" y1="98" x2="1552" y2="98" stroke="#e4e3de"/>
+
+  <!-- freeze checklist -->
+  <rect x="48" y="122" width="470" height="416" rx="8" fill="#ffffff" stroke="#e4e3de"/>
+  <text x="70" y="150" font-size="15" font-weight="600" fill="#0b0b0b">Frozen and checksummed before the reveal</text>
+  <text x="70" y="172" font-size="11.5" fill="#52514e">If any item is missing or fails its hash, the reveal does not happen.</text>
+
+  <g font-size="11.5" fill="#52514e">
+    <use href="#tick" x="70" y="192"/><text x="92" y="201">every candidate variant and one global selector</text>
+    <use href="#tick" x="70" y="216"/><text x="92" y="225">snapshot grid, tie-break, seeds, augmentation</text>
+    <use href="#tick" x="70" y="240"/><text x="92" y="249">decoder, postprocessor, weight rule</text>
+    <use href="#tick" x="70" y="264"/><text x="92" y="273">run goal, readiness and confirmation results</text>
+    <use href="#tick" x="70" y="288"/><text x="92" y="297">every manually derived heuristic</text>
+    <use href="#tick" x="70" y="312"/><text x="92" y="321">all 10 excluded-pair runs mapped to 20 roles</text>
+    <use href="#tick" x="70" y="336"/><text x="92" y="345">all 5 clean outer checkpoints</text>
+    <use href="#tick" x="70" y="360"/><text x="92" y="369">hidden-truth-masked prediction caches</text>
+    <use href="#tick" x="70" y="384"/><text x="92" y="393">target-free deployment logic for every context</text>
+    <use href="#tick" x="70" y="408"/><text x="92" y="417">source, config, checkpoint, prediction manifests</text>
+    <use href="#tick" x="70" y="432"/><text x="92" y="441">a ledger entry authorising this reveal</text>
+  </g>
+
+  <rect x="70" y="462" width="426" height="56" rx="6" fill="#faf9f6" stroke="#e4e3de"/>
+  <text x="88" y="484" font-size="11.5" font-weight="600" fill="#0b0b0b">Source and preregistration are committed first.</text>
+  <text x="88" y="504" font-size="11.5" fill="#52514e">The sealed run may then use F4 labels for other outer contexts.</text>
+
+  <line x1="530" y1="330" x2="556" y2="330" stroke="#8a8983" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- what is reported -->
+  <rect x="566" y="122" width="470" height="416" rx="8" fill="#ffffff" stroke="#eb6834"/>
+  <text x="588" y="150" font-size="15" font-weight="600" fill="#0b0b0b">What the reveal reports</text>
+  <text x="588" y="172" font-size="11.5" fill="#52514e">Candidate against the parent frozen <tspan font-style="italic">before</tspan> this reveal, on identical</text>
+  <text x="588" y="190" font-size="11.5" fill="#52514e">folds, rows, masks and RMSE definition.</text>
+
+  <rect x="588" y="206" width="426" height="30" rx="4" fill="#f6f6f3"/>
+  <text x="801" y="226" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#0b0b0b" text-anchor="middle">gain = previous_best_rmse − candidate_rmse</text>
+
+  <g font-size="11.5" fill="#52514e">
+    <text x="588" y="262"><tspan font-weight="600" fill="#0b0b0b">pooled and per-fold RMSE</tspan> — all five folds</text>
+    <text x="588" y="286"><tspan font-weight="600" fill="#0b0b0b">regrouping sensitivity</tspan> — balanced and independent</text>
+    <text x="588" y="310"><tspan font-weight="600" fill="#0b0b0b">maximum held-group regression</tspan></text>
+    <text x="588" y="334"><tspan font-weight="600" fill="#0b0b0b">weight stability</tspan> — count of positive inner weights</text>
+    <text x="588" y="358"><tspan font-weight="600" fill="#0b0b0b">F4 behaviour</tspan> — reported separately as the audit fold</text>
+    <text x="588" y="382"><tspan font-weight="600" fill="#0b0b0b">paired whole-well bootstrap</tspan> — 2,000 draws, seed 20260725</text>
+  </g>
+
+  <rect x="588" y="404" width="426" height="114" rx="6" fill="#fdf0ea"/>
+  <text x="608" y="426" font-size="11.5" font-weight="600" fill="#0b0b0b">C016's audit, as an example</text>
+  <g font-size="11.5" fill="#52514e">
+    <text x="608" y="448">pooled 6.189485 down to 6.127273, gain +0.062212</text>
+    <text x="608" y="468">all five original folds improved</text>
+    <text x="608" y="488">maximum held-group regression 0.0</text>
+    <text x="608" y="508">bootstrap probability gain positive 0.9985</text>
+  </g>
+
+  <line x1="1048" y1="330" x2="1074" y2="330" stroke="#8a8983" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- decision -->
+  <rect x="1084" y="122" width="468" height="416" rx="8" fill="#ffffff" stroke="#e4e3de"/>
+  <text x="1106" y="150" font-size="15" font-weight="600" fill="#0b0b0b">The boundary</text>
+  <text x="1106" y="172" font-size="11.5" fill="#52514e">Revision 14 made the old numeric levels diagnostics rather than gates.</text>
+
+  <rect x="1106" y="188" width="424" height="94" rx="6" fill="#eaf7f1"/>
+  <circle cx="1126" cy="212" r="6" fill="#0ca30c"/>
+  <text x="1142" y="217" font-size="13" font-weight="600" fill="#0b0b0b">Accept</text>
+  <text x="1106" y="240" font-size="11.5" fill="#52514e">pooled selection-clean CV beats the frozen previous best,</text>
+  <text x="1106" y="258" font-size="11.5" fill="#52514e">every integrity rule passes, and protected evidence shows no</text>
+  <text x="1106" y="276" font-size="11.5" fill="#52514e">material CV overfitting or transfer reversal</text>
+
+  <rect x="1106" y="294" width="424" height="66" rx="6" fill="#fdf6e5"/>
+  <circle cx="1126" cy="318" r="6" fill="#fab219"/>
+  <text x="1142" y="323" font-size="13" font-weight="600" fill="#0b0b0b">Hold</text>
+  <text x="1106" y="346" font-size="11.5" fill="#52514e">gain is positive but uncertainty or instability is substantial</text>
+
+  <rect x="1106" y="372" width="424" height="66" rx="6" fill="#fbeeee"/>
+  <circle cx="1126" cy="396" r="6" fill="#d03b3b"/>
+  <text x="1142" y="401" font-size="13" font-weight="600" fill="#0b0b0b">Reject</text>
+  <text x="1106" y="424" font-size="11.5" fill="#52514e">gain not positive, integrity fails, or protected evidence reverses</text>
+
+  <text x="1106" y="464" font-size="11.5" fill="#52514e">Only Accept may be packaged. A tiny F4 regression inside uncertainty</text>
+  <text x="1106" y="482" font-size="11.5" fill="#52514e">may still be accepted; a material reversal may not.</text>
+  <text x="1106" y="510" font-size="11.5" font-weight="600" fill="#0b0b0b">Hold and Reject end the run. The spent audit may not be re-queried,</text>
+  <text x="1106" y="528" font-size="11.5" font-weight="600" fill="#0b0b0b">and the failed candidate may not be tuned against it.</text>
+
+  <!-- leaderboard firewall -->
+  <rect x="48" y="562" width="988" height="184" rx="8" fill="#ffffff" stroke="#4a3aa7"/>
+  <text x="70" y="590" font-size="15" font-weight="600" fill="#0b0b0b">After the decision — the leaderboard is monitoring, not a gate</text>
+
+  <rect x="70" y="608" width="286" height="118" rx="6" fill="#f6f6f3"/>
+  <text x="90" y="632" font-size="12" font-weight="600" fill="#0b0b0b">may inform</text>
+  <text x="90" y="656" font-size="11.5" fill="#52514e">whether CV and LB move together</text>
+  <text x="90" y="678" font-size="11.5" fill="#52514e">whether to approve a new parent</text>
+  <text x="90" y="700" font-size="11.5" fill="#52514e">whether a validation review is due</text>
+
+  <rect x="376" y="608" width="286" height="118" rx="6" fill="#fbeeee"/>
+  <text x="396" y="632" font-size="12" font-weight="600" fill="#0b0b0b">may never inform</text>
+  <text x="396" y="656" font-size="11.5" fill="#a33d18">model or checkpoint choice</text>
+  <text x="396" y="678" font-size="11.5" fill="#a33d18">blend weights or offsets</text>
+  <text x="396" y="700" font-size="11.5" fill="#a33d18">postprocessing decisions</text>
+
+  <rect x="682" y="608" width="332" height="118" rx="6" fill="#eeecf8"/>
+  <text x="702" y="632" font-size="12" font-weight="600" fill="#0b0b0b">the parent moves only by hand</text>
+  <text x="702" y="656" font-size="11.5" fill="#52514e">Promotion does not move it. Submission</text>
+  <text x="702" y="678" font-size="11.5" fill="#52514e">does not move it. Only explicit user</text>
+  <text x="702" y="700" font-size="11.5" fill="#52514e">approval after a CV–LB review does.</text>
+
+  <!-- report template -->
+  <rect x="1084" y="562" width="468" height="184" rx="8" fill="#faf9f6" stroke="#e4e3de"/>
+  <text x="1106" y="590" font-size="15" font-weight="600" fill="#0b0b0b">How a run ends</text>
+  <rect x="1106" y="606" width="424" height="120" rx="6" fill="#ffffff" stroke="#e4e3de"/>
+  <g font-size="11" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#52514e">
+    <text x="1124" y="628" fill="#0b0b0b">LEGIT SUBMISSION: YES</text>
+    <text x="1124" y="646">Previous best: &lt;name and commit&gt;</text>
+    <text x="1124" y="666">Fold   prev      cand      gain</text>
+    <text x="1124" y="682">F0…F4  …         …         …</text>
+    <text x="1124" y="698">Pooled …         …         …</text>
+    <text x="1124" y="716">Private kernel: &lt;slug, complete&gt;</text>
+  </g>
+
+  <!-- footer -->
+  <rect x="48" y="770" width="1504" height="58" rx="8" fill="#faf9f6" stroke="#e4e3de"/>
+  <text x="70" y="796" font-size="12" fill="#52514e">Repeated CV-up / LB-down results trigger a validation review. That is the only place the protocol looks at the leaderboard for a signal about itself —</text>
+  <text x="70" y="816" font-size="12" fill="#52514e">not to tune a model, but to ask whether the validation design has started to drift.</text>
+
+  <text x="48" y="866" font-size="11" fill="#8a8983">Rules from CV_PROTOCOL_V5.md and COOKBOOK.md revision 14 · C016 figures from runs/v5_batch2_run_025_goal_050/kaggle_production/package_validation.json</text>
+</svg>

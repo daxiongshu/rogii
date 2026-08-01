@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title>CV Protocol v5 — selection-clean choice</title>
+  <desc>The difference between ordinary cross-validation and selection-clean cross-validation. On the left, the held fold's own score ranks the candidate variants, so the reported score is the maximum over variants and is optimistic. On the right, only the four inner roles of that outer fold rank the variants; the held fold is touched exactly once, to produce the prediction.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#8a8983"/></marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#d03b3b"/></marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#0ca30c"/></marker>
+  </defs>
+  <rect width="1600" height="900" fill="#fcfcfb"/>
+
+  <text x="48" y="52" font-size="26" font-weight="600" fill="#0b0b0b">04 · Selection-clean — the rule most pipelines break quietly</text>
+  <text x="48" y="78" font-size="14" fill="#52514e">Holding a fold out of <tspan font-style="italic">training</tspan> is the easy half. The protocol also holds it out of every <tspan font-style="italic">choice</tspan> made about it.</text>
+  <line x1="48" y1="98" x2="1552" y2="98" stroke="#e4e3de"/>
+
+  <!-- LEFT: leaky -->
+  <rect x="48" y="122" width="726" height="560" rx="8" fill="#ffffff" stroke="#e4c4c4"/>
+  <rect x="48" y="122" width="726" height="44" rx="8" fill="#fbeeee"/>
+  <rect x="48" y="150" width="726" height="16" fill="#fbeeee"/>
+  <circle cx="76" cy="144" r="9" fill="#d03b3b"/>
+  <path d="M 71.5 139.5 L 80.5 148.5 M 80.5 139.5 L 71.5 148.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+  <text x="96" y="149" font-size="15" font-weight="600" fill="#0b0b0b">Ordinary CV — the held fold ranks the variants</text>
+
+  <text x="70" y="196" font-size="12" fill="#52514e">Train each variant on the other four folds, score them all on F0, keep the best.</text>
+
+  <g font-size="11.5">
+    <rect x="70" y="216" width="150" height="28" rx="4" fill="#f0efec"/><text x="145" y="235" text-anchor="middle" fill="#0b0b0b">variant A</text>
+    <rect x="70" y="252" width="150" height="28" rx="4" fill="#f0efec"/><text x="145" y="271" text-anchor="middle" fill="#0b0b0b">variant B</text>
+    <rect x="70" y="288" width="150" height="28" rx="4" fill="#f0efec"/><text x="145" y="307" text-anchor="middle" fill="#0b0b0b">variant C</text>
+    <rect x="70" y="324" width="150" height="28" rx="4" fill="#f0efec"/><text x="145" y="343" text-anchor="middle" fill="#0b0b0b">variant D</text>
+  </g>
+
+  <line x1="228" y1="230" x2="264" y2="270" stroke="#d03b3b" stroke-width="1.5" marker-end="url(#arrowRed)"/>
+  <line x1="228" y1="266" x2="264" y2="278" stroke="#d03b3b" stroke-width="1.5" marker-end="url(#arrowRed)"/>
+  <line x1="228" y1="302" x2="264" y2="290" stroke="#d03b3b" stroke-width="1.5" marker-end="url(#arrowRed)"/>
+  <line x1="228" y1="338" x2="264" y2="298" stroke="#d03b3b" stroke-width="1.5" marker-end="url(#arrowRed)"/>
+
+  <rect x="272" y="240" width="150" height="88" rx="6" fill="#fdd9c8" stroke="#eb6834" stroke-width="2"/>
+  <text x="347" y="278" font-size="15" font-weight="600" fill="#0b0b0b" text-anchor="middle">F0</text>
+  <text x="347" y="298" font-size="10.5" fill="#a33d18" text-anchor="middle">held fold</text>
+  <text x="347" y="314" font-size="10.5" fill="#a33d18" text-anchor="middle">scores all four</text>
+
+  <line x1="430" y1="284" x2="466" y2="284" stroke="#d03b3b" stroke-width="1.5" marker-end="url(#arrowRed)"/>
+  <rect x="474" y="256" width="146" height="56" rx="6" fill="#fbeeee"/>
+  <text x="547" y="280" font-size="12" font-weight="600" fill="#0b0b0b" text-anchor="middle">pick the best</text>
+  <text x="547" y="298" font-size="11" fill="#a33d18" text-anchor="middle">on F0's own score</text>
+
+  <line x1="628" y1="284" x2="664" y2="284" stroke="#d03b3b" stroke-width="1.5" marker-end="url(#arrowRed)"/>
+  <rect x="672" y="256" width="84" height="56" rx="6" fill="#ffffff" stroke="#d03b3b"/>
+  <text x="714" y="280" font-size="12" font-weight="600" fill="#d03b3b" text-anchor="middle">report</text>
+  <text x="714" y="298" font-size="12" font-weight="600" fill="#d03b3b" text-anchor="middle">that score</text>
+
+  <line x1="70" y1="384" x2="752" y2="384" stroke="#f0e0e0"/>
+  <text x="70" y="412" font-size="12" font-weight="600" fill="#0b0b0b">What is actually being reported</text>
+  <text x="70" y="436" font-size="11.5" fill="#52514e">Not the score of a model, but the <tspan font-weight="600">maximum over four variants</tspan> of a noisy quantity —</text>
+  <text x="70" y="454" font-size="11.5" fill="#52514e">and the maximum of noise is biased upward. With four variants the bias is small; with</text>
+  <text x="70" y="472" font-size="11.5" fill="#52514e">the hundreds of variants a real search produces, it is not.</text>
+
+  <rect x="70" y="494" width="682" height="86" rx="6" fill="#fbeeee"/>
+  <text x="92" y="518" font-size="11.5" font-weight="600" fill="#0b0b0b">The tell is that nothing is left to check it against.</text>
+  <text x="92" y="540" font-size="11.5" fill="#52514e">F0 has now been used twice — once to choose, once to report — but only counted once.</text>
+  <text x="92" y="562" font-size="11.5" fill="#52514e">Every fold does the same, so pooling five folds does not average the bias away.</text>
+
+  <text x="70" y="614" font-size="12" font-weight="600" fill="#0b0b0b">The protocol lists this among forbidden behaviour</text>
+  <text x="70" y="638" font-size="11.5" font-style="italic" fill="#52514e">“same-held-fold selection used as clean promotion evidence”</text>
+  <text x="70" y="660" font-size="11.5" fill="#52514e">Same-held-fold results are permitted only as diagnostics, never as promotion evidence.</text>
+
+  <!-- RIGHT: clean -->
+  <rect x="826" y="122" width="726" height="560" rx="8" fill="#ffffff" stroke="#bfe3d3"/>
+  <rect x="826" y="122" width="726" height="44" rx="8" fill="#eaf7f1"/>
+  <rect x="826" y="150" width="726" height="16" fill="#eaf7f1"/>
+  <circle cx="854" cy="144" r="9" fill="#0ca30c"/>
+  <path d="M 849.5 144 L 853 147.5 L 858.5 140.5" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="874" y="149" font-size="15" font-weight="600" fill="#0b0b0b">Selection-clean CV — four other folds rank the variants</text>
+
+  <text x="848" y="196" font-size="12" fill="#52514e">The four inner roles of outer context F0 score the variants. F0 is not among them.</text>
+
+  <g font-size="11.5">
+    <rect x="848" y="216" width="150" height="28" rx="4" fill="#f0efec"/><text x="923" y="235" text-anchor="middle" fill="#0b0b0b">variant A</text>
+    <rect x="848" y="252" width="150" height="28" rx="4" fill="#f0efec"/><text x="923" y="271" text-anchor="middle" fill="#0b0b0b">variant B</text>
+    <rect x="848" y="288" width="150" height="28" rx="4" fill="#f0efec"/><text x="923" y="307" text-anchor="middle" fill="#0b0b0b">variant C</text>
+    <rect x="848" y="324" width="150" height="28" rx="4" fill="#f0efec"/><text x="923" y="343" text-anchor="middle" fill="#0b0b0b">variant D</text>
+  </g>
+
+  <line x1="1006" y1="230" x2="1042" y2="252" stroke="#8a8983" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="1006" y1="266" x2="1042" y2="270" stroke="#8a8983" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="1006" y1="302" x2="1042" y2="292" stroke="#8a8983" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="1006" y1="338" x2="1042" y2="310" stroke="#8a8983" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="1050" y="222" width="150" height="128" rx="6" fill="#eaf2fd" stroke="#2a78d6"/>
+  <text x="1125" y="246" font-size="11.5" font-weight="600" fill="#0b0b0b" text-anchor="middle">inner roles of F0</text>
+  <g font-size="11" fill="#2f5f9e" text-anchor="middle">
+    <text x="1125" y="270">validate on F1</text>
+    <text x="1125" y="290">validate on F2</text>
+    <text x="1125" y="310">validate on F3</text>
+    <text x="1125" y="330">validate on F4</text>
+  </g>
+
+  <line x1="1208" y1="286" x2="1244" y2="286" stroke="#0ca30c" stroke-width="1.5" marker-end="url(#arrowGreen)"/>
+  <rect x="1252" y="258" width="146" height="56" rx="6" fill="#eaf7f1"/>
+  <text x="1325" y="282" font-size="12" font-weight="600" fill="#0b0b0b" text-anchor="middle">pick the best</text>
+  <text x="1325" y="300" font-size="11" fill="#1a7d52" text-anchor="middle">without F0</text>
+
+  <line x1="1406" y1="286" x2="1442" y2="286" stroke="#0ca30c" stroke-width="1.5" marker-end="url(#arrowGreen)"/>
+  <rect x="1450" y="248" width="84" height="76" rx="6" fill="#fdd9c8" stroke="#eb6834" stroke-width="2"/>
+  <text x="1492" y="278" font-size="15" font-weight="600" fill="#0b0b0b" text-anchor="middle">F0</text>
+  <text x="1492" y="298" font-size="10" fill="#a33d18" text-anchor="middle">predicted</text>
+  <text x="1492" y="312" font-size="10" fill="#a33d18" text-anchor="middle">once</text>
+
+  <line x1="848" y1="384" x2="1530" y2="384" stroke="#dff0e8"/>
+  <text x="848" y="412" font-size="12" font-weight="600" fill="#0b0b0b">Four things a fold may never choose for itself</text>
+  <g font-size="11.5" fill="#52514e">
+    <text x="848" y="438">the <tspan font-weight="600" fill="#0b0b0b">checkpoint</tspan> — which epoch or snapshot is used</text>
+    <text x="848" y="458">the <tspan font-weight="600" fill="#0b0b0b">decoder</tspan> — how the likelihood becomes a path</text>
+    <text x="848" y="478">the <tspan font-weight="600" fill="#0b0b0b">postprocessor</tspan> — smoothing, extrapolation, clipping</text>
+    <text x="848" y="498">the <tspan font-weight="600" fill="#0b0b0b">blend weight</tspan> — how much of the candidate is mixed in</text>
+  </g>
+
+  <rect x="848" y="518" width="682" height="62" rx="6" fill="#eaf7f1"/>
+  <text x="870" y="542" font-size="11.5" font-weight="600" fill="#0b0b0b">The held fold is touched exactly once, to produce a prediction.</text>
+  <text x="870" y="564" font-size="11.5" fill="#52514e">Its score is then a measurement, not the maximum of a search.</text>
+
+  <text x="848" y="614" font-size="12" font-weight="600" fill="#0b0b0b">One deliberate, bounded exception</text>
+  <text x="848" y="638" font-size="11.5" fill="#52514e">After acceptance, a family may pick the best of three already-frozen snapshots on the held</text>
+  <text x="848" y="660" font-size="11.5" fill="#52514e">fold. That number is labelled <tspan font-style="italic">production-parity diagnostic</tspan> and cannot change promotion.</text>
+
+  <!-- footer band -->
+  <rect x="48" y="706" width="1504" height="122" rx="8" fill="#faf9f6" stroke="#e4e3de"/>
+  <text x="70" y="734" font-size="15" font-weight="600" fill="#0b0b0b">Why this is the expensive rule</text>
+  <text x="70" y="760" font-size="12" fill="#52514e">Ordinary CV needs 5 training runs. Selection-clean CV needs 15 — the 5 outer models plus the 10 pair models whose only job is to rank variants</text>
+  <text x="70" y="780" font-size="12" fill="#52514e">without the fold being ranked for. Three times the compute buys one property: the reported number is not the argmax of the thing it reports.</text>
+  <text x="70" y="808" font-size="12" font-weight="600" fill="#0b0b0b">It is also why the protocol calls its result <tspan font-style="italic">selection-clean</tspan> rather than simply <tspan font-style="italic">cross-validated</tspan>.</text>
+
+  <text x="48" y="866" font-size="11" fill="#8a8983">Rules from limited_query_cv/CV_PROTOCOL_V5.md §2–3 and the forbidden-behaviour list, revision 14</text>
+</svg>

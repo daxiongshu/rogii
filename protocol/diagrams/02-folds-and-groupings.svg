@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title>CV Protocol v5 — folds and groupings</title>
+  <desc>How the 773 wells are split: always by complete well, never by row; five folds with F4 prospectively sealed; and three whole-well groupings — original, balanced and independent — that partition the same wells differently so weight estimation and regrouping audits can be repeated on an independent partition.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#8a8983"/></marker>
+    <g id="cross"><path d="M 0.6 0.6 L 8.4 8.4 M 8.4 0.6 L 0.6 8.4" fill="none" stroke="#d03b3b" stroke-width="2" stroke-linecap="round"/></g>
+    <g id="tick"><path d="M 0 4 L 3.4 7.4 L 9 0.6" fill="none" stroke="#1baf7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+  </defs>
+  <rect width="1600" height="900" fill="#fcfcfb"/>
+
+  <text x="48" y="52" font-size="26" font-weight="600" fill="#0b0b0b">02 · Folds — whole wells, three groupings, one sealed audit</text>
+  <text x="48" y="78" font-size="14" fill="#52514e">773 wells, 3,783,989 rows. A well is the atomic unit: every row of a well lands in the same fold, in every grouping.</text>
+  <line x1="48" y1="98" x2="1552" y2="98" stroke="#e4e3de"/>
+
+  <!-- why whole well -->
+  <rect x="48" y="122" width="486" height="196" rx="8" fill="#ffffff" stroke="#e4e3de"/>
+  <text x="70" y="150" font-size="15" font-weight="600" fill="#0b0b0b">The split unit is a complete well</text>
+
+  <use href="#cross" x="70" y="170"/>
+  <text x="92" y="179" font-size="12" font-weight="600" fill="#0b0b0b">random rows</text>
+  <g>
+    <rect x="92" y="190" width="200" height="22" rx="3" fill="#f0efec"/>
+    <rect x="96" y="193" width="16" height="16" rx="2" fill="#cde2fb"/><rect x="116" y="193" width="16" height="16" rx="2" fill="#fdd9c8"/>
+    <rect x="136" y="193" width="16" height="16" rx="2" fill="#cde2fb"/><rect x="156" y="193" width="16" height="16" rx="2" fill="#cde2fb"/>
+    <rect x="176" y="193" width="16" height="16" rx="2" fill="#fdd9c8"/><rect x="196" y="193" width="16" height="16" rx="2" fill="#cde2fb"/>
+    <rect x="216" y="193" width="16" height="16" rx="2" fill="#fdd9c8"/><rect x="236" y="193" width="16" height="16" rx="2" fill="#cde2fb"/>
+    <rect x="256" y="193" width="16" height="16" rx="2" fill="#fdd9c8"/><rect x="276" y="193" width="12" height="16" rx="2" fill="#cde2fb"/>
+  </g>
+  <text x="302" y="205" font-size="11.5" fill="#a33d18">one well straddles train and validation —</text>
+  <text x="302" y="220" font-size="11.5" fill="#a33d18">the same-well future label leaks</text>
+
+  <use href="#tick" x="70" y="242"/>
+  <text x="92" y="251" font-size="12" font-weight="600" fill="#0b0b0b">complete wells</text>
+  <g>
+    <rect x="92" y="262" width="200" height="22" rx="3" fill="#f0efec"/>
+    <rect x="96" y="265" width="76" height="16" rx="2" fill="#cde2fb"/>
+    <rect x="176" y="265" width="52" height="16" rx="2" fill="#cde2fb"/>
+    <rect x="232" y="265" width="56" height="16" rx="2" fill="#fdd9c8"/>
+  </g>
+  <text x="302" y="277" font-size="11.5" fill="#52514e">a well is never divided; the hidden tail</text>
+  <text x="302" y="292" font-size="11.5" fill="#52514e">of a validation well is genuinely unseen</text>
+
+  <!-- five folds -->
+  <rect x="558" y="122" width="994" height="196" rx="8" fill="#ffffff" stroke="#e4e3de"/>
+  <text x="580" y="150" font-size="15" font-weight="600" fill="#0b0b0b">The original grouping — four open, one prospectively sealed</text>
+
+  <g>
+    <rect x="580" y="170" width="176" height="58" rx="6" fill="#cde2fb" stroke="#2a78d6"/>
+    <text x="668" y="194" font-size="15" font-weight="600" fill="#0b0b0b" text-anchor="middle">F0</text>
+    <text x="668" y="212" font-size="10.5" fill="#2f5f9e" text-anchor="middle">155 wells · 755,859 rows</text>
+
+    <rect x="768" y="170" width="176" height="58" rx="6" fill="#cde2fb" stroke="#2a78d6"/>
+    <text x="856" y="194" font-size="15" font-weight="600" fill="#0b0b0b" text-anchor="middle">F1</text>
+    <text x="856" y="212" font-size="10.5" fill="#2f5f9e" text-anchor="middle">155 wells · 777,866 rows</text>
+
+    <rect x="956" y="170" width="176" height="58" rx="6" fill="#cde2fb" stroke="#2a78d6"/>
+    <text x="1044" y="194" font-size="15" font-weight="600" fill="#0b0b0b" text-anchor="middle">F2</text>
+    <text x="1044" y="212" font-size="10.5" fill="#2f5f9e" text-anchor="middle">155 wells · 758,564 rows</text>
+
+    <rect x="1144" y="170" width="176" height="58" rx="6" fill="#cde2fb" stroke="#2a78d6"/>
+    <text x="1232" y="194" font-size="15" font-weight="600" fill="#0b0b0b" text-anchor="middle">F3</text>
+    <text x="1232" y="212" font-size="10.5" fill="#2f5f9e" text-anchor="middle">154 wells · 746,299 rows</text>
+
+    <rect x="1332" y="170" width="198" height="58" rx="6" fill="#fdd9c8" stroke="#eb6834" stroke-width="2"/>
+    <text x="1424" y="194" font-size="15" font-weight="600" fill="#0b0b0b" text-anchor="middle">F4</text>
+    <text x="1424" y="212" font-size="10.5" fill="#a33d18" text-anchor="middle">154 wells · 745,401 rows</text>
+    <path d="M 1494 176 a 7 7 0 0 1 14 0 v 5 h -4 v -5 a 3 3 0 0 0 -6 0 v 5 h -4 z" fill="#eb6834"/>
+    <rect x="1492" y="180" width="18" height="13" rx="2.5" fill="#eb6834"/>
+  </g>
+
+  <text x="580" y="256" font-size="12" fill="#2a78d6" font-weight="600">F0–F3 · development</text>
+  <text x="580" y="274" font-size="11.5" fill="#52514e">Targets, errors, residuals, subgroups and worst wells may all be read, without limit.</text>
+  <text x="580" y="292" font-size="11.5" fill="#52514e">Every interactive research decision is made here and logged.</text>
+
+  <text x="1120" y="256" font-size="12" fill="#eb6834" font-weight="600">F4 · protected</text>
+  <text x="1120" y="274" font-size="11.5" fill="#52514e">Label-free checks only until the reveal: schema, missingness,</text>
+  <text x="1120" y="292" font-size="11.5" fill="#52514e">shape, finiteness, runtime, a preregistered range check.</text>
+
+  <!-- three groupings -->
+  <rect x="48" y="342" width="1504" height="330" rx="8" fill="#ffffff" stroke="#e4e3de"/>
+  <text x="70" y="370" font-size="15" font-weight="600" fill="#0b0b0b">Three whole-well groupings of the same 773 wells</text>
+  <text x="70" y="392" font-size="12" fill="#52514e">The same wells, partitioned three different ways. Weights are estimated under all three and the audit reports regrouping sensitivity, so a result that depends on one particular partition is visible as instability rather than passing unnoticed.</text>
+
+  <g font-size="11.5">
+    <text x="70" y="432" font-weight="600" fill="#0b0b0b">original</text>
+    <text x="70" y="448" fill="#6d6c66">the fold map v20 was built on</text>
+    <rect x="230" y="416" width="248" height="26" rx="4" fill="#cde2fb" stroke="#2a78d6"/><text x="354" y="434" text-anchor="middle" fill="#0b0b0b">155 · 755,859</text>
+    <rect x="486" y="416" width="248" height="26" rx="4" fill="#cde2fb" stroke="#2a78d6"/><text x="610" y="434" text-anchor="middle" fill="#0b0b0b">155 · 777,866</text>
+    <rect x="742" y="416" width="248" height="26" rx="4" fill="#cde2fb" stroke="#2a78d6"/><text x="866" y="434" text-anchor="middle" fill="#0b0b0b">155 · 758,564</text>
+    <rect x="998" y="416" width="248" height="26" rx="4" fill="#cde2fb" stroke="#2a78d6"/><text x="1122" y="434" text-anchor="middle" fill="#0b0b0b">154 · 746,299</text>
+    <rect x="1254" y="416" width="248" height="26" rx="4" fill="#fdd9c8" stroke="#eb6834"/><text x="1378" y="434" text-anchor="middle" fill="#0b0b0b">154 · 745,401</text>
+
+    <text x="70" y="490" font-weight="600" fill="#0b0b0b">balanced</text>
+    <text x="70" y="506" fill="#6d6c66">stratified whole-well split</text>
+    <rect x="230" y="474" width="248" height="26" rx="4" fill="#e8f1fc" stroke="#9ec5f4"/><text x="354" y="492" text-anchor="middle" fill="#0b0b0b">155 · 743,998</text>
+    <rect x="486" y="474" width="248" height="26" rx="4" fill="#e8f1fc" stroke="#9ec5f4"/><text x="610" y="492" text-anchor="middle" fill="#0b0b0b">155 · 766,497</text>
+    <rect x="742" y="474" width="248" height="26" rx="4" fill="#e8f1fc" stroke="#9ec5f4"/><text x="866" y="492" text-anchor="middle" fill="#0b0b0b">155 · 766,197</text>
+    <rect x="998" y="474" width="248" height="26" rx="4" fill="#e8f1fc" stroke="#9ec5f4"/><text x="1122" y="492" text-anchor="middle" fill="#0b0b0b">154 · 734,712</text>
+    <rect x="1254" y="474" width="248" height="26" rx="4" fill="#e8f1fc" stroke="#9ec5f4"/><text x="1378" y="492" text-anchor="middle" fill="#0b0b0b">154 · 772,585</text>
+
+    <text x="70" y="548" font-weight="600" fill="#0b0b0b">independent</text>
+    <text x="70" y="564" fill="#6d6c66">a third disjoint partition</text>
+    <rect x="230" y="532" width="248" height="26" rx="4" fill="#f2f7fe" stroke="#b7d3f6"/><text x="354" y="550" text-anchor="middle" fill="#0b0b0b">155 · 756,707</text>
+    <rect x="486" y="532" width="248" height="26" rx="4" fill="#f2f7fe" stroke="#b7d3f6"/><text x="610" y="550" text-anchor="middle" fill="#0b0b0b">155 · 756,408</text>
+    <rect x="742" y="532" width="248" height="26" rx="4" fill="#f2f7fe" stroke="#b7d3f6"/><text x="866" y="550" text-anchor="middle" fill="#0b0b0b">155 · 778,082</text>
+    <rect x="998" y="532" width="248" height="26" rx="4" fill="#f2f7fe" stroke="#b7d3f6"/><text x="1122" y="550" text-anchor="middle" fill="#0b0b0b">154 · 721,919</text>
+    <rect x="1254" y="532" width="248" height="26" rx="4" fill="#f2f7fe" stroke="#b7d3f6"/><text x="1378" y="550" text-anchor="middle" fill="#0b0b0b">154 · 770,873</text>
+  </g>
+  <text x="230" y="404" font-size="10.5" fill="#8a8983">fold 0</text>
+  <text x="486" y="404" font-size="10.5" fill="#8a8983">fold 1</text>
+  <text x="742" y="404" font-size="10.5" fill="#8a8983">fold 2</text>
+  <text x="998" y="404" font-size="10.5" fill="#8a8983">fold 3</text>
+  <text x="1254" y="404" font-size="10.5" fill="#8a8983">fold 4</text>
+
+  <line x1="70" y1="588" x2="1530" y2="588" stroke="#eeede9"/>
+  <text x="70" y="612" font-size="12" font-weight="600" fill="#0b0b0b">Every grouping keeps 773 wells and 3,783,989 rows — only the assignment changes</text>
+  <text x="70" y="634" font-size="11.5" fill="#52514e">Because the wells are identical, pooled RMSE under any grouping is computed on exactly the same rows. That is what makes a regrouping audit a fair</text>
+  <text x="70" y="652" font-size="11.5" fill="#52514e">comparison rather than a different benchmark: the candidate and the frozen parent are always scored on identical folds, rows, masks and RMSE definition.</text>
+
+  <!-- second grouping / decay -->
+  <rect x="48" y="696" width="740" height="140" rx="8" fill="#ffffff" stroke="#e4e3de"/>
+  <text x="70" y="724" font-size="15" font-weight="600" fill="#0b0b0b">The second grouping decays on contact</text>
+  <text x="70" y="748" font-size="11.5" fill="#52514e">The working F0–F3 split may be queried constantly. A second whole-well grouping is</text>
+  <text x="70" y="766" font-size="11.5" fill="#52514e">preregistered and queried only at milestones — but the moment its result changes a</text>
+  <text x="70" y="784" font-size="11.5" fill="#52514e">decision, it stops being a holdout and is reclassified as development evidence.</text>
+  <text x="70" y="810" font-size="11.5" font-weight="600" fill="#0b0b0b">Before the freeze, a still-untouched grouping or a new preregistered one is required.</text>
+
+  <rect x="812" y="696" width="740" height="140" rx="8" fill="#faf9f6" stroke="#e4e3de"/>
+  <text x="834" y="724" font-size="15" font-weight="600" fill="#0b0b0b">Prospectively protected, not historically pristine</text>
+  <text x="834" y="748" font-size="11.5" fill="#52514e">Historical work before the protocol saw F4. The firewall applies from activation</text>
+  <text x="834" y="766" font-size="11.5" fill="#52514e">forward, so the protocol calls F4 protected rather than clean, and labels the official</text>
+  <text x="834" y="784" font-size="11.5" fill="#52514e">five-fold result <tspan font-style="italic">selection-clean, development-exposed</tspan> rather than unbiased.</text>
+  <text x="834" y="810" font-size="11.5" font-weight="600" fill="#0b0b0b">The label is part of the result, not a footnote to it.</text>
+
+  <text x="48" y="872" font-size="11" fill="#8a8983">Fold sizes computed from rogii_v20_oof_vault/layout.npz · rules from limited_query_cv/CV_PROTOCOL_V5.md, revision 14</text>
+</svg>

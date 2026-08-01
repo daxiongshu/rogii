@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title>CV Protocol v5 — query budget and lineage</title>
+  <desc>The economics of the protocol: 36,450 inner trials against 5 protected reveals, one reveal per batch across six batches, what spends a reveal and what does not, how a spent boundary is replaced, and the three approved generations v20, C016 and Run4 with their CV and leaderboard movements.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#8a8983"/></marker>
+    <marker id="arrowLight" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#b6b5ad"/></marker>
+    <g id="cross"><path d="M 0.6 0.6 L 8.4 8.4 M 8.4 0.6 L 0.6 8.4" fill="none" stroke="#d03b3b" stroke-width="2" stroke-linecap="round"/></g>
+    <g id="tick"><path d="M 0 4 L 3.4 7.4 L 9 0.6" fill="none" stroke="#1baf7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+  </defs>
+  <rect width="1600" height="900" fill="#fcfcfb"/>
+
+  <text x="48" y="52" font-size="26" font-weight="600" fill="#0b0b0b">07 · The query budget — what the whole design is buying</text>
+  <text x="48" y="78" font-size="14" fill="#52514e">Overfitting is treated as a function of how often the judge is consulted, not how hard the search works. So the search is free and the judge is rationed.</text>
+  <line x1="48" y1="98" x2="1552" y2="98" stroke="#e4e3de"/>
+
+  <!-- the ratio -->
+  <rect x="48" y="122" width="700" height="228" rx="8" fill="#ffffff" stroke="#e4e3de"/>
+  <text x="70" y="150" font-size="15" font-weight="600" fill="#0b0b0b">The ratio, as recorded in the ledger</text>
+
+  <rect x="70" y="170" width="316" height="150" rx="6" fill="#eaf2fd"/>
+  <text x="228" y="228" font-size="42" font-weight="600" fill="#2a78d6" text-anchor="middle">36,450</text>
+  <text x="228" y="254" font-size="12.5" font-weight="600" fill="#0b0b0b" text-anchor="middle">inner trials</text>
+  <text x="228" y="278" font-size="11.5" fill="#52514e" text-anchor="middle">unlimited, unreported, and not</text>
+  <text x="228" y="296" font-size="11.5" fill="#52514e" text-anchor="middle">a result under any circumstance</text>
+
+  <rect x="410" y="170" width="316" height="150" rx="6" fill="#fdf0ea"/>
+  <text x="568" y="228" font-size="42" font-weight="600" fill="#eb6834" text-anchor="middle">5</text>
+  <text x="568" y="254" font-size="12.5" font-weight="600" fill="#0b0b0b" text-anchor="middle">protected reveals</text>
+  <text x="568" y="278" font-size="11.5" fill="#52514e" text-anchor="middle">the only measurements that may</text>
+  <text x="568" y="296" font-size="11.5" fill="#52514e" text-anchor="middle">be quoted as a result</text>
+
+  <!-- what spends -->
+  <rect x="772" y="122" width="780" height="228" rx="8" fill="#ffffff" stroke="#e4e3de"/>
+  <text x="794" y="150" font-size="15" font-weight="600" fill="#0b0b0b">What spends a reveal</text>
+
+  <use href="#cross" x="794" y="172"/>
+  <text x="816" y="181" font-size="12" font-weight="600" fill="#0b0b0b">spends it</text>
+  <g font-size="11.5" fill="#52514e">
+    <text x="816" y="204">opening protected truth for a frozen candidate</text>
+    <text x="816" y="224">any joint reveal, whether it accepts or rejects</text>
+    <text x="816" y="244">a promotion audit for one named candidate</text>
+  </g>
+
+  <use href="#tick" x="1150" y="172"/>
+  <text x="1172" y="181" font-size="12" font-weight="600" fill="#0b0b0b">does not spend it</text>
+  <g font-size="11.5" fill="#52514e">
+    <text x="1172" y="204">any amount of F0–F3 work</text>
+    <text x="1172" y="224">label-free F4 checks — schema, shape, runtime</text>
+    <text x="1172" y="244">a failed fixed-batch control, which is not CV evidence</text>
+  </g>
+
+  <rect x="794" y="264" width="736" height="66" rx="6" fill="#fbeeee"/>
+  <text x="814" y="288" font-size="11.5" font-weight="600" fill="#0b0b0b">Once spent, the evidence is not reusable.</text>
+  <text x="814" y="310" font-size="11.5" fill="#52514e">A materially revised pipeline needs a genuinely new validation boundary; the spent result may not serve as its confirmation.</text>
+
+  <!-- batch structure -->
+  <rect x="48" y="374" width="1504" height="216" rx="8" fill="#ffffff" stroke="#e4e3de"/>
+  <text x="70" y="402" font-size="15" font-weight="600" fill="#0b0b0b">Six batches, one reveal each</text>
+  <text x="70" y="424" font-size="11.5" fill="#52514e">Up to five candidate families may be developed inside a batch, but they share a single joint reveal — which is why the protocol prefers three to five families in one query rather than one at a time.</text>
+
+  <g>
+    <rect x="70" y="444" width="228" height="104" rx="6" fill="#f6f6f3" stroke="#d8d7d1"/>
+    <text x="184" y="470" font-size="13" font-weight="600" fill="#0b0b0b" text-anchor="middle">Batch 1</text>
+    <text x="184" y="492" font-size="11" fill="#6d6c66" text-anchor="middle">complete</text>
+    <text x="184" y="516" font-size="11" fill="#6d6c66" text-anchor="middle">no promotion</text>
+    <circle cx="184" cy="534" r="5" fill="#b6b5ad"/>
+
+    <rect x="310" y="444" width="228" height="104" rx="6" fill="#eaf7f1" stroke="#bfe3d3"/>
+    <text x="424" y="470" font-size="13" font-weight="600" fill="#0b0b0b" text-anchor="middle">Batch 2</text>
+    <text x="424" y="492" font-size="11" fill="#6d6c66" text-anchor="middle">complete</text>
+    <text x="424" y="516" font-size="11" font-weight="600" fill="#1a7d52" text-anchor="middle">C016 promoted</text>
+    <circle cx="424" cy="534" r="5" fill="#0ca30c"/>
+
+    <rect x="550" y="444" width="228" height="104" rx="6" fill="#eaf7f1" stroke="#bfe3d3"/>
+    <text x="664" y="470" font-size="13" font-weight="600" fill="#0b0b0b" text-anchor="middle">Batch 3</text>
+    <text x="664" y="492" font-size="11" fill="#6d6c66" text-anchor="middle">complete</text>
+    <text x="664" y="516" font-size="11" font-weight="600" fill="#1a7d52" text-anchor="middle">Run4 promoted</text>
+    <circle cx="664" cy="534" r="5" fill="#0ca30c"/>
+
+    <rect x="790" y="444" width="228" height="104" rx="6" fill="#f6f6f3" stroke="#d8d7d1"/>
+    <text x="904" y="470" font-size="13" font-weight="600" fill="#0b0b0b" text-anchor="middle">Batch 4</text>
+    <text x="904" y="492" font-size="11" fill="#6d6c66" text-anchor="middle">complete</text>
+    <circle cx="904" cy="534" r="5" fill="#b6b5ad"/>
+
+    <rect x="1030" y="444" width="228" height="104" rx="6" fill="#f6f6f3" stroke="#d8d7d1"/>
+    <text x="1144" y="470" font-size="13" font-weight="600" fill="#0b0b0b" text-anchor="middle">Batch 5</text>
+    <text x="1144" y="492" font-size="11" fill="#6d6c66" text-anchor="middle">complete</text>
+    <text x="1144" y="516" font-size="11" fill="#6d6c66" text-anchor="middle">new boundary</text>
+    <circle cx="1144" cy="534" r="5" fill="#b6b5ad"/>
+
+    <rect x="1270" y="444" width="260" height="104" rx="6" fill="#ffffff" stroke="#eb6834" stroke-dasharray="5 4"/>
+    <text x="1400" y="470" font-size="13" font-weight="600" fill="#0b0b0b" text-anchor="middle">Batch 6</text>
+    <text x="1400" y="492" font-size="11" font-weight="600" fill="#eb6834" text-anchor="middle">the last reveal</text>
+    <text x="1400" y="516" font-size="11" fill="#6d6c66" text-anchor="middle">new boundary registered</text>
+    <circle cx="1400" cy="534" r="5" fill="none" stroke="#eb6834" stroke-width="2"/>
+  </g>
+
+  <text x="70" y="572" font-size="11.5" fill="#52514e">Run numbers advance monotonically inside a batch and epoch — 25 development runs in batch 2 alone — but they all funnel into that batch's single reveal.</text>
+
+  <!-- boundary replacement -->
+  <rect x="48" y="614" width="700" height="214" rx="8" fill="#ffffff" stroke="#e4e3de"/>
+  <text x="70" y="642" font-size="15" font-weight="600" fill="#0b0b0b">When a boundary is used up</text>
+  <text x="70" y="664" font-size="11.5" fill="#52514e">A spent grouping cannot be re-queried, so a new batch registers a fresh</text>
+  <text x="70" y="682" font-size="11.5" fill="#52514e">target-free whole-well grouping, frozen before any metric is computed.</text>
+
+  <rect x="70" y="698" width="316" height="60" rx="6" fill="#f6f6f3"/>
+  <text x="228" y="722" font-size="11.5" font-weight="600" fill="#0b0b0b" text-anchor="middle">batch 5</text>
+  <text x="228" y="742" font-size="11" fill="#52514e" text-anchor="middle">cluster-balanced, target-free</text>
+
+  <rect x="410" y="698" width="316" height="60" rx="6" fill="#f6f6f3"/>
+  <text x="568" y="722" font-size="11.5" font-weight="600" fill="#0b0b0b" text-anchor="middle">batch 6</text>
+  <text x="568" y="742" font-size="11" fill="#52514e" text-anchor="middle">representative boundary</text>
+
+  <text x="70" y="786" font-size="11.5" fill="#52514e">Both were built by a committed builder script and hash-locked before use.</text>
+  <text x="70" y="806" font-size="11.5" font-weight="600" fill="#0b0b0b">This is the mechanism to watch: a fresh boundary is the correct</text>
+  <text x="70" y="824" font-size="11.5" font-weight="600" fill="#0b0b0b">answer to a spent one, and also how a holdout supply turns endless.</text>
+
+  <!-- lineage -->
+  <rect x="772" y="614" width="780" height="214" rx="8" fill="#ffffff" stroke="#e4e3de"/>
+  <text x="794" y="642" font-size="15" font-weight="600" fill="#0b0b0b">What five reveals bought</text>
+
+  <g font-size="11.5">
+    <text x="794" y="672" font-size="10.5" fill="#8a8983">solution</text>
+    <text x="1074" y="672" font-size="10.5" fill="#8a8983" text-anchor="end">pooled OOF</text>
+    <text x="1234" y="672" font-size="10.5" fill="#8a8983" text-anchor="end">CV gain</text>
+    <text x="1394" y="672" font-size="10.5" fill="#8a8983" text-anchor="end">public LB</text>
+    <text x="1530" y="672" font-size="10.5" fill="#8a8983" text-anchor="end">LB gain</text>
+    <line x1="794" y1="680" x2="1530" y2="680" stroke="#e4e3de"/>
+
+    <text x="794" y="706" font-weight="600" fill="#0b0b0b">v20</text>
+    <text x="856" y="706" fill="#6d6c66">root baseline</text>
+    <text x="1074" y="706" text-anchor="end" fill="#0b0b0b">6.189485</text>
+    <text x="1234" y="706" text-anchor="end" fill="#8a8983">—</text>
+    <text x="1394" y="706" text-anchor="end" fill="#0b0b0b">6.263</text>
+    <text x="1530" y="706" text-anchor="end" fill="#8a8983">—</text>
+
+    <text x="794" y="736" font-weight="600" fill="#0b0b0b">C016</text>
+    <text x="856" y="736" fill="#6d6c66">residual nets on v20 components</text>
+    <text x="1074" y="736" text-anchor="end" fill="#0b0b0b">6.127273</text>
+    <text x="1234" y="736" text-anchor="end" font-weight="600" fill="#1baf7a">+0.062212</text>
+    <text x="1394" y="736" text-anchor="end" fill="#0b0b0b">6.127</text>
+    <text x="1530" y="736" text-anchor="end" font-weight="600" fill="#1baf7a">+0.136</text>
+
+    <text x="794" y="766" font-weight="600" fill="#0b0b0b">Run4</text>
+    <text x="856" y="766" fill="#6d6c66">structural / surface router</text>
+    <text x="1074" y="766" text-anchor="end" fill="#0b0b0b">6.066501</text>
+    <text x="1234" y="766" text-anchor="end" font-weight="600" fill="#1baf7a">+0.060772</text>
+    <text x="1394" y="766" text-anchor="end" fill="#0b0b0b">5.962</text>
+    <text x="1530" y="766" text-anchor="end" font-weight="600" fill="#1baf7a">+0.165</text>
+  </g>
+
+  <rect x="794" y="784" width="736" height="30" rx="6" fill="#eaf7f1"/>
+  <text x="1162" y="804" font-size="11.5" fill="#52514e" text-anchor="middle">CV and LB moved the same direction both times — the consistency check that keeps the validation design trusted.</text>
+
+  <text x="48" y="866" font-size="11" fill="#8a8983">Counts from limited_query_cv/cv_query_ledger_v5.json and frozen_previous_best_v5.json at snapshot commit c34b9212</text>
+</svg>
