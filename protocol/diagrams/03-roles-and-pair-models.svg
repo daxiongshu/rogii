@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
   <title>CV Protocol v5 — roles and pair models</title>
-  <desc>What a role is and why there are only ten pair models. A role is an (outer context, validation fold) assignment. Five outer roles predict their held fold; twenty inner roles choose each outer fold's recipe. Because role (Fi,Fj) and role (Fj,Fi) train on the same three folds, one model fills both, so twenty inner roles collapse to ten excluded-pair runs: 25 roles, 15 training runs, 5 deployed checkpoints.</desc>
+  <desc>What a role is and why there are only ten pair models. A role is an (outer context, validation fold) assignment. Five outer roles predict their held fold; twenty inner roles choose each outer fold's recipe. Because role (Fi,Fj) and role (Fj,Fi) train on the same three folds, one model fills both, so twenty inner roles collapse to ten excluded-pair runs: 25 roles, 15 training runs, 5 deployed checkpoints. Worked through with F4 as the held fold.</desc>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#8a8983"/></marker>
     <marker id="arrowOr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#eb6834"/></marker>
@@ -8,61 +8,61 @@
   <rect width="1600" height="900" fill="#fcfcfb"/>
 
   <text x="48" y="52" font-size="26" font-weight="600" fill="#0b0b0b">03 · Roles — and why there are only ten pair models</text>
-  <text x="48" y="78" font-size="14" fill="#52514e">A role is one job: which fold am I predicting, and in whose service. The training set follows from the answer.</text>
+  <text x="48" y="78" font-size="14" fill="#52514e">A role is one job: which fold am I predicting, and in whose service. The training set follows from the answer. Worked through with <tspan font-weight="600" fill="#0b0b0b">F4</tspan> as the held fold.</text>
   <line x1="48" y1="98" x2="1552" y2="98" stroke="#e4e3de"/>
 
-  <!-- definition: outer role -->
+  <!-- outer role -->
   <rect x="48" y="122" width="730" height="228" rx="8" fill="#ffffff" stroke="#eb6834"/>
   <text x="70" y="150" font-size="15" font-weight="600" fill="#0b0b0b">Outer role — 5 of them, one per fold</text>
   <text x="70" y="172" font-size="12" fill="#52514e">Train on four folds, predict the fifth once. These five models are the only ones that ship.</text>
 
-  <text x="70" y="204" font-size="11.5" font-weight="600" fill="#0b0b0b">outer = F0</text>
+  <text x="70" y="204" font-size="11.5" font-weight="600" fill="#0b0b0b">outer = F4</text>
   <g>
-    <rect x="160" y="188" width="104" height="26" rx="4" fill="#cde2fb" stroke="#2a78d6"/><text x="212" y="206" font-size="11.5" fill="#0b0b0b" text-anchor="middle">F1</text>
-    <rect x="270" y="188" width="104" height="26" rx="4" fill="#cde2fb" stroke="#2a78d6"/><text x="322" y="206" font-size="11.5" fill="#0b0b0b" text-anchor="middle">F2</text>
-    <rect x="380" y="188" width="104" height="26" rx="4" fill="#cde2fb" stroke="#2a78d6"/><text x="432" y="206" font-size="11.5" fill="#0b0b0b" text-anchor="middle">F3</text>
-    <rect x="490" y="188" width="104" height="26" rx="4" fill="#cde2fb" stroke="#2a78d6"/><text x="542" y="206" font-size="11.5" fill="#0b0b0b" text-anchor="middle">F4</text>
+    <rect x="160" y="188" width="104" height="26" rx="4" fill="#cde2fb" stroke="#2a78d6"/><text x="212" y="206" font-size="11.5" fill="#0b0b0b" text-anchor="middle">F0</text>
+    <rect x="270" y="188" width="104" height="26" rx="4" fill="#cde2fb" stroke="#2a78d6"/><text x="322" y="206" font-size="11.5" fill="#0b0b0b" text-anchor="middle">F1</text>
+    <rect x="380" y="188" width="104" height="26" rx="4" fill="#cde2fb" stroke="#2a78d6"/><text x="432" y="206" font-size="11.5" fill="#0b0b0b" text-anchor="middle">F2</text>
+    <rect x="490" y="188" width="104" height="26" rx="4" fill="#cde2fb" stroke="#2a78d6"/><text x="542" y="206" font-size="11.5" fill="#0b0b0b" text-anchor="middle">F3</text>
     <text x="606" y="206" font-size="10.5" fill="#6d6c66">train</text>
-    <rect x="646" y="188" width="104" height="26" rx="4" fill="#fdd9c8" stroke="#eb6834" stroke-width="2"/><text x="698" y="206" font-size="11.5" font-weight="600" fill="#0b0b0b" text-anchor="middle">F0</text>
+    <rect x="646" y="188" width="104" height="26" rx="4" fill="#fdd9c8" stroke="#eb6834" stroke-width="2"/><text x="698" y="206" font-size="11.5" font-weight="600" fill="#0b0b0b" text-anchor="middle">F4</text>
   </g>
   <text x="646" y="230" font-size="10.5" fill="#a33d18">predict, once</text>
 
   <text x="70" y="272" font-size="11.5" fill="#52514e">The catch: something still has to choose this model's checkpoint, decoder, postprocessor and</text>
-  <text x="70" y="290" font-size="11.5" fill="#52514e">blend weight. If F0 helped choose them, F0 would be selecting for itself and its score would</text>
-  <text x="70" y="308" font-size="11.5" fill="#52514e">be optimistic. So the choice is delegated to a second, inner layer that never touches F0.</text>
+  <text x="70" y="290" font-size="11.5" fill="#52514e">blend weight. If F4 helped choose them, F4 would be selecting for itself and its score would</text>
+  <text x="70" y="308" font-size="11.5" fill="#52514e">be optimistic. So the choice is delegated to a second, inner layer that never touches F4.</text>
   <text x="70" y="334" font-size="11.5" font-weight="600" fill="#eb6834">That inner layer is what the other 20 roles are for.</text>
 
-  <!-- definition: inner roles -->
+  <!-- inner roles -->
   <rect x="802" y="122" width="750" height="228" rx="8" fill="#ffffff" stroke="#2a78d6"/>
   <text x="824" y="150" font-size="15" font-weight="600" fill="#0b0b0b">Inner roles — 4 per outer fold, 20 in total</text>
-  <text x="824" y="172" font-size="12" fill="#52514e">Inside outer context F0, hold out one more fold and train on the remaining three.</text>
+  <text x="824" y="172" font-size="12" fill="#52514e">Inside outer context F4, hold out one more fold and train on the remaining three.</text>
 
   <g font-size="11.5">
     <text x="824" y="200" font-size="10.5" fill="#8a8983">inner validation</text>
     <text x="960" y="200" font-size="10.5" fill="#8a8983">inner training</text>
     <text x="1330" y="200" font-size="10.5" fill="#8a8983">excluded pair</text>
 
-    <rect x="824" y="208" width="104" height="24" rx="4" fill="#fdd9c8" stroke="#eb6834"/><text x="876" y="225" fill="#0b0b0b" text-anchor="middle">F1</text>
-    <text x="960" y="225" fill="#52514e">F2 + F3 + F4</text>
-    <text x="1330" y="225" font-weight="600" fill="#2a78d6">{F0, F1}</text>
+    <rect x="824" y="208" width="104" height="24" rx="4" fill="#fdd9c8" stroke="#eb6834"/><text x="876" y="225" fill="#0b0b0b" text-anchor="middle">F0</text>
+    <text x="960" y="225" fill="#52514e">F1 + F2 + F3</text>
+    <text x="1330" y="225" font-weight="600" fill="#2a78d6">{F4, F0}</text>
 
-    <rect x="824" y="238" width="104" height="24" rx="4" fill="#fdd9c8" stroke="#eb6834"/><text x="876" y="255" fill="#0b0b0b" text-anchor="middle">F2</text>
-    <text x="960" y="255" fill="#52514e">F1 + F3 + F4</text>
-    <text x="1330" y="255" font-weight="600" fill="#2a78d6">{F0, F2}</text>
+    <rect x="824" y="238" width="104" height="24" rx="4" fill="#fdd9c8" stroke="#eb6834"/><text x="876" y="255" fill="#0b0b0b" text-anchor="middle">F1</text>
+    <text x="960" y="255" fill="#52514e">F0 + F2 + F3</text>
+    <text x="1330" y="255" font-weight="600" fill="#2a78d6">{F4, F1}</text>
 
-    <rect x="824" y="268" width="104" height="24" rx="4" fill="#fdd9c8" stroke="#eb6834"/><text x="876" y="285" fill="#0b0b0b" text-anchor="middle">F3</text>
-    <text x="960" y="285" fill="#52514e">F1 + F2 + F4</text>
-    <text x="1330" y="285" font-weight="600" fill="#2a78d6">{F0, F3}</text>
+    <rect x="824" y="268" width="104" height="24" rx="4" fill="#fdd9c8" stroke="#eb6834"/><text x="876" y="285" fill="#0b0b0b" text-anchor="middle">F2</text>
+    <text x="960" y="285" fill="#52514e">F0 + F1 + F3</text>
+    <text x="1330" y="285" font-weight="600" fill="#2a78d6">{F4, F2}</text>
 
-    <rect x="824" y="298" width="104" height="24" rx="4" fill="#fdd9c8" stroke="#eb6834"/><text x="876" y="315" fill="#0b0b0b" text-anchor="middle">F4</text>
-    <text x="960" y="315" fill="#52514e">F1 + F2 + F3</text>
-    <text x="1330" y="315" font-weight="600" fill="#2a78d6">{F0, F4}</text>
+    <rect x="824" y="298" width="104" height="24" rx="4" fill="#fdd9c8" stroke="#eb6834"/><text x="876" y="315" fill="#0b0b0b" text-anchor="middle">F3</text>
+    <text x="960" y="315" fill="#52514e">F0 + F1 + F2</text>
+    <text x="1330" y="315" font-weight="600" fill="#2a78d6">{F4, F3}</text>
   </g>
   <rect x="1120" y="208" width="176" height="114" rx="6" fill="#eaf2fd"/>
-  <text x="1208" y="252" font-size="11.5" font-weight="600" fill="#0b0b0b" text-anchor="middle">F0 appears in</text>
+  <text x="1208" y="252" font-size="11.5" font-weight="600" fill="#0b0b0b" text-anchor="middle">F4 appears in</text>
   <text x="1208" y="270" font-size="11.5" font-weight="600" fill="#0b0b0b" text-anchor="middle">none of them</text>
   <text x="1208" y="292" font-size="10.5" fill="#52514e" text-anchor="middle">so nothing here can</text>
-  <text x="1208" y="306" font-size="10.5" fill="#52514e" text-anchor="middle">leak into F0's score</text>
+  <text x="1208" y="306" font-size="10.5" fill="#52514e" text-anchor="middle">leak into F4's score</text>
 
   <!-- the collapse -->
   <rect x="48" y="374" width="900" height="300" rx="8" fill="#ffffff" stroke="#e4e3de"/>
@@ -71,21 +71,21 @@
   <text x="70" y="442" font-size="12" fill="#52514e">unordered pair. Swap the two and the training data is identical.</text>
 
   <rect x="70" y="462" width="380" height="86" rx="6" fill="#eaf2fd"/>
-  <text x="88" y="486" font-size="12" font-weight="600" fill="#0b0b0b">role (outer = F1, inner = F2)</text>
-  <text x="88" y="508" font-size="11.5" fill="#52514e">trains on F0 + F3 + F4</text>
-  <text x="88" y="530" font-size="11.5" fill="#52514e">predicts <tspan font-weight="600" fill="#0b0b0b">F2</tspan></text>
+  <text x="88" y="486" font-size="12" font-weight="600" fill="#0b0b0b">role (outer = F4, inner = F0)</text>
+  <text x="88" y="508" font-size="11.5" fill="#52514e">trains on F1 + F2 + F3</text>
+  <text x="88" y="530" font-size="11.5" fill="#52514e">predicts <tspan font-weight="600" fill="#0b0b0b">F0</tspan></text>
 
   <rect x="470" y="462" width="380" height="86" rx="6" fill="#eaf2fd"/>
-  <text x="488" y="486" font-size="12" font-weight="600" fill="#0b0b0b">role (outer = F2, inner = F1)</text>
-  <text x="488" y="508" font-size="11.5" fill="#52514e">trains on F0 + F3 + F4</text>
-  <text x="488" y="530" font-size="11.5" fill="#52514e">predicts <tspan font-weight="600" fill="#0b0b0b">F1</tspan></text>
+  <text x="488" y="486" font-size="12" font-weight="600" fill="#0b0b0b">role (outer = F0, inner = F4)</text>
+  <text x="488" y="508" font-size="11.5" fill="#52514e">trains on F1 + F2 + F3</text>
+  <text x="488" y="530" font-size="11.5" fill="#52514e">predicts <tspan font-weight="600" fill="#0b0b0b">F4</tspan></text>
 
   <line x1="450" y1="505" x2="470" y2="505" stroke="#eb6834" stroke-width="2"/>
   <rect x="378" y="566" width="164" height="26" rx="13" fill="#fdf0ea"/>
   <text x="460" y="584" font-size="11.5" font-weight="600" fill="#eb6834" text-anchor="middle">same three folds</text>
 
-  <text x="70" y="622" font-size="12" fill="#52514e">One model trained on F0 + F3 + F4 is held out from both F1 and F2, so it can predict both and fill both</text>
-  <text x="70" y="640" font-size="12" fill="#52514e">roles. Name it by what it excludes — <tspan font-weight="600" fill="#0b0b0b">pair {F1, F2}</tspan> — and the 20 inner roles become C(5,2) = 10 runs.</text>
+  <text x="70" y="622" font-size="12" fill="#52514e">One model trained on F1 + F2 + F3 is held out from both F4 and F0, so it can predict both and fill both</text>
+  <text x="70" y="640" font-size="12" fill="#52514e">roles. Name it by what it excludes — <tspan font-weight="600" fill="#0b0b0b">pair {F0, F4}</tspan> — and the 20 inner roles become C(5,2) = 10 runs.</text>
 
   <!-- the ten pairs -->
   <rect x="972" y="374" width="580" height="300" rx="8" fill="#ffffff" stroke="#e4e3de"/>
@@ -96,26 +96,26 @@
     <rect x="994" y="442" width="98" height="30" rx="4" fill="#cde2fb" stroke="#2a78d6"/><text x="1043" y="462" text-anchor="middle" fill="#0b0b0b">{0, 1}</text>
     <rect x="1102" y="442" width="98" height="30" rx="4" fill="#cde2fb" stroke="#2a78d6"/><text x="1151" y="462" text-anchor="middle" fill="#0b0b0b">{0, 2}</text>
     <rect x="1210" y="442" width="98" height="30" rx="4" fill="#cde2fb" stroke="#2a78d6"/><text x="1259" y="462" text-anchor="middle" fill="#0b0b0b">{0, 3}</text>
-    <rect x="1318" y="442" width="98" height="30" rx="4" fill="#cde2fb" stroke="#2a78d6"/><text x="1367" y="462" text-anchor="middle" fill="#0b0b0b">{0, 4}</text>
+    <rect x="1318" y="442" width="98" height="30" rx="4" fill="#fdd9c8" stroke="#eb6834" stroke-width="2"/><text x="1367" y="462" text-anchor="middle" font-weight="600" fill="#0b0b0b">{0, 4}</text>
     <rect x="1426" y="442" width="98" height="30" rx="4" fill="#cde2fb" stroke="#2a78d6"/><text x="1475" y="462" text-anchor="middle" fill="#0b0b0b">{1, 2}</text>
 
     <rect x="994" y="482" width="98" height="30" rx="4" fill="#cde2fb" stroke="#2a78d6"/><text x="1043" y="502" text-anchor="middle" fill="#0b0b0b">{1, 3}</text>
-    <rect x="1102" y="482" width="98" height="30" rx="4" fill="#cde2fb" stroke="#2a78d6"/><text x="1151" y="502" text-anchor="middle" fill="#0b0b0b">{1, 4}</text>
+    <rect x="1102" y="482" width="98" height="30" rx="4" fill="#fdd9c8" stroke="#eb6834" stroke-width="2"/><text x="1151" y="502" text-anchor="middle" font-weight="600" fill="#0b0b0b">{1, 4}</text>
     <rect x="1210" y="482" width="98" height="30" rx="4" fill="#cde2fb" stroke="#2a78d6"/><text x="1259" y="502" text-anchor="middle" fill="#0b0b0b">{2, 3}</text>
-    <rect x="1318" y="482" width="98" height="30" rx="4" fill="#cde2fb" stroke="#2a78d6"/><text x="1367" y="502" text-anchor="middle" fill="#0b0b0b">{2, 4}</text>
-    <rect x="1426" y="482" width="98" height="30" rx="4" fill="#cde2fb" stroke="#2a78d6"/><text x="1475" y="502" text-anchor="middle" fill="#0b0b0b">{3, 4}</text>
+    <rect x="1318" y="482" width="98" height="30" rx="4" fill="#fdd9c8" stroke="#eb6834" stroke-width="2"/><text x="1367" y="502" text-anchor="middle" font-weight="600" fill="#0b0b0b">{2, 4}</text>
+    <rect x="1426" y="482" width="98" height="30" rx="4" fill="#fdd9c8" stroke="#eb6834" stroke-width="2"/><text x="1475" y="502" text-anchor="middle" font-weight="600" fill="#0b0b0b">{3, 4}</text>
   </g>
+  <text x="994" y="536" font-size="11.5" fill="#52514e">The four outlined pairs are the ones that serve outer context F4 — they are</text>
+  <text x="994" y="554" font-size="11.5" fill="#52514e">exactly the four inner roles above, and each also serves one other outer fold.</text>
 
-  <text x="994" y="546" font-size="12" font-weight="600" fill="#0b0b0b">This is literally how the audit tree is laid out</text>
-  <rect x="994" y="558" width="530" height="96" rx="6" fill="#f6f6f3"/>
+  <text x="994" y="586" font-size="12" font-weight="600" fill="#0b0b0b">Name each run by what it excludes</text>
+  <rect x="994" y="598" width="530" height="56" rx="6" fill="#f6f6f3"/>
   <g font-size="11" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#52514e">
-    <text x="1012" y="580">promotion_audit/roles/</text>
-    <text x="1012" y="600">  outer_0  outer_1  outer_2  outer_3  outer_4</text>
-    <text x="1012" y="618">  pair_0_1 pair_0_2 pair_0_3 pair_0_4 pair_1_2</text>
-    <text x="1012" y="636">  pair_1_3 pair_1_4 pair_2_3 pair_2_4 pair_3_4</text>
+    <text x="1012" y="620">outer_0  outer_1  outer_2  outer_3  outer_4</text>
+    <text x="1012" y="640">pair_0_1 pair_0_2 pair_0_3 pair_0_4 pair_1_2 …</text>
   </g>
 
-  <!-- arithmetic strip -->
+  <!-- arithmetic -->
   <rect x="48" y="698" width="1504" height="130" rx="8" fill="#ffffff" stroke="#e4e3de"/>
   <text x="70" y="726" font-size="15" font-weight="600" fill="#0b0b0b">The arithmetic</text>
 
@@ -136,8 +136,8 @@
   <text x="944" y="792" font-size="11.5" fill="#52514e" text-anchor="middle">checkpoints deployed — the outer ones</text>
 
   <text x="1130" y="762" font-size="11.5" fill="#52514e">The ten pair models exist only to make the choice clean.</text>
-  <text x="1130" y="782" font-size="11.5" fill="#52514e">They are never packaged: C016 shipped 11 files and Run4</text>
-  <text x="1130" y="802" font-size="11.5" fill="#52514e">shipped 10 routers, all of them outer-role artifacts.</text>
+  <text x="1130" y="782" font-size="11.5" fill="#52514e">They are research artifacts and are never packaged — only</text>
+  <text x="1130" y="802" font-size="11.5" fill="#52514e">the five outer checkpoints reach production.</text>
 
-  <text x="48" y="866" font-size="11" fill="#8a8983">Structure from limited_query_cv/CV_PROTOCOL_V5.md and COOKBOOK.md · directory listing from runs/v5_batch2_run_025_goal_050/promotion_audit/roles</text>
+  <text x="48" y="866" font-size="11" fill="#8a8983">Structure from limited_query_cv/CV_PROTOCOL_V5.md and COOKBOOK.md, CV Protocol v5 revision 14</text>
 </svg>

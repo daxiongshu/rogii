@@ -7,31 +7,36 @@ arrows, padlocks) is a drawn path.
 
 Read them in order; each is self-contained.
 
-| # | File | Answers |
-|---|---|---|
-| 01 | [`01-run-workflow.svg`](01-run-workflow.svg) | What happens in one research run, start to finish, and how the loop closes |
-| 02 | [`02-folds-and-groupings.svg`](02-folds-and-groupings.svg) | Why the split unit is a whole well, what the five folds contain, and what the three groupings are for |
-| 03 | [`03-roles-and-pair-models.svg`](03-roles-and-pair-models.svg) | What a *role* is, and why 20 inner roles need only 10 models |
-| 04 | [`04-selection-clean-choice.svg`](04-selection-clean-choice.svg) | The difference between ordinary CV and selection-clean CV, side by side |
-| 05 | [`05-reveal-and-decision.svg`](05-reveal-and-decision.svg) | What is frozen before truth opens, what the reveal reports, how Accept / Hold / Reject is decided |
-| 06 | [`06-weights-and-production.svg`](06-weights-and-production.svg) | How a candidate is blended into the parent, and what ships |
-| 07 | [`07-query-budget-and-lineage.svg`](07-query-budget-and-lineage.svg) | The economics — 36,450 trials against 5 reveals — and what those five bought |
+**01–04 describe the method itself** — no competition, no dataset, no solution
+names. They transfer to any grouped-data problem where selection pressure is the
+threat. **05–07 are this project's instantiation**, with real figures from the
+artifacts and the ledger.
+
+| # | File | Answers | Scope |
+|---|---|---|---|
+| 01 | [`01-run-workflow.svg`](01-run-workflow.svg) | What happens in one research run, start to finish, and how the loop closes | general |
+| 02 | [`02-folds-and-groupings.svg`](02-folds-and-groupings.svg) | Why the split unit is a whole group, what the five folds are, and what the three groupings are for | general |
+| 03 | [`03-roles-and-pair-models.svg`](03-roles-and-pair-models.svg) | What a *role* is, and why 20 inner roles need only 10 models | general |
+| 04 | [`04-selection-clean-choice.svg`](04-selection-clean-choice.svg) | Ordinary CV against selection-clean CV, side by side | general |
+| 05 | [`05-reveal-and-decision.svg`](05-reveal-and-decision.svg) | What is frozen before truth opens, what the reveal reports, how Accept / Hold / Reject is decided | this project |
+| 06 | [`06-weights-and-production.svg`](06-weights-and-production.svg) | How a candidate is blended into the parent, and what ships | this project |
+| 07 | [`07-query-budget-and-lineage.svg`](07-query-budget-and-lineage.svg) | The economics — 36,450 trials against 5 reveals — and what those five bought | this project |
+
+03 and 04 both work through **F4** as the held fold, so the two read together:
+04's "inner roles of F4" are exactly the four roles 03 enumerates.
 
 ## The argument across the set
 
 01 is the loop. 02–04 are the machinery that makes one turn of it trustworthy:
-whole-well folds, the role system, and the rule that a fold never chooses
+whole-group folds, the role system, and the rule that a fold never chooses
 anything about itself. 05–06 are what happens at and after the measurement.
 07 is why the whole apparatus exists — overfitting is treated as a function of
 how often the judge is consulted, so search is free and the judge is rationed.
 
-## Numbers in these diagrams are read from the artifacts
+## Numbers in 05–07 are read from the artifacts
 
 Not illustrative:
 
-- fold sizes in 02 from `rogii_v20_oof_vault/layout.npz` — 773 wells,
-  3,783,989 rows, all three groupings;
-- the role directory listing in 03 from C016's `promotion_audit/roles`;
 - the audit figures in 05 from C016's `package_validation.json`;
 - the weight configurations in 06 from `c016_recipe.json` and Run4's
   `recipe.json`;

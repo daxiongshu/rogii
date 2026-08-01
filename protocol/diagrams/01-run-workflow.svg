@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
   <title>CV Protocol v5 — the run workflow</title>
-  <desc>Workflow diagram of ROGII CV Protocol v5. Six stages: iterate freely on folds F0-F3 while F4 stays sealed; freeze one pipeline and checksum it; train 10 excluded-pair models that choose each outer fold's recipe plus 5 outer models that predict their held fold; open all five folds once in a joint reveal; Accept, Hold or Reject; package and let the user approve, which makes the solution the next run's frozen parent.</desc>
+  <desc>General workflow of one research run under CV Protocol v5. Six stages: iterate freely on folds F0-F3 while F4 stays sealed; freeze one pipeline and checksum it; train 10 excluded-pair models that choose each outer fold's recipe plus 5 outer models that predict their held fold; open all five folds once in a joint reveal; Accept, Hold or Reject; package and let the user approve, which makes the solution the next run's frozen parent.</desc>
 
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -20,19 +20,13 @@
   <rect width="1600" height="900" fill="#fcfcfb"/>
 
   <!-- ================= header ================= -->
-  <text x="48" y="54" font-size="29" font-weight="600" fill="#0b0b0b">CV Protocol v5 — how one research run works</text>
+  <text x="48" y="54" font-size="29" font-weight="600" fill="#0b0b0b">01 · How one research run works</text>
   <text x="48" y="82" font-size="15" fill="#52514e">Iterate without limit on F0–F3; measure once on all five folds; only a human moves the baseline.</text>
 
   <rect x="1128" y="18" width="424" height="72" rx="8" fill="#ffffff" stroke="#e4e3de"/>
-  <text x="1236" y="54" font-size="28" font-weight="600" fill="#2a78d6" text-anchor="end">36,450</text>
-  <text x="1236" y="74" font-size="11" fill="#6d6c66" text-anchor="end">inner trials</text>
-  <text x="1256" y="54" font-size="22" fill="#c9c8c1" text-anchor="middle">:</text>
-  <text x="1276" y="54" font-size="28" font-weight="600" fill="#eb6834">5</text>
-  <text x="1276" y="74" font-size="11" fill="#6d6c66">protected reveals</text>
-  <line x1="1400" y1="32" x2="1400" y2="76" stroke="#eeede9"/>
-  <text x="1418" y="46" font-size="11" fill="#6d6c66">1 reveal per batch,</text>
-  <text x="1418" y="62" font-size="11" fill="#6d6c66">6 batches maximum.</text>
-  <text x="1418" y="78" font-size="11" fill="#6d6c66">5 spent, 1 remaining.</text>
+  <text x="1150" y="44" font-size="12" font-weight="600" fill="#0b0b0b">The trade the whole loop makes</text>
+  <text x="1150" y="64" font-size="11.5" fill="#52514e">unlimited search, rationed measurement —</text>
+  <text x="1150" y="80" font-size="11.5" fill="#52514e">one protected reveal per batch of work</text>
 
   <line x1="48" y1="104" x2="1552" y2="104" stroke="#e4e3de"/>
 
@@ -151,7 +145,7 @@
   </g>
   <text x="916" y="382" font-size="11" fill="#52514e">pooled + per-fold RMSE,</text>
   <text x="916" y="398" font-size="11" fill="#52514e">regrouping, max regression,</text>
-  <text x="916" y="414" font-size="11" fill="#52514e">2,000-draw well bootstrap</text>
+  <text x="916" y="414" font-size="11" fill="#52514e">paired-group bootstrap</text>
   <rect x="916" y="428" width="172" height="26" rx="4" fill="#fdf0ea"/>
   <text x="1002" y="445" font-size="11" font-weight="600" fill="#eb6834" text-anchor="middle">reveal budget − 1</text>
 
@@ -194,24 +188,23 @@
   <text x="1392" y="157" font-size="14" font-weight="600" fill="#0b0b0b">Package</text>
 
   <text x="1370" y="188" font-size="11" font-weight="600" fill="#0b0b0b">promote</text>
-  <text x="1370" y="205" font-size="11" fill="#52514e">private weights Dataset</text>
-  <text x="1370" y="220" font-size="11" fill="#52514e">+ private kernel</text>
+  <text x="1370" y="205" font-size="11" fill="#52514e">private artifact bundle</text>
+  <text x="1370" y="220" font-size="11" fill="#52514e">+ private inference job</text>
   <text x="1370" y="244" font-size="11" font-weight="600" fill="#0b0b0b">submit</text>
   <text x="1370" y="261" font-size="11" fill="#52514e">spends a submission slot</text>
 
   <line x1="1370" y1="278" x2="1532" y2="278" stroke="#d6d2ee"/>
 
-  <text x="1370" y="300" font-size="11" font-weight="600" fill="#4a3aa7">the user reviews CV vs LB</text>
+  <text x="1370" y="300" font-size="11" font-weight="600" fill="#4a3aa7">a human reviews the result</text>
   <text x="1370" y="320" font-size="11" fill="#52514e">Neither promoting nor</text>
   <text x="1370" y="335" font-size="11" fill="#52514e">submitting moves the</text>
   <text x="1370" y="350" font-size="11" fill="#52514e">baseline. Only explicit</text>
   <text x="1370" y="365" font-size="11" fill="#52514e">approval does.</text>
 
   <rect x="1370" y="382" width="162" height="72" rx="6" fill="#ffffff" stroke="#d6d2ee"/>
-  <text x="1384" y="402" font-size="10.5" fill="#52514e">agent then edits</text>
-  <text x="1384" y="420" font-size="10" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#4a3aa7">frozen_previous_best</text>
-  <text x="1384" y="434" font-size="10" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#4a3aa7">_v5.json</text>
-  <text x="1384" y="448" font-size="10.5" fill="#52514e">for future runs</text>
+  <text x="1384" y="404" font-size="10.5" fill="#52514e">the approved solution is</text>
+  <text x="1384" y="422" font-size="10.5" fill="#52514e">written into the</text>
+  <text x="1384" y="440" font-size="10.5" font-weight="600" fill="#4a3aa7">frozen parent registry</text>
 
   <!-- ================= feedback loop ================= -->
   <path d="M 1451 470 v 34 H 198 v -34" fill="none" stroke="#4a3aa7" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowViolet)"/>
@@ -236,41 +229,31 @@
   <text x="1094" y="620" font-size="11.5" fill="#52514e">the 5 outer checkpoints only — the 10 pair models never ship,</text>
   <text x="1094" y="638" font-size="11.5" fill="#52514e">a zero-weight file may be omitted, and there is no full-data refit</text>
 
-  <!-- ================= lineage ================= -->
-  <text x="48" y="706" font-size="14" font-weight="600" fill="#0b0b0b">Three runs of this loop</text>
-  <text x="222" y="706" font-size="11.5" fill="#6d6c66">each generation a correction applied to the one before it — v20 itself is never retrained</text>
+  <!-- ================= the loop, repeated ================= -->
+  <text x="48" y="706" font-size="14" font-weight="600" fill="#0b0b0b">The loop, run three times</text>
+  <text x="248" y="706" font-size="11.5" fill="#6d6c66">each turn produces a correction applied to the previous parent — the root baseline is never retrained</text>
 
-  <rect x="48" y="722" width="300" height="96" rx="8" fill="#ffffff" stroke="#d8d7d1"/>
-  <text x="68" y="748" font-size="14" font-weight="600" fill="#0b0b0b">v20</text>
-  <text x="68" y="766" font-size="10.5" fill="#6d6c66">immutable root baseline</text>
-  <text x="68" y="794" font-size="19" font-weight="600" fill="#0b0b0b">6.18948</text>
-  <text x="176" y="794" font-size="11" fill="#52514e">pooled OOF</text>
-  <text x="68" y="810" font-size="10.5" fill="#6d6c66">public LB 6.263</text>
+  <rect x="48" y="722" width="440" height="96" rx="8" fill="#ffffff" stroke="#d8d7d1"/>
+  <text x="70" y="750" font-size="13" font-weight="600" fill="#0b0b0b">run n</text>
+  <text x="70" y="774" font-size="11.5" fill="#52514e">parent P0 — the root baseline, frozen and immutable</text>
+  <text x="70" y="794" font-size="11.5" fill="#52514e">a candidate is accepted, then approved by a human</text>
+  <text x="70" y="812" font-size="11" font-weight="600" fill="#1baf7a">gain &gt; 0 on the joint reveal</text>
 
-  <line x1="360" y1="770" x2="392" y2="770" stroke="#b6b5ad" stroke-width="2" marker-end="url(#arrowLight)"/>
+  <line x1="500" y1="770" x2="532" y2="770" stroke="#b6b5ad" stroke-width="2" marker-end="url(#arrowLight)"/>
 
-  <rect x="404" y="722" width="300" height="96" rx="8" fill="#ffffff" stroke="#d8d7d1"/>
-  <text x="424" y="748" font-size="14" font-weight="600" fill="#0b0b0b">C016</text>
-  <text x="424" y="766" font-size="10.5" fill="#6d6c66">11 residual nets on cached v20 components</text>
-  <text x="424" y="794" font-size="19" font-weight="600" fill="#0b0b0b">6.12727</text>
-  <text x="532" y="794" font-size="11" font-weight="600" fill="#1baf7a">−0.06221</text>
-  <text x="424" y="810" font-size="10.5" fill="#6d6c66">public LB 6.127</text>
+  <rect x="544" y="722" width="440" height="96" rx="8" fill="#ffffff" stroke="#d8d7d1"/>
+  <text x="566" y="750" font-size="13" font-weight="600" fill="#0b0b0b">run n + 1</text>
+  <text x="566" y="774" font-size="11.5" fill="#52514e">parent P1 — the previous run's approved solution</text>
+  <text x="566" y="794" font-size="11.5" fill="#52514e">the new candidate is measured against P1, never against P0</text>
+  <text x="566" y="812" font-size="11" font-weight="600" fill="#1baf7a">gain &gt; 0 on the joint reveal</text>
 
-  <line x1="716" y1="770" x2="748" y2="770" stroke="#b6b5ad" stroke-width="2" marker-end="url(#arrowLight)"/>
+  <line x1="996" y1="770" x2="1028" y2="770" stroke="#b6b5ad" stroke-width="2" marker-end="url(#arrowLight)"/>
 
-  <rect x="760" y="722" width="300" height="96" rx="8" fill="#ffffff" stroke="#4a3aa7" stroke-width="2"/>
-  <text x="780" y="748" font-size="14" font-weight="600" fill="#0b0b0b">Run4</text>
-  <text x="1040" y="748" font-size="10" font-weight="600" fill="#4a3aa7" text-anchor="end">ACTIVE PARENT</text>
-  <text x="780" y="766" font-size="10.5" fill="#6d6c66">structural / surface router, scale 0.6</text>
-  <text x="780" y="794" font-size="19" font-weight="600" fill="#0b0b0b">6.06650</text>
-  <text x="888" y="794" font-size="11" font-weight="600" fill="#1baf7a">−0.06077</text>
-  <text x="780" y="810" font-size="10.5" fill="#6d6c66">public LB 5.962</text>
+  <rect x="1040" y="722" width="512" height="96" rx="8" fill="#faf9f6" stroke="#4a3aa7"/>
+  <text x="1062" y="750" font-size="13" font-weight="600" fill="#0b0b0b">run n + 2</text>
+  <text x="1062" y="774" font-size="11.5" fill="#52514e">parent P2 — each generation layered on the one before it</text>
+  <text x="1062" y="794" font-size="11.5" fill="#52514e">The reference may not change during a run, and neither promotion</text>
+  <text x="1062" y="812" font-size="11.5" fill="#52514e">nor submission changes it afterwards without explicit approval.</text>
 
-  <rect x="1092" y="722" width="460" height="96" rx="8" fill="#faf9f6" stroke="#e4e3de"/>
-  <text x="1112" y="748" font-size="11.5" font-weight="600" fill="#0b0b0b">Ledger state at the snapshot</text>
-  <text x="1112" y="770" font-size="11.5" fill="#52514e">6 batches maximum · 5 candidate families per batch</text>
-  <text x="1112" y="788" font-size="11.5" fill="#52514e">1 joint reveal per batch — 5 spent, 1 remaining</text>
-  <text x="1112" y="806" font-size="11.5" fill="#52514e">36,450 inner trials · 2 submissions · 0 currently authorised</text>
-
-  <text x="48" y="856" font-size="11" fill="#8a8983">Source: COOKBOOK.md and limited_query_cv/CV_PROTOCOL_V5.md, CV Protocol v5 revision 14 · counts from cv_query_ledger_v5.json at snapshot commit c34b9212</text>
+  <text x="48" y="858" font-size="11" fill="#8a8983">Workflow from COOKBOOK.md and limited_query_cv/CV_PROTOCOL_V5.md, CV Protocol v5 revision 14</text>
 </svg>
