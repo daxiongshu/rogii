@@ -1,0 +1,240 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title>CV Protocol v5 — inner exploration, outer confirmation</title>
+  <desc>Schematic of ROGII CV Protocol v5: unlimited target-derived exploration on folds F0-F3, a global checksummed freeze, a sealed nested run over five outer folds, one joint reveal, an Accept/Hold/Reject decision, and manual user approval before the frozen parent changes. 36,450 inner trials were spent against 5 protected reveals.</desc>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#8a8983"/>
+    </marker>
+    <marker id="arrowLight" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#b6b5ad"/>
+    </marker>
+    <g id="tick"><path d="M 0 4 L 3.4 7.4 L 9 0.6" fill="none" stroke="#1baf7a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <g id="cross"><path d="M 0.6 0.6 L 8.4 8.4 M 8.4 0.6 L 0.6 8.4" fill="none" stroke="#d03b3b" stroke-width="2" stroke-linecap="round"/></g>
+  </defs>
+
+  <rect width="1600" height="900" fill="#fcfcfb"/>
+
+  <!-- ================= header ================= -->
+  <text x="48" y="56" font-size="30" font-weight="600" fill="#0b0b0b">CV Protocol v5 — inner exploration, outer confirmation</text>
+  <text x="48" y="84" font-size="15" fill="#52514e">Ration the query, not the curiosity. Search is unbounded; the measurement that can be claimed is scarce.</text>
+
+  <rect x="1128" y="18" width="424" height="76" rx="8" fill="#ffffff" stroke="#e4e3de"/>
+  <text x="1236" y="56" font-size="30" font-weight="600" fill="#2a78d6" text-anchor="end">36,450</text>
+  <text x="1236" y="76" font-size="11" fill="#6d6c66" text-anchor="end">inner trials</text>
+  <text x="1256" y="56" font-size="22" fill="#c9c8c1" text-anchor="middle">:</text>
+  <text x="1276" y="56" font-size="30" font-weight="600" fill="#eb6834">5</text>
+  <text x="1276" y="76" font-size="11" fill="#6d6c66">protected reveals</text>
+  <line x1="1400" y1="34" x2="1400" y2="78" stroke="#eeede9"/>
+  <text x="1418" y="46" font-size="11" fill="#6d6c66">7,290 trials per</text>
+  <text x="1418" y="62" font-size="11" fill="#6d6c66">protected measurement.</text>
+  <text x="1418" y="78" font-size="11" fill="#6d6c66">Budget: 1 reveal per batch.</text>
+
+  <line x1="48" y1="108" x2="1552" y2="108" stroke="#e4e3de"/>
+
+  <!-- ================= main flow ================= -->
+  <rect x="48" y="132" width="300" height="150" rx="8" fill="#eaf2fd" stroke="#2a78d6"/>
+  <text x="66" y="158" font-size="15" font-weight="600" fill="#0b0b0b">F0–F3 development</text>
+  <text x="66" y="178" font-size="12" fill="#2a78d6" font-weight="600">UNLIMITED · target-derived research</text>
+  <text x="66" y="204" font-size="12" fill="#52514e">Inspect residuals, worst wells, subgroups,</text>
+  <text x="66" y="221" font-size="12" fill="#52514e">calibration, disagreement. Tune anything.</text>
+  <text x="66" y="247" font-size="12" fill="#52514e">“Do not abandon a mechanism after one</text>
+  <text x="66" y="264" font-size="12" fill="#52514e">or two weak variants.”</text>
+
+  <line x1="352" y1="207" x2="378" y2="207" stroke="#8a8983" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="384" y="120" width="66" height="174" rx="6" fill="#2f2e2b"/>
+  <text x="417" y="207" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle" transform="rotate(-90 417 207)">GLOBAL FREEZE</text>
+  <text x="417" y="311" font-size="11" fill="#6d6c66" text-anchor="middle">+ checksum</text>
+
+  <line x1="454" y1="207" x2="480" y2="207" stroke="#8a8983" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="486" y="132" width="286" height="150" rx="8" fill="#fdf0ea" stroke="#eb6834"/>
+  <text x="504" y="158" font-size="15" font-weight="600" fill="#0b0b0b">Sealed nested run</text>
+  <text x="504" y="178" font-size="12" fill="#eb6834" font-weight="600">F4 PROTECTED · label-free checks only</text>
+  <text x="504" y="204" font-size="12" fill="#52514e">One automatic pipeline runs for every</text>
+  <text x="504" y="221" font-size="12" fill="#52514e">outer fold. No hand edits, no fold-</text>
+  <text x="504" y="238" font-size="12" fill="#52514e">specific fallback.</text>
+  <text x="504" y="264" font-size="12" fill="#52514e">Target-derived logs suppressed.</text>
+
+  <line x1="776" y1="207" x2="802" y2="207" stroke="#8a8983" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="808" y="132" width="234" height="150" rx="8" fill="#ffffff" stroke="#d8d7d1"/>
+  <text x="826" y="158" font-size="15" font-weight="600" fill="#0b0b0b">Joint reveal</text>
+  <text x="826" y="178" font-size="12" fill="#6d6c66" font-weight="600">ALL FIVE FOLDS AT ONCE</text>
+  <text x="826" y="204" font-size="12" fill="#52514e">3–5 distinct families preferred,</text>
+  <text x="826" y="221" font-size="12" fill="#52514e">2 the normal minimum — so the</text>
+  <text x="826" y="238" font-size="12" fill="#52514e">best of many cannot be sold</text>
+  <text x="826" y="255" font-size="12" fill="#52514e">as unbiased CV.</text>
+  <text x="826" y="274" font-size="11" fill="#eb6834" font-weight="600">Opening it spends the audit.</text>
+
+  <line x1="1046" y1="207" x2="1072" y2="207" stroke="#8a8983" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="1078" y="132" width="196" height="150" rx="8" fill="#ffffff" stroke="#d8d7d1"/>
+  <text x="1096" y="158" font-size="15" font-weight="600" fill="#0b0b0b">Decision</text>
+  <circle cx="1102" cy="184" r="4" fill="#0ca30c"/>
+  <text x="1114" y="188" font-size="12" fill="#52514e"><tspan font-weight="600" fill="#0b0b0b">Accept</tspan> — beats parent</text>
+  <circle cx="1102" cy="208" r="4" fill="#fab219"/>
+  <text x="1114" y="212" font-size="12" fill="#52514e"><tspan font-weight="600" fill="#0b0b0b">Hold</tspan> — unstable</text>
+  <circle cx="1102" cy="232" r="4" fill="#d03b3b"/>
+  <text x="1114" y="236" font-size="12" fill="#52514e"><tspan font-weight="600" fill="#0b0b0b">Reject</tspan> — reversal</text>
+  <text x="1096" y="264" font-size="11" fill="#6d6c66">Numeric levels are diagnostics,</text>
+  <text x="1096" y="278" font-size="11" fill="#6d6c66">not automatic gates (rev 14).</text>
+
+  <line x1="1278" y1="207" x2="1304" y2="207" stroke="#8a8983" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="1310" y="132" width="242" height="150" rx="8" fill="#eeecf8" stroke="#4a3aa7"/>
+  <text x="1328" y="158" font-size="15" font-weight="600" fill="#0b0b0b">User approval</text>
+  <text x="1328" y="178" font-size="12" fill="#4a3aa7" font-weight="600">MANUAL · never automatic</text>
+  <text x="1328" y="204" font-size="12" fill="#52514e">Promotion and submission do</text>
+  <text x="1328" y="221" font-size="12" fill="#52514e">not change the frozen parent.</text>
+  <text x="1328" y="247" font-size="12" fill="#52514e">Only explicit approval after a</text>
+  <text x="1328" y="264" font-size="12" fill="#52514e">CV–LB review updates it.</text>
+
+  <!-- ================= panel 1: zone asymmetry ================= -->
+  <rect x="48" y="324" width="520" height="348" rx="8" fill="#ffffff" stroke="#e4e3de"/>
+  <text x="68" y="352" font-size="15" font-weight="600" fill="#0b0b0b">The asymmetry that buys the freedom</text>
+
+  <rect x="68" y="368" width="228" height="26" rx="4" fill="#2a78d6"/>
+  <text x="80" y="386" font-size="12" font-weight="600" fill="#ffffff">F0–F3 · development</text>
+  <g>
+    <use href="#tick" x="72" y="410"/><text x="92" y="419" font-size="12" fill="#52514e">targets, errors, residuals</text>
+    <use href="#tick" x="72" y="431"/><text x="92" y="440" font-size="12" fill="#52514e">worst-well, subgroup analysis</text>
+    <use href="#tick" x="72" y="452"/><text x="92" y="461" font-size="12" fill="#52514e">architecture, loss, features</text>
+    <use href="#tick" x="72" y="473"/><text x="92" y="482" font-size="12" fill="#52514e">postprocessing, ensembles</text>
+    <use href="#tick" x="72" y="494"/><text x="92" y="503" font-size="12" fill="#52514e">unlimited iterations</text>
+  </g>
+
+  <rect x="320" y="368" width="228" height="26" rx="4" fill="#eb6834"/>
+  <text x="332" y="386" font-size="12" font-weight="600" fill="#ffffff">F4 · protected, pre-reveal</text>
+  <g>
+    <use href="#tick" x="324" y="410"/><text x="344" y="419" font-size="12" fill="#52514e">schema and missingness</text>
+    <use href="#tick" x="324" y="431"/><text x="344" y="440" font-size="12" fill="#52514e">shape, completeness, finiteness</text>
+    <use href="#tick" x="324" y="452"/><text x="344" y="461" font-size="12" fill="#52514e">runtime, preregistered range</text>
+    <use href="#cross" x="324" y="473"/><text x="344" y="482" font-size="12" fill="#a33d18">no targets, metrics, residuals</text>
+    <use href="#cross" x="324" y="494"/><text x="344" y="503" font-size="12" fill="#a33d18">no target-selected choices</text>
+  </g>
+
+  <line x1="68" y1="528" x2="548" y2="528" stroke="#eeede9"/>
+  <text x="68" y="556" font-size="12" font-weight="600" fill="#0b0b0b">Holdouts decay on contact</text>
+  <text x="68" y="578" font-size="12" fill="#52514e">A second whole-well grouping is preregistered and queried only at</text>
+  <text x="68" y="596" font-size="12" fill="#52514e">milestones. Once its result changes a decision it is reclassified as</text>
+  <text x="68" y="614" font-size="12" fill="#52514e">development evidence — so the official five-fold number is labelled</text>
+  <text x="68" y="638" font-size="12" font-style="italic" fill="#0b0b0b">“selection-clean, development-exposed”, and F4 is called</text>
+  <text x="68" y="656" font-size="12" font-style="italic" fill="#0b0b0b">protected, not pristine.</text>
+
+  <!-- ================= panel 2: nesting ================= -->
+  <rect x="588" y="324" width="454" height="348" rx="8" fill="#ffffff" stroke="#e4e3de"/>
+  <text x="608" y="352" font-size="15" font-weight="600" fill="#0b0b0b">Selection-clean nesting</text>
+  <text x="608" y="374" font-size="12" fill="#52514e">A held fold may not choose the checkpoint, decoder,</text>
+  <text x="608" y="392" font-size="12" fill="#52514e">postprocessor or weight used to predict itself.</text>
+
+  <text x="666" y="414" font-size="11" fill="#8a8983">inner validation role</text>
+  <line x1="778" y1="410" x2="800" y2="410" stroke="#b6b5ad" stroke-width="1.5" marker-end="url(#arrowLight)"/>
+  <text x="622" y="504" font-size="11" fill="#8a8983" text-anchor="middle" transform="rotate(-90 622 504)">outer fold held</text>
+
+  <g transform="translate(660,430)">
+    <g font-size="10" fill="#8a8983" text-anchor="middle">
+      <text x="20" y="-4">F0</text><text x="52" y="-4">F1</text><text x="84" y="-4">F2</text><text x="116" y="-4">F3</text><text x="148" y="-4">F4</text>
+    </g>
+    <g font-size="10" fill="#8a8983" text-anchor="end">
+      <text x="-8" y="17">F0</text><text x="-8" y="49">F1</text><text x="-8" y="81">F2</text><text x="-8" y="113">F3</text><text x="-8" y="145">F4</text>
+    </g>
+
+    <rect x="6" y="2" width="28" height="20" rx="3" fill="#2f2e2b"/><rect x="38" y="2" width="28" height="20" rx="3" fill="#cde2fb"/><rect x="70" y="2" width="28" height="20" rx="3" fill="#cde2fb"/><rect x="102" y="2" width="28" height="20" rx="3" fill="#cde2fb"/><rect x="134" y="2" width="28" height="20" rx="3" fill="#cde2fb"/>
+    <rect x="6" y="34" width="28" height="20" rx="3" fill="#cde2fb"/><rect x="38" y="34" width="28" height="20" rx="3" fill="#2f2e2b"/><rect x="70" y="34" width="28" height="20" rx="3" fill="#cde2fb"/><rect x="102" y="34" width="28" height="20" rx="3" fill="#cde2fb"/><rect x="134" y="34" width="28" height="20" rx="3" fill="#cde2fb"/>
+    <rect x="6" y="66" width="28" height="20" rx="3" fill="#cde2fb"/><rect x="38" y="66" width="28" height="20" rx="3" fill="#cde2fb"/><rect x="70" y="66" width="28" height="20" rx="3" fill="#2f2e2b"/><rect x="102" y="66" width="28" height="20" rx="3" fill="#cde2fb"/><rect x="134" y="66" width="28" height="20" rx="3" fill="#cde2fb"/>
+    <rect x="6" y="98" width="28" height="20" rx="3" fill="#cde2fb"/><rect x="38" y="98" width="28" height="20" rx="3" fill="#cde2fb"/><rect x="70" y="98" width="28" height="20" rx="3" fill="#cde2fb"/><rect x="102" y="98" width="28" height="20" rx="3" fill="#2f2e2b"/><rect x="134" y="98" width="28" height="20" rx="3" fill="#cde2fb"/>
+    <rect x="6" y="130" width="28" height="20" rx="3" fill="#cde2fb"/><rect x="38" y="130" width="28" height="20" rx="3" fill="#cde2fb"/><rect x="70" y="130" width="28" height="20" rx="3" fill="#cde2fb"/><rect x="102" y="130" width="28" height="20" rx="3" fill="#cde2fb"/><rect x="134" y="130" width="28" height="20" rx="3" fill="#2f2e2b"/>
+
+    <rect x="70" y="34" width="28" height="20" rx="3" fill="none" stroke="#eb6834" stroke-width="2"/>
+    <rect x="38" y="66" width="28" height="20" rx="3" fill="none" stroke="#eb6834" stroke-width="2"/>
+    <path d="M 98 44 C 124 44 124 76 98 76" fill="none" stroke="#eb6834" stroke-width="1.5" stroke-dasharray="3 3"/>
+  </g>
+
+  <g font-size="11">
+    <rect x="848" y="436" width="12" height="12" rx="2" fill="#2f2e2b"/>
+    <text x="868" y="446" fill="#52514e">held out — cannot select for itself</text>
+    <rect x="848" y="462" width="12" height="12" rx="2" fill="#cde2fb"/>
+    <text x="868" y="472" fill="#52514e">inner role — selects the recipe</text>
+    <rect x="848" y="488" width="12" height="12" rx="2" fill="none" stroke="#eb6834" stroke-width="2"/>
+    <text x="868" y="498" fill="#52514e">reciprocal pair — one</text>
+    <text x="868" y="512" fill="#52514e">shared model</text>
+  </g>
+
+  <line x1="608" y1="600" x2="1022" y2="600" stroke="#eeede9"/>
+  <text x="608" y="622" font-size="12" fill="#52514e">Roles <tspan font-weight="600" fill="#0b0b0b">(Fi,Fj)</tspan> and <tspan font-weight="600" fill="#0b0b0b">(Fj,Fi)</tspan> share training folds, so one</text>
+  <text x="608" y="640" font-size="12" fill="#52514e">model fills both — 20 inner roles collapse to 10 runs.</text>
+  <g font-size="13">
+    <text x="608" y="664" font-weight="600" fill="#0b0b0b">25 roles</text>
+    <line x1="676" y1="660" x2="698" y2="660" stroke="#b6b5ad" stroke-width="1.5" marker-end="url(#arrowLight)"/>
+    <text x="708" y="664" font-weight="600" fill="#0b0b0b">15 training runs</text>
+    <line x1="824" y1="660" x2="846" y2="660" stroke="#b6b5ad" stroke-width="1.5" marker-end="url(#arrowLight)"/>
+    <text x="856" y="664" font-weight="600" fill="#eb6834">5 deployed</text>
+  </g>
+
+  <!-- ================= panel 3: what keeps it spendable ================= -->
+  <rect x="1062" y="324" width="490" height="348" rx="8" fill="#ffffff" stroke="#e4e3de"/>
+  <text x="1082" y="352" font-size="15" font-weight="600" fill="#0b0b0b">Why one measurement stays trustworthy</text>
+
+  <rect x="1082" y="372" width="3" height="48" fill="#eb6834"/>
+  <text x="1098" y="388" font-size="12" font-weight="600" fill="#0b0b0b">Spent on contact</text>
+  <text x="1098" y="408" font-size="12" fill="#52514e">A revised pipeline needs a genuinely new boundary;</text>
+  <text x="1098" y="425" font-size="12" fill="#52514e">a spent result may not be reused as confirmation.</text>
+
+  <rect x="1082" y="447" width="3" height="48" fill="#2a78d6"/>
+  <text x="1098" y="463" font-size="12" font-weight="600" fill="#0b0b0b">Debugging costs nothing statistically</text>
+  <text x="1098" y="483" font-size="12" fill="#52514e">A family must first overfit one fixed batch. Failure</text>
+  <text x="1098" y="500" font-size="12" fill="#52514e">there is an implementation result, never CV evidence.</text>
+
+  <rect x="1082" y="522" width="3" height="48" fill="#1baf7a"/>
+  <text x="1098" y="538" font-size="12" font-weight="600" fill="#0b0b0b">Shrinkage where selection noise lives</text>
+  <text x="1098" y="558" font-size="12" fill="#52514e">Weights fit inside the training pool under 3 groupings →</text>
+  <text x="1098" y="575" font-size="12" fill="#52514e">median, <tspan font-weight="600">rounded down</tspan>, capped 0.20. No full-data refit.</text>
+
+  <rect x="1082" y="597" width="3" height="65" fill="#4a3aa7"/>
+  <text x="1098" y="613" font-size="12" font-weight="600" fill="#0b0b0b">Leaderboard firewall</text>
+  <text x="1098" y="633" font-size="12" fill="#52514e">Public LB is monitoring evidence, never an in-run tuning</text>
+  <text x="1098" y="650" font-size="12" fill="#52514e">gate. Repeated CV-up / LB-down triggers a validation</text>
+  <text x="1098" y="667" font-size="12" fill="#52514e">review — a monitor no single run could catch.</text>
+
+  <!-- ================= lineage footer ================= -->
+  <line x1="48" y1="700" x2="1552" y2="700" stroke="#e4e3de"/>
+  <text x="48" y="728" font-size="15" font-weight="600" fill="#0b0b0b">What the protocol produced</text>
+  <text x="290" y="728" font-size="12" fill="#6d6c66">each generation a correction on the one before it, never a replacement — v20 stays immutable</text>
+
+  <rect x="48" y="744" width="300" height="104" rx="8" fill="#ffffff" stroke="#d8d7d1"/>
+  <text x="68" y="772" font-size="15" font-weight="600" fill="#0b0b0b">v20</text>
+  <text x="68" y="792" font-size="11" fill="#6d6c66">immutable root baseline</text>
+  <text x="68" y="822" font-size="20" font-weight="600" fill="#0b0b0b">6.18948</text>
+  <text x="182" y="822" font-size="12" fill="#52514e">pooled OOF</text>
+  <text x="68" y="840" font-size="11" fill="#6d6c66">public LB 6.263</text>
+
+  <line x1="360" y1="796" x2="392" y2="796" stroke="#b6b5ad" stroke-width="2" marker-end="url(#arrowLight)"/>
+
+  <rect x="404" y="744" width="300" height="104" rx="8" fill="#ffffff" stroke="#d8d7d1"/>
+  <text x="424" y="772" font-size="15" font-weight="600" fill="#0b0b0b">C016</text>
+  <text x="424" y="792" font-size="11" fill="#6d6c66">11 residual nets on cached v20 components</text>
+  <text x="424" y="822" font-size="20" font-weight="600" fill="#0b0b0b">6.12727</text>
+  <text x="538" y="822" font-size="12" font-weight="600" fill="#1baf7a">−0.06221</text>
+  <text x="424" y="840" font-size="11" fill="#6d6c66">public LB 6.127</text>
+
+  <line x1="716" y1="796" x2="748" y2="796" stroke="#b6b5ad" stroke-width="2" marker-end="url(#arrowLight)"/>
+
+  <rect x="760" y="744" width="300" height="104" rx="8" fill="#ffffff" stroke="#4a3aa7" stroke-width="2"/>
+  <text x="780" y="772" font-size="15" font-weight="600" fill="#0b0b0b">Run4</text>
+  <text x="1040" y="772" font-size="10" font-weight="600" fill="#4a3aa7" text-anchor="end">ACTIVE PARENT</text>
+  <text x="780" y="792" font-size="11" fill="#6d6c66">structural / surface router, scale 0.6</text>
+  <text x="780" y="822" font-size="20" font-weight="600" fill="#0b0b0b">6.06650</text>
+  <text x="894" y="822" font-size="12" font-weight="600" fill="#1baf7a">−0.06077</text>
+  <text x="780" y="840" font-size="11" fill="#6d6c66">public LB 5.962</text>
+
+  <rect x="1092" y="744" width="460" height="104" rx="8" fill="#faf9f6" stroke="#e4e3de"/>
+  <text x="1112" y="770" font-size="12" font-weight="600" fill="#0b0b0b">The pressure point</text>
+  <text x="1112" y="792" font-size="12" fill="#52514e">The budget is 1 reveal per batch, 6 batches, 5 spent. When a</text>
+  <text x="1112" y="809" font-size="12" fill="#52514e">boundary is used up the escape valve is a <tspan font-weight="600">new</tspan> target-free</text>
+  <text x="1112" y="826" font-size="12" fill="#52514e">grouping (batch 5, batch 6). Legitimate — and the mechanism to</text>
+  <text x="1112" y="843" font-size="12" fill="#52514e">watch, since it is also how a holdout supply becomes endless.</text>
+
+  <text x="48" y="880" font-size="11" fill="#8a8983">Source: COOKBOOK.md and limited_query_cv/CV_PROTOCOL_V5.md, CV Protocol v5 revision 14 · trial and reveal counts from cv_query_ledger_v5.json at snapshot commit c34b9212</text>
+</svg>
