@@ -60,9 +60,16 @@ artifacts and the ledger at this snapshot commit, not drawn illustratively.
 
 `cv-protocol-slides.html` is a 16:9 deck — 23 slides covering each step of the
 protocol and the reasoning behind it, with the seven diagrams embedded at full
-bleed. Open it in a browser; arrow keys or click to navigate, `f` for
-fullscreen, and browser print-to-PDF gives one slide per page. It loads the
-diagrams from `diagrams/`, so keep the two together.
+bleed. Arrow keys or click to navigate, `f` for fullscreen, `#7` in the URL to
+link a slide, and browser print-to-PDF gives one slide per page.
+
+The deck is **self-contained**: the diagrams are inlined as data URIs, so it
+travels as a single file and needs nothing beside it. `diagrams/` remains the
+source of truth — after editing any SVG, refresh the embedded copies with
+
+```bash
+python protocol/embed_diagrams.py
+```
 
 ## Verification
 
