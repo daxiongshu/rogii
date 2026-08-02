@@ -20,8 +20,8 @@
   <rect x="70" y="170" width="316" height="150" rx="6" fill="#eaf2fd"/>
   <text x="228" y="228" font-size="42" font-weight="600" fill="#2a78d6" text-anchor="middle">36,450</text>
   <text x="228" y="254" font-size="12.5" font-weight="600" fill="#0b0b0b" text-anchor="middle">inner trials</text>
-  <text x="228" y="278" font-size="11.5" fill="#52514e" text-anchor="middle">unlimited, unreported, and not</text>
-  <text x="228" y="296" font-size="11.5" fill="#52514e" text-anchor="middle">a result under any circumstance</text>
+  <text x="228" y="278" font-size="11.5" fill="#52514e" text-anchor="middle">unlimited, and never admissible</text>
+  <text x="228" y="296" font-size="11.5" fill="#52514e" text-anchor="middle">as promotion evidence</text>
 
   <rect x="410" y="170" width="316" height="150" rx="6" fill="#fdf0ea"/>
   <text x="568" y="228" font-size="42" font-weight="600" fill="#eb6834" text-anchor="middle">5</text>
