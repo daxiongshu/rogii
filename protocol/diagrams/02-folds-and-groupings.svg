@@ -8,37 +8,22 @@
   </defs>
   <rect width="1600" height="900" fill="#fcfcfb"/>
 
-  <text x="48" y="52" font-size="26" font-weight="600" fill="#0b0b0b">02 · Folds — whole groups, three groupings, one sealed audit fold</text>
-  <text x="48" y="78" font-size="14" fill="#52514e">The group is the atomic unit: every row of a group lands in the same fold, in every grouping. A group is whatever shares information — one subject, one session, one device, one document.</text>
+  <text x="48" y="52" font-size="26" font-weight="600" fill="#0b0b0b">02 · Folds — the split unit, three groupings, one sealed audit fold</text>
+  <text x="48" y="78" font-size="14" fill="#52514e">The split unit is the unit of statistical dependence. Naming it correctly is the only hard part of this step, and it is not always the row or the obvious entity.</text>
   <line x1="48" y1="98" x2="1552" y2="98" stroke="#e4e3de"/>
 
-  <!-- why whole group -->
+  <!-- choosing the unit -->
   <rect x="48" y="122" width="486" height="196" rx="8" fill="#ffffff" stroke="#e4e3de"/>
-  <text x="70" y="150" font-size="15" font-weight="600" fill="#0b0b0b">The split unit is a complete group</text>
+  <text x="70" y="150" font-size="15" font-weight="600" fill="#0b0b0b">Choosing the unit</text>
+  <text x="70" y="174" font-size="11.5" fill="#52514e">Split by the thing that shares information, so that no unit spans</text>
+  <text x="70" y="192" font-size="11.5" fill="#52514e">train and validation. If rows are independent, that unit <tspan font-style="italic">is</tspan> the row</text>
+  <text x="70" y="210" font-size="11.5" fill="#52514e">and this reduces to ordinary K-fold. The rule is not &#8220;never split rows&#8221;.</text>
 
-  <use href="#cross" x="70" y="170"/>
-  <text x="92" y="179" font-size="12" font-weight="600" fill="#0b0b0b">random rows</text>
-  <g>
-    <rect x="92" y="190" width="200" height="22" rx="3" fill="#f0efec"/>
-    <rect x="96" y="193" width="16" height="16" rx="2" fill="#cde2fb"/><rect x="116" y="193" width="16" height="16" rx="2" fill="#fdd9c8"/>
-    <rect x="136" y="193" width="16" height="16" rx="2" fill="#cde2fb"/><rect x="156" y="193" width="16" height="16" rx="2" fill="#cde2fb"/>
-    <rect x="176" y="193" width="16" height="16" rx="2" fill="#fdd9c8"/><rect x="196" y="193" width="16" height="16" rx="2" fill="#cde2fb"/>
-    <rect x="216" y="193" width="16" height="16" rx="2" fill="#fdd9c8"/><rect x="236" y="193" width="16" height="16" rx="2" fill="#cde2fb"/>
-    <rect x="256" y="193" width="16" height="16" rx="2" fill="#fdd9c8"/><rect x="276" y="193" width="12" height="16" rx="2" fill="#cde2fb"/>
-  </g>
-  <text x="302" y="205" font-size="11.5" fill="#a33d18">one group straddles train and validation —</text>
-  <text x="302" y="220" font-size="11.5" fill="#a33d18">its own neighbouring rows leak the answer</text>
-
-  <use href="#tick" x="70" y="242"/>
-  <text x="92" y="251" font-size="12" font-weight="600" fill="#0b0b0b">complete groups</text>
-  <g>
-    <rect x="92" y="262" width="200" height="22" rx="3" fill="#f0efec"/>
-    <rect x="96" y="265" width="76" height="16" rx="2" fill="#cde2fb"/>
-    <rect x="176" y="265" width="52" height="16" rx="2" fill="#cde2fb"/>
-    <rect x="232" y="265" width="56" height="16" rx="2" fill="#fdd9c8"/>
-  </g>
-  <text x="302" y="277" font-size="11.5" fill="#52514e">a group is never divided, so the hidden part</text>
-  <text x="302" y="292" font-size="11.5" fill="#52514e">of a validation group is genuinely unseen</text>
+  <rect x="70" y="226" width="442" height="76" rx="6" fill="#fdf0ea"/>
+  <text x="88" y="248" font-size="12" font-weight="600" fill="#0b0b0b">The failure mode is a unit larger than it looks</text>
+  <text x="88" y="268" font-size="11.5" fill="#52514e">This project began with one well as the unit. A later boundary widened</text>
+  <text x="88" y="286" font-size="11.5" fill="#52514e">it: wells sharing an exact-overlap typewell cluster inform each other,</text>
+  <text x="88" y="304" font-size="11.5" fill="#52514e">so every such cluster now stays wholly inside one fold.</text>
 
   <!-- five folds -->
   <rect x="558" y="122" width="994" height="196" rx="8" fill="#ffffff" stroke="#e4e3de"/>
