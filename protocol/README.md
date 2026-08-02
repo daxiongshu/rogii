@@ -56,6 +56,14 @@ reveal and decision, weights and production, and the query budget. See
 [diagrams/README.md](diagrams/README.md). Their numbers are read from the
 artifacts and the ledger at this snapshot commit, not drawn illustratively.
 
+## Slides
+
+`cv-protocol-slides.html` is a 16:9 deck — 22 slides covering each step of the
+protocol and the reasoning behind it, with the seven diagrams embedded at full
+bleed. Open it in a browser; arrow keys or click to navigate, `f` for
+fullscreen, and browser print-to-PDF gives one slide per page. It loads the
+diagrams from `diagrams/`, so keep the two together.
+
 ## Verification
 
 ```bash

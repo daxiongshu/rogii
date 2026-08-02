@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CV Protocol v5 — how it works and why</title>
+<style>
+  :root{
+    --surface:#fcfcfb; --plane:#f2f1ee; --card:#ffffff;
+    --ink:#0b0b0b; --ink2:#52514e; --ink3:#8a8983; --ink4:#b6b5ad;
+    --line:#e4e3de; --line2:#eeede9;
+    --blue:#2a78d6; --blue-t:#eaf2fd; --blue-l:#cde2fb;
+    --orange:#eb6834; --orange-t:#fdf0ea; --orange-l:#fdd9c8; --orange-d:#a33d18;
+    --aqua:#1baf7a; --aqua-t:#eaf7f1;
+    --violet:#4a3aa7; --violet-t:#eeecf8;
+    --dark:#2f2e2b;
+    --good:#0ca30c; --warn:#fab219; --crit:#d03b3b; --crit-t:#fbeeee;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--plane);
+    font-family:Inter,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;color:var(--ink)}
+  #stage{position:fixed;inset:0;display:grid;place-items:center;overflow:hidden}
+  .slide{position:absolute;width:1600px;height:900px;background:var(--surface);
+    padding:72px 88px;display:none;flex-direction:column;
+    box-shadow:0 2px 28px rgba(0,0,0,.10)}
+  .slide.on{display:flex}
+  .slide.full{padding:0}
+  .slide.full img{width:100%;height:100%;object-fit:contain;display:block}
+
+  h1{font-size:60px;line-height:1.08;font-weight:600;margin:0 0 24px}
+  h2{font-size:40px;line-height:1.15;font-weight:600;margin:0 0 10px}
+  h3{font-size:21px;font-weight:600;margin:0 0 10px}
+  p,li{font-size:21px;line-height:1.5;color:var(--ink2);margin:0 0 14px}
+  .lede{font-size:26px;line-height:1.42;color:var(--ink2);margin:0 0 30px;max-width:1180px}
+  .sub{font-size:19px;color:var(--ink3)}
+  strong{color:var(--ink);font-weight:600}
+  em{font-style:italic}
+  code,.mono{font-family:var(--mono);font-size:.92em}
+
+  .step-tag{display:inline-block;font-size:14px;font-weight:600;letter-spacing:.10em;
+    text-transform:uppercase;color:var(--orange);margin:0 0 14px}
+  .step-tag.b{color:var(--blue)} .step-tag.v{color:var(--violet)} .step-tag.d{color:var(--ink3)}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:44px;flex:1;min-height:0}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:26px 28px}
+  .card.tint-b{background:var(--blue-t);border-color:#c9dcf5}
+  .card.tint-o{background:var(--orange-t);border-color:#f6cdb8}
+  .card.tint-a{background:var(--aqua-t);border-color:#bfe3d3}
+  .card.tint-v{background:var(--violet-t);border-color:#d6d2ee}
+  .card.tint-r{background:var(--crit-t);border-color:#e4c4c4}
+  .card.flat{background:#f6f6f3;border-color:transparent}
+  .card p:last-child,.card li:last-child{margin-bottom:0}
+
+  ul{margin:0 0 14px;padding-left:24px} li{margin-bottom:9px}
+  ul.tight li{margin-bottom:5px}
+  ul.plain{list-style:none;padding-left:0}
+  ul.plain li{padding-left:26px;position:relative}
+  ul.plain li::before{content:"";position:absolute;left:2px;top:.62em;
+    width:8px;height:8px;border-radius:2px;background:var(--blue)}
+  ul.no li::before{background:var(--crit)}
+  ul.yes li::before{background:var(--aqua)}
+
+  .kpi{display:flex;gap:52px;margin:8px 0 22px}
+  .kpi .n{font-size:64px;font-weight:600;line-height:1;letter-spacing:-.02em}
+  .kpi .k{font-size:16px;color:var(--ink3);margin-top:8px}
+  .n.b{color:var(--blue)} .n.o{color:var(--orange)} .n.a{color:var(--aqua)}
+
+  .formula{font-family:var(--mono);font-size:22px;background:#f6f6f3;
+    border-radius:10px;padding:22px 26px;color:var(--ink);line-height:1.7}
+  .pill{display:inline-block;padding:4px 13px;border-radius:999px;font-size:15px;
+    font-weight:600;background:var(--blue-t);color:var(--blue)}
+  .pill.o{background:var(--orange-t);color:var(--orange)}
+  .pill.a{background:var(--aqua-t);color:#137a55}
+  .pill.v{background:var(--violet-t);color:var(--violet)}
+  .pill.d{background:#f0efec;color:var(--ink2)}
+
+  table{border-collapse:collapse;width:100%;font-size:19px}
+  th{text-align:left;font-size:14px;font-weight:600;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--ink3);padding:0 14px 10px 0;
+    border-bottom:1px solid var(--line)}
+  td{padding:11px 14px 11px 0;border-bottom:1px solid var(--line2);color:var(--ink2)}
+  td.num{font-family:var(--mono);color:var(--ink)}
+  td.gain{font-family:var(--mono);color:var(--aqua);font-weight:600}
+  tr:last-child td{border-bottom:none}
+
+  .foot{margin-top:auto;padding-top:22px;font-size:15px;color:var(--ink3);
+    border-top:1px solid var(--line2)}
+  .foot.none{border-top:none}
+
+  .title-slide{justify-content:center}
+  .title-slide h1{font-size:74px;max-width:1280px}
+  .rule{height:5px;width:104px;background:var(--orange);border-radius:3px;margin:0 0 40px}
+
+  #hud{position:fixed;right:20px;bottom:16px;font-size:13px;color:var(--ink3);
+    font-family:var(--mono);z-index:5;user-select:none}
+  #bar{position:fixed;left:0;top:0;height:3px;background:var(--orange);z-index:6;
+    transition:width .18s ease}
+  @media print{
+    html,body{background:#fff}
+    #stage{position:static;display:block}
+    #hud,#bar{display:none}
+    .slide{display:flex!important;position:static;transform:none!important;
+      box-shadow:none;page-break-after:always;break-after:page}
+  }
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<div id="stage">
+
+<!-- 1 -->
+<section class="slide title-slide">
+  <div class="rule"></div>
+  <h1>CV Protocol v5</h1>
+  <p class="lede" style="max-width:1080px">A validation strategy for research where the search is automated —
+  designed so that thousands of experiments can run freely without the reported number quietly becoming a lie.</p>
+  <p class="sub">How it works, step by step, and why each step is there</p>
+</section>
+
+<!-- 2 -->
+<section class="slide">
+  <h2>The problem it exists to solve</h2>
+  <p class="lede">Cross-validation is safe when you run it once. It stops being safe the moment you use it to <em>choose</em>.</p>
+  <div class="grid2">
+    <div class="card tint-r">
+      <h3>What goes wrong</h3>
+      <p>Train four variants, score them all on the held fold, keep the best, report that score.</p>
+      <p>The number you report is no longer the score of a model. It is the <strong>maximum over variants of a noisy quantity</strong> — and the maximum of noise is biased upward.</p>
+      <p>With four variants the bias is small. With the hundreds an automated search produces, it is not.</p>
+    </div>
+    <div class="card">
+      <h3>Why it hides so well</h3>
+      <p>The held fold was used <strong>twice</strong> — once to choose, once to report — but counted once.</p>
+      <p>Every fold does the same thing, so pooling five folds does not average the bias away. It pools five biased estimates.</p>
+      <p>And nothing is left over to detect it with: the evidence that would reveal the optimism is the same evidence that was consumed making it.</p>
+    </div>
+  </div>
+  <div class="foot">An agent that can run 36,450 experiments does not have a compute problem. It has a selection-pressure problem.</div>
+</section>
+
+<!-- 3 -->
+<section class="slide">
+  <h2>The core idea</h2>
+  <p class="lede">Overfitting is treated as a function of <strong>how often the judge is consulted</strong>, not how hard the search works. So the search is made free and the judge is made scarce.</p>
+  <div class="kpi">
+    <div><div class="n b">36,450</div><div class="k">inner trials — unlimited, never reported</div></div>
+    <div><div class="n o">5</div><div class="k">protected reveals — the only quotable measurements</div></div>
+  </div>
+  <div class="grid3">
+    <div class="card tint-b"><h3>Search is free</h3><p class="sub">Explore, inspect errors, tune anything on the development folds. Nothing here is a result, so nothing here can be overfitted <em>to</em>.</p></div>
+    <div class="card tint-o"><h3>Measurement is rationed</h3><p class="sub">One protected reveal per batch of work. Opening it spends it, and a spent result cannot be reused as confirmation.</p></div>
+    <div class="card tint-v"><h3>Promotion is human</h3><p class="sub">No automatic gate moves the baseline. A person reviews the result and approves it, or it does not move.</p></div>
+  </div>
+  <div class="foot">Ration the query, not the curiosity.</div>
+</section>
+
+<!-- 4 -->
+<section class="slide full"><img src="diagrams/01-run-workflow.svg" alt="The six stages of one research run and the loop back to the next run"></section>
+
+<!-- 5 -->
+<section class="slide">
+  <div class="step-tag b">Step 1 · Fold</div>
+  <h2>Split by whole group, never by row</h2>
+  <div class="grid2">
+    <div>
+      <p><strong>The unit is whatever shares information</strong> — one subject, one session, one device, one document, one well. Every row of a group lands in the same fold.</p>
+      <p>Split rows at random and one group straddles train and validation. The model then predicts a row using its own neighbouring rows, which is a leak no metric will show you.</p>
+      <p>Five folds. Four are open for development. The fifth is sealed as the audit fold.</p>
+    </div>
+    <div class="card flat">
+      <h3>Three groupings of the same data</h3>
+      <p class="sub">The same groups partitioned three different ways — original, balanced, independent. Identical rows, different assignment.</p>
+      <p class="sub">Weights are estimated under all three, and the audit reports regrouping sensitivity. A result that only holds under one particular partition shows up as instability instead of passing unnoticed.</p>
+    </div>
+  </div>
+  <div class="foot"><strong>Why:</strong> the fold map is the one thing every later number depends on. If it leaks, nothing downstream can detect it.</div>
+</section>
+
+<!-- 6 -->
+<section class="slide full"><img src="diagrams/02-folds-and-groupings.svg" alt="Whole-group folds and the three groupings"></section>
+
+<!-- 7 -->
+<section class="slide">
+  <div class="step-tag b">Step 2 · Develop</div>
+  <h2>Iterate without limit — and report none of it</h2>
+  <div class="grid2">
+    <div>
+      <p>On the development folds the agent may read targets, errors, residuals, subgroups and worst cases, and may change architecture, loss, features, augmentation, postprocessing and ensembling. There is no budget.</p>
+      <p>The protocol pushes <em>harder</em>, not softer: abandoning a mechanism after one or two weak variants is listed as forbidden behaviour, and a trainable family is expected to test at least three meaningful variants.</p>
+      <h3 style="margin-top:26px">The staged ladder</h3>
+      <ul class="tight">
+        <li>overfit one fixed batch — an implementation control, not evidence</li>
+        <li>a short run on one inner role</li>
+        <li>a four-fold cross-fit on the development folds</li>
+        <li>confirmation on a second preregistered grouping</li>
+        <li>freeze one global pipeline</li>
+      </ul>
+    </div>
+    <div class="card tint-b">
+      <h3>Two things that make the freedom safe</h3>
+      <p><strong>Debugging costs nothing statistically.</strong> A family must first memorise one fixed batch. Failure there is an implementation result, never CV evidence — so fixing bugs never spends measurement budget.</p>
+      <p><strong>Holdouts decay on contact.</strong> The second grouping is queried only at milestones, and the moment its result changes a decision it is reclassified as development evidence. Before the freeze, a still-untouched grouping is required.</p>
+    </div>
+  </div>
+  <div class="foot"><strong>Why:</strong> exploration is not what causes overfitting. Reporting exploration is.</div>
+</section>
+
+<!-- 8 -->
+<section class="slide">
+  <div class="step-tag">Step 3 · The trap</div>
+  <h2>A fold may not choose anything about itself</h2>
+  <p class="lede">Holding a fold out of <em>training</em> is the easy half. The protocol also holds it out of every <em>choice</em> made about it.</p>
+  <div class="grid2">
+    <div class="card tint-r">
+      <h3>Four things a fold must not select for itself</h3>
+      <ul class="plain no tight">
+        <li>the <strong>checkpoint</strong> — which snapshot is used</li>
+        <li>the <strong>decoder</strong> — how a likelihood becomes an answer</li>
+        <li>the <strong>postprocessor</strong> — smoothing, extrapolation, clipping</li>
+        <li>the <strong>blend weight</strong> — how much of the candidate is mixed in</li>
+      </ul>
+      <p style="margin-top:16px">Same-held-fold results are permitted as diagnostics. They are never promotion evidence.</p>
+    </div>
+    <div class="card tint-a">
+      <h3>The fix: delegate the choice</h3>
+      <p>Inside the four folds that remain, run a second cross-validation. Hold out one more fold, train on the rest, score the variants there.</p>
+      <p>Four such readings per outer fold, none of which ever touched it. The winner is applied to the held fold once, to produce one prediction.</p>
+      <p><strong>Its score is then a measurement, not the maximum of a search.</strong></p>
+    </div>
+  </div>
+  <div class="foot">This is the difference between <em>cross-validated</em> and <em>selection-clean</em>.</div>
+</section>
+
+<!-- 9 -->
+<section class="slide full"><img src="diagrams/04-selection-clean-choice.svg" alt="Ordinary CV compared with selection-clean CV"></section>
+
+<!-- 10 -->
+<section class="slide">
+  <div class="step-tag">Step 4 · Roles</div>
+  <h2>25 roles, 15 training runs, 5 deployed</h2>
+  <div class="grid2">
+    <div>
+      <p>A <strong>role</strong> is one job: which fold am I predicting, and in whose service. The training set follows from the answer.</p>
+      <ul class="tight">
+        <li><strong>5 outer roles</strong> — train on four folds, predict the fifth once. These are the only models that ship.</li>
+        <li><strong>20 inner roles</strong> — four per outer fold, ranking the variants without touching the fold they serve.</li>
+      </ul>
+      <p style="margin-top:20px">A role trains on everything except its outer fold and its inner fold — so its data depends only on that <strong>unordered pair</strong>. Swap the two and the training set is identical.</p>
+      <div class="formula" style="font-size:19px;margin-top:8px">(outer F4, inner F0) &nbsp;→&nbsp; trains F1+F2+F3<br>(outer F0, inner F4) &nbsp;→&nbsp; trains F1+F2+F3</div>
+    </div>
+    <div class="card flat">
+      <h3>One model, two roles</h3>
+      <p>That single model is held out from both F0 and F4, so it predicts both and fills both roles. Name it by what it excludes — <span class="pill">pair {0,4}</span></p>
+      <p>Distinct pairs of five folds: <strong>C(5,2) = 10</strong>. So 20 inner roles need only 10 models.</p>
+      <h3 style="margin-top:24px">What it costs</h3>
+      <table>
+        <tr><td>plain (leaky) CV</td><td class="num">5 runs</td></tr>
+        <tr><td>independent nesting</td><td class="num">25 runs</td></tr>
+        <tr><td><strong>pair-shared nesting</strong></td><td class="num"><strong>15 runs</strong></td></tr>
+      </table>
+      <p class="sub" style="margin-top:14px">Three times plain CV, not five. Valid only with identical config and seed — the sharing is bookkeeping, not statistics.</p>
+    </div>
+  </div>
+  <div class="foot"><strong>Why:</strong> the inner layer is the price of a number that isn't its own argmax. Pair-sharing makes that price affordable.</div>
+</section>
+
+<!-- 11 -->
+<section class="slide full"><img src="diagrams/03-roles-and-pair-models.svg" alt="Roles, inner roles and the ten excluded-pair models"></section>
+
+<!-- 12 -->
+<section class="slide">
+  <div class="step-tag d">Step 5 · Freeze</div>
+  <h2>One pipeline, checksummed, before any truth opens</h2>
+  <div class="grid2">
+    <div>
+      <p>Everything that could be adjusted in response to a result is fixed and hashed <em>first</em>. The same automatic procedure then runs for every outer fold, with no hand edits and no fold-specific fallback.</p>
+      <div class="card flat" style="margin-top:20px">
+        <ul class="tight" style="margin:0">
+          <li>architecture and capacity</li>
+          <li>features, target, loss</li>
+          <li>augmentation and curriculum</li>
+          <li>seeds and the snapshot grid</li>
+          <li>the selector and its tie-break</li>
+          <li>decoder and postprocessor</li>
+          <li>the ensemble weight rule</li>
+          <li>every error-derived heuristic</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="card tint-o">
+        <h3>What is frozen is the rule, not the answer</h3>
+        <p>The selector is fixed. What it <em>selects</em> may legitimately differ per outer fold, because each fold's selector sees a different four-fifths of the data.</p>
+        <p class="sub">Observed in one accepted candidate: the same frozen rule chose decoding temperature 2.0, 2.0, 1.5, 1.5, 1.5 across the five outer folds, and double amplitude on the last one. Nobody chose those by hand.</p>
+      </div>
+      <div class="card" style="margin-top:22px">
+        <h3>Deployment completeness</h3>
+        <p class="sub">Every component needs a target-free implementation for every outer context. If one is missing, it is either generated for all of them or removed uniformly and the pipeline re-frozen — never patched for a single fold.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><strong>Why:</strong> anything adjustable after the result is a channel through which the result can adjust it.</div>
+</section>
+
+<!-- 13 -->
+<section class="slide">
+  <div class="step-tag">Step 6 · Sealed run</div>
+  <h2>Fifteen models, written sealed</h2>
+  <div class="grid2">
+    <div>
+      <p>The 10 pair models train first and rank the variants for each outer context. Then the 5 outer models train on four folds each and predict their held fold once.</p>
+      <p>The run writes checkpoints, prediction caches and manifests — all checksummed, all with truth masked and target-derived logs suppressed until every artifact is complete.</p>
+      <div class="card tint-o" style="margin-top:22px">
+        <h3>Why the run must be <em>sealed</em>, not merely automatic</h3>
+        <p class="sub">Pair-sharing means the audit fold's labels are legitimately used mid-run — pair {0,4} serves outer context F0 by validating on F4. Legal, because outer context F0 is entitled to use F4. But it means truth is touched before the reveal, so the seal is what keeps that from reaching a human decision.</p>
+      </div>
+    </div>
+    <div class="card flat">
+      <h3>What "ranking a variant" actually means</h3>
+      <p>Snapshots are saved on a preregistered epoch grid, and each writes its prediction immediately. Everything else is swept afterwards on those saved predictions — no retraining.</p>
+      <div class="formula" style="font-size:18px">5 snapshots × 5 temperatures × 9 weights<br>= 225 combinations per training run</div>
+      <p style="margin-top:16px">This is why 15 runs suffices. The inner layer is not ranking 225 trained models; it is ranking 225 <em>readings</em> of 10 trained models.</p>
+      <p class="sub">Things that genuinely need retraining — architecture, loss, seed — are frozen beforehand or multiply the run count.</p>
+    </div>
+  </div>
+  <div class="foot"><strong>Why:</strong> the expensive axis is training; the cheap axes are decoding and blending. Only the cheap ones are left to selection.</div>
+</section>
+
+<!-- 14 -->
+<section class="slide">
+  <div class="step-tag">Step 7 · Reveal</div>
+  <h2>All folds at once, and only once</h2>
+  <div class="grid2">
+    <div>
+      <p>Protected truth opens for every fold simultaneously, with three to five distinct families in the same query — so the best of many queries can never be presented as an unbiased result.</p>
+      <div class="formula" style="margin:20px 0">gain = previous_best − candidate</div>
+      <p>Compared against the parent frozen <em>before</em> this reveal, on identical folds, rows, masks and metric definition. The reference may not change during the run.</p>
+    </div>
+    <div class="card">
+      <h3>What is reported</h3>
+      <ul class="plain tight">
+        <li>pooled and per-fold error</li>
+        <li>regrouping sensitivity under both alternative groupings</li>
+        <li>maximum held-group regression</li>
+        <li>weight stability — how many inner weights are positive</li>
+        <li>audit-fold behaviour, reported separately</li>
+        <li>a 2,000-draw paired-group bootstrap on a fixed seed</li>
+      </ul>
+      <p style="margin-top:18px"><span class="pill o">reveal budget − 1</span></p>
+      <p class="sub" style="margin-top:12px">A revised pipeline needs a genuinely new boundary. A spent result may never serve as its own confirmation.</p>
+    </div>
+  </div>
+  <div class="foot"><strong>Why:</strong> one query answered honestly is worth more than ten queries answered optimistically.</div>
+</section>
+
+<!-- 15 -->
+<section class="slide full"><img src="diagrams/05-reveal-and-decision.svg" alt="The freeze checklist, what the reveal reports, and the decision boundary"></section>
+
+<!-- 16 -->
+<section class="slide">
+  <div class="step-tag">Step 8 · Decide</div>
+  <h2>Three outcomes, and no automatic gate</h2>
+  <div class="grid3" style="margin-bottom:26px">
+    <div class="card tint-a"><h3><span style="color:var(--good)">●</span> Accept</h3><p class="sub">Pooled selection-clean CV beats the frozen parent, every integrity rule passes, and protected evidence shows no material overfitting or transfer reversal.</p></div>
+    <div class="card" style="background:#fdf6e5;border-color:#f2e3bd"><h3><span style="color:var(--warn)">●</span> Hold</h3><p class="sub">Gain is positive but uncertainty or instability is substantial. Nothing is packaged.</p></div>
+    <div class="card tint-r"><h3><span style="color:var(--crit)">●</span> Reject</h3><p class="sub">Gain is not positive, integrity fails, or the protected evidence materially reverses the development result.</p></div>
+  </div>
+  <div class="grid2">
+    <div class="card flat">
+      <h3>Numeric levels are diagnostics, not gates</h3>
+      <p class="sub">Revision 14 demoted the old thresholds — +0.03 pooled, 4 of 5 folds improved, bootstrap 0.80 — from automatic cutoffs to evidence. A hard threshold is itself a target to optimise against; removing it removes the thing to game.</p>
+    </div>
+    <div class="card flat">
+      <h3>Hold and Reject are terminal</h3>
+      <p class="sub">The spent audit may not be re-queried, and the failed candidate may not be tuned against it. The rejection is preserved rather than rewritten — sealed history is never edited after the fact.</p>
+    </div>
+  </div>
+  <div class="foot"><strong>Why:</strong> a gate you can optimise against is a gate you will eventually optimise against.</div>
+</section>
+
+<!-- 17 -->
+<section class="slide">
+  <div class="step-tag">Step 9 · Ship</div>
+  <h2>The candidate is mixed in, never swapped in</h2>
+  <div class="grid2">
+    <div>
+      <div class="formula">fold_h = (1 − w_h) · parent_h + w_h · candidate_h<br>test&nbsp;&nbsp; = mean(fold_0 … fold_4)</div>
+      <p style="margin-top:22px">For each outer fold, the weight is estimated <strong>only inside that fold's own four-fold pool</strong>, under all three groupings. Take the median, round <strong>down</strong> to a nine-point grid, cap at 0.20, apply unchanged to the held fold.</p>
+      <p>No full-data refit. The five fold-local weights and five outer checkpoints are what ships.</p>
+    </div>
+    <div class="card tint-b">
+      <h3>The frugality is in resolution, not count</h3>
+      <p>One weight per fold is still one free parameter. What changed is how far it may travel: nine rungs, biased downward, with the most optimistic of three estimates discarded by the median.</p>
+      <p><strong>And the five fold checkpoints are averaged with equal weight — zero free parameters.</strong></p>
+      <p class="sub">Not modesty: there is no clean evidence with which to fit them. Out-of-fold gives each group exactly <em>one</em> excluding model, so the five-model average never appears in the record. The structure that makes those weights unfittable removes the temptation to fit them.</p>
+    </div>
+  </div>
+  <div class="foot"><strong>Why:</strong> every fitted parameter is also a query. You can reduce query pressure with fewer parameters, or by giving each one less room to answer.</div>
+</section>
+
+<!-- 18 -->
+<section class="slide full"><img src="diagrams/06-weights-and-production.svg" alt="Weight estimation, the production blend, and what is packaged"></section>
+
+<!-- 19 -->
+<section class="slide">
+  <div class="step-tag v">Step 10 · Approve</div>
+  <h2>Only a human moves the baseline</h2>
+  <div class="grid2">
+    <div>
+      <p>Promotion builds the private artifact bundle and inference job. Submission spends a submission slot. <strong>Neither changes the parent.</strong></p>
+      <p>The parent registry is updated only by explicit approval after a person reviews whether the clean CV gain and the external score moved together.</p>
+      <div class="card tint-v" style="margin-top:22px">
+        <h3>The leaderboard firewall</h3>
+        <p class="sub">External feedback may never inform model choice, blend weights, or postprocessing. It is monitoring evidence about the <em>validation design</em>, not a signal about the model.</p>
+        <p class="sub" style="margin-top:10px">Repeated CV-up / score-down triggers a validation review — the one place the protocol looks at the leaderboard to ask a question about itself.</p>
+      </div>
+    </div>
+    <div class="card flat">
+      <h3>Why a human, and not a rule</h3>
+      <p>Every other decision in the protocol is automatic, precisely so it cannot be nudged. This one is manual for the opposite reason.</p>
+      <p>Approving a new parent is the only irreversible act: it changes the reference every future run is measured against. A rule that did it automatically would let a single lucky reveal reset the baseline permanently — and a chain of lucky reveals would drift without any single step looking wrong.</p>
+      <p class="sub">Promotion and submission are reversible. Moving the baseline is not, so it is the one thing a person signs.</p>
+    </div>
+  </div>
+  <div class="foot"><strong>Why:</strong> automate what benefits from consistency; keep a human on what benefits from accountability.</div>
+</section>
+
+<!-- 20 -->
+<section class="slide full"><img src="diagrams/07-query-budget-and-lineage.svg" alt="The query budget, batch structure, and what five reveals bought"></section>
+
+<!-- 21 -->
+<section class="slide">
+  <h2>Why it is designed this way</h2>
+  <p class="lede">Six choices, each answering a different way the number could quietly become wrong.</p>
+  <div class="grid3" style="margin-bottom:24px">
+    <div class="card"><h3>Zones, not limits</h3><p class="sub">Unlimited search on one side, a sealed measurement on the other. Overfitting is localised to the side where nothing is claimed.</p></div>
+    <div class="card"><h3>Delegated choice</h3><p class="sub">No fold selects for itself. The reported number is a measurement, not the argmax of the search that produced it.</p></div>
+    <div class="card"><h3>Spent on contact</h3><p class="sub">Opening a reveal consumes it. A revised pipeline needs a new boundary, so evidence cannot be re-queried until it agrees.</p></div>
+  </div>
+  <div class="grid3">
+    <div class="card"><h3>Shrunk, not tuned</h3><p class="sub">Coarse grids, rounding down, medians over groupings, hard caps. Parameters keep their count but lose their resolution.</p></div>
+    <div class="card"><h3>Diagnostics, not gates</h3><p class="sub">No fixed numeric threshold to optimise against — judgement over a full evidence panel instead of a single passing score.</p></div>
+    <div class="card"><h3>Human at the hinge</h3><p class="sub">Everything automatic except the one irreversible act, which is where accountability matters more than consistency.</p></div>
+  </div>
+  <div class="foot">Every one of them trades measured performance for the trustworthiness of the measurement.</div>
+</section>
+
+<!-- 22 -->
+<section class="slide">
+  <h2>What five reveals bought — and what to keep watching</h2>
+  <table style="margin-bottom:26px">
+    <thead><tr><th>generation</th><th>what it added</th><th>pooled CV</th><th>CV gain</th><th>external</th><th>gain</th></tr></thead>
+    <tbody>
+      <tr><td><strong>root</strong></td><td>the immutable baseline, never retrained</td><td class="num">6.189485</td><td>—</td><td class="num">6.263</td><td>—</td></tr>
+      <tr><td><strong>gen 2</strong></td><td>residual networks on cached baseline components</td><td class="num">6.127273</td><td class="gain">+0.062212</td><td class="num">6.127</td><td class="gain">+0.136</td></tr>
+      <tr><td><strong>gen 3</strong></td><td>a per-group router over two candidate blends</td><td class="num">6.066501</td><td class="gain">+0.060772</td><td class="num">5.962</td><td class="gain">+0.165</td></tr>
+    </tbody>
+  </table>
+  <div class="grid2">
+    <div class="card tint-a">
+      <h3>The consistency check that matters</h3>
+      <p class="sub">Clean CV and the external score moved the same direction both times, and the external gain was <em>larger</em> than the CV gain each time. That is the signature of a validation design that is, if anything, conservative.</p>
+    </div>
+    <div class="card tint-o">
+      <h3>The honest limit</h3>
+      <p class="sub">The budget is one reveal per batch, six batches, five spent. When a boundary is used up the escape valve is a fresh target-free grouping — legitimate, and also exactly how a holdout supply could become endless.</p>
+      <p class="sub" style="margin-top:10px">The audit fold is <em>prospectively</em> protected, not historically pristine, which is why the official result is labelled <em>selection-clean, development-exposed</em> rather than unbiased.</p>
+    </div>
+  </div>
+  <div class="foot">The label is part of the result, not a footnote to it.</div>
+</section>
+
+</div>
+<div id="hud"><span id="idx">1</span> / <span id="tot">1</span> &nbsp;·&nbsp; ← → navigate &nbsp;·&nbsp; f fullscreen</div>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var stage = document.getElementById('stage');
+  var bar = document.getElementById('bar');
+  var idxEl = document.getElementById('idx');
+  document.getElementById('tot').textContent = slides.length;
+  var i = 0;
+
+  function fit(){
+    var s = Math.min(window.innerWidth / 1600, window.innerHeight / 900);
+    slides.forEach(function(el){ el.style.transform = 'scale(' + s + ')'; });
+  }
+  function show(n){
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach(function(el, k){ el.classList.toggle('on', k === i); });
+    idxEl.textContent = i + 1;
+    bar.style.width = ((i + 1) / slides.length * 100) + '%';
+    if (location.hash !== '#' + (i + 1)) history.replaceState(null, '', '#' + (i + 1));
+  }
+  function fromHash(){
+    var n = parseInt((location.hash || '#1').slice(1), 10);
+    show(isNaN(n) ? 0 : n - 1);
+  }
+
+  window.addEventListener('resize', fit);
+  window.addEventListener('hashchange', fromHash);
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); show(i + 1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); show(i - 1); }
+    else if (e.key === 'Home') { show(0); }
+    else if (e.key === 'End') { show(slides.length - 1); }
+    else if (e.key === 'f' || e.key === 'F') {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else document.documentElement.requestFullscreen();
+    }
+  });
+  stage.addEventListener('click', function(e){
+    show(e.clientX < window.innerWidth * 0.28 ? i - 1 : i + 1);
+  });
+
+  fit();
+  fromHash();
+})();
+</script>
+</body>
+</html>
