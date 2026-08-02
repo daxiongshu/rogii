@@ -36,6 +36,16 @@ times the holdout is queried, so search is unbounded and queries are budgeted.
 08 is the implementation detail that makes the cost bearable: the selector ranks
 225 evaluations of 10 trained models, not 225 trained models.
 
+## The specification is ground truth
+
+Where the written protocol and the implementation disagree, these diagrams
+state the **protocol's** rule. The implementation is the thing that moved, and
+the three known deviations — the ridge module's `MAX_WEIGHT = 0.5` against a
+documented cap of 0.20, the missing median-over-groupings in the ridge path,
+and a positive-weight denominator of 20 against a documented 15 — are recorded
+on the compliance slide of `../cv-protocol-slides.html` rather than folded
+silently into the diagrams.
+
 ## Numbers in 05–07 are read from the artifacts
 
 Not illustrative:

@@ -49,7 +49,7 @@
     <text x="588" y="262"><tspan font-weight="600" fill="#0b0b0b">pooled and per-fold RMSE</tspan> — all five folds</text>
     <text x="588" y="286"><tspan font-weight="600" fill="#0b0b0b">regrouping sensitivity</tspan> — balanced and independent</text>
     <text x="588" y="310"><tspan font-weight="600" fill="#0b0b0b">maximum held-group regression</tspan></text>
-    <text x="588" y="334"><tspan font-weight="600" fill="#0b0b0b">weight stability</tspan> — inner roles with a positive weight, of 20</text>
+    <text x="588" y="334"><tspan font-weight="600" fill="#0b0b0b">weight stability</tspan> — positive inner weights, legacy level 10</text>
     <text x="588" y="358"><tspan font-weight="600" fill="#0b0b0b">F4 behaviour</tspan> — reported separately as the audit fold</text>
     <text x="588" y="382"><tspan font-weight="600" fill="#0b0b0b">paired bootstrap</tspan> — 2,000 draws over whole groups, seed 20260725</text>
   </g>
@@ -60,7 +60,7 @@
     <text x="608" y="448">pooled 6.189485 down to 6.127273, gain +0.062212</text>
     <text x="608" y="468">all five original folds improved</text>
     <text x="608" y="488">maximum held-group regression 0.0</text>
-    <text x="608" y="508">4 of 20 inner roles positive — legacy clause wanted 10</text>
+    <text x="608" y="508">4 positive inner weights — below the legacy level of 10</text>
   </g>
 
   <line x1="1048" y1="330" x2="1074" y2="330" stroke="#8a8983" stroke-width="2" marker-end="url(#arrow)"/>
