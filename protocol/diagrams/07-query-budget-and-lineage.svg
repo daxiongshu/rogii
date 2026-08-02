@@ -9,8 +9,8 @@
   </defs>
   <rect width="1600" height="900" fill="#fcfcfb"/>
 
-  <text x="48" y="52" font-size="26" font-weight="600" fill="#0b0b0b">07 · The query budget — what the whole design is buying</text>
-  <text x="48" y="78" font-size="14" fill="#52514e">Overfitting is treated as a function of how often the judge is consulted, not how hard the search works. So the search is free and the judge is rationed.</text>
+  <text x="48" y="52" font-size="26" font-weight="600" fill="#0b0b0b">07 · Query budget and lineage</text>
+  <text x="48" y="78" font-size="14" fill="#52514e">Bias is treated as a function of how many times the holdout is queried, not how large the search is. Search is unbounded; holdout queries are budgeted.</text>
   <line x1="48" y1="98" x2="1552" y2="98" stroke="#e4e3de"/>
 
   <!-- the ratio -->
@@ -26,7 +26,7 @@
   <rect x="410" y="170" width="316" height="150" rx="6" fill="#fdf0ea"/>
   <text x="568" y="228" font-size="42" font-weight="600" fill="#eb6834" text-anchor="middle">5</text>
   <text x="568" y="254" font-size="12.5" font-weight="600" fill="#0b0b0b" text-anchor="middle">protected reveals</text>
-  <text x="568" y="278" font-size="11.5" fill="#52514e" text-anchor="middle">the only measurements that may</text>
+  <text x="568" y="278" font-size="11.5" fill="#52514e" text-anchor="middle">the only estimates that may</text>
   <text x="568" y="296" font-size="11.5" fill="#52514e" text-anchor="middle">be quoted as a result</text>
 
   <!-- what spends -->
@@ -36,7 +36,7 @@
   <use href="#cross" x="794" y="172"/>
   <text x="816" y="181" font-size="12" font-weight="600" fill="#0b0b0b">spends it</text>
   <g font-size="11.5" fill="#52514e">
-    <text x="816" y="204">opening protected truth for a frozen candidate</text>
+    <text x="816" y="204">opening held-out labels for a frozen candidate</text>
     <text x="816" y="224">any joint reveal, whether it accepts or rejects</text>
     <text x="816" y="244">a promotion audit for one named candidate</text>
   </g>

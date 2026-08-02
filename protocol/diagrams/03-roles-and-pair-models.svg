@@ -27,8 +27,8 @@
   </g>
   <text x="646" y="230" font-size="10.5" fill="#a33d18">predict, once</text>
 
-  <text x="70" y="272" font-size="11.5" fill="#52514e">The catch: something still has to choose this model's checkpoint, decoder, postprocessor and</text>
-  <text x="70" y="290" font-size="11.5" fill="#52514e">blend weight. If F4 helped choose them, F4 would be selecting for itself and its score would</text>
+  <text x="70" y="272" font-size="11.5" fill="#52514e">Something must still choose this model's checkpoint, decoder, postprocessor and blend</text>
+  <text x="70" y="290" font-size="11.5" fill="#52514e">weight. If F4 helped choose them it would be selecting for itself, and its score would</text>
   <text x="70" y="308" font-size="11.5" fill="#52514e">be optimistic. So the choice is delegated to a second, inner layer that never touches F4.</text>
   <text x="70" y="334" font-size="11.5" font-weight="600" fill="#eb6834">That inner layer is what the other 20 roles are for.</text>
 
@@ -135,9 +135,9 @@
   <text x="944" y="770" font-size="24" font-weight="600" fill="#eb6834" text-anchor="middle">5</text>
   <text x="944" y="792" font-size="11.5" fill="#52514e" text-anchor="middle">checkpoints deployed — the outer ones</text>
 
-  <text x="1130" y="762" font-size="11.5" fill="#52514e">The ten pair models exist only to make the choice clean.</text>
-  <text x="1130" y="782" font-size="11.5" fill="#52514e">They are research artifacts and are never packaged — only</text>
-  <text x="1130" y="802" font-size="11.5" fill="#52514e">the five outer checkpoints reach production.</text>
+  <text x="1130" y="762" font-size="11.5" fill="#52514e">The ten pair models are research artifacts, never packaged.</text>
+  <text x="1130" y="782" font-size="11.5" fill="#52514e">They supply both the ranking that picks each outer fold's</text>
+  <text x="1130" y="802" font-size="11.5" fill="#52514e">recipe and the out-of-fold predictions its weight is fitted on.</text>
 
   <text x="48" y="866" font-size="11" fill="#8a8983">Structure from limited_query_cv/CV_PROTOCOL_V5.md and COOKBOOK.md, CV Protocol v5 revision 14</text>
 </svg>

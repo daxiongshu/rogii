@@ -116,9 +116,9 @@
   <!-- second grouping / decay -->
   <rect x="48" y="696" width="740" height="140" rx="8" fill="#ffffff" stroke="#e4e3de"/>
   <text x="70" y="724" font-size="15" font-weight="600" fill="#0b0b0b">The second grouping decays on contact</text>
-  <text x="70" y="748" font-size="11.5" fill="#52514e">The working development split may be queried constantly. A second whole-group</text>
-  <text x="70" y="766" font-size="11.5" fill="#52514e">grouping is preregistered and queried only at milestones — but the moment its</text>
-  <text x="70" y="784" font-size="11.5" fill="#52514e">result changes a decision, it stops being a holdout and becomes development evidence.</text>
+  <text x="70" y="748" font-size="11.5" fill="#52514e">Distinct from the three groupings above, which serve weight estimation. A second</text>
+  <text x="70" y="766" font-size="11.5" fill="#52514e">whole-group grouping is preregistered as a development-time holdout, queried only</text>
+  <text x="70" y="784" font-size="11.5" fill="#52514e">at milestones — and once its result changes a decision it becomes development evidence.</text>
   <text x="70" y="810" font-size="11.5" font-weight="600" fill="#0b0b0b">Before the freeze, a still-untouched grouping or a new preregistered one is required.</text>
 
   <rect x="812" y="696" width="740" height="140" rx="8" fill="#faf9f6" stroke="#e4e3de"/>

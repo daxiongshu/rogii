@@ -1,6 +1,6 @@
 # CV Protocol v5 — diagram set
 
-Seven 16:9 SVGs explaining the validation strategy the v20, C016 and Run4
+Eight 16:9 SVGs explaining the validation strategy the v20, C016 and Run4
 subtrees were developed under. Hand-written SVG, no external assets, no
 webfonts — every mark that could depend on font coverage (ticks, crosses,
 arrows, padlocks) is a drawn path.
@@ -21,6 +21,7 @@ artifacts and the ledger.
 | 05 | [`05-reveal-and-decision.svg`](05-reveal-and-decision.svg) | What is frozen before truth opens, what the reveal reports, how Accept / Hold / Reject is decided | this project |
 | 06 | [`06-weights-and-production.svg`](06-weights-and-production.svg) | How a candidate is blended into the parent, and what ships | this project |
 | 07 | [`07-query-budget-and-lineage.svg`](07-query-budget-and-lineage.svg) | The economics — 36,450 trials against 5 reveals — and what those five bought | this project |
+| 08 | [`08-inner-sweep-and-decode.svg`](08-inner-sweep-and-decode.svg) | What the inner loop actually sweeps: trained axes against swept axes, the decode, and how the selector aggregates | this project |
 
 03 and 04 both work through **F4** as the held fold, so the two read together:
 04's "inner roles of F4" are exactly the four roles 03 enumerates.
@@ -30,8 +31,10 @@ artifacts and the ledger.
 01 is the loop. 02–04 are the machinery that makes one turn of it trustworthy:
 whole-group folds, the role system, and the rule that a fold never chooses
 anything about itself. 05–06 are what happens at and after the measurement.
-07 is why the whole apparatus exists — overfitting is treated as a function of
-how often the judge is consulted, so search is free and the judge is rationed.
+07 is why the whole apparatus exists — bias is treated as a function of how many
+times the holdout is queried, so search is unbounded and queries are budgeted.
+08 is the implementation detail that makes the cost bearable: the selector ranks
+225 evaluations of 10 trained models, not 225 trained models.
 
 ## Numbers in 05–07 are read from the artifacts
 
@@ -40,7 +43,9 @@ Not illustrative:
 - the audit figures in 05 from C016's `package_validation.json`;
 - the weight configurations in 06 from `c016_recipe.json` and Run4's
   `recipe.json`;
-- trial, reveal and batch counts in 07 from `cv_query_ledger_v5.json`.
+- trial, reveal and batch counts in 07 from `cv_query_ledger_v5.json`;
+- the snapshot, temperature and weight grids and the decode in 08 from
+  `train_v5_run6_local_v20_residual.py` and `train_v5_run25_c016_nested.py`.
 
 All at snapshot commit `c34b9212`, the same commit `../manifests/protocol_sources.json`
 hash-locks. The ledger keeps moving in the source repository; these are its

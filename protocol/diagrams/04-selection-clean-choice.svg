@@ -8,8 +8,8 @@
   </defs>
   <rect width="1600" height="900" fill="#fcfcfb"/>
 
-  <text x="48" y="52" font-size="26" font-weight="600" fill="#0b0b0b">04 · Selection-clean — the rule most pipelines break quietly</text>
-  <text x="48" y="78" font-size="14" fill="#52514e">Holding a fold out of <tspan font-style="italic">training</tspan> is the easy half. The protocol also holds it out of every <tspan font-style="italic">choice</tspan> made about it.</text>
+  <text x="48" y="52" font-size="26" font-weight="600" fill="#0b0b0b">04 · Selection-clean CV — held out of the choice, not just the fit</text>
+  <text x="48" y="78" font-size="14" fill="#52514e">Holding a fold out of <tspan font-style="italic">training</tspan> is necessary but not sufficient. It must also be held out of every <tspan font-style="italic">choice</tspan> made about it.</text>
   <line x1="48" y1="98" x2="1552" y2="98" stroke="#e4e3de"/>
 
   <!-- LEFT: leaky -->
@@ -56,9 +56,9 @@
   <text x="70" y="472" font-size="11.5" fill="#52514e">the hundreds of variants a real search produces, it is not.</text>
 
   <rect x="70" y="494" width="682" height="86" rx="6" fill="#fbeeee"/>
-  <text x="92" y="518" font-size="11.5" font-weight="600" fill="#0b0b0b">The tell is that nothing is left to check it against.</text>
-  <text x="92" y="540" font-size="11.5" fill="#52514e">F4 has now been used twice — once to choose, once to report — but only counted once.</text>
-  <text x="92" y="562" font-size="11.5" fill="#52514e">Every fold does the same, so pooling five folds does not average the bias away.</text>
+  <text x="92" y="518" font-size="11.5" font-weight="600" fill="#0b0b0b">E[ min over variants ] &#8804; min of E[ &#183; ] &#8212; optimistic even if each variant is unbiased.</text>
+  <text x="92" y="540" font-size="11.5" fill="#52514e">F4 was used twice — once to select, once to report — but counted once.</text>
+  <text x="92" y="562" font-size="11.5" fill="#52514e">Every fold does the same, so pooling five folds averages five biased estimates.</text>
 
   <text x="70" y="614" font-size="12" font-weight="600" fill="#0b0b0b">The protocol lists this among forbidden behaviour</text>
   <text x="70" y="638" font-size="11.5" font-style="italic" fill="#52514e">“same-held-fold selection used as clean promotion evidence”</text>

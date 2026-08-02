@@ -58,7 +58,7 @@ artifacts and the ledger at this snapshot commit, not drawn illustratively.
 
 ## Slides
 
-`cv-protocol-slides.html` is a 16:9 deck — 23 slides covering each step of the
+`cv-protocol-slides.html` is a 16:9 deck — 24 slides covering each step of the
 protocol and the reasoning behind it, with the seven diagrams embedded at full
 bleed. Arrow keys or click to navigate, `f` for fullscreen, `#7` in the URL to
 link a slide, and browser print-to-PDF gives one slide per page.

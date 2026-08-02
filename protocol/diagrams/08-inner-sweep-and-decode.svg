@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title>CV Protocol v5 — the inner sweep and the decode</title>
+  <desc>What the inner loop actually ranks. Axes that require retraining are frozen before the sealed run; axes evaluable on saved artifacts — snapshot, decode temperature, blend weight — are swept afterwards, giving 225 evaluable pipelines per training run. Includes the decode from a categorical distribution to a scalar correction, why temperature acts as shrinkage, and how the selector aggregates over the four inner roles of an outer fold.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#8a8983"/></marker>
+    <marker id="arrowOr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#eb6834"/></marker>
+  </defs>
+  <rect width="1600" height="900" fill="#fcfcfb"/>
+
+  <text x="48" y="52" font-size="26" font-weight="600" fill="#0b0b0b">08 · The inner sweep — what is trained, and what is selected</text>
+  <text x="48" y="78" font-size="14" fill="#52514e">Fifteen training runs suffice because the inner loop does not rank 225 trained models. It ranks 225 evaluations of 10 trained models.</text>
+  <line x1="48" y1="98" x2="1552" y2="98" stroke="#e4e3de"/>
+
+  <!-- two kinds of axis -->
+  <rect x="48" y="122" width="486" height="342" rx="8" fill="#ffffff" stroke="#e4e3de"/>
+  <text x="70" y="150" font-size="15" font-weight="600" fill="#0b0b0b">Two kinds of axis</text>
+
+  <rect x="70" y="168" width="442" height="128" rx="6" fill="#f6f6f3"/>
+  <text x="88" y="192" font-size="12" font-weight="600" fill="#0b0b0b">requires retraining — frozen before the sealed run</text>
+  <g font-size="11.5" fill="#52514e">
+    <text x="88" y="216">architecture and capacity</text>
+    <text x="270" y="216">target and loss</text>
+    <text x="88" y="238">augmentation and curriculum</text>
+    <text x="270" y="238">optimiser schedule</text>
+    <text x="88" y="260">random seed</text>
+    <text x="270" y="260">fold map</text>
+  </g>
+  <text x="88" y="284" font-size="11" fill="#a33d18">each distinct combination costs a full set of 15 runs</text>
+
+  <rect x="70" y="308" width="442" height="136" rx="6" fill="#eaf2fd"/>
+  <text x="88" y="332" font-size="12" font-weight="600" fill="#0b0b0b">evaluable on saved artifacts — swept afterwards</text>
+  <g font-size="11.5" fill="#52514e">
+    <text x="88" y="356">snapshot / epoch</text>
+    <text x="270" y="356">decode temperature</text>
+    <text x="88" y="378">blend weight</text>
+    <text x="270" y="378">postprocessor settings</text>
+  </g>
+  <text x="88" y="404" font-size="11.5" fill="#2f5f9e">No retraining. Every combination is a re-read of predictions</text>
+  <text x="88" y="422" font-size="11.5" fill="#2f5f9e">already written to disk during the run.</text>
+
+  <!-- what one run leaves behind -->
+  <rect x="558" y="122" width="486" height="342" rx="8" fill="#ffffff" stroke="#e4e3de"/>
+  <text x="580" y="150" font-size="15" font-weight="600" fill="#0b0b0b">What one training run leaves behind</text>
+  <text x="580" y="172" font-size="11.5" fill="#52514e">Snapshots are written on a preregistered epoch grid, and each one</text>
+  <text x="580" y="190" font-size="11.5" fill="#52514e">immediately writes its prediction cache alongside the weights.</text>
+
+  <g>
+    <rect x="580" y="204" width="86" height="30" rx="4" fill="#cde2fb" stroke="#2a78d6"/><text x="623" y="224" font-size="11.5" fill="#0b0b0b" text-anchor="middle">epoch 2</text>
+    <rect x="674" y="204" width="86" height="30" rx="4" fill="#cde2fb" stroke="#2a78d6"/><text x="717" y="224" font-size="11.5" fill="#0b0b0b" text-anchor="middle">4</text>
+    <rect x="768" y="204" width="86" height="30" rx="4" fill="#cde2fb" stroke="#2a78d6"/><text x="811" y="224" font-size="11.5" fill="#0b0b0b" text-anchor="middle">8</text>
+    <rect x="862" y="204" width="86" height="30" rx="4" fill="#cde2fb" stroke="#2a78d6"/><text x="905" y="224" font-size="11.5" fill="#0b0b0b" text-anchor="middle">12</text>
+    <rect x="956" y="204" width="66" height="30" rx="4" fill="#cde2fb" stroke="#2a78d6"/><text x="989" y="224" font-size="11.5" fill="#0b0b0b" text-anchor="middle">16</text>
+  </g>
+  <text x="580" y="252" font-size="11" fill="#8a8983">checkpoint + prediction cache + sha256, per snapshot</text>
+
+  <rect x="580" y="270" width="442" height="120" rx="6" fill="#f6f6f3"/>
+  <g font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#0b0b0b">
+    <text x="600" y="298">  5 snapshots</text>
+    <text x="600" y="320">×  5 decode temperatures</text>
+    <text x="600" y="342">×  9 blend weights</text>
+  </g>
+  <line x1="600" y1="352" x2="1002" y2="352" stroke="#d8d7d1"/>
+  <text x="600" y="376" font-size="15" font-weight="600" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#eb6834">= 225 evaluable pipelines per run</text>
+
+  <text x="580" y="414" font-size="11.5" fill="#52514e">Across the 10 pair models that is 2,250 candidate readings, produced</text>
+  <text x="580" y="432" font-size="11.5" fill="#52514e">by 15 training runs. The sweep is arithmetic on cached arrays.</text>
+  <text x="580" y="454" font-size="11" fill="#a33d18">15 runs is per trained configuration; seeds and architectures multiply it.</text>
+
+  <!-- the decode -->
+  <rect x="1068" y="122" width="484" height="342" rx="8" fill="#ffffff" stroke="#eb6834"/>
+  <text x="1090" y="150" font-size="15" font-weight="600" fill="#0b0b0b">The decode — distribution to scalar</text>
+  <text x="1090" y="172" font-size="11.5" fill="#52514e">The network emits logits over a discrete, symmetric grid of candidate</text>
+  <text x="1090" y="190" font-size="11.5" fill="#52514e">offsets. The deployed quantity is their expectation, not the argmax.</text>
+
+  <rect x="1090" y="204" width="440" height="46" rx="6" fill="#f6f6f3"/>
+  <text x="1106" y="233" font-size="12.5" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#0b0b0b">correction = sum_k  softmax(logits / T)_k · offset_k</text>
+
+  <g font-size="11.5">
+    <text x="1090" y="278" font-weight="600" fill="#0b0b0b">T &lt; 1</text>
+    <text x="1150" y="278" fill="#52514e">sharpens toward the mode — larger corrections</text>
+    <text x="1090" y="302" font-weight="600" fill="#0b0b0b">T = 1</text>
+    <text x="1150" y="302" fill="#52514e">the distribution as trained</text>
+    <text x="1090" y="326" font-weight="600" fill="#0b0b0b">T &gt; 1</text>
+    <text x="1150" y="326" fill="#52514e">flattens — and the grid is symmetric about 0, so the</text>
+    <text x="1150" y="344" fill="#52514e">expectation shrinks toward “leave the parent alone”</text>
+  </g>
+
+  <rect x="1090" y="362" width="440" height="86" rx="6" fill="#fdf0ea"/>
+  <text x="1108" y="384" font-size="11.5" font-weight="600" fill="#0b0b0b">Temperature is calibration, not sampling</text>
+  <text x="1108" y="404" font-size="11.5" fill="#52514e">Training optimises cross-entropy over bins; deployment consumes the</text>
+  <text x="1108" y="422" font-size="11.5" fill="#52514e">expectation under a squared-error metric. The two disagree about how</text>
+  <text x="1108" y="440" font-size="11.5" fill="#52514e">peaked the distribution should be. T reconciles them, post-hoc.</text>
+
+  <!-- how the selector picks -->
+  <rect x="48" y="488" width="996" height="340" rx="8" fill="#ffffff" stroke="#2a78d6"/>
+  <text x="70" y="516" font-size="15" font-weight="600" fill="#0b0b0b">How the selector picks, for one outer fold</text>
+  <text x="70" y="538" font-size="11.5" fill="#52514e">Every one of the 225 combinations is scored on the four inner-role predictions of outer fold h. None of them involves h.</text>
+
+  <g>
+    <rect x="70" y="558" width="180" height="30" rx="4" fill="#eaf2fd" stroke="#2a78d6"/><text x="160" y="578" font-size="11.5" fill="#0b0b0b" text-anchor="middle">pair {h, a} on fold a</text>
+    <rect x="70" y="594" width="180" height="30" rx="4" fill="#eaf2fd" stroke="#2a78d6"/><text x="160" y="614" font-size="11.5" fill="#0b0b0b" text-anchor="middle">pair {h, b} on fold b</text>
+    <rect x="70" y="630" width="180" height="30" rx="4" fill="#eaf2fd" stroke="#2a78d6"/><text x="160" y="650" font-size="11.5" fill="#0b0b0b" text-anchor="middle">pair {h, c} on fold c</text>
+    <rect x="70" y="666" width="180" height="30" rx="4" fill="#eaf2fd" stroke="#2a78d6"/><text x="160" y="686" font-size="11.5" fill="#0b0b0b" text-anchor="middle">pair {h, d} on fold d</text>
+  </g>
+
+  <line x1="258" y1="627" x2="288" y2="627" stroke="#8a8983" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="296" y="558" width="250" height="138" rx="6" fill="#f6f6f3"/>
+  <text x="421" y="584" font-size="12" font-weight="600" fill="#0b0b0b" text-anchor="middle">score all 225</text>
+  <text x="421" y="606" font-size="11.5" fill="#52514e" text-anchor="middle">pooled over the four</text>
+  <text x="421" y="624" font-size="11.5" fill="#52514e" text-anchor="middle">inner folds, on identical</text>
+  <text x="421" y="642" font-size="11.5" fill="#52514e" text-anchor="middle">rows and masks</text>
+  <text x="421" y="670" font-size="11" fill="#8a8983" text-anchor="middle">ties resolve to the earliest snapshot</text>
+
+  <line x1="554" y1="627" x2="584" y2="627" stroke="#8a8983" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="592" y="558" width="200" height="138" rx="6" fill="#eaf2fd" stroke="#2a78d6"/>
+  <text x="692" y="590" font-size="12" font-weight="600" fill="#0b0b0b" text-anchor="middle">one recipe for h</text>
+  <text x="692" y="614" font-size="11.5" fill="#52514e" text-anchor="middle">snapshot, temperature,</text>
+  <text x="692" y="632" font-size="11.5" fill="#52514e" text-anchor="middle">weight — frozen</text>
+  <text x="692" y="662" font-size="11" fill="#8a8983" text-anchor="middle">recorded in the recipe</text>
+  <text x="692" y="678" font-size="11" fill="#8a8983" text-anchor="middle">before the reveal</text>
+
+  <line x1="800" y1="627" x2="830" y2="627" stroke="#eb6834" stroke-width="2" marker-end="url(#arrowOr)"/>
+
+  <rect x="838" y="558" width="184" height="138" rx="6" fill="#fdd9c8" stroke="#eb6834" stroke-width="2"/>
+  <text x="930" y="600" font-size="15" font-weight="600" fill="#0b0b0b" text-anchor="middle">fold h</text>
+  <text x="930" y="626" font-size="11.5" fill="#a33d18" text-anchor="middle">applied once</text>
+  <text x="930" y="650" font-size="11" fill="#a33d18" text-anchor="middle">one prediction,</text>
+  <text x="930" y="666" font-size="11" fill="#a33d18" text-anchor="middle">no second look</text>
+
+  <line x1="70" y1="720" x2="1022" y2="720" stroke="#eeede9"/>
+  <text x="70" y="744" font-size="12" font-weight="600" fill="#0b0b0b">The rule is frozen; the answer is not</text>
+  <text x="70" y="766" font-size="11.5" fill="#52514e">The same selector runs five times on five disjoint bodies of evidence, so the five outer folds may legitimately receive</text>
+  <text x="70" y="784" font-size="11.5" fill="#52514e">different recipes. Divergence between them is the mechanism working, not a defect — nothing was chosen by hand.</text>
+  <text x="70" y="810" font-size="11.5" fill="#52514e">Observed in one accepted candidate: snapshot 16 on every fold, temperature 2.0, 2.0, 1.5, 1.5, 1.5, amplitude doubled on the last.</text>
+
+  <!-- why it matters -->
+  <rect x="1068" y="488" width="484" height="340" rx="8" fill="#faf9f6" stroke="#e4e3de"/>
+  <text x="1090" y="516" font-size="15" font-weight="600" fill="#0b0b0b">Why the split matters</text>
+
+  <text x="1090" y="546" font-size="12" font-weight="600" fill="#0b0b0b">It bounds the cost of selection-clean CV</text>
+  <text x="1090" y="568" font-size="11.5" fill="#52514e">If every swept axis needed its own training run, nested CV</text>
+  <text x="1090" y="586" font-size="11.5" fill="#52514e">would cost 225 × 15 runs instead of 15.</text>
+
+  <text x="1090" y="620" font-size="12" font-weight="600" fill="#0b0b0b">It keeps the expensive axes out of the selector</text>
+  <text x="1090" y="642" font-size="11.5" fill="#52514e">Architecture and loss are frozen before any inner score is</text>
+  <text x="1090" y="660" font-size="11.5" fill="#52514e">read, so they cannot be tuned against inner-fold results.</text>
+
+  <text x="1090" y="694" font-size="12" font-weight="600" fill="#0b0b0b">It concentrates selection where shrinkage applies</text>
+  <text x="1090" y="716" font-size="11.5" fill="#52514e">Temperature shrinks the correction; the blend weight caps it</text>
+  <text x="1090" y="734" font-size="11.5" fill="#52514e">at 0.20 and rounds down. Both swept axes move toward the</text>
+  <text x="1090" y="752" font-size="11.5" fill="#52514e">parent, so a selection error costs less than it otherwise would.</text>
+
+  <rect x="1090" y="772" width="440" height="40" rx="6" fill="#eaf2fd"/>
+  <text x="1310" y="797" font-size="11.5" font-weight="600" fill="#2f5f9e" text-anchor="middle">225 cheap choices, 0 expensive ones</text>
+
+  <text x="48" y="866" font-size="11" fill="#8a8983">Grids and decode from limited_query_cv/train_v5_run6_local_v20_residual.py and train_v5_run25_c016_nested.py at snapshot commit c34b9212</text>
+</svg>
