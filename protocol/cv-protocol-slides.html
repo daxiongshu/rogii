@@ -384,6 +384,40 @@
 
 <!-- 17 -->
 <section class="slide">
+  <div class="step-tag">Step 8b · What is measured</div>
+  <h2>A candidate is never scored alone</h2>
+  <p class="lede">The quantity on trial is not the candidate's own error. It is what the candidate <strong>adds to the parent that already exists</strong>.</p>
+  <div class="grid2">
+    <div>
+      <div class="formula" style="font-size:19px">gain = parent &minus; ( parent blended with candidate )</div>
+      <p style="margin-top:20px">Promotion evaluates <strong>incremental cross-fitted contribution</strong> to the frozen parent ensemble &mdash; explicitly <em>not standalone error alone</em>. So a model that is weaker on its own but decorrelated can beat one that is stronger on its own but redundant.</p>
+      <p>That is ordinary ensemble theory. The protocol&rsquo;s contribution is to make it the acceptance criterion rather than a modelling tactic.</p>
+      <div class="card tint-a" style="margin-top:20px">
+        <h3>A sub-target model may still join, if</h3>
+        <ul class="plain yes tight" style="margin:0">
+          <li>its clean ensemble contribution is positive</li>
+          <li><strong>removing it hurts</strong> the frozen ensemble &mdash; an ablation, not merely doing no harm</li>
+          <li>its mechanism is <strong>materially distinct</strong></li>
+        </ul>
+      </div>
+    </div>
+    <div class="card tint-o">
+      <h3>Why this is not the backdoor it looks like</h3>
+      <p>The worry is obvious: make the blend weight a free knob and turn noise into signal. Four things close it.</p>
+      <ul class="tight">
+        <li><strong>The weight is itself selection-clean.</strong> Fitted only inside the held fold&rsquo;s own four-fold pool. Noise would not transfer.</li>
+        <li><strong>Zero is on the grid.</strong> &ldquo;Do not use this candidate&rdquo; is always available, and it is what the selector reaches when the inner folds do not support a positive weight.</li>
+        <li><strong>Round down, cap at 0.20.</strong> A marginal case is rounded against itself.</li>
+        <li><strong>Weight stability is reported.</strong> Positive gain with weight positive in only a few inner estimates is a <span class="pill d">Hold</span>, not an Accept.</li>
+      </ul>
+      <p class="sub" style="margin-top:16px">Both outcomes have occurred. One accepted generation was exactly this shape &mdash; residual corrections that are meaningless standalone, blended at weight 0.2. In the same run another family reached the audit, was assigned exactly <span class="mono">0.0</span>, and was excluded from the package by arithmetic rather than argument.</p>
+    </div>
+  </div>
+  <div class="foot"><strong>Why:</strong> standalone quality is the wrong question. The right one is what survives once the parent is already there.</div>
+</section>
+
+<!-- 18 -->
+<section class="slide">
   <div class="step-tag">Step 9 · Ship</div>
   <h2>The candidate is mixed in, never swapped in</h2>
   <div class="grid2">
@@ -402,10 +436,10 @@
   <div class="foot"><strong>Why:</strong> every fitted parameter is also a query. You can reduce query pressure with fewer parameters, or by giving each one less room to answer.</div>
 </section>
 
-<!-- 18 -->
+<!-- 19 -->
 <section class="slide full"><img src="diagrams/06-weights-and-production.svg" alt="Weight estimation, the production blend, and what is packaged"></section>
 
-<!-- 19 -->
+<!-- 20 -->
 <section class="slide">
   <div class="step-tag v">Step 10 · Approve</div>
   <h2>Only a human moves the baseline</h2>
@@ -429,10 +463,10 @@
   <div class="foot"><strong>Why:</strong> automate what benefits from consistency; keep a human on what benefits from accountability.</div>
 </section>
 
-<!-- 20 -->
+<!-- 21 -->
 <section class="slide full"><img src="diagrams/07-query-budget-and-lineage.svg" alt="The query budget, batch structure, and what five reveals bought"></section>
 
-<!-- 21 -->
+<!-- 22 -->
 <section class="slide">
   <h2>Why it is designed this way</h2>
   <p class="lede">Six choices, each answering a different way the number could quietly become wrong.</p>
@@ -449,7 +483,7 @@
   <div class="foot">Every one of them trades measured performance for the trustworthiness of the measurement.</div>
 </section>
 
-<!-- 22 -->
+<!-- 23 -->
 <section class="slide">
   <h2>What five reveals bought — and what to keep watching</h2>
   <table style="margin-bottom:26px">
