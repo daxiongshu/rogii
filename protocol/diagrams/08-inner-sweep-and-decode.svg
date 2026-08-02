@@ -23,7 +23,7 @@
     <text x="88" y="238">augmentation and curriculum</text>
     <text x="270" y="238">optimiser schedule</text>
     <text x="88" y="260">random seed</text>
-    <text x="270" y="260">fold map</text>
+    <text x="270" y="260">training fold map</text>
   </g>
   <text x="88" y="284" font-size="11" fill="#a33d18">each distinct combination costs a full set of 15 runs</text>
 
@@ -33,10 +33,10 @@
     <text x="88" y="356">snapshot / epoch</text>
     <text x="270" y="356">decode temperature</text>
     <text x="88" y="378">blend weight</text>
-    <text x="270" y="378">postprocessor settings</text>
+    <text x="270" y="378">regrouping partition</text>
   </g>
-  <text x="88" y="404" font-size="11.5" fill="#2f5f9e">No retraining. Every combination is a re-read of predictions</text>
-  <text x="88" y="422" font-size="11.5" fill="#2f5f9e">already written to disk during the run.</text>
+  <text x="88" y="404" font-size="11.5" fill="#2f5f9e">No retraining. Re-partitioning for the regrouping audit re-reads</text>
+  <text x="88" y="422" font-size="11.5" fill="#2f5f9e">cached predictions; it does not change how anything was trained.</text>
 
   <!-- what one run leaves behind -->
   <rect x="558" y="122" width="486" height="342" rx="8" fill="#ffffff" stroke="#e4e3de"/>

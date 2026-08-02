@@ -29,8 +29,8 @@
     <rect x="410" y="222" width="42" height="26" rx="4" fill="#9ec5f4"/><text x="431" y="239" text-anchor="middle" fill="#0b0b0b">.15</text>
     <rect x="458" y="222" width="42" height="26" rx="4" fill="#6da7ec"/><text x="479" y="239" text-anchor="middle" fill="#0b0b0b">.20</text>
   </g>
-  <text x="70" y="278" font-size="12" font-weight="600" fill="#0b0b0b">or nonnegative ridge</text>
-  <text x="70" y="298" font-size="11.5" fill="#52514e">with a preregistered regularisation grid</text>
+  <text x="70" y="278" font-size="12" font-weight="600" fill="#0b0b0b">or nonnegative ridge  —  the mode C016 actually ran</text>
+  <text x="70" y="298" font-size="11.5" fill="#52514e">regularisation chosen per outer fold on its four inner roles</text>
 
   <rect x="70" y="316" width="426" height="42" rx="6" fill="#fdf0ea"/>
   <text x="283" y="342" font-size="12" font-weight="600" fill="#eb6834" text-anchor="middle">either way, maximum candidate weight 0.20</text>
@@ -39,7 +39,7 @@
   <rect x="542" y="122" width="1010" height="252" rx="8" fill="#ffffff" stroke="#e4e3de"/>
   <circle cx="564" cy="150" r="11" fill="#2a78d6"/><text x="564" y="154" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">2</text>
   <text x="584" y="155" font-size="15" font-weight="600" fill="#0b0b0b">Estimated per outer fold, inside its own training pool</text>
-  <text x="564" y="182" font-size="11.5" fill="#52514e">For outer fold h, the weight is fitted only on the other four folds — under all three groupings — then reduced to one number.</text>
+  <text x="564" y="182" font-size="11.5" fill="#52514e">Dense-grid mode. For outer fold h the weight is fitted only on the other four folds, under all three groupings, then reduced to one number.</text>
 
   <g>
     <rect x="564" y="200" width="150" height="30" rx="4" fill="#cde2fb" stroke="#2a78d6"/><text x="639" y="220" font-size="11.5" text-anchor="middle" fill="#0b0b0b">original</text>
@@ -71,7 +71,7 @@
   <text x="1441" y="286" font-size="11" fill="#52514e" text-anchor="middle">rounding down never</text>
   <text x="1441" y="302" font-size="11" fill="#52514e" text-anchor="middle">rounds toward more</text>
 
-  <text x="564" y="352" font-size="11.5" fill="#52514e">Fold h contributes nothing to its own weight, so the weight falls under selection-clean rather than being a separate tuning step.</text>
+  <text x="564" y="352" font-size="11.5" fill="#52514e">Under ridge mode the three groupings instead drive a separate regrouping confirmation, which refits weights on the cached component predictions — no model is retrained.</text>
 
   <!-- step 3 : production -->
   <rect x="48" y="398" width="760" height="242" rx="8" fill="#ffffff" stroke="#eb6834"/>
@@ -116,9 +116,9 @@
 
   <rect x="70" y="708" width="716" height="102" rx="6" fill="#ffffff" stroke="#d8d7d1"/>
   <text x="90" y="732" font-size="12" font-weight="600" fill="#0b0b0b">C016 — the cap, used in full</text>
-  <text x="90" y="754" font-size="11.5" fill="#52514e">local weight 0.200 on every one of the five outer folds — the maximum the</text>
-  <text x="90" y="772" font-size="11.5" fill="#52514e">grid allows. Outer 3 additionally carries a posterior term at production scale</text>
-  <text x="90" y="790" font-size="11.5" fill="#52514e">0.05; the mode-bank family was frozen at exactly zero and left out of the package.</text>
+  <text x="90" y="754" font-size="11.5" fill="#52514e">local weight 0.200 on all five outer folds — the grid maximum, so the cap</text>
+  <text x="90" y="772" font-size="11.5" fill="#52514e">bound on every fold. Outer 3 adds a posterior term at production scale</text>
+  <text x="90" y="790" font-size="11.5" fill="#52514e">0.05; the mode-bank family was frozen at exactly zero and dropped.</text>
 
   <rect x="812" y="708" width="740" height="102" rx="6" fill="#ffffff" stroke="#d8d7d1"/>
   <text x="832" y="732" font-size="12" font-weight="600" fill="#0b0b0b">Run4 — a router instead of a scalar</text>
