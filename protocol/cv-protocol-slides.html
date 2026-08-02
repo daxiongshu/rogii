@@ -116,15 +116,14 @@
 <section class="slide title-slide">
   <div class="rule"></div>
   <h1>CV Protocol v5</h1>
-  <p class="lede" style="max-width:1080px">A validation strategy for research where the search is automated —
-  designed so that thousands of experiments can run freely without the reported number quietly becoming a lie.</p>
+  <p class="lede" style="max-width:1080px">A nested cross-validation protocol for automated search: thousands of experiments without overfitting CV.</p>
   <p class="sub">How it works, step by step, and why each step is there</p>
 </section>
 
 <!-- 2 -->
 <section class="slide">
-  <h2>The problem it exists to solve</h2>
-  <p class="lede">Cross-validation is safe when you run it once. It stops being safe the moment you use it to <em>choose</em>.</p>
+  <h2>The problem: model-selection bias</h2>
+  <p class="lede">CV is unbiased for a <em>fixed</em> pipeline. It stops being unbiased once you use it to select one.</p>
   <div class="grid2">
     <div class="card tint-r">
       <h3>What goes wrong</h3>
@@ -133,29 +132,29 @@
       <p>With four variants the bias is small. With the hundreds an automated search produces, it is not.</p>
     </div>
     <div class="card">
-      <h3>Why it hides so well</h3>
+      <h3>Why pooling does not fix it</h3>
       <p>The held fold was used <strong>twice</strong> — once to choose, once to report — but counted once.</p>
       <p>Every fold does the same thing, so pooling five folds does not average the bias away. It pools five biased estimates.</p>
-      <p>And nothing is left over to detect it with: the evidence that would reveal the optimism is the same evidence that was consumed making it.</p>
+      <p>No data is left with which to measure the bias — it was consumed by the selection.</p>
     </div>
   </div>
-  <div class="foot">An agent that can run 36,450 experiments does not have a compute problem. It has a selection-pressure problem.</div>
+  <div class="foot">36,450 trials is not a compute problem. It is a selection-bias problem.</div>
 </section>
 
 <!-- 3 -->
 <section class="slide">
-  <h2>The core idea</h2>
-  <p class="lede">Overfitting is treated as a function of <strong>how often the judge is consulted</strong>, not how hard the search works. So the search is made free and the judge is made scarce.</p>
+  <h2>Design principle</h2>
+  <p class="lede">Bias is treated as a function of <strong>how many times the holdout is queried</strong>, not how large the search is. Search is unbounded; holdout queries are budgeted.</p>
   <div class="kpi">
     <div><div class="n b">36,450</div><div class="k">inner trials — unlimited, never reported</div></div>
-    <div><div class="n o">5</div><div class="k">protected reveals — the only quotable measurements</div></div>
+    <div><div class="n o">5</div><div class="k">protected reveals — the only reportable estimates</div></div>
   </div>
   <div class="grid3">
-    <div class="card tint-b"><h3>Search is free</h3><p class="sub">Explore, inspect errors, tune anything on the development folds. Nothing here is a result, so nothing here can be overfitted <em>to</em>.</p></div>
+    <div class="card tint-b"><h3>Search is unbounded</h3><p class="sub">Inspect errors and tune anything on the development folds. No estimate here is reported, so none can be selected on.</p></div>
     <div class="card tint-o"><h3>Measurement is rationed</h3><p class="sub">One protected reveal per batch of work. Opening it spends it, and a spent result cannot be reused as confirmation.</p></div>
     <div class="card tint-v"><h3>Promotion is human</h3><p class="sub">No automatic gate moves the baseline. A person reviews the result and approves it, or it does not move.</p></div>
   </div>
-  <div class="foot">Ration the query, not the curiosity.</div>
+  <div class="foot">Budget the queries, not the search.</div>
 </section>
 
 <!-- 4 -->
@@ -168,7 +167,7 @@
   <div class="grid2">
     <div>
       <p><strong>The unit is whatever shares information</strong> — one subject, one session, one device, one document, one well. Every row of a group lands in the same fold.</p>
-      <p>Split rows at random and one group straddles train and validation. The model then predicts a row using its own neighbouring rows, which is a leak no metric will show you.</p>
+      <p>Split rows at random and one group straddles train and validation. The model then predicts a row using its own neighbouring rows, which CV cannot detect.</p>
       <p>Five folds. Four are open for development. The fifth is sealed as the audit fold.</p>
     </div>
     <div class="card flat">
@@ -178,7 +177,7 @@
       <p class="sub">And they equalise them on the <strong>target</strong>: deciles of peak excursion crossed with endpoint sign. So the axis they balance is the one they cannot probe — only the unstratified map can. Later boundaries balance inference-visible proxies instead and record that no target field was read.</p>
     </div>
   </div>
-  <div class="foot"><strong>Why:</strong> the fold map is the one thing every later number depends on. If it leaks, nothing downstream can detect it.</div>
+  <div class="foot"><strong>Why:</strong> every downstream estimate is conditional on the fold map. A leak here is invisible to everything after it.</div>
 </section>
 
 <!-- 6 -->
@@ -207,14 +206,14 @@
       <p><strong>Holdouts decay on contact.</strong> The second grouping is queried only at milestones, and the moment its result changes a decision it is reclassified as development evidence. Before the freeze, a still-untouched grouping is required.</p>
     </div>
   </div>
-  <div class="foot"><strong>Why:</strong> exploration is not what causes overfitting. Reporting exploration is.</div>
+  <div class="foot"><strong>Why:</strong> search does not bias the estimate. Selecting on the estimate does.</div>
 </section>
 
 <!-- 8 -->
 <section class="slide">
-  <div class="step-tag">Step 3 · The trap</div>
+  <div class="step-tag">Step 3 · Selection</div>
   <h2>A fold may not choose anything about itself</h2>
-  <p class="lede">Holding a fold out of <em>training</em> is the easy half. The protocol also holds it out of every <em>choice</em> made about it.</p>
+  <p class="lede">Holding a fold out of <em>training</em> is necessary but not sufficient. It must also be held out of every <em>choice</em> made about it.</p>
   <div class="grid2">
     <div class="card tint-r">
       <h3>Four things a fold must not select for itself</h3>
@@ -227,10 +226,10 @@
       <p style="margin-top:16px">Same-held-fold results are permitted as diagnostics. They are never promotion evidence.</p>
     </div>
     <div class="card tint-a">
-      <h3>The fix: delegate the choice</h3>
+      <h3>Delegate selection to an inner loop</h3>
       <p>Inside the four folds that remain, run a second cross-validation. Hold out one more fold, train on the rest, score the variants there.</p>
       <p>Four such readings per outer fold, none of which ever touched it. The winner is applied to the held fold once, to produce one prediction.</p>
-      <p><strong>Its score is then a measurement, not the maximum of a search.</strong></p>
+      <p><strong>Its score is then an estimate of one pipeline, not a maximum over variants.</strong></p>
     </div>
   </div>
   <div class="foot">This is the difference between <em>cross-validated</em> and <em>selection-clean</em>.</div>
@@ -266,7 +265,7 @@
       <p class="sub" style="margin-top:14px">Three times plain CV, not five. Valid only with identical config and seed — the sharing is bookkeeping, not statistics.</p>
     </div>
   </div>
-  <div class="foot"><strong>Why:</strong> the inner layer is the price of a number that isn't its own argmax. Pair-sharing makes that price affordable.</div>
+  <div class="foot"><strong>Why:</strong> nested CV removes selection bias; pair-sharing cuts its cost from 25 training runs to 15.</div>
 </section>
 
 <!-- 11 -->
@@ -275,7 +274,7 @@
 <!-- 12 -->
 <section class="slide">
   <div class="step-tag d">Step 5 · Freeze</div>
-  <h2>One pipeline, checksummed, before any truth opens</h2>
+  <h2>One pipeline, checksummed, before any labels open</h2>
   <div class="grid2">
     <div>
       <p>Everything that could be adjusted in response to a result is fixed and hashed <em>first</em>. The same automatic procedure then runs for every outer fold, with no hand edits and no fold-specific fallback.</p>
@@ -304,7 +303,7 @@
       </div>
     </div>
   </div>
-  <div class="foot"><strong>Why:</strong> anything adjustable after the result is a channel through which the result can adjust it.</div>
+  <div class="foot"><strong>Why:</strong> anything still adjustable after the reveal can be tuned on the reveal.</div>
 </section>
 
 <!-- 13 -->
@@ -321,14 +320,14 @@
       </div>
     </div>
     <div class="card flat">
-      <h3>What "ranking a variant" actually means</h3>
+      <h3>What the inner loop ranks</h3>
       <p>Snapshots are saved on a preregistered epoch grid, and each writes its prediction immediately. Everything else is swept afterwards on those saved predictions — no retraining.</p>
       <div class="formula" style="font-size:18px">5 snapshots × 5 temperatures × 9 weights<br>= 225 combinations per training run</div>
-      <p style="margin-top:16px">This is why 15 runs suffices. The inner layer is not ranking 225 trained models; it is ranking 225 <em>readings</em> of 10 trained models.</p>
-      <p class="sub">Things that genuinely need retraining — architecture, loss, seed — are frozen beforehand or multiply the run count.</p>
+      <p style="margin-top:16px">This is why 15 runs suffices. The inner layer is not ranking 225 trained models; it is ranking 225 <em>evaluations</em> of 10 trained models.</p>
+      <p class="sub">Axes that require retraining — architecture, loss, seed — are frozen beforehand or multiply the run count.</p>
     </div>
   </div>
-  <div class="foot"><strong>Why:</strong> the expensive axis is training; the cheap axes are decoding and blending. Only the cheap ones are left to selection.</div>
+  <div class="foot"><strong>Why:</strong> training is the expensive axis; decoding and blending are free to sweep. Only the free axes are left to selection.</div>
 </section>
 
 <!-- 14 -->
@@ -337,7 +336,7 @@
   <h2>All folds at once, and only once</h2>
   <div class="grid2">
     <div>
-      <p>Protected truth opens for every fold simultaneously, with three to five distinct families in the same query — so the best of many queries can never be presented as an unbiased result.</p>
+      <p>Held-out labels open for every fold simultaneously, with three to five distinct families in the same query — so the best of several queries cannot be reported as a single unbiased estimate.</p>
       <div class="formula" style="margin:20px 0">gain = previous_best − candidate</div>
       <p>Compared against the parent frozen <em>before</em> this reveal, on identical folds, rows, masks and metric definition. The reference may not change during the run.</p>
     </div>
@@ -355,7 +354,7 @@
       <p class="sub" style="margin-top:12px">A revised pipeline needs a genuinely new boundary. A spent result may never serve as its own confirmation.</p>
     </div>
   </div>
-  <div class="foot"><strong>Why:</strong> one query answered honestly is worth more than ten queries answered optimistically.</div>
+  <div class="foot"><strong>Why:</strong> each additional adaptive query adds bias. One joint query over several families adds it once.</div>
 </section>
 
 <!-- 15 -->
@@ -373,14 +372,14 @@
   <div class="grid2">
     <div class="card flat">
       <h3>Numeric levels are diagnostics, not gates</h3>
-      <p class="sub">Revision 14 demoted the old thresholds — +0.03 pooled, 4 of 5 folds improved, bootstrap 0.80 — from automatic cutoffs to evidence. A hard threshold is itself a target to optimise against; removing it removes the thing to game.</p>
+      <p class="sub">Revision 14 demoted the old thresholds — +0.03 pooled, 4 of 5 folds improved, bootstrap 0.80 — from automatic cutoffs to evidence. A fixed threshold becomes an optimisation target. Removing it removes the target.</p>
     </div>
     <div class="card flat">
       <h3>Hold and Reject are terminal</h3>
       <p class="sub">The spent audit may not be re-queried, and the failed candidate may not be tuned against it. The rejection is preserved rather than rewritten — sealed history is never edited after the fact.</p>
     </div>
   </div>
-  <div class="foot"><strong>Why:</strong> a gate you can optimise against is a gate you will eventually optimise against.</div>
+  <div class="foot"><strong>Why:</strong> any fixed numeric gate is eventually optimised against.</div>
 </section>
 
 <!-- 17 -->
@@ -392,7 +391,7 @@
     <div>
       <div class="formula" style="font-size:19px">gain = parent &minus; ( parent blended with candidate )</div>
       <p style="margin-top:20px">Promotion evaluates <strong>incremental cross-fitted contribution</strong> to the frozen parent ensemble &mdash; explicitly <em>not standalone error alone</em>. So a model that is weaker on its own but decorrelated can beat one that is stronger on its own but redundant.</p>
-      <p>That is ordinary ensemble theory. The protocol&rsquo;s contribution is to make it the acceptance criterion rather than a modelling tactic.</p>
+      <p>This is standard ensemble behaviour. The protocol makes it the acceptance criterion rather than a modelling tactic.</p>
       <div class="card tint-a" style="margin-top:20px">
         <h3>A sub-target model may still join, if</h3>
         <ul class="plain yes tight" style="margin:0">
@@ -403,8 +402,8 @@
       </div>
     </div>
     <div class="card tint-o">
-      <h3>Why this is not the backdoor it looks like</h3>
-      <p>The worry is obvious: make the blend weight a free knob and turn noise into signal. Four things close it.</p>
+      <h3>Why the weight cannot absorb noise</h3>
+      <p>The blend weight is fitted, so in principle it could absorb noise. Four constraints prevent it.</p>
       <ul class="tight">
         <li><strong>The weight is itself selection-clean.</strong> Fitted only inside the held fold&rsquo;s own four-fold pool. Noise would not transfer.</li>
         <li><strong>Zero is on the grid.</strong> &ldquo;Do not use this candidate&rdquo; is always available, and it is what the selector reaches when the inner folds do not support a positive weight.</li>
@@ -414,7 +413,7 @@
       <p class="sub" style="margin-top:16px">Both outcomes have occurred. One accepted generation was exactly this shape &mdash; residual corrections that are meaningless standalone, blended at weight 0.2. In the same run another family reached the audit, was assigned exactly <span class="mono">0.0</span>, and was excluded from the package by arithmetic rather than argument.</p>
     </div>
   </div>
-  <div class="foot"><strong>Why:</strong> standalone quality is the wrong question. The right one is what survives once the parent is already there.</div>
+  <div class="foot"><strong>Why:</strong> the criterion is marginal contribution to the existing ensemble, not standalone error.</div>
 </section>
 
 <!-- 18 -->
@@ -431,10 +430,10 @@
       <h3>The frugality is in resolution, not count</h3>
       <p>One weight per fold is still one free parameter. What changed is how far it may travel: nine rungs, biased downward, with the most optimistic of three estimates discarded by the median.</p>
       <p><strong>And the five fold checkpoints are averaged with equal weight — zero free parameters.</strong></p>
-      <p class="sub">Not modesty: there is no clean evidence with which to fit them. Out-of-fold gives each group exactly <em>one</em> excluding model, so the five-model average never appears in the record. The structure that makes those weights unfittable removes the temptation to fit them.</p>
+      <p class="sub">There is no unbiased evidence with which to fit them. Out-of-fold gives each group exactly <em>one</em> excluding model, so the five-model average never appears in the record. The structure that makes those weights unfittable is the same one that makes equal weighting the only defensible choice.</p>
     </div>
   </div>
-  <div class="foot"><strong>Why:</strong> every fitted parameter is also a query. You can reduce query pressure with fewer parameters, or by giving each one less room to answer.</div>
+  <div class="foot"><strong>Why:</strong> every fitted parameter is a query against the data. Reduce pressure with fewer parameters, or with coarser ones.</div>
 </section>
 
 <!-- 19 -->
@@ -455,13 +454,13 @@
       </div>
     </div>
     <div class="card flat">
-      <h3>Why a human, and not a rule</h3>
-      <p>Every other decision in the protocol is automatic, precisely so it cannot be nudged. This one is manual for the opposite reason.</p>
-      <p>Approving a new parent is the only irreversible act: it changes the reference every future run is measured against. A rule that did it automatically would let a single lucky reveal reset the baseline permanently — and a chain of lucky reveals would drift without any single step looking wrong.</p>
-      <p class="sub">Promotion and submission are reversible. Moving the baseline is not, so it is the one thing a person signs.</p>
+      <h3>Why manual, not automatic</h3>
+      <p>Every other decision is automatic so that it cannot be nudged. This one is manual because it is the only irreversible one.</p>
+      <p>Approving a new parent is the only irreversible act: it changes the reference every future run is measured against. Automating it would let one false positive reset the baseline permanently, and successive false positives would compound with no individual step failing a check.</p>
+      <p class="sub">Promotion and submission are reversible. Moving the baseline is not.</p>
     </div>
   </div>
-  <div class="foot"><strong>Why:</strong> automate what benefits from consistency; keep a human on what benefits from accountability.</div>
+  <div class="foot"><strong>Why:</strong> automatic where consistency matters, manual where the action is irreversible.</div>
 </section>
 
 <!-- 21 -->
@@ -470,7 +469,7 @@
 <!-- 22 -->
 <section class="slide">
   <h2>Why it is designed this way</h2>
-  <p class="lede">Six choices, each answering a different way the number could quietly become wrong.</p>
+  <p class="lede">Six choices, each closing a different route to an optimistic estimate.</p>
   <div class="grid3" style="margin-bottom:24px">
     <div class="card"><h3>Zones, not limits</h3><p class="sub">Unlimited search on one side, a sealed measurement on the other. Overfitting is localised to the side where nothing is claimed.</p></div>
     <div class="card"><h3>Delegated choice</h3><p class="sub">No fold selects for itself. The reported number is a measurement, not the argmax of the search that produced it.</p></div>
@@ -481,12 +480,12 @@
     <div class="card"><h3>Diagnostics, not gates</h3><p class="sub">No fixed numeric threshold to optimise against — judgement over a full evidence panel instead of a single passing score.</p></div>
     <div class="card"><h3>Human at the hinge</h3><p class="sub">Everything automatic except the one irreversible act, which is where accountability matters more than consistency.</p></div>
   </div>
-  <div class="foot">Every one of them trades measured performance for the trustworthiness of the measurement.</div>
+  <div class="foot">Each trades reported performance for reliability of the estimate.</div>
 </section>
 
 <!-- 23 -->
 <section class="slide">
-  <h2>What five reveals bought — and what to keep watching</h2>
+  <h2>Results, and the known limits</h2>
   <table style="margin-bottom:26px">
     <thead><tr><th>generation</th><th>what it added</th><th>pooled CV</th><th>CV gain</th><th>external</th><th>gain</th></tr></thead>
     <tbody>
@@ -497,16 +496,16 @@
   </table>
   <div class="grid2">
     <div class="card tint-a">
-      <h3>The consistency check that matters</h3>
-      <p class="sub">Clean CV and the external score moved the same direction both times, and the external gain was <em>larger</em> than the CV gain each time. That is the signature of a validation design that is, if anything, conservative.</p>
+      <h3>CV&ndash;LB consistency</h3>
+      <p class="sub">Clean CV and the external score moved the same direction both times, and the external gain was <em>larger</em> than the CV gain each time. Consistent with an estimator that is, if anything, conservative.</p>
     </div>
     <div class="card tint-o">
-      <h3>The honest limit</h3>
-      <p class="sub">The budget is one reveal per batch, six batches, five spent. When a boundary is used up the escape valve is a fresh target-free grouping — legitimate, and also exactly how a holdout supply could become endless.</p>
+      <h3>Known limit</h3>
+      <p class="sub">The budget is one reveal per batch, six batches, five spent. When a boundary is used up the escape valve is a fresh target-free grouping — legitimate, and also the mechanism by which the holdout supply could become unbounded.</p>
       <p class="sub" style="margin-top:10px">The audit fold is <em>prospectively</em> protected, not historically pristine, which is why the official result is labelled <em>selection-clean, development-exposed</em> rather than unbiased.</p>
     </div>
   </div>
-  <div class="foot">The label is part of the result, not a footnote to it.</div>
+  <div class="foot">Report the qualifier with the number, not beneath it.</div>
 </section>
 
 </div>
