@@ -52,8 +52,8 @@
 
   <path d="M 76 292 C 60 292 60 386 76 386" fill="none" stroke="#2a78d6" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
   <g font-size="11" fill="#52514e">
-    <text x="88" y="286"><tspan fill="#9a9993">1</tspan>  overfit one fixed batch</text>
-    <text x="88" y="306"><tspan fill="#9a9993">2</tspan>  short run, one inner role</text>
+    <text x="88" y="286"><tspan fill="#9a9993">1</tspan>  memorise one fixed minibatch</text>
+    <text x="88" y="306"><tspan fill="#9a9993">2</tspan>  short run on one split</text>
     <text x="88" y="326"><tspan fill="#9a9993">3</tspan>  four-fold F0–F3 cross-fit</text>
     <text x="88" y="346"><tspan fill="#9a9993">4</tspan>  confirm on a 2nd grouping</text>
     <text x="88" y="366"><tspan fill="#9a9993">5</tspan>  ≥ 3 variants per family</text>
