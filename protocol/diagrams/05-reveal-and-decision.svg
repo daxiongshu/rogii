@@ -51,27 +51,28 @@
   <rect x="566" y="122" width="470" height="416" rx="8" fill="#ffffff" stroke="#eb6834"/>
   <text x="588" y="150" font-size="15" font-weight="600" fill="#0b0b0b">What the reveal reports</text>
   <text x="588" y="172" font-size="11.5" fill="#52514e">Candidate against the parent frozen <tspan font-style="italic">before</tspan> this reveal, on identical</text>
-  <text x="588" y="190" font-size="11.5" fill="#52514e">folds, rows, masks and RMSE definition.</text>
+  <text x="588" y="190" font-size="11.5" fill="#52514e">folds, rows, masks and RMSE definition. candidate_rmse is the</text>
 
-  <rect x="588" y="206" width="426" height="30" rx="4" fill="#f6f6f3"/>
-  <text x="801" y="226" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#0b0b0b" text-anchor="middle">gain = previous_best_rmse − candidate_rmse</text>
+  <rect x="588" y="222" width="426" height="30" rx="4" fill="#f6f6f3"/>
+  <text x="801" y="242" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#0b0b0b" text-anchor="middle">gain = previous_best_rmse − candidate_rmse</text>
 
   <g font-size="11.5" fill="#52514e">
-    <text x="588" y="262"><tspan font-weight="600" fill="#0b0b0b">pooled and per-fold RMSE</tspan> — all five folds</text>
-    <text x="588" y="286"><tspan font-weight="600" fill="#0b0b0b">regrouping sensitivity</tspan> — balanced and independent</text>
-    <text x="588" y="310"><tspan font-weight="600" fill="#0b0b0b">maximum held-group regression</tspan></text>
-    <text x="588" y="334"><tspan font-weight="600" fill="#0b0b0b">weight stability</tspan> — positive inner weights, legacy level 10</text>
-    <text x="588" y="358"><tspan font-weight="600" fill="#0b0b0b">F4 behaviour</tspan> — reported separately as the audit fold</text>
-    <text x="588" y="382"><tspan font-weight="600" fill="#0b0b0b">paired bootstrap</tspan> — 2,000 draws over whole groups, seed 20260725</text>
+    <text x="588" y="208" font-size="11.5" fill="#52514e">resulting solution, parent with candidate blended in.</text>
+    <text x="588" y="272"><tspan font-weight="600" fill="#0b0b0b">pooled and per-fold RMSE</tspan> — all five folds</text>
+    <text x="588" y="296"><tspan font-weight="600" fill="#0b0b0b">regrouping sensitivity</tspan> — balanced and independent</text>
+    <text x="588" y="320"><tspan font-weight="600" fill="#0b0b0b">maximum held-group regression</tspan></text>
+    <text x="588" y="344"><tspan font-weight="600" fill="#0b0b0b">weight stability</tspan> — positive inner weights, legacy level 10</text>
+    <text x="588" y="368"><tspan font-weight="600" fill="#0b0b0b">F4 behaviour</tspan> — reported separately as the audit fold</text>
+    <text x="588" y="392"><tspan font-weight="600" fill="#0b0b0b">paired bootstrap</tspan> — 2,000 draws over whole groups, seed 20260725</text>
   </g>
 
-  <rect x="588" y="404" width="426" height="114" rx="6" fill="#fdf0ea"/>
-  <text x="608" y="426" font-size="11.5" font-weight="600" fill="#0b0b0b">C016's audit, as an example</text>
+  <rect x="588" y="412" width="426" height="114" rx="6" fill="#fdf0ea"/>
+  <text x="608" y="434" font-size="11.5" font-weight="600" fill="#0b0b0b">C016's audit, as an example</text>
   <g font-size="11.5" fill="#52514e">
-    <text x="608" y="448">pooled 6.189485 down to 6.127273, gain +0.062212</text>
-    <text x="608" y="468">all five original folds improved</text>
-    <text x="608" y="488">maximum held-group regression 0.0</text>
-    <text x="608" y="508">4 positive inner weights — below the legacy level of 10</text>
+    <text x="608" y="456">pooled 6.189485 down to 6.127273, gain +0.062212</text>
+    <text x="608" y="476">all five original folds improved</text>
+    <text x="608" y="496">maximum held-group regression 0.0</text>
+    <text x="608" y="516">4 positive inner weights — below the legacy level of 10</text>
   </g>
 
   <line x1="1048" y1="330" x2="1074" y2="330" stroke="#8a8983" stroke-width="2" marker-end="url(#arrow)"/>
