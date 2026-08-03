@@ -62,7 +62,7 @@
   <text x="1120" y="292" font-size="11.5" fill="#52514e">shape, finiteness, runtime, a preregistered range check.</text>
 
   <!-- three groupings -->
-  <rect x="48" y="342" width="1504" height="330" rx="8" fill="#ffffff" stroke="#e4e3de"/>
+  <rect x="48" y="342" width="1504" height="362" rx="8" fill="#ffffff" stroke="#e4e3de"/>
   <text x="70" y="370" font-size="15" font-weight="600" fill="#0b0b0b">Three whole-group groupings of the same data</text>
   <text x="70" y="392" font-size="12" fill="#52514e">One unstratified map plus two draws of a single stratified design. Weights are estimated under all three and the audit reports regrouping sensitivity, so a result that depends on one particular partition shows up as instability rather than passing unnoticed.</text>
 
@@ -94,24 +94,26 @@
   <text x="1520" y="490" font-size="10.5" fill="#8a8983" text-anchor="end"> </text>
 
   <line x1="70" y1="588" x2="1530" y2="588" stroke="#eeede9"/>
-  <text x="70" y="610" font-size="12" font-weight="600" fill="#0b0b0b">Every grouping holds the same groups and the same rows — only the assignment changes, so all three score on identical rows</text>
-  <text x="70" y="632" font-size="11.5" fill="#52514e">The stratification balances <tspan font-weight="600">outcome</tspan> statistics — deciles of peak excursion crossed with endpoint sign — so both stratified draws are guaranteed an equal share of rare</text>
-  <text x="70" y="650" font-size="11.5" fill="#52514e">cases. The axis they equalise is the one they cannot probe; only the unstratified map can. Later boundaries balance inference-visible proxies instead.</text>
+  <text x="70" y="606" font-size="12" font-weight="600" fill="#0b0b0b">What a regrouping audit can and cannot detect</text>
+  <text x="70" y="626" font-size="11.5" fill="#52514e"><tspan font-weight="600">Can:</tspan> whether the gain survives a different pooling of the same groups. If it collapses, the improvement was carried by a few groups that happened to</text>
+  <text x="70" y="644" font-size="11.5" fill="#52514e">co-occur in one fold, or by a weight that only fits that particular partition. The predictions are held fixed, so only aggregation and weight-fitting vary.</text>
+  <text x="70" y="664" font-size="11.5" fill="#a33d18"><tspan font-weight="600">Cannot:</tspan> anything about how the models were trained — that would need retraining. Nor anything on the axis the stratification equalises: both stratified</text>
+  <text x="70" y="682" font-size="11.5" fill="#a33d18">draws guarantee an equal share of rare cases by construction, so only the unstratified map can expose a candidate that fails on them.</text>
 
   <!-- second grouping / decay -->
-  <rect x="48" y="696" width="740" height="140" rx="8" fill="#ffffff" stroke="#e4e3de"/>
-  <text x="70" y="724" font-size="15" font-weight="600" fill="#0b0b0b">The second grouping decays on contact</text>
-  <text x="70" y="748" font-size="11.5" fill="#52514e">Distinct from the three groupings above, which serve weight estimation. A second</text>
-  <text x="70" y="766" font-size="11.5" fill="#52514e">whole-group grouping is preregistered as a development-time holdout, queried only</text>
-  <text x="70" y="784" font-size="11.5" fill="#52514e">at milestones — and once its result changes a decision it becomes development evidence.</text>
-  <text x="70" y="810" font-size="11.5" font-weight="600" fill="#0b0b0b">Before the freeze, a still-untouched grouping or a new preregistered one is required.</text>
+  <rect x="48" y="722" width="740" height="132" rx="8" fill="#ffffff" stroke="#e4e3de"/>
+  <text x="70" y="750" font-size="15" font-weight="600" fill="#0b0b0b">The second grouping decays on contact</text>
+  <text x="70" y="774" font-size="11.5" fill="#52514e">Distinct from the three groupings above, which serve weight estimation. A second</text>
+  <text x="70" y="792" font-size="11.5" fill="#52514e">whole-group grouping is preregistered as a development-time holdout, queried only</text>
+  <text x="70" y="810" font-size="11.5" fill="#52514e">at milestones — and once its result changes a decision it becomes development evidence.</text>
+  <text x="70" y="838" font-size="11.5" font-weight="600" fill="#0b0b0b">Before the freeze, a still-untouched grouping or a new preregistered one is required.</text>
 
-  <rect x="812" y="696" width="740" height="140" rx="8" fill="#faf9f6" stroke="#e4e3de"/>
-  <text x="834" y="724" font-size="15" font-weight="600" fill="#0b0b0b">Prospectively protected, not historically pristine</text>
-  <text x="834" y="748" font-size="11.5" fill="#52514e">If work predating the protocol already saw the audit fold, the firewall applies from</text>
-  <text x="834" y="766" font-size="11.5" fill="#52514e">activation forward only. The honest name is then <tspan font-style="italic">protected</tspan>, not <tspan font-style="italic">clean</tspan>, and the official</text>
-  <text x="834" y="784" font-size="11.5" fill="#52514e">result is labelled <tspan font-style="italic">selection-clean, development-exposed</tspan> rather than unbiased.</text>
-  <text x="834" y="810" font-size="11.5" font-weight="600" fill="#0b0b0b">The label is part of the result, not a footnote to it.</text>
+  <rect x="812" y="722" width="740" height="132" rx="8" fill="#faf9f6" stroke="#e4e3de"/>
+  <text x="834" y="750" font-size="15" font-weight="600" fill="#0b0b0b">Prospectively protected, not historically pristine</text>
+  <text x="834" y="774" font-size="11.5" fill="#52514e">If work predating the protocol already saw the audit fold, the firewall applies from</text>
+  <text x="834" y="792" font-size="11.5" fill="#52514e">activation forward only. The honest name is then <tspan font-style="italic">protected</tspan>, not <tspan font-style="italic">clean</tspan>, and the official</text>
+  <text x="834" y="810" font-size="11.5" fill="#52514e">result is labelled <tspan font-style="italic">selection-clean, development-exposed</tspan> rather than unbiased.</text>
+  <text x="834" y="838" font-size="11.5" font-weight="600" fill="#0b0b0b">The label is part of the result, not a footnote to it.</text>
 
   <text x="48" y="872" font-size="11" fill="#8a8983">Structure from limited_query_cv/CV_PROTOCOL_V5.md and COOKBOOK.md, CV Protocol v5 revision 14</text>
 </svg>

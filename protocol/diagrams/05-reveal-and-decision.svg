@@ -12,27 +12,38 @@
   <line x1="48" y1="98" x2="1552" y2="98" stroke="#e4e3de"/>
 
   <!-- freeze checklist -->
-  <rect x="48" y="122" width="470" height="416" rx="8" fill="#ffffff" stroke="#e4e3de"/>
-  <text x="70" y="150" font-size="15" font-weight="600" fill="#0b0b0b">Frozen and checksummed before the reveal</text>
-  <text x="70" y="172" font-size="11.5" fill="#52514e">If any item is missing or fails its hash, the reveal does not happen.</text>
+  <rect x="48" y="122" width="470" height="456" rx="8" fill="#ffffff" stroke="#e4e3de"/>
+  <text x="70" y="150" font-size="15" font-weight="600" fill="#0b0b0b">Frozen before the reveal</text>
+  <text x="70" y="172" font-size="11.5" fill="#52514e">Each item, and what leaving it unfrozen would permit.</text>
 
-  <g font-size="11.5" fill="#52514e">
-    <use href="#tick" x="70" y="192"/><text x="92" y="201">every candidate variant and one global selector</text>
-    <use href="#tick" x="70" y="216"/><text x="92" y="225">snapshot grid, tie-break, seeds, augmentation</text>
-    <use href="#tick" x="70" y="240"/><text x="92" y="249">decoder, postprocessor, weight rule</text>
-    <use href="#tick" x="70" y="264"/><text x="92" y="273">run goal, readiness and confirmation results</text>
-    <use href="#tick" x="70" y="288"/><text x="92" y="297">every manually derived heuristic</text>
-    <use href="#tick" x="70" y="312"/><text x="92" y="321">all 10 excluded-pair runs mapped to 20 roles</text>
-    <use href="#tick" x="70" y="336"/><text x="92" y="345">all 5 clean outer checkpoints</text>
-    <use href="#tick" x="70" y="360"/><text x="92" y="369">hidden-truth-masked prediction caches</text>
-    <use href="#tick" x="70" y="384"/><text x="92" y="393">target-free deployment logic for every context</text>
-    <use href="#tick" x="70" y="408"/><text x="92" y="417">source, config, checkpoint, prediction manifests</text>
-    <use href="#tick" x="70" y="432"/><text x="92" y="441">a ledger entry authorising this reveal</text>
-  </g>
+  <use href="#tick" x="70" y="190"/>
+  <text x="92" y="199" font-size="12" font-weight="600" fill="#0b0b0b">the selector, its variants, tie-break and seeds</text>
+  <text x="92" y="217" font-size="11.5" fill="#a33d18">otherwise: choose the rule after seeing which variant won</text>
 
-  <rect x="70" y="462" width="426" height="56" rx="6" fill="#faf9f6" stroke="#e4e3de"/>
-  <text x="88" y="484" font-size="11.5" font-weight="600" fill="#0b0b0b">Source and preregistration are committed first.</text>
-  <text x="88" y="504" font-size="11.5" fill="#52514e">The sealed run may then use F4 labels for other outer contexts.</text>
+  <use href="#tick" x="70" y="240"/>
+  <text x="92" y="249" font-size="12" font-weight="600" fill="#0b0b0b">snapshot grid, decoder, postprocessor, weight rule</text>
+  <text x="92" y="267" font-size="11.5" fill="#a33d18">otherwise: re-sweep the 225 cheap axes against protected truth</text>
+
+  <use href="#tick" x="70" y="290"/>
+  <text x="92" y="299" font-size="12" font-weight="600" fill="#0b0b0b">run goal, readiness and confirmation results, heuristics</text>
+  <text x="92" y="317" font-size="11.5" fill="#a33d18">otherwise: rewrite the development story to fit the outcome</text>
+
+  <use href="#tick" x="70" y="340"/>
+  <text x="92" y="349" font-size="12" font-weight="600" fill="#0b0b0b">the 10 pair runs mapped to 20 roles, 5 outer checkpoints,</text>
+  <text x="92" y="367" font-size="12" font-weight="600" fill="#0b0b0b">masked prediction caches, target-free deployment logic</text>
+  <text x="92" y="385" font-size="11.5" fill="#a33d18">otherwise: substitute a checkpoint or regenerate a prediction after the fact</text>
+
+  <use href="#tick" x="70" y="408"/>
+  <text x="92" y="417" font-size="12" font-weight="600" fill="#0b0b0b">source, config, checkpoint and prediction manifests</text>
+  <text x="92" y="435" font-size="11.5" fill="#a33d18">otherwise: every substitution above becomes undetectable</text>
+
+  <use href="#tick" x="70" y="458"/>
+  <text x="92" y="467" font-size="12" font-weight="600" fill="#0b0b0b">a ledger entry authorising this reveal</text>
+  <text x="92" y="485" font-size="11.5" fill="#a33d18">otherwise: the reveal is spent without counting, and the budget is fiction</text>
+
+  <rect x="70" y="506" width="426" height="52" rx="6" fill="#faf9f6" stroke="#e4e3de"/>
+  <text x="88" y="526" font-size="11.5" font-weight="600" fill="#0b0b0b">Source and preregistration are committed first.</text>
+  <text x="88" y="546" font-size="11.5" fill="#52514e">The sealed run may then use F4 labels for other outer contexts.</text>
 
   <line x1="530" y1="330" x2="556" y2="330" stroke="#8a8983" stroke-width="2" marker-end="url(#arrow)"/>
 
@@ -73,9 +84,9 @@
   <rect x="1106" y="188" width="424" height="94" rx="6" fill="#eaf7f1"/>
   <circle cx="1126" cy="212" r="6" fill="#0ca30c"/>
   <text x="1142" y="217" font-size="13" font-weight="600" fill="#0b0b0b">Accept</text>
-  <text x="1106" y="240" font-size="11.5" fill="#52514e">pooled selection-clean CV beats the frozen previous best,</text>
-  <text x="1106" y="258" font-size="11.5" fill="#52514e">every integrity rule passes, and protected evidence shows no</text>
-  <text x="1106" y="276" font-size="11.5" fill="#52514e">material CV overfitting or transfer reversal</text>
+  <text x="1106" y="240" font-size="11.5" fill="#52514e">the F4 gain is strictly positive, pooled selection-clean CV beats</text>
+  <text x="1106" y="258" font-size="11.5" fill="#52514e">the frozen previous best, every integrity rule passes, and</text>
+  <text x="1106" y="276" font-size="11.5" fill="#52514e">protected evidence shows no material overfitting or reversal</text>
 
   <rect x="1106" y="294" width="424" height="66" rx="6" fill="#fdf6e5"/>
   <circle cx="1126" cy="318" r="6" fill="#fab219"/>
@@ -85,10 +96,10 @@
   <rect x="1106" y="372" width="424" height="66" rx="6" fill="#fbeeee"/>
   <circle cx="1126" cy="396" r="6" fill="#d03b3b"/>
   <text x="1142" y="401" font-size="13" font-weight="600" fill="#0b0b0b">Reject</text>
-  <text x="1106" y="424" font-size="11.5" fill="#52514e">gain not positive, integrity fails, or protected evidence reverses</text>
+  <text x="1106" y="424" font-size="11.5" fill="#52514e">F4 gain not positive, pooled gain not positive, or integrity fails</text>
 
-  <text x="1106" y="464" font-size="11.5" fill="#52514e">Only Accept may be packaged. A tiny F4 regression inside uncertainty</text>
-  <text x="1106" y="482" font-size="11.5" fill="#52514e">may still be accepted; a material reversal may not.</text>
+  <text x="1106" y="464" font-size="11.5" fill="#52514e">Only Accept may be packaged. An F4 regression is never accepted,</text>
+  <text x="1106" y="482" font-size="11.5" fill="#52514e">however small: the F4 gain must be strictly positive.</text>
   <text x="1106" y="510" font-size="11.5" font-weight="600" fill="#0b0b0b">Hold and Reject end the run. The spent audit may not be re-queried,</text>
   <text x="1106" y="528" font-size="11.5" font-weight="600" fill="#0b0b0b">and the failed candidate may not be tuned against it.</text>
 
