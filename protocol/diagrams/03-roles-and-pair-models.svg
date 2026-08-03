@@ -65,7 +65,7 @@
   <text x="1208" y="306" font-size="10.5" fill="#52514e" text-anchor="middle">leak into F4's score</text>
 
   <!-- the collapse -->
-  <rect x="48" y="374" width="900" height="300" rx="8" fill="#ffffff" stroke="#e4e3de"/>
+  <rect x="48" y="374" width="900" height="316" rx="8" fill="#ffffff" stroke="#e4e3de"/>
   <text x="70" y="402" font-size="15" font-weight="600" fill="#0b0b0b">Why 20 inner roles need only 10 models</text>
   <text x="70" y="424" font-size="12" fill="#52514e">A role's training set is everything except its outer fold and its inner fold — so it depends only on that</text>
   <text x="70" y="442" font-size="12" fill="#52514e">unordered pair. Swap the two and the training data is identical.</text>
@@ -84,8 +84,10 @@
   <rect x="378" y="566" width="164" height="26" rx="13" fill="#fdf0ea"/>
   <text x="460" y="584" font-size="11.5" font-weight="600" fill="#eb6834" text-anchor="middle">same three folds</text>
 
-  <text x="70" y="622" font-size="12" fill="#52514e">One model trained on F1 + F2 + F3 is held out from both F4 and F0, so it can predict both and fill both</text>
-  <text x="70" y="640" font-size="12" fill="#52514e">roles. Name it by what it excludes — <tspan font-weight="600" fill="#0b0b0b">pair {F0, F4}</tspan> — and the 20 inner roles become C(5,2) = 10 runs.</text>
+  <text x="70" y="614" font-size="12" fill="#52514e">One model trained on F1 + F2 + F3, held out from both F4 and F0, so it predicts both. Name it <tspan font-weight="600" fill="#0b0b0b">pair {F0, F4}</tspan>.</text>
+  <text x="70" y="636" font-size="12" font-weight="600" fill="#0b0b0b">Two predictions, and each context may touch only one of them</text>
+  <text x="70" y="656" font-size="11.5" fill="#52514e">its <tspan font-weight="600">F0</tspan> prediction, scored on F0 labels, is evidence for context <tspan font-weight="600">F4</tspan>  ·  its <tspan font-weight="600">F4</tspan> prediction is evidence for context <tspan font-weight="600">F0</tspan></text>
+  <text x="70" y="674" font-size="11.5" fill="#a33d18">context F4 may not use its F4 prediction, though it never trained on F4 — that scoring is the leak</text>
 
   <!-- the ten pairs -->
   <rect x="972" y="374" width="580" height="300" rx="8" fill="#ffffff" stroke="#e4e3de"/>
