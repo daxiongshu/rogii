@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "status": "active",
+  "protocol_name": "cv-protocol-v5",
+  "protocol_revision": 14,
+  "activated_utc": "2026-07-25",
+  "policy": "limited_query_cv/cv_protocol_v5.json",
+  "ledger": "limited_query_cv/cv_query_ledger_v5.json",
+  "documentation": "limited_query_cv/CV_PROTOCOL_V5.md",
+  "active_amendments": [
+    "limited_query_cv/cv_protocol_v5_fold_ensemble_amendment.json",
+    "limited_query_cv/cv_protocol_v5_post_promotion_checkpoint_refinement.json",
+    "limited_query_cv/cv_protocol_v5_manual_analysis_firewall.json",
+    "limited_query_cv/cv_protocol_v5_kickstart_goal_amendment.json",
+    "limited_query_cv/cv_protocol_v5_batch3_single_reveal_amendment.json",
+    "limited_query_cv/cv_protocol_v5_batch3_run2_family_extension.json",
+    "limited_query_cv/cv_protocol_v5_batch5_boundary_extension.json",
+    "limited_query_cv/cv_protocol_v5_batch6_single_reveal_amendment.json"
+  ],
+  "baseline": "protected-v20",
+  "baseline_oof_rmse": 6.189484768154311,
+    "protected_outer_oof_reveals_used": 5,
+    "protected_outer_oof_reveals_available": 1,
+  "candidate_families_registered_total": 16,
+  "active_candidate_families": 6,
+  "kaggle_submissions_authorized": 0
+}

@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "status": "active_lineage_quarantine_repaired",
+  "protocol_name": "cv-protocol-v5",
+  "batch": 2,
+  "discovered_utc": "2026-07-28",
+  "discovered_before_confirmation_or_protected_outer_reveal": true,
+  "protected_outer_reveal_spent": false,
+  "f4_metric_computed": false,
+  "root_cause": {
+    "source": "limited_query_cv/evaluate_v5_run6_protected_mode_bank.py",
+    "parent": "alignment_wide_supervised_strat_fold{fold}.pt",
+    "reason": "A stratified-fold checkpoint index was treated as an original-fold index while building an original-fold mode bank. Most nominal original-held wells were therefore seen during that parent's training.",
+    "candidate_use": "The label-free GR selector chose stratified-parent candidates for 4 to 15 wells in every selected mode component and original fold.",
+    "relationship_to_D072_quarantine": "This is the same fold-identity mismatch as the purece_strat D072 incident, but it entered C016 through the protected mode-bank component rather than through D072."
+  },
+  "quarantined_root_artifacts": [
+    {
+      "path": "limited_query_cv/runs/v5_batch2_run_006_goal_050/protected_mode_bank_f0.npz",
+      "sha256": "9bbfc9186de3c29aec4348e6de6074318c0127c99f918c3df1eb4c9e11048590"
+    },
+    {
+      "path": "limited_query_cv/runs/v5_batch2_run_006_goal_050/protected_mode_bank_f1.npz",
+      "sha256": "f63f79f15b617d9037fbde1c620308ab73e24b85aa7e2d0f8a2d719226a61ccd"
+    },
+    {
+      "path": "limited_query_cv/runs/v5_batch2_run_006_goal_050/protected_mode_bank_f2.npz",
+      "sha256": "ba160352d8615c7469b21d27c55e1cdb1124ae9f0054da28559965ea9f3fa70c"
+    },
+    {
+      "path": "limited_query_cv/runs/v5_batch2_run_006_goal_050/protected_mode_bank_f3.npz",
+      "sha256": "451b393e5943225647916efcf992e56ef7f22ea5eecb48e6ca3dcda9b119ccba"
+    },
+    {
+      "path": "limited_query_cv/runs/v5_batch2_run_006_goal_050/protected_mode_bank_clean.json",
+      "sha256": "ba3d5845cb466c30646bf81f2c7052dfbdd94f137cc565e1dc62fddf8c280cc5"
+    },
+    {
+      "path": "limited_query_cv/runs/v5_batch2_run_006_goal_050/protected_mode_bank_clean.npz",
+      "sha256": "6240d9077188be3efcc2299f97fd59a879cac0a095201168e5250d7dbf341aee"
+    }
+  ],
+  "quarantined_run25_artifacts": [
+    {
+      "path": "limited_query_cv/runs/v5_batch2_run_025_goal_050/clean_multimodel_ridge_result.json",
+      "sha256": "27cb0aa5af7670ff32adf942aac4c4ba0ab9763e75d42904e7aebb7c206d7105"
+    },
+    {
+      "path": "limited_query_cv/runs/v5_batch2_run_025_goal_050/clean_multimodel_ridge_clean.npz",
+      "sha256": "82cc3319a6752273973599bfcc0725790a24936e39d04139a422f6f10ffffbd1"
+    },
+    {
+      "path": "limited_query_cv/runs/v5_batch2_run_025_goal_050/clean_ridge_half_result.json",
+      "sha256": "702c5b205b1140db01eeaba3ece940a59b803cee90179ae07b993a96c017f284"
+    },
+    {
+      "path": "limited_query_cv/runs/v5_batch2_run_025_goal_050/clean_ridge_half_clean.npz",
+      "sha256": "c03c40682ed78204268100e389f32d60334a3018fbb0d8f1e7cf4ef2319855f2"
+    },
+    {
+      "path": "limited_query_cv/runs/v5_batch2_run_025_goal_050/clean_run17_block_result.json",
+      "sha256": "9b831af9b4e82a346ef5ce08ed865474e36d98f69d4a62682469107eb272607a"
+    },
+    {
+      "path": "limited_query_cv/runs/v5_batch2_run_025_goal_050/clean_run17_block_clean.npz",
+      "sha256": "43242d80b1f3f309b79223c0cc581e55c54808e7fe6bbde969b4f52b93978169"
+    },
+    {
+      "path": "limited_query_cv/runs/v5_batch2_run_025_goal_050/clean_run17_row_result.json",
+      "sha256": "0f388fbc848eb9f705cf8975cdf6dc9ebad6ca33cd03132066ff55117b3a4a85"
+    },
+    {
+      "path": "limited_query_cv/runs/v5_batch2_run_025_goal_050/clean_run17_row_clean.npz",
+      "sha256": "39be91dc0d76baca7e15641495557a3aae15ddcdba06c8ab4090f589ee909e08"
+    },
+    {
+      "path": "limited_query_cv/runs/v5_batch2_run_025_goal_050/development_readiness_result.json",
+      "sha256": "76d06bbcc2e507a75e6eb62d80f944ab2c8faa4aafed25e446adaa9c09c5ac4f"
+    }
+  ],
+  "quarantine_scope": "Every metric, prediction, feature cache, router, ensemble, confirmation, or readiness decision transitively derived from any quarantined mode-bank root is invalid for promotion, packaging, deployment, or citation as clean evidence.",
+  "allowed_use": "Readable only for provenance audit, leak diagnosis, and exact identification of safe rows during the one completed repair diagnostic. It may not be used as a candidate, parent, feature, comparison baseline, or deployment input.",
+  "fail_closed_code": [
+    {
+      "path": "limited_query_cv/evaluate_v5_run6_protected_mode_clean.py",
+      "sha256": "62db9b062b00eda2fee1a91c98ff20a137d9a801d2f9e7b9d158198a35ac0316"
+    },
+    {
+      "path": "limited_query_cv/rebuild_v5_run25_clean_c016.py",
+      "sha256": "95c7c11802eda83a47184b0ccf9e1fef295d3b62fb77ad4e1551b758605e5e26"
+    }
+  ],
+  "canonical_repair": {
+    "builder": "limited_query_cv/build_v5_run25_original_safe_mode_bank.py",
+    "builder_sha256": "7985a8ab5e805076d5ca67cc3c082e6b56fe16bd9fa773617a779305fe43f3a2",
+    "finalizer": "limited_query_cv/finalize_v5_run25_original_safe_c016.py",
+    "finalizer_sha256": "b18d7a1ef3adc663a54be99e125a41448d48e48a746501215dd914fb0d980a2b",
+    "parent_count": 15,
+    "candidate_count": 240,
+    "removed_parent": "strat",
+    "mode_result": "limited_query_cv/runs/v5_batch2_run_025_goal_050/original_safe_mode_bank_result.json",
+    "mode_result_sha256": "04fa4abf518ea1b67ace07328b32c250608b3bd7333c9be5bb0ecb73a3614ec3",
+    "mode_archive": "limited_query_cv/runs/v5_batch2_run_025_goal_050/original_safe_mode_bank_clean.npz",
+    "mode_archive_sha256": "1dc2c98f971f5b66a31b3499685e6aadf5eddfe0c63a9be365d43457228673df",
+    "c016_result": "limited_query_cv/runs/v5_batch2_run_025_goal_050/original_safe_c016_result.json",
+    "c016_result_sha256": "24a5d88e2706ccde354127a445f3324a004fa8b379070625f71a3b9458e87cc0",
+    "c016_archive": "limited_query_cv/runs/v5_batch2_run_025_goal_050/original_safe_c016_clean.npz",
+    "c016_archive_sha256": "dcf7d139252ad9ba72a73f240a9827e2078ce2e658cf0a52369131142f8a96bb",
+    "stratified_parent_loaded": false,
+    "protected_outer_evidence_used": false
+  }
+}

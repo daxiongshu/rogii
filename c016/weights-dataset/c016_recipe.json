@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "candidate": "clean_c016_without_quarantined_d072",
+  "production_rule": "arithmetic_mean_of_five_clean_outer_predictions",
+  "v20_parent_dataset": "jiweiliu/rogii-compact-alignment-cv5-weights",
+  "outer_records": [
+    {
+      "outer_fold": 0,
+      "local_seeds": [
+        20260831,
+        20261043
+      ],
+      "local_snapshot": 16,
+      "local_temperature": 2.0,
+      "local_weight": 0.2,
+      "local_amplitude": 1.0,
+      "posterior_effective_scale": 0.0
+    },
+    {
+      "outer_fold": 1,
+      "local_seeds": [
+        20260831,
+        20261043
+      ],
+      "local_snapshot": 16,
+      "local_temperature": 2.0,
+      "local_weight": 0.2,
+      "local_amplitude": 1.0,
+      "posterior_effective_scale": 0.0
+    },
+    {
+      "outer_fold": 2,
+      "local_seeds": [
+        20260831,
+        20261043
+      ],
+      "local_snapshot": 16,
+      "local_temperature": 1.5,
+      "local_weight": 0.2,
+      "local_amplitude": 1.0,
+      "posterior_effective_scale": 0.0
+    },
+    {
+      "outer_fold": 3,
+      "local_seeds": [
+        20260831,
+        20261043
+      ],
+      "local_snapshot": 16,
+      "local_temperature": 1.5,
+      "local_weight": 0.2,
+      "local_amplitude": 1.0,
+      "posterior_variant": "posterior_physical_b16",
+      "posterior_snapshot": 20,
+      "posterior_temperature": 1.0,
+      "posterior_interpolation_validity": "sampled_geometry_only",
+      "posterior_selector_effective_scale": 0.2,
+      "posterior_ridge_weight": 0.5,
+      "c016_final_amplitude": 0.5,
+      "posterior_production_effective_scale": 0.05
+    },
+    {
+      "outer_fold": 4,
+      "local_seeds": [
+        20260831,
+        20261043
+      ],
+      "local_snapshot": 16,
+      "local_temperature": 1.5,
+      "local_weight": 0.2,
+      "local_amplitude": 2.0,
+      "posterior_effective_scale": 0.0
+    }
+  ],
+  "mode_bank_production_weight": 0.0,
+  "pair_role_checkpoints_packaged": false,
+  "post_promotion_refinement_used": false,
+  "post_promotion_production_parity_repair": "label-free posterior interpolation mask; no recipe or weight change",
+  "competition_submission_authorized": false
+}

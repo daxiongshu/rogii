@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "protocol_name": "cv-protocol-v5",
+  "run_id": "v5_batch3_run_004_goal_020",
+  "solution_id": "run4_structural_surface_router_s06",
+  "status": "user_approved_frozen_parent",
+  "reason": "Run4 improves over C016 in deploy-parity CV and public LB.",
+  "deploy_parity_reconstruction": {
+    "formula": "run4_recorded_prediction + c016_legal_prediction - c016_recorded_prediction",
+    "run4_recorded_oof": "limited_query_cv/runs/v5_batch3_run_004_goal_020/sr_deployment_scaled06/oof_prediction.npz",
+    "run4_recorded_oof_sha256": "612406f454f9d639978ea778bc2754ae5d8ed985567ad66a0c639e634135d2bc",
+    "c016_recorded_oof": "limited_query_cv/runs/v5_batch2_run_025_goal_050/promotion_audit/sealed/outer_predictions.npz",
+    "c016_recorded_oof_sha256": "737711c483cc3ce81ba94fa8e5dfb9c307f75c7691fd06be33631d80c355fad1",
+    "c016_legal_oof": "limited_query_cv/runs/v5_batch2_run_025_goal_050/kaggle_production/promotion_oof_legal_posterior_mask.npz",
+    "c016_legal_oof_sha256": "9707bdb500cf869c0462c1845783cce7ad08d066a9116514b8263873ee47bbb4",
+    "recorded_run4_oof_rmse": 6.063838803353486,
+    "deploy_parity_run4_oof_rmse": 6.066500604210546,
+    "deploy_parity_c016_oof_rmse": 6.1272727841976,
+    "deploy_parity_gain_vs_c016": 0.060772179987053754,
+    "all_five_folds_improve": true,
+    "folds": {
+      "F0": {
+        "c016_rmse": 5.825838246041426,
+        "run4_rmse": 5.740045887841642,
+        "gain": 0.08579235819978415
+      },
+      "F1": {
+        "c016_rmse": 6.119897279692428,
+        "run4_rmse": 6.075739763736813,
+        "gain": 0.044157515955615345
+      },
+      "F2": {
+        "c016_rmse": 5.339144043108915,
+        "run4_rmse": 5.192867954211614,
+        "gain": 0.14627608889730048
+      },
+      "F3": {
+        "c016_rmse": 6.16663405157052,
+        "run4_rmse": 6.116793471813314,
+        "gain": 0.04984057975720546
+      },
+      "F4": {
+        "c016_rmse": 7.071313664328342,
+        "run4_rmse": 7.070397615630352,
+        "gain": 0.0009160486979897797
+      }
+    }
+  },
+  "kaggle": {
+    "dataset": "jiweiliu/rogii-v5-run4-structural-surface-router",
+    "kernel": "jiweiliu/rogii-v5-run4-sr-dual-t4",
+    "kernel_version": 1,
+    "kernel_status": "complete",
+    "submission_reference": 55147410,
+    "submission_description": "1 hour Run4 structural-surface router s0.6; clean OOF 6.063839; +0.060780 vs C016",
+    "submitted_utc": "2026-07-31T21:38:40.137000",
+    "public_lb_rmse": 5.962,
+    "c016_public_lb_rmse": 6.127,
+    "public_lb_gain_vs_c016": 0.165,
+    "submission_csv_sha256": "943261344aa765dd819a773d854ded1d3297a0a2c445a1d553afa7fabb72df05"
+  },
+  "artifacts": {
+    "source_commit": "524eb22ceb56503eaf1bdca0762c67119eb68916",
+    "recipe": "deploy/kaggle/run4-sr-weights-dataset/recipe.json",
+    "recipe_sha256": "5ac99301d817893182885ff578826e144ad09c3a8e15e5dfe88c60c00aab3343",
+    "kernel_source": "deploy/kaggle/run4-sr-kernel/infer.py",
+    "kernel_source_sha256": "02aa610508250719748c46834c64fd95ab6700f24efee0a35ade70e6eeda5015"
+  },
+  "user_approval": {
+    "approved": true,
+    "approved_utc": "2026-07-31",
+    "note": "User reviewed the returned LB score and confirmed that the latest kernel beats C016."
+  }
+}

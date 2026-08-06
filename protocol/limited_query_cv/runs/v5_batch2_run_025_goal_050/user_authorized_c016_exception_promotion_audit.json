@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "run_id": "v5_batch2_run_025_goal_050",
+  "stage": "user_authorized_c016_exception_promotion_audit",
+  "status": "authorized_preregistration_pending",
+  "authorized_at_utc": "2026-07-28T17:20:00Z",
+  "user_instruction": "Authorize the C016 exception promotion audit",
+  "candidate": {
+    "name": "D072-free C016",
+    "development_result": "limited_query_cv/runs/v5_batch2_run_025_goal_050/clean_ridge_half_result.json",
+    "development_result_sha256": "702c5b205b1140db01eeaba3ece940a59b803cee90179ae07b993a96c017f284",
+    "development_archive": "limited_query_cv/runs/v5_batch2_run_025_goal_050/clean_ridge_half_clean.npz",
+    "development_archive_sha256": "c03c40682ed78204268100e389f32d60334a3018fbb0d8f1e7cf4ef2319855f2",
+    "development_rmse": 5.796389303875594,
+    "development_gain_versus_v20": 0.14380170642023415,
+    "positive_incremental_development_folds": 4,
+    "forbidden_stratified_parent_loaded": false
+  },
+  "exception_scope": {
+    "candidate_specific": true,
+    "stored_run_goal_changed": false,
+    "global_v5_readiness_floor_changed": false,
+    "c016_treated_as_ready_for_this_promotion_audit": true,
+    "exception_minimum_development_gain": 0.14,
+    "minimum_positive_development_folds": 4,
+    "maximum_development_fold_regression": 0.0,
+    "confirmation_regroupings_authorized": [
+      "stratified",
+      "independent"
+    ],
+    "minimum_each_confirmation_gain_vs_v20": 0.1,
+    "full_symmetric_pair_nested_rerun_required": true,
+    "unique_inner_roles_required": 10,
+    "outer_roles_required": 5,
+    "joint_protected_reveal_authorized_after_complete_freeze": true,
+    "post_audit_tuning_authorized": false,
+    "kaggle_dataset_authorized": false,
+    "kaggle_kernel_authorized": false,
+    "kaggle_submission_authorized": false
+  },
+  "frozen_candidate_boundary": {
+    "D072_allowed": false,
+    "purece_strat_allowed": false,
+    "transitive_quarantined_lineage_allowed": false,
+    "final_interpolation_amplitude": 0.5,
+    "final_components": [
+      "protected_posterior_incremental_after_D570",
+      "protected_mode_bank"
+    ],
+    "one_global_automatic_pipeline_for_every_outer_context": true,
+    "held_outer_truth_may_select_clean_pipeline": false,
+    "f4_target_derived_output_before_joint_reveal": false,
+    "f4_nonnegative_gain_veto_retained": true,
+    "ordinary_v5_strong_and_small_diverse_promotion_gates_retained": true
+  },
+  "required_before_confirmation_metrics": [
+    "Freeze the exact C016 pipeline, selectors, role map, seeds, snapshots, and tie-breaks.",
+    "Freeze and checksum the confirmation evaluator source.",
+    "Commit this authorization, the complete preregistration, and evaluator source."
+  ],
+  "required_before_joint_protected_reveal": [
+    "Pass both authorized F0-F3 confirmation regroupings.",
+    "Complete all ten symmetric excluded-pair roles for every trainable C016 submodel.",
+    "Complete all five outer roles for every trainable C016 submodel.",
+    "Freeze source, checkpoint, prediction, selector, and metadata manifests.",
+    "Run one sealed evaluator only after every artifact is frozen."
+  ],
+  "protected_outer_reveal_spent": false,
+  "f4_metric_computed": false,
+  "kaggle_dataset_created": false,
+  "kaggle_kernel_created": false,
+  "kaggle_submission_made": false
+}

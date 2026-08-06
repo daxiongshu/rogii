@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "competition": "rogii-wellbore-geology-prediction",
+  "solution": "run4_structural_surface_router_s06",
+  "family": "uniform_structural_raw_surface_deployment",
+  "parent_solution": "c016",
+  "root_solution": "v20",
+  "run_id": "v5_batch3_run_004_goal_020",
+  "protocol": "cv-protocol-v5",
+  "protocol_revision": 11,
+  "build_commit": "524eb22ceb56503eaf1bdca0762c67119eb68916",
+  "promotion_commit": "1ccb125",
+  "relationship_to_parents": "Run4 routes each well between a structural candidate blend and a raw surface candidate blend, then adds the selected correction to the C016 parent prediction at production scale 0.6. It retrains nothing from v20 or C016: the C016 sealed outer prediction is a hash-pinned input, and the v20 component caches and OOF layout are read directly.",
+  "metrics": {
+    "v20_pooled_oof_rmse": 6.189484768154311,
+    "clean_c016_pooled_oof_rmse": 6.124619174007348,
+    "legal_c016_pooled_oof_rmse": 6.1272727841976,
+    "recorded_pooled_oof_rmse": 6.063838803353486,
+    "deploy_parity_pooled_oof_rmse": 6.066500604210546,
+    "deploy_parity_gain_vs_c016": 0.060772179987053754,
+    "gain_vs_clean_c016": 0.06078037065386255,
+    "gain_vs_v20": 0.12564596480082546,
+    "deploy_parity_fold_rmse": [
+      5.740045887841642,
+      6.075739763736813,
+      5.192867954211614,
+      6.116793471813314,
+      7.070397615630352
+    ],
+    "c016_deploy_parity_fold_rmse": [
+      5.825838246041426,
+      6.119897279692428,
+      5.339144043108915,
+      6.16663405157052,
+      7.071313664328342
+    ],
+    "all_five_folds_improve": true,
+    "production_correction_scale": 0.6,
+    "public_lb_rmse": 5.962,
+    "public_lb_gain_vs_c016": 0.165
+  },
+  "deploy_parity_formula": "run4_recorded_prediction + c016_legal_prediction - c016_recorded_prediction",
+  "kaggle": {
+    "weights_dataset": "jiweiliu/rogii-v5-run4-structural-surface-router",
+    "kernel": "jiweiliu/rogii-v5-run4-sr-dual-t4",
+    "kernel_version": 1,
+    "submission_reference": 55147410,
+    "submitted_utc": "2026-07-31T21:38:40.137000",
+    "submission_csv_sha256": "943261344aa765dd819a773d854ded1d3297a0a2c445a1d553afa7fabb72df05",
+    "inference_source_sha256": "02aa610508250719748c46834c64fd95ab6700f24efee0a35ade70e6eeda5015",
+    "recipe_sha256": "5ac99301d817893182885ff578826e144ad09c3a8e15e5dfe88c60c00aab3343"
+  },
+  "user_approval": {
+    "approved": true,
+    "approved_utc": "2026-07-31",
+    "note": "User reviewed the returned LB score and confirmed Run4 beats C016.",
+    "record": "records/run4_frozen_parent_alignment.json"
+  },
+  "manifests": {
+    "sources": "manifests/run4_sources.json",
+    "artifacts": "manifests/run4_artifacts.json",
+    "recipe": "weights-dataset/recipe.json"
+  }
+}

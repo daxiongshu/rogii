@@ -1,0 +1,1244 @@
+{
+  "C016_amplitude": 0.5,
+  "candidate_manifest": "limited_query_cv/runs/v5_batch2_run_025_goal_050/promotion_audit/sealed/candidate_manifest.json",
+  "candidate_manifest_sha256": "1ab20f8134ba69826af4b7e5e82b57f0f0cab56d55d01506524533a24433a54f",
+  "f4_metric_computed": false,
+  "logical_inner_roles": 20,
+  "outer_records": [
+    {
+      "D570_amplitude": {
+        "amplitude": 1.0,
+        "candidate_count": 7,
+        "eligible": true,
+        "fold_gain_vs_amplitude_one": {
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        },
+        "fold_rmse": {
+          "1": 6.126568849686808,
+          "2": 5.393325888910033,
+          "3": 6.181375218857359,
+          "4": 7.081791530441265
+        },
+        "mean_rank": 1.0,
+        "metric_ranks": {
+          "endpoint_rmse": 1.0,
+          "mean_well_rmse": 1.0,
+          "pooled_rmse": 1.0,
+          "toe_quartile_rmse": 1.0
+        },
+        "metrics": {
+          "endpoint_rmse": 10.39316464819753,
+          "mean_well_rmse": 4.523098642232609,
+          "pooled_rmse": 6.220198439747546,
+          "toe_quartile_rmse": 8.452056809798945
+        }
+      },
+      "local_lineage": {
+        "candidate_count": 75,
+        "selected_prediction_sha256": [
+          "6f73266562667e8d03a5ea64f39dada96bce299ba6a75347c5eb43a9f7f9dd07",
+          "18f825688b7b8c93d1e107825f6f52da512c87bfcfbffa96178aee7e15a74637"
+        ]
+      },
+      "local_residual": {
+        "blend_rmse": 6.220198439747546,
+        "endpoint_rmse": 10.39316463470459,
+        "mean_rank": 16.0,
+        "metric_ranks": {
+          "blend_rmse": 1.0,
+          "endpoint_rmse": 18.0,
+          "standalone_rmse": 36.0,
+          "toe_quartile_rmse": 9.0
+        },
+        "snapshot": 16,
+        "standalone_rmse": 6.513145529964494,
+        "temperature": 2.0,
+        "toe_quartile_rmse": 8.452056884765625,
+        "treatment": "equal_seed_bag",
+        "weight": 0.2
+      },
+      "mode_components": [
+        {
+          "metric": "diff_corr_s32_d8",
+          "selector_index": 49,
+          "training_gain": 0.07924412800348524,
+          "weight": 0.2
+        },
+        {
+          "metric": "diff_mae_s0_d32",
+          "selector_index": 13,
+          "training_gain": 0.03048414769865815,
+          "weight": 0.2
+        },
+        {
+          "metric": "corr_s0_d8",
+          "selector_index": 2,
+          "training_gain": 0.020957516001776533,
+          "weight": 0.15
+        }
+      ],
+      "outer_fold": 0,
+      "positive_inner_weight_roles": 0,
+      "posterior": {
+        "amplitude": 1.0,
+        "blend_rmse": 6.220198439747546,
+        "effective_scale": 0.0,
+        "eligible": true,
+        "endpoint_rmse": 10.39316464819753,
+        "mean_rank": 420.5,
+        "mean_well_rmse": 4.523098642232609,
+        "metric_ranks": {
+          "blend_rmse": 420.5,
+          "endpoint_rmse": 420.5,
+          "mean_well_rmse": 420.5,
+          "toe_quartile_rmse": 420.5
+        },
+        "selector_fold_non_regressive": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "share": 0.0,
+        "snapshot": 4,
+        "temperature": 0.75,
+        "toe_quartile_rmse": 8.452056809798945,
+        "treatment": "posterior_only_b12"
+      },
+      "posterior_lineage": {
+        "candidate_count": 7560,
+        "outer_prediction_sha256": {
+          "posterior_only_b12:12": "b667ce249b2c7b02a08388c83f84aeb5b9fd364afc76b4634367e23c000660c8",
+          "posterior_only_b12:16": "cfad5df38be35d7a56fe922ea66f7202ce4d633f6db2b63ab11a016ccb3a2a56",
+          "posterior_only_b12:20": "2f76f67d4ac7df8995e5ac31a35950f19e53003cf228b7965502ea49fc42e040",
+          "posterior_only_b12:24": "e97c6a73bf81289775b2b5023173c290c82346ae5e8c2dfb5288bb1e33731995",
+          "posterior_only_b12:4": "9ae25e8468fa65281ed3de6dcd6b8b224e72aa58b9f7f65ca820d3ac23e29508",
+          "posterior_only_b12:8": "b5a6c9014ead2d1a5eb1a1b20c94f5fe63977081c3d8349147130d0f06ef50fe",
+          "posterior_physical_b12:12": "7ee1b1f43d0d14850be3c639cf4eb2fbecc5249da72e7d089243389b7f705096",
+          "posterior_physical_b12:16": "efc699344f89fac46f0ca0365c8b9149e6da0958174bf204a9cb3fb879a09925",
+          "posterior_physical_b12:20": "05330bac27ce767dd2dbc9dae1565ef3c9af061902559459950608c58a6fedaa",
+          "posterior_physical_b12:24": "c91dda08dab17fbe767d9763b3fb2d69d920796029ba96e117bba0ac1fcb35b7",
+          "posterior_physical_b12:4": "ff0d0d1c4356fc68595ccdb878b5c6d55a158ea73761f4d3625bdffca37484ae",
+          "posterior_physical_b12:8": "cf4607da5ec19563e83a5ed118771ce136cabab05dbe8ec6de79531c159296f3",
+          "posterior_physical_b16:12": "fc16a8fc711effc384ffb6503a860eb33a2f7db098a34f540def088a68c0b637",
+          "posterior_physical_b16:16": "e227fab348a2ae2aeb61ea10a91a54623d3b83b4ba1b596eb2dae2d9b5d1d437",
+          "posterior_physical_b16:20": "646895b0e32b21253d2670bef0fa72953f2e526cd42c1201f5305b7ff690c8d7",
+          "posterior_physical_b16:24": "60e9832ebd7ce8629ce188808337172706b57394ddcf55e19450eb2d3af863e1",
+          "posterior_physical_b16:4": "b4d10ad244c37c64af2248cd8cf511a37b944decce4dd3dc9653f73c4974fe12",
+          "posterior_physical_b16:8": "531884a92b6e3fdec1cd093be7d19204637e358a9a2cdee71ba7abb64a2e0d8d"
+        },
+        "pair_prediction_sha256": {
+          "1": {
+            "posterior_only_b12:12": "c3d523342de16ed2393f15753971eeac1d3aa4680c9d9bc9d499761a004aea48",
+            "posterior_only_b12:16": "f2047f3003f431d7849948e0f4f2c1a206e5c27f29624442c8cab02a8a1ed196",
+            "posterior_only_b12:20": "1c144ca163041ca9f0b52108bcd89a1b188ef58ea5d38a6bfea0808d4a4fffd6",
+            "posterior_only_b12:24": "8ba29bd4be4bddfb785d917af0829427ded168788f131208ae0c2c87a84c7259",
+            "posterior_only_b12:4": "da156626537d5680f3f4481df913e89424e86e08f1629236f84f0f07fd13441a",
+            "posterior_only_b12:8": "abff53d4813c4325edfb3e5a9302e69b09b37d7e2b28ed70d48c580b87482606",
+            "posterior_physical_b12:12": "bacb4211bcbd5bfdbc39907466eb1d187547030423274edd0fca6de9e71718fd",
+            "posterior_physical_b12:16": "0f7c88040555c02c57611df3d1b6e179bed0815a25aedd1861f9b913675c9e2d",
+            "posterior_physical_b12:20": "c80bf87e9455f59547439133b7a6216d21c7d90f00ee0ac088001b93184ea60b",
+            "posterior_physical_b12:24": "650db66f5f1f979860c6cfc68ba29ced34eb0545388ecefbb96454566db6954e",
+            "posterior_physical_b12:4": "7bae2b09cbb79d0ad22849dbdbd5d2a6f6a8793f9111887f7a0c70773957a442",
+            "posterior_physical_b12:8": "19e3b013d2ffc5acc050e7c8b40a3669dd2c78d7fa5578677302f2b2b6de7f06",
+            "posterior_physical_b16:12": "244e338b33b911621c77fa8a420531c77fefe885224e9d6af470a7e201a52f6a",
+            "posterior_physical_b16:16": "8ff21ef05f6e88d57a329300610b30a596efa3918cfdbd0ac5113d5b7d4e3e11",
+            "posterior_physical_b16:20": "e6355899ad70cca17b7794ddca673480f60a01f9fdd1b2a678f4c37e659181a8",
+            "posterior_physical_b16:24": "b8ca2ad117489c3f5fdb6832cbac1c9e92e1f5673bf60e9955a31939a9259e06",
+            "posterior_physical_b16:4": "fa7be3e7d9c0dc463e00c9aac4c70be00e6397138adeb4eb28af3968f2fc53a1",
+            "posterior_physical_b16:8": "206db2da6eb3ad5eefff54201187cd743c99f5d7dd8443e91473f3fc266b370e"
+          },
+          "2": {
+            "posterior_only_b12:12": "f95f4d7ff42f3dfbaa64d173ce1cd1c56ba8e6f04ad223d0f5913a61adede494",
+            "posterior_only_b12:16": "455d3264eea0f9ae1fd49a501952e7082fb6184c0611b8b52927e03aa2669468",
+            "posterior_only_b12:20": "5ae63b4993193af1c12ff77e2693f567b05411c565fff4be6fc9dc75a7011c77",
+            "posterior_only_b12:24": "4eb83d1ee05ea952656571b6e37f3af12fa6e6390bfa6d2b3f86cbe751913a5e",
+            "posterior_only_b12:4": "51f0f72f853fe966677e8b537c942307105720c65cd75171f058d8cbfa2050b3",
+            "posterior_only_b12:8": "79a9a12eb95d918b90177addb51edc00171d900758d4fb8064a263224cbf5364",
+            "posterior_physical_b12:12": "ec84681f1b28935b7bace5e3e0289da9d3bb38686f2a4a2548137caae6770e61",
+            "posterior_physical_b12:16": "f41c3f2619fa0cf3671999d8f37ddd7aa4796a8b81b5e24d819901b34b963ce4",
+            "posterior_physical_b12:20": "8fa0994d61dfeba1214e7ef2c69e345706ad27042c5693e833af3f0f2f246534",
+            "posterior_physical_b12:24": "b9465880383ab79442358914793e4b0c0e8ed78f63b054afd72329791c1d73a7",
+            "posterior_physical_b12:4": "1c68d376ae327a37d740035e5bb0d58c9c58e8dfb49669f0a482b3dcb60739c4",
+            "posterior_physical_b12:8": "7a9220c65e9d0052da978872013f0f7d80a36168d3b7e537a2a5a426ae6c2263",
+            "posterior_physical_b16:12": "4cf86b812eb56b664a077f3b54ba950599a4f3c9b1a53e15e1b8dc5f1ff374bc",
+            "posterior_physical_b16:16": "de82937372177e179d3fc5c41780612d5102dc501f2334ddb630d00c7b9cafe2",
+            "posterior_physical_b16:20": "d2b0f81a6a0ecc42b2821275822c9dcc649b6fcb5336c4cf874bc328717bed83",
+            "posterior_physical_b16:24": "44440024cff65bd82afe053381d8e12160358c6513996c6cf4c93cddb55dcbca",
+            "posterior_physical_b16:4": "cf24fa25e09aeb6943ce0a6d7f08580c0b32cd3452b17a39601f918d25d8dba4",
+            "posterior_physical_b16:8": "f3a42c787b6d6f52e8bd9cf97dde46432cc63ec579da81c5aa5b37d72aaa4144"
+          },
+          "3": {
+            "posterior_only_b12:12": "68ed0d15765fa50c7a8f532993317169701fc46642fd44dea9dbb9671d561633",
+            "posterior_only_b12:16": "3d555ecc2ba630f55bfdb2a5ead7f8e7e5b5928606870b9cc03169ef20520175",
+            "posterior_only_b12:20": "a2e9dbd94187b71a4712fe5f64eded003db306593b547e1cd76d8162b674447c",
+            "posterior_only_b12:24": "7f0e1613a0e299da01e18ee4234a8ac1dfe7f24811542786b5ee8a9ea9365d5b",
+            "posterior_only_b12:4": "e902e65d6311d6fa7d6f7600b446c1a4517911844639238313f9ca7f39ccdbfc",
+            "posterior_only_b12:8": "c2a657fde3d189ffcfe290449c262e48b6fa4421a0862a2b0cb8c225f122a4da",
+            "posterior_physical_b12:12": "ade2f2a68806e9d7042df813c019a8121d28eaa5c6cacba993e3bfee79de1705",
+            "posterior_physical_b12:16": "665e48ae15de71a0f5a53abe3882d2bed4d11d543a1d3b1a42c96803f1b6d6ed",
+            "posterior_physical_b12:20": "a51a69c97480960f53d5b2ad7f4f51a109eb46f477bc1c11bd1fbe5b4901b09a",
+            "posterior_physical_b12:24": "42b2475b65f6da1fc9f58c2ad121d2798681d8e1d61faab99ea01bb4a8a80436",
+            "posterior_physical_b12:4": "c1fc1f4c7ea78d43b49664db952008a3cd434567f69b015c9a0559994b50fc56",
+            "posterior_physical_b12:8": "d71e2628b9848c2bd78a93b88ffc266adeb2562be2d1082ef59c66d57e382ab4",
+            "posterior_physical_b16:12": "ea24db0e966f81bf0a48f285aa782ec37767bea09ef68d92890d3e1664164f04",
+            "posterior_physical_b16:16": "4492232114ac460b2ef1f2a5dff6adff0216db19e0c3daa84562850be2e7333e",
+            "posterior_physical_b16:20": "8abfdcb57f15443c5c8904a5f3e0488bef5330c0d3db19bbb37b441159df63ef",
+            "posterior_physical_b16:24": "b11e621961aecc081c679a0e1e8118f4c45ff2bff75e0a6203b0a25a7762c843",
+            "posterior_physical_b16:4": "4fbe48ce2983866bbef74183eec9bf211d79c2f498d8c22e6aa4928f729e8c30",
+            "posterior_physical_b16:8": "f32afa90930ffd81f2b79e1c118cfc5296cc71ebd88a097b2bce5136b3dacd1a"
+          },
+          "4": {
+            "posterior_only_b12:12": "8b0fe781235e049006ae21ae73fd77962efc69a6b5a4d123940853e149e55c62",
+            "posterior_only_b12:16": "e1946a2c10cd176196d98ed3f84dfc24cb0749e172c08c8369b08c218246e3bb",
+            "posterior_only_b12:20": "f9517ca21cfa2407fe91b5037c6ac7302c98c401112b74f3dc42e1f62f1c67b6",
+            "posterior_only_b12:24": "50886203b51b4f32cfb6780340cd61f0688a560913a4a6ee769c5ac3c7779e28",
+            "posterior_only_b12:4": "a7bf8c7f6264e55c8c255cfe49943995cd54ebc9af6d1e7961536964cdb2e008",
+            "posterior_only_b12:8": "c01b13c267fe9ccd9af4f8cd1b1715f4da30271b12f0478aa6598b26aabe7456",
+            "posterior_physical_b12:12": "508ac8f66a52481b8f2b76c9067de7f0409517708bea2b6cb0a7c8c5be0e0bdf",
+            "posterior_physical_b12:16": "581a2d4f2a3c082c0e86b49a67ee1ac13a098f96935027ad3ede00daeebcde4a",
+            "posterior_physical_b12:20": "e7938fdfca791cfd105fbadde5ac9d8ff92db591a93dab52a85e4f60f4e6607e",
+            "posterior_physical_b12:24": "130db2d07bdce8cdb359689233af0c219aaf6a67ca66e90eac80d6ddd1e6423c",
+            "posterior_physical_b12:4": "300601fe9c02a76f250f3e5ec0597c25f365406892b2df72987c3c4863e5bb79",
+            "posterior_physical_b12:8": "ea3bc0bcc83f36a3c9076ca69f032fe578e9ae108bd71b65139a698b139b4a2c",
+            "posterior_physical_b16:12": "7aedee637f5cbded85b9648306621bd46b4c40695760dc9647e3da8394c3327f",
+            "posterior_physical_b16:16": "84d60b507ef4853598605249016399a53f5cac2d4706c8a3f822b5cbabbc29cb",
+            "posterior_physical_b16:20": "2a70224e92b2c8483e1519bd6efbede674b659f994dbefbb49b74bb2b08b56ac",
+            "posterior_physical_b16:24": "4b1a31b08238d5af1326660aa413af2ad7f2ccbc0fbd977d25928deb0b0398e2",
+            "posterior_physical_b16:4": "220ed52a5aca46881609b6bdc2ec42bb14a3b689ac45942a2325375015cca10a",
+            "posterior_physical_b16:8": "6d19219183e1c938746f150ceacadf7cfb7b5daad4211002565145a5c107546f"
+          }
+        }
+      },
+      "ridge": {
+        "candidate_count": 7,
+        "eligible": true,
+        "mean_complete_well_gain": 0.0,
+        "minimum_role_gain": 0.0,
+        "pooled_gain": 0.0,
+        "refit_weights": {
+          "protected_mode_bank": 0.0,
+          "protected_posterior_incremental": 0.0
+        },
+        "ridge": null,
+        "validation_gains": {
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        },
+        "validation_weights": {
+          "1": [
+            0.0,
+            0.0
+          ],
+          "2": [
+            0.0,
+            0.0
+          ],
+          "3": [
+            0.0,
+            0.0
+          ],
+          "4": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "D570_amplitude": {
+        "amplitude": 1.0,
+        "candidate_count": 7,
+        "eligible": true,
+        "fold_gain_vs_amplitude_one": {
+          "0": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        },
+        "fold_rmse": {
+          "0": 5.8448811483784056,
+          "2": 5.37079004333708,
+          "3": 6.17317898280366,
+          "4": 7.121013244002898
+        },
+        "mean_rank": 1.0,
+        "metric_ranks": {
+          "endpoint_rmse": 1.0,
+          "mean_well_rmse": 1.0,
+          "pooled_rmse": 1.0,
+          "toe_quartile_rmse": 1.0
+        },
+        "metrics": {
+          "endpoint_rmse": 10.508137168737317,
+          "mean_well_rmse": 4.480738688157796,
+          "pooled_rmse": 6.156557577433918,
+          "toe_quartile_rmse": 8.421051386606782
+        }
+      },
+      "local_lineage": {
+        "candidate_count": 75,
+        "selected_prediction_sha256": [
+          "7c49028fdec532972f32a05bf04da0b7547d4b494623353d7660b81109956b5a",
+          "f1dd92c2dd83aa0bf007f60fe889aed5f4b6d4a4eea5c37c60d2c1b28f866777"
+        ]
+      },
+      "local_residual": {
+        "blend_rmse": 6.156557577433918,
+        "endpoint_rmse": 10.508137702941895,
+        "mean_rank": 14.25,
+        "metric_ranks": {
+          "blend_rmse": 5.0,
+          "endpoint_rmse": 13.0,
+          "standalone_rmse": 33.0,
+          "toe_quartile_rmse": 6.0
+        },
+        "snapshot": 16,
+        "standalone_rmse": 6.468789247758259,
+        "temperature": 2.0,
+        "toe_quartile_rmse": 8.421051025390625,
+        "treatment": "equal_seed_bag",
+        "weight": 0.2
+      },
+      "mode_components": [
+        {
+          "metric": "diff_corr_s32_d8",
+          "selector_index": 49,
+          "training_gain": 0.0502172932733842,
+          "weight": 0.2
+        },
+        {
+          "metric": "diff_corr_s0_d32",
+          "selector_index": 14,
+          "training_gain": 0.030228947270442674,
+          "weight": 0.15
+        },
+        {
+          "metric": "mae_s64_d8",
+          "selector_index": 60,
+          "training_gain": 0.020158783415915593,
+          "weight": 0.1
+        }
+      ],
+      "outer_fold": 1,
+      "positive_inner_weight_roles": 0,
+      "posterior": {
+        "amplitude": 1.0,
+        "blend_rmse": 6.156557577433918,
+        "effective_scale": 0.0,
+        "eligible": true,
+        "endpoint_rmse": 10.508137168737317,
+        "mean_rank": 420.5,
+        "mean_well_rmse": 4.480738688157796,
+        "metric_ranks": {
+          "blend_rmse": 420.5,
+          "endpoint_rmse": 420.5,
+          "mean_well_rmse": 420.5,
+          "toe_quartile_rmse": 420.5
+        },
+        "selector_fold_non_regressive": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "share": 0.0,
+        "snapshot": 4,
+        "temperature": 0.75,
+        "toe_quartile_rmse": 8.421051386606782,
+        "treatment": "posterior_only_b12"
+      },
+      "posterior_lineage": {
+        "candidate_count": 7560,
+        "outer_prediction_sha256": {
+          "posterior_only_b12:12": "0681d743891710ea1ec099b65f3d55f8f23b8c01609616c0799bf0ffd161a289",
+          "posterior_only_b12:16": "78901749d1c40fc8c9e8fb03c983d4681cac8110d9df20dbf89272c92ce01e9c",
+          "posterior_only_b12:20": "c95e8c52025f6ecc7c31bcd3e1ea69772e88a26a85e8b337a71a301733d3ee7f",
+          "posterior_only_b12:24": "51acafca3cd0230e86f080803195c58ed582ae2c4d25c159e0189c73f16388e5",
+          "posterior_only_b12:4": "052319daf121c7c7bfb61c19dd22916030b1651b22cd6b1ec51cc38a1d413389",
+          "posterior_only_b12:8": "7f0697dc3c1639eb3f92da01af8fd22303a57f7d285a2c717d79a8a23a1f48ca",
+          "posterior_physical_b12:12": "fad785934e4ee176af8b07e976288d346511016357e3964cd339c46433a11b05",
+          "posterior_physical_b12:16": "11a3193a97fa9d1fafaacbcd6df5b58266cb1e3cec7337eeed7e8d88fb178be4",
+          "posterior_physical_b12:20": "a682b006b16e3be1d0c81daa174a8c8c28d3908ca93952c643dbc0bbfd366778",
+          "posterior_physical_b12:24": "d5abdda777ab7a4ca25de9ad20c1ddc654772f11c21139393b115cef06f0defb",
+          "posterior_physical_b12:4": "3d3ed932ad87908883909c850f4d0fd0fb2173e9b2070f17feb65f182aab8508",
+          "posterior_physical_b12:8": "bc1f65b05e43077d8ea359efb59b2691cfdef4de50d6f1579e3fb0ad9ed2fca3",
+          "posterior_physical_b16:12": "31526a9eeb58e3858ee329bdb3a586b5a7cf33e4fecb757704f4050f3de41b42",
+          "posterior_physical_b16:16": "901dbadeba905b08fdb2fc79c7e9fe2315f9728a474d604fe27565119fe46202",
+          "posterior_physical_b16:20": "442493afe5104ea3d831e0759bf3d32e612ec86284153c3e1661ddec972c87fa",
+          "posterior_physical_b16:24": "033847b09d6641a200ae7d804e2fd8a9b3c7774ac2fc33cea8daf802ba54c7dd",
+          "posterior_physical_b16:4": "3a4ca8f42d27c35551ab683cfd327f11065d9de3892ac0ef9cc3a879522e4f6d",
+          "posterior_physical_b16:8": "0adf18c564c2e11713d4f35568295a357616c6f50fd2ea1a4401ba9d84a7245a"
+        },
+        "pair_prediction_sha256": {
+          "0": {
+            "posterior_only_b12:12": "c3d523342de16ed2393f15753971eeac1d3aa4680c9d9bc9d499761a004aea48",
+            "posterior_only_b12:16": "f2047f3003f431d7849948e0f4f2c1a206e5c27f29624442c8cab02a8a1ed196",
+            "posterior_only_b12:20": "1c144ca163041ca9f0b52108bcd89a1b188ef58ea5d38a6bfea0808d4a4fffd6",
+            "posterior_only_b12:24": "8ba29bd4be4bddfb785d917af0829427ded168788f131208ae0c2c87a84c7259",
+            "posterior_only_b12:4": "da156626537d5680f3f4481df913e89424e86e08f1629236f84f0f07fd13441a",
+            "posterior_only_b12:8": "abff53d4813c4325edfb3e5a9302e69b09b37d7e2b28ed70d48c580b87482606",
+            "posterior_physical_b12:12": "bacb4211bcbd5bfdbc39907466eb1d187547030423274edd0fca6de9e71718fd",
+            "posterior_physical_b12:16": "0f7c88040555c02c57611df3d1b6e179bed0815a25aedd1861f9b913675c9e2d",
+            "posterior_physical_b12:20": "c80bf87e9455f59547439133b7a6216d21c7d90f00ee0ac088001b93184ea60b",
+            "posterior_physical_b12:24": "650db66f5f1f979860c6cfc68ba29ced34eb0545388ecefbb96454566db6954e",
+            "posterior_physical_b12:4": "7bae2b09cbb79d0ad22849dbdbd5d2a6f6a8793f9111887f7a0c70773957a442",
+            "posterior_physical_b12:8": "19e3b013d2ffc5acc050e7c8b40a3669dd2c78d7fa5578677302f2b2b6de7f06",
+            "posterior_physical_b16:12": "244e338b33b911621c77fa8a420531c77fefe885224e9d6af470a7e201a52f6a",
+            "posterior_physical_b16:16": "8ff21ef05f6e88d57a329300610b30a596efa3918cfdbd0ac5113d5b7d4e3e11",
+            "posterior_physical_b16:20": "e6355899ad70cca17b7794ddca673480f60a01f9fdd1b2a678f4c37e659181a8",
+            "posterior_physical_b16:24": "b8ca2ad117489c3f5fdb6832cbac1c9e92e1f5673bf60e9955a31939a9259e06",
+            "posterior_physical_b16:4": "fa7be3e7d9c0dc463e00c9aac4c70be00e6397138adeb4eb28af3968f2fc53a1",
+            "posterior_physical_b16:8": "206db2da6eb3ad5eefff54201187cd743c99f5d7dd8443e91473f3fc266b370e"
+          },
+          "2": {
+            "posterior_only_b12:12": "4fd6dd03fa23aff08a8fd5be9b9dfb70b0fda0e11372d951b93b3b2d3a46381d",
+            "posterior_only_b12:16": "45ff18d5c8e4052cc7f069bf0b0a814d06142c5a991d83d3e0b9221b9c1c7a65",
+            "posterior_only_b12:20": "d663c414097171fdffc86f8f82c7bb8968684a7c4008c19d7dd369261d828fca",
+            "posterior_only_b12:24": "4b87c17bb546306017f2b10d81d4e11c4df4d191498d0a3adc505400963cf364",
+            "posterior_only_b12:4": "dc3de365b1c0e3acbc8d26ab931819ed2a4478e0d85277d83a94d14d68dca99b",
+            "posterior_only_b12:8": "7a8954ed95c814e4b93f1014e9df2dfd6a2898b9c55047b3b2b9f1a419644639",
+            "posterior_physical_b12:12": "76ef80cc877aa41fde74b2cac42b1db456acc4c4a3635b057e97f3c8f9d15925",
+            "posterior_physical_b12:16": "b3fe93a0ca3562a53633df06909a444b5fae10cbafe6cf624166700dfbe29e16",
+            "posterior_physical_b12:20": "e41154c444a5acdcadf0b3c350e49d167379edbf4f84fdaa55771e572863ed49",
+            "posterior_physical_b12:24": "1d2e016312d3e168c1504fe1e94f1fb2c21fb0d19b7515ccdaa916aecf030774",
+            "posterior_physical_b12:4": "ce20f7643a3f8fdaad4dff18fce81f32e517f551dbcd6172ef96c1dea3d87c8f",
+            "posterior_physical_b12:8": "2f9de9250e9f7dceb205f56bbb7bb4fcde5e8d0bca9d3bf4df72767537531675",
+            "posterior_physical_b16:12": "99b7d93169c49c0efa06dd3252068736f9fdb950f8674343c308aaa902ca5983",
+            "posterior_physical_b16:16": "d6c8e948aeac41939c2aa4ce79efe18594cd2c2fd8378ab9e4ec3c8a9b61e171",
+            "posterior_physical_b16:20": "b1b2085bf223ac7929065bb6a0016e6d7200203feabdee083f2b1e69f559a4ac",
+            "posterior_physical_b16:24": "7dca4dc381f7b5a1a7d364e2b9bcd56d30ff25fe419177d3699c1c413e1e36d1",
+            "posterior_physical_b16:4": "8b8fe1ddc7698e72ab3c60f3d09d68f109d6ce797716a21bdaf88968b8aa7ebb",
+            "posterior_physical_b16:8": "7d7c8a46900cd368e342ec916375e7390c51c9e039145f54e99ed40f8b1dee8f"
+          },
+          "3": {
+            "posterior_only_b12:12": "41d5ff4458c8abd11476c6898badc1794704baf830e4699d78259848bade1524",
+            "posterior_only_b12:16": "86bab137d2143d6a18f2a93fd2a49c1c5a987d83c6941e939cf192eed2d53f84",
+            "posterior_only_b12:20": "917c29e84d0d7bff2efa491b80d7cb202de86292eff7656f0669c0d4dabf153b",
+            "posterior_only_b12:24": "c283263e99bdbf918851a4613348b34b46c4e4ec4b86e054264dbf2d3b8bb4a6",
+            "posterior_only_b12:4": "7dc12429510b97e7ae2f83b198224fc6ce1ee05c97486bb6025cf432403ba5a4",
+            "posterior_only_b12:8": "6836cb4bb7000f9d780ef284f058a689a0ec1f7bef96e7d1e7492ce2979a2986",
+            "posterior_physical_b12:12": "5d4b882b1066c50ca70dda7d91e5566e34697e1209ded6d19493c2a53cfbb636",
+            "posterior_physical_b12:16": "1cf758c82a5da39295f0c0212c28802ebb6d5705888723806fb1bc6e0e133619",
+            "posterior_physical_b12:20": "b4685acb44003b1af281c3d32c29c8da3248ad89c1b4c3b7eb07a08c633aed9b",
+            "posterior_physical_b12:24": "34a6689609a9dc9065eef22b9547df8f6b8496cd51a950df2f26f95bdefaad74",
+            "posterior_physical_b12:4": "8b7072f3a7511a1e6a06776839d9ce55740538e97d1aed0b637f8f034d4a1ad7",
+            "posterior_physical_b12:8": "01cf5715e7db848e9e43bda86e5ad1a9d3bb64fb6794040843cc2430f5b2d251",
+            "posterior_physical_b16:12": "2e61fca42429c5e9c4b8b41cfb28f821557a38db12647ac3ca0858e88b6bacea",
+            "posterior_physical_b16:16": "b6b99184178a35052764922ed47422161b737433b4d348b1cc8f5b42a1859931",
+            "posterior_physical_b16:20": "e253ae7732170689b76c11402eeffbea4900047703873018b63a531c2e62dedb",
+            "posterior_physical_b16:24": "b322daf17badc209206340eadc65f2406e1579fb5c404a92cfaa2df5febcc5c4",
+            "posterior_physical_b16:4": "4cf48a9a82912208454eda0d37d75ac42994ce73b3563329e7909b1a56de7ec1",
+            "posterior_physical_b16:8": "0aa74c699aebf1b7e4c60b8ec57d017518aaca5da5ed1db97edc80d3eb40e6c8"
+          },
+          "4": {
+            "posterior_only_b12:12": "6452c71f128b9709559054345da5134be3eb76dba0de8433c4a37fce82d5bbb4",
+            "posterior_only_b12:16": "186ff87acec59b6c2ae9301586773741097ae482e3bb7800ec9d81297a672ec4",
+            "posterior_only_b12:20": "9dd72dcd3b8f0373b0cbb2b1abe7456013c9c2a7041c83bc645db32d6a98bd52",
+            "posterior_only_b12:24": "65c0d3ea4c140e32ea8a36b19a937e8876f8689be2b0b4c4fd17236e6798b28b",
+            "posterior_only_b12:4": "c9948f2fc1349442d00e5d70ff04985a0d5e5eda49e52dabff10c8d2632f8d56",
+            "posterior_only_b12:8": "361cf3a0c41fbfdc79e87f02f2bb6dad30f78907ccccd35053e62b1489c8e4fa",
+            "posterior_physical_b12:12": "95ae0f840435247fb60f00ce9e171b6ca98f8c0efbc270d42a125770e0c99cc3",
+            "posterior_physical_b12:16": "df17c5ae9d1e91d45d50cb387d1b3a162a0e4ce6c6a2152c2f3d730c001a5f28",
+            "posterior_physical_b12:20": "3a74002fa6b19e734786038f8b36a9cb772ccd060844ed0192f9751fa2bbc402",
+            "posterior_physical_b12:24": "2d8de4785ebb4363d94ce71f21cb6743a5b8734264bbb4b038e007770c0031ee",
+            "posterior_physical_b12:4": "30e102fba53d9a68d0084ead820bc836b85884805c64483e99805c34a1747ed5",
+            "posterior_physical_b12:8": "3ebe3f4dd3f28f72e1f5e27bf82ee2ca8b99ce3ae9bdc460fb860f060a5f45d4",
+            "posterior_physical_b16:12": "145436524d69dd36b07906b1efd2542e2f35d45744503ff917ef1f09261b23e2",
+            "posterior_physical_b16:16": "7700b73d4a98ab5c1c35c48b594a6104ad29171741294e68f6787181a63394ad",
+            "posterior_physical_b16:20": "35214052d08b62fae98f58339467dee1639ebac63ff3373f94ebebed910c95b0",
+            "posterior_physical_b16:24": "1998314d3e2d53f0d61dfd694cc7cbdc2495100d4d142441daf4267ea63ce9f9",
+            "posterior_physical_b16:4": "8c03ad6706230d1a0f684462e99d292a8ead800a9ce2abc12f67fa6d4c95b9e2",
+            "posterior_physical_b16:8": "62be0db531fb1707e987de193fec7aaaf9a069f91e5e9559e13c346922809299"
+          }
+        }
+      },
+      "ridge": {
+        "candidate_count": 7,
+        "eligible": true,
+        "mean_complete_well_gain": 0.0,
+        "minimum_role_gain": 0.0,
+        "pooled_gain": 0.0,
+        "refit_weights": {
+          "protected_mode_bank": 0.0,
+          "protected_posterior_incremental": 0.0
+        },
+        "ridge": null,
+        "validation_gains": {
+          "0": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        },
+        "validation_weights": {
+          "0": [
+            0.0,
+            0.0
+          ],
+          "2": [
+            0.0,
+            0.0
+          ],
+          "3": [
+            0.0,
+            0.0
+          ],
+          "4": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "D570_amplitude": {
+        "amplitude": 1.0,
+        "candidate_count": 7,
+        "eligible": true,
+        "fold_gain_vs_amplitude_one": {
+          "0": 0.0,
+          "1": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        },
+        "fold_rmse": {
+          "0": 5.841502430805988,
+          "1": 6.105824447048394,
+          "3": 6.1663401576363475,
+          "4": 7.096698657672265
+        },
+        "mean_rank": 1.0,
+        "metric_ranks": {
+          "endpoint_rmse": 1.0,
+          "mean_well_rmse": 1.0,
+          "pooled_rmse": 1.0,
+          "toe_quartile_rmse": 1.0
+        },
+        "metrics": {
+          "endpoint_rmse": 10.690298708445294,
+          "mean_well_rmse": 4.5479512714430115,
+          "pooled_rmse": 6.3165228395304425,
+          "toe_quartile_rmse": 8.653985977050946
+        }
+      },
+      "local_lineage": {
+        "candidate_count": 75,
+        "selected_prediction_sha256": [
+          "ac7932a415b3691a64a7477c8da1941770d49dac3dcdd708f1b884f3a48aaf4b",
+          "ba617ab39c11b9a2e14f1b267fbb56e41bafd08e32d15198833685cee68c5228"
+        ]
+      },
+      "local_residual": {
+        "blend_rmse": 6.3165228395304425,
+        "endpoint_rmse": 10.690299034118652,
+        "mean_rank": 16.5,
+        "metric_ranks": {
+          "blend_rmse": 17.0,
+          "endpoint_rmse": 7.0,
+          "standalone_rmse": 28.0,
+          "toe_quartile_rmse": 14.0
+        },
+        "snapshot": 16,
+        "standalone_rmse": 6.5487984886117285,
+        "temperature": 1.5,
+        "toe_quartile_rmse": 8.653985977172852,
+        "treatment": "equal_seed_bag",
+        "weight": 0.2
+      },
+      "mode_components": [
+        {
+          "metric": "diff_corr_s0_d32",
+          "selector_index": 14,
+          "training_gain": 0.038375543685719826,
+          "weight": 0.2
+        },
+        {
+          "metric": "corr_s0_d8",
+          "selector_index": 2,
+          "training_gain": 0.030713355625853644,
+          "weight": 0.15
+        },
+        {
+          "metric": "diff_corr_s32_d8",
+          "selector_index": 49,
+          "training_gain": 0.0054609385975687985,
+          "weight": 0.075
+        }
+      ],
+      "outer_fold": 2,
+      "positive_inner_weight_roles": 0,
+      "posterior": {
+        "amplitude": 1.0,
+        "blend_rmse": 6.3165228395304425,
+        "effective_scale": 0.0,
+        "eligible": true,
+        "endpoint_rmse": 10.690298708445294,
+        "mean_rank": 420.5,
+        "mean_well_rmse": 4.5479512714430115,
+        "metric_ranks": {
+          "blend_rmse": 420.5,
+          "endpoint_rmse": 420.5,
+          "mean_well_rmse": 420.5,
+          "toe_quartile_rmse": 420.5
+        },
+        "selector_fold_non_regressive": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "share": 0.0,
+        "snapshot": 4,
+        "temperature": 0.75,
+        "toe_quartile_rmse": 8.653985977050946,
+        "treatment": "posterior_only_b12"
+      },
+      "posterior_lineage": {
+        "candidate_count": 7560,
+        "outer_prediction_sha256": {
+          "posterior_only_b12:12": "fb7ad2b8bfd09fbae62ddab9430d0130e266abc2e7d68f0c58b91a462ab02ccd",
+          "posterior_only_b12:16": "5fdffa1c45d3677b2d46d51faf4e426f7bba420c6f1d92e9717cfaf031c0182f",
+          "posterior_only_b12:20": "845408625a92e53f3a5beb3d9ed79259df691e3b7d196c7f6d1213a78d8c8b66",
+          "posterior_only_b12:24": "a2951bcec976e804c56dcc78c020f74bb24ee62520382957ff48b1acc47b7f28",
+          "posterior_only_b12:4": "1bff13cef073acec0ec67275ce3f47ae8afec82af0451119c9fced1998338637",
+          "posterior_only_b12:8": "e230fe8e54a3c6238d97a89b0a38109ef787dd3efc5ad3b75eda00b369d593c1",
+          "posterior_physical_b12:12": "c49eef14f4220142d798c67b6cf77343acbbf6f2cf23b02df9d8d551914ef7bd",
+          "posterior_physical_b12:16": "5c6d4ebe02aff6965e220d5c04fa8ab7362d7a48408b957259fd1fd6b506e5f4",
+          "posterior_physical_b12:20": "302e4e81bb37dcdc6a848dba705e994599e97f137e36330651708fcbba1d11fc",
+          "posterior_physical_b12:24": "da5fd208646797240f3ba2d05e64ee6b0b981811d797f5a4cfaa3c5ac1890384",
+          "posterior_physical_b12:4": "683a15c0412612c9ba2227f96d99c1d22f5c12a9505e17dcefef025476143177",
+          "posterior_physical_b12:8": "183041c45f8d96b375a80a5183a2c67d0da3e8a229ffaf11612e982a6a3678b2",
+          "posterior_physical_b16:12": "a32016f993e93f29eebdcc81f7a0e25b3bd68fe95864dabea045ce814ce04c9b",
+          "posterior_physical_b16:16": "5e3660e39fb29755117d9be866b5467480ef211cc914abd5062a510466d30b9b",
+          "posterior_physical_b16:20": "6fcd0113decb88ed82e59f2611dba361aa649e8ddea33dadb0d720657333017b",
+          "posterior_physical_b16:24": "9dafc5f7fb55bdc08b96fc5da29d64fb2a9ddf481b5d500cd539f17bdcf20ec7",
+          "posterior_physical_b16:4": "cac543d542f667ad6ca455d37661e9ebc15f262a30cafd64720d32d945325109",
+          "posterior_physical_b16:8": "f82888c0b9576be25a10a8aa099f0331bcb7c2ad8f79cccb239b0c81e2454ec4"
+        },
+        "pair_prediction_sha256": {
+          "0": {
+            "posterior_only_b12:12": "f95f4d7ff42f3dfbaa64d173ce1cd1c56ba8e6f04ad223d0f5913a61adede494",
+            "posterior_only_b12:16": "455d3264eea0f9ae1fd49a501952e7082fb6184c0611b8b52927e03aa2669468",
+            "posterior_only_b12:20": "5ae63b4993193af1c12ff77e2693f567b05411c565fff4be6fc9dc75a7011c77",
+            "posterior_only_b12:24": "4eb83d1ee05ea952656571b6e37f3af12fa6e6390bfa6d2b3f86cbe751913a5e",
+            "posterior_only_b12:4": "51f0f72f853fe966677e8b537c942307105720c65cd75171f058d8cbfa2050b3",
+            "posterior_only_b12:8": "79a9a12eb95d918b90177addb51edc00171d900758d4fb8064a263224cbf5364",
+            "posterior_physical_b12:12": "ec84681f1b28935b7bace5e3e0289da9d3bb38686f2a4a2548137caae6770e61",
+            "posterior_physical_b12:16": "f41c3f2619fa0cf3671999d8f37ddd7aa4796a8b81b5e24d819901b34b963ce4",
+            "posterior_physical_b12:20": "8fa0994d61dfeba1214e7ef2c69e345706ad27042c5693e833af3f0f2f246534",
+            "posterior_physical_b12:24": "b9465880383ab79442358914793e4b0c0e8ed78f63b054afd72329791c1d73a7",
+            "posterior_physical_b12:4": "1c68d376ae327a37d740035e5bb0d58c9c58e8dfb49669f0a482b3dcb60739c4",
+            "posterior_physical_b12:8": "7a9220c65e9d0052da978872013f0f7d80a36168d3b7e537a2a5a426ae6c2263",
+            "posterior_physical_b16:12": "4cf86b812eb56b664a077f3b54ba950599a4f3c9b1a53e15e1b8dc5f1ff374bc",
+            "posterior_physical_b16:16": "de82937372177e179d3fc5c41780612d5102dc501f2334ddb630d00c7b9cafe2",
+            "posterior_physical_b16:20": "d2b0f81a6a0ecc42b2821275822c9dcc649b6fcb5336c4cf874bc328717bed83",
+            "posterior_physical_b16:24": "44440024cff65bd82afe053381d8e12160358c6513996c6cf4c93cddb55dcbca",
+            "posterior_physical_b16:4": "cf24fa25e09aeb6943ce0a6d7f08580c0b32cd3452b17a39601f918d25d8dba4",
+            "posterior_physical_b16:8": "f3a42c787b6d6f52e8bd9cf97dde46432cc63ec579da81c5aa5b37d72aaa4144"
+          },
+          "1": {
+            "posterior_only_b12:12": "4fd6dd03fa23aff08a8fd5be9b9dfb70b0fda0e11372d951b93b3b2d3a46381d",
+            "posterior_only_b12:16": "45ff18d5c8e4052cc7f069bf0b0a814d06142c5a991d83d3e0b9221b9c1c7a65",
+            "posterior_only_b12:20": "d663c414097171fdffc86f8f82c7bb8968684a7c4008c19d7dd369261d828fca",
+            "posterior_only_b12:24": "4b87c17bb546306017f2b10d81d4e11c4df4d191498d0a3adc505400963cf364",
+            "posterior_only_b12:4": "dc3de365b1c0e3acbc8d26ab931819ed2a4478e0d85277d83a94d14d68dca99b",
+            "posterior_only_b12:8": "7a8954ed95c814e4b93f1014e9df2dfd6a2898b9c55047b3b2b9f1a419644639",
+            "posterior_physical_b12:12": "76ef80cc877aa41fde74b2cac42b1db456acc4c4a3635b057e97f3c8f9d15925",
+            "posterior_physical_b12:16": "b3fe93a0ca3562a53633df06909a444b5fae10cbafe6cf624166700dfbe29e16",
+            "posterior_physical_b12:20": "e41154c444a5acdcadf0b3c350e49d167379edbf4f84fdaa55771e572863ed49",
+            "posterior_physical_b12:24": "1d2e016312d3e168c1504fe1e94f1fb2c21fb0d19b7515ccdaa916aecf030774",
+            "posterior_physical_b12:4": "ce20f7643a3f8fdaad4dff18fce81f32e517f551dbcd6172ef96c1dea3d87c8f",
+            "posterior_physical_b12:8": "2f9de9250e9f7dceb205f56bbb7bb4fcde5e8d0bca9d3bf4df72767537531675",
+            "posterior_physical_b16:12": "99b7d93169c49c0efa06dd3252068736f9fdb950f8674343c308aaa902ca5983",
+            "posterior_physical_b16:16": "d6c8e948aeac41939c2aa4ce79efe18594cd2c2fd8378ab9e4ec3c8a9b61e171",
+            "posterior_physical_b16:20": "b1b2085bf223ac7929065bb6a0016e6d7200203feabdee083f2b1e69f559a4ac",
+            "posterior_physical_b16:24": "7dca4dc381f7b5a1a7d364e2b9bcd56d30ff25fe419177d3699c1c413e1e36d1",
+            "posterior_physical_b16:4": "8b8fe1ddc7698e72ab3c60f3d09d68f109d6ce797716a21bdaf88968b8aa7ebb",
+            "posterior_physical_b16:8": "7d7c8a46900cd368e342ec916375e7390c51c9e039145f54e99ed40f8b1dee8f"
+          },
+          "3": {
+            "posterior_only_b12:12": "411d85a93b773a1f219f8705963690d478f103863095f510606a1b9bb91e7705",
+            "posterior_only_b12:16": "51057cb5c5a19c3b41b8af8fa21964270f5ddc58698777260df2466512d5265b",
+            "posterior_only_b12:20": "455195b4930c1611133f1b70bf4dcb8615aef53dd3e3b0b39e34a0e48d35ffe8",
+            "posterior_only_b12:24": "127e472507277149264d8940b1e6976f679b4e742f818fae62701fc82c20b964",
+            "posterior_only_b12:4": "5018d5aea2c1e0e58f312350db92e1f8098f839dc45838a0ef4b414f1b962110",
+            "posterior_only_b12:8": "609ee81c556216ad21e49957689e8ccdccadf8fd345464433b43d9129e8bcfc6",
+            "posterior_physical_b12:12": "ac2a5aef411890e22029fbdd872dcbbdc5e698d8609dcf695863b736cbd38a18",
+            "posterior_physical_b12:16": "e5c3fd508c61d13c7415be2d8dbba2c4573bea27f713a7a5d12ec304bf68762d",
+            "posterior_physical_b12:20": "c111e6b0c8d7cf96b5a465f3f8da71960cf83b299b8dd4cd7ffcaa1794d6c80c",
+            "posterior_physical_b12:24": "7adcc12839ba271fae855b89e6c65f183862e2be99f186baf1d5dbde538894fe",
+            "posterior_physical_b12:4": "f9e63cc1a506ab7379480bf765b7b158e69919d5f85efeedd9058713e915768a",
+            "posterior_physical_b12:8": "177cfecb597f5e4923d620d78068eae5da900340264549b203f14b0c3d8abfa4",
+            "posterior_physical_b16:12": "772637ddaa2edfd3c9af9344913f8bb503a84f49fc95f7271cb485e93a8b81c2",
+            "posterior_physical_b16:16": "35c7162ccebff8268e8886c5088bc91ef43cbe50fc5693eb47eb7c8a37d3f911",
+            "posterior_physical_b16:20": "32213af2aa15951a9186707ad072abcddd78a52b934fbace49d1a7f2c91c37ce",
+            "posterior_physical_b16:24": "e673c23deb812cf3efa5cf05464e4b3758571d3f0417c2a7622ceae0325ef516",
+            "posterior_physical_b16:4": "1c2ec235ddb43f70f0203653210ddd57639aa5b922f955d18a9f6b51f71facaa",
+            "posterior_physical_b16:8": "dce0bc226f5ff06331c5f20acc5fa7a61169ac5c022e0eadc6039e1b04907ff7"
+          },
+          "4": {
+            "posterior_only_b12:12": "fa7b230d5468e6205c56424ec41b6496d84247bfdf6fa584bddaf0a38c931890",
+            "posterior_only_b12:16": "f4dd47c091788c1170d760483ce0608aa16f1391f3e0859cd950ad97346d48d2",
+            "posterior_only_b12:20": "98e3b766bf595295ae7cf7fae9b1bd2da436d4badc5b45c043b9e085698f663c",
+            "posterior_only_b12:24": "01b6bb836c69a222024aca9f32c8c3a99c5b51dfb822e8b83099637c3bdbfce9",
+            "posterior_only_b12:4": "d04ab89c63e0d53d04a13ee2ea2391e76f16ef881994440071e28ed30e4c2729",
+            "posterior_only_b12:8": "5c20b46a2b6935908de5c606c0b9baefb0eefefc83b5529bbe53f6da80c24407",
+            "posterior_physical_b12:12": "75f3b6bb6ed99946913be32da9f1027bbd02a666c863d275d64d847a0d8654b7",
+            "posterior_physical_b12:16": "c997c106464655cb8f974235f6c8c28663be874c5031617f0d63a59cad767b18",
+            "posterior_physical_b12:20": "c7450c7ccc36a8619bf94bf7d09ad3e881b38b9eb766ba4c729dba7fece8bc8e",
+            "posterior_physical_b12:24": "5d58289af552ca853c6be5582e7de3c740a64e34e2f31f3568774019eae093ea",
+            "posterior_physical_b12:4": "a9b40921ad3b242a15131d0f80ce47cc6ed4589166e0a623729dd5edc1d58877",
+            "posterior_physical_b12:8": "5346dcb1f18105c118c8dce1075babc512bf827ea112d9d06d9171a88508f381",
+            "posterior_physical_b16:12": "a165937a64da0f48edebf6d3dd0d795be1f8ee9909cbd44932d8dd2abe4642c8",
+            "posterior_physical_b16:16": "b3fbfffa5a93325dc9b6f31df1a9a6082a6e9f82c8f7d7170774ed78d3042bd8",
+            "posterior_physical_b16:20": "ecf25660e426473ba8ec7a8178637bc2bb706c12502626ddd74fdfc25672450e",
+            "posterior_physical_b16:24": "ae2bba0022fa77ff68e372cc618ed49e35a7ec3c4567b2c8baaa149f76f84f7f",
+            "posterior_physical_b16:4": "7faf7b6596ccb513cc31fbd6606dfdd2ef8613d703a3fc65e19c43e96f34af49",
+            "posterior_physical_b16:8": "f8e2d2ff830c643a32dee452875ca30f3f4163f57945a4c0445f032354007d35"
+          }
+        }
+      },
+      "ridge": {
+        "candidate_count": 7,
+        "eligible": true,
+        "mean_complete_well_gain": 0.0,
+        "minimum_role_gain": 0.0,
+        "pooled_gain": 0.0,
+        "refit_weights": {
+          "protected_mode_bank": 0.0,
+          "protected_posterior_incremental": 0.0
+        },
+        "ridge": 1.0,
+        "validation_gains": {
+          "0": 0.0,
+          "1": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        },
+        "validation_weights": {
+          "0": [
+            0.0,
+            0.0
+          ],
+          "1": [
+            0.0,
+            0.0
+          ],
+          "3": [
+            0.0,
+            0.0
+          ],
+          "4": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "D570_amplitude": {
+        "amplitude": 1.0,
+        "candidate_count": 7,
+        "eligible": true,
+        "fold_gain_vs_amplitude_one": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.0,
+          "4": 0.0
+        },
+        "fold_rmse": {
+          "0": 5.850615026196698,
+          "1": 6.119425442943473,
+          "2": 5.3636196320373,
+          "4": 7.113067496084188
+        },
+        "mean_rank": 1.0,
+        "metric_ranks": {
+          "endpoint_rmse": 1.0,
+          "mean_well_rmse": 1.0,
+          "pooled_rmse": 1.0,
+          "toe_quartile_rmse": 1.0
+        },
+        "metrics": {
+          "endpoint_rmse": 10.623868687907368,
+          "mean_well_rmse": 4.458525707090344,
+          "pooled_rmse": 6.1405080286255265,
+          "toe_quartile_rmse": 8.454036179580925
+        }
+      },
+      "local_lineage": {
+        "candidate_count": 75,
+        "selected_prediction_sha256": [
+          "7a4e39b2134624104be2a97520bb73dfa2798a2ded38f217ca132d3db32f22de",
+          "53a6b77aa31e8817064dbcc255262497c5f8b2f944536e57acf970423a580124"
+        ]
+      },
+      "local_residual": {
+        "blend_rmse": 6.1405080286255265,
+        "endpoint_rmse": 10.623868942260742,
+        "mean_rank": 13.25,
+        "metric_ranks": {
+          "blend_rmse": 1.0,
+          "endpoint_rmse": 3.0,
+          "standalone_rmse": 43.0,
+          "toe_quartile_rmse": 6.0
+        },
+        "snapshot": 16,
+        "standalone_rmse": 6.419036776538661,
+        "temperature": 1.5,
+        "toe_quartile_rmse": 8.454035758972168,
+        "treatment": "equal_seed_bag",
+        "weight": 0.2
+      },
+      "mode_components": [
+        {
+          "metric": "diff_corr_s32_d8",
+          "selector_index": 49,
+          "training_gain": 0.03624625971365081,
+          "weight": 0.2
+        },
+        {
+          "metric": "diff_corr_s0_d32",
+          "selector_index": 14,
+          "training_gain": 0.01780373931722501,
+          "weight": 0.15
+        },
+        {
+          "metric": "diff_mae_s0_d16",
+          "selector_index": 8,
+          "training_gain": 0.00666667895557449,
+          "weight": 0.075
+        }
+      ],
+      "outer_fold": 3,
+      "positive_inner_weight_roles": 4,
+      "posterior": {
+        "amplitude": 4.0,
+        "blend_rmse": 6.0930272784249,
+        "effective_scale": 0.2,
+        "eligible": true,
+        "endpoint_rmse": 10.502081767498566,
+        "mean_rank": 22.0,
+        "mean_well_rmse": 4.426476473691425,
+        "metric_ranks": {
+          "blend_rmse": 16.0,
+          "endpoint_rmse": 27.0,
+          "mean_well_rmse": 29.0,
+          "toe_quartile_rmse": 16.0
+        },
+        "selector_fold_non_regressive": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "share": 0.05,
+        "snapshot": 20,
+        "temperature": 1.0,
+        "toe_quartile_rmse": 8.395371074190619,
+        "treatment": "posterior_physical_b16"
+      },
+      "posterior_lineage": {
+        "candidate_count": 7560,
+        "outer_prediction_sha256": {
+          "posterior_only_b12:12": "0c47166609d8ee9dd4232d52ac6baa97b00bf0e390d39072c179687b09e3e667",
+          "posterior_only_b12:16": "44ccdde99350103c1b077fb4d5bbe858662c1c30a3ab5894321488a4a2229d57",
+          "posterior_only_b12:20": "c7441e8c71924ff3d72b4e2a794bb2f0b13e75703821ff89ef27c0c44985a74b",
+          "posterior_only_b12:24": "2dfedfa7cfe63c02e2bfe3eeec2bbc5167bcc964c2ce5d6b2fbefe881ef5f4c9",
+          "posterior_only_b12:4": "a2ad73d3b9d1799417297737fbd7822115d79869b40de0558b9acc948c041b57",
+          "posterior_only_b12:8": "d4c3204ff481b1d6734c3c7fc82b58f14c004cdd5608dd504fc24053f8a448d6",
+          "posterior_physical_b12:12": "15fe6614eabb8da83fd66adea2ed45f42c27bd717f4d42891819499c64659e31",
+          "posterior_physical_b12:16": "3d4e98f25467c1c27bf2f3f2f01326088122a8e360725cc7974bff04f0e4dab2",
+          "posterior_physical_b12:20": "0b3933c434686016695107914304ddff53e4923965b20341148d61d2263da3e2",
+          "posterior_physical_b12:24": "bf9087c20fe5f00e6dc389d7f6720f4401c543fb89de12ce4b9459ad0d290db1",
+          "posterior_physical_b12:4": "69035d7952c98c9875cf6058cb3483cfe620a4c889ec6a7610face9b942f1ab2",
+          "posterior_physical_b12:8": "760100e3d5189a1dc8fac79e6a91c83971103a0ba672f94f6d86afd59f69af92",
+          "posterior_physical_b16:12": "ca5521bed8455d25f56cad08d36011052d5ae4e18e2b70c9dd346458b2fc8414",
+          "posterior_physical_b16:16": "2baf9240d8f7cf17cf6d20c9152a1fa823180e6e2d22e202e8b2fe0168371295",
+          "posterior_physical_b16:20": "92803bf0ec0118b0ca1213c4f7c9c0ce2a6f07e16526b2adbe7b593d182e6b3f",
+          "posterior_physical_b16:24": "00de0ec059543fbdeb47cbf5e3531f9d1c95929cbc24db61095a6bf6b0299e31",
+          "posterior_physical_b16:4": "e05859999e5c2f3cd5fee27c29d75298e9a6edccfba60f6cdd67f884911d959e",
+          "posterior_physical_b16:8": "88de695c98c70417fd8ea5dba6175a9811dde6084ae45ff72cd90cba801640a8"
+        },
+        "pair_prediction_sha256": {
+          "0": {
+            "posterior_only_b12:12": "68ed0d15765fa50c7a8f532993317169701fc46642fd44dea9dbb9671d561633",
+            "posterior_only_b12:16": "3d555ecc2ba630f55bfdb2a5ead7f8e7e5b5928606870b9cc03169ef20520175",
+            "posterior_only_b12:20": "a2e9dbd94187b71a4712fe5f64eded003db306593b547e1cd76d8162b674447c",
+            "posterior_only_b12:24": "7f0e1613a0e299da01e18ee4234a8ac1dfe7f24811542786b5ee8a9ea9365d5b",
+            "posterior_only_b12:4": "e902e65d6311d6fa7d6f7600b446c1a4517911844639238313f9ca7f39ccdbfc",
+            "posterior_only_b12:8": "c2a657fde3d189ffcfe290449c262e48b6fa4421a0862a2b0cb8c225f122a4da",
+            "posterior_physical_b12:12": "ade2f2a68806e9d7042df813c019a8121d28eaa5c6cacba993e3bfee79de1705",
+            "posterior_physical_b12:16": "665e48ae15de71a0f5a53abe3882d2bed4d11d543a1d3b1a42c96803f1b6d6ed",
+            "posterior_physical_b12:20": "a51a69c97480960f53d5b2ad7f4f51a109eb46f477bc1c11bd1fbe5b4901b09a",
+            "posterior_physical_b12:24": "42b2475b65f6da1fc9f58c2ad121d2798681d8e1d61faab99ea01bb4a8a80436",
+            "posterior_physical_b12:4": "c1fc1f4c7ea78d43b49664db952008a3cd434567f69b015c9a0559994b50fc56",
+            "posterior_physical_b12:8": "d71e2628b9848c2bd78a93b88ffc266adeb2562be2d1082ef59c66d57e382ab4",
+            "posterior_physical_b16:12": "ea24db0e966f81bf0a48f285aa782ec37767bea09ef68d92890d3e1664164f04",
+            "posterior_physical_b16:16": "4492232114ac460b2ef1f2a5dff6adff0216db19e0c3daa84562850be2e7333e",
+            "posterior_physical_b16:20": "8abfdcb57f15443c5c8904a5f3e0488bef5330c0d3db19bbb37b441159df63ef",
+            "posterior_physical_b16:24": "b11e621961aecc081c679a0e1e8118f4c45ff2bff75e0a6203b0a25a7762c843",
+            "posterior_physical_b16:4": "4fbe48ce2983866bbef74183eec9bf211d79c2f498d8c22e6aa4928f729e8c30",
+            "posterior_physical_b16:8": "f32afa90930ffd81f2b79e1c118cfc5296cc71ebd88a097b2bce5136b3dacd1a"
+          },
+          "1": {
+            "posterior_only_b12:12": "41d5ff4458c8abd11476c6898badc1794704baf830e4699d78259848bade1524",
+            "posterior_only_b12:16": "86bab137d2143d6a18f2a93fd2a49c1c5a987d83c6941e939cf192eed2d53f84",
+            "posterior_only_b12:20": "917c29e84d0d7bff2efa491b80d7cb202de86292eff7656f0669c0d4dabf153b",
+            "posterior_only_b12:24": "c283263e99bdbf918851a4613348b34b46c4e4ec4b86e054264dbf2d3b8bb4a6",
+            "posterior_only_b12:4": "7dc12429510b97e7ae2f83b198224fc6ce1ee05c97486bb6025cf432403ba5a4",
+            "posterior_only_b12:8": "6836cb4bb7000f9d780ef284f058a689a0ec1f7bef96e7d1e7492ce2979a2986",
+            "posterior_physical_b12:12": "5d4b882b1066c50ca70dda7d91e5566e34697e1209ded6d19493c2a53cfbb636",
+            "posterior_physical_b12:16": "1cf758c82a5da39295f0c0212c28802ebb6d5705888723806fb1bc6e0e133619",
+            "posterior_physical_b12:20": "b4685acb44003b1af281c3d32c29c8da3248ad89c1b4c3b7eb07a08c633aed9b",
+            "posterior_physical_b12:24": "34a6689609a9dc9065eef22b9547df8f6b8496cd51a950df2f26f95bdefaad74",
+            "posterior_physical_b12:4": "8b7072f3a7511a1e6a06776839d9ce55740538e97d1aed0b637f8f034d4a1ad7",
+            "posterior_physical_b12:8": "01cf5715e7db848e9e43bda86e5ad1a9d3bb64fb6794040843cc2430f5b2d251",
+            "posterior_physical_b16:12": "2e61fca42429c5e9c4b8b41cfb28f821557a38db12647ac3ca0858e88b6bacea",
+            "posterior_physical_b16:16": "b6b99184178a35052764922ed47422161b737433b4d348b1cc8f5b42a1859931",
+            "posterior_physical_b16:20": "e253ae7732170689b76c11402eeffbea4900047703873018b63a531c2e62dedb",
+            "posterior_physical_b16:24": "b322daf17badc209206340eadc65f2406e1579fb5c404a92cfaa2df5febcc5c4",
+            "posterior_physical_b16:4": "4cf48a9a82912208454eda0d37d75ac42994ce73b3563329e7909b1a56de7ec1",
+            "posterior_physical_b16:8": "0aa74c699aebf1b7e4c60b8ec57d017518aaca5da5ed1db97edc80d3eb40e6c8"
+          },
+          "2": {
+            "posterior_only_b12:12": "411d85a93b773a1f219f8705963690d478f103863095f510606a1b9bb91e7705",
+            "posterior_only_b12:16": "51057cb5c5a19c3b41b8af8fa21964270f5ddc58698777260df2466512d5265b",
+            "posterior_only_b12:20": "455195b4930c1611133f1b70bf4dcb8615aef53dd3e3b0b39e34a0e48d35ffe8",
+            "posterior_only_b12:24": "127e472507277149264d8940b1e6976f679b4e742f818fae62701fc82c20b964",
+            "posterior_only_b12:4": "5018d5aea2c1e0e58f312350db92e1f8098f839dc45838a0ef4b414f1b962110",
+            "posterior_only_b12:8": "609ee81c556216ad21e49957689e8ccdccadf8fd345464433b43d9129e8bcfc6",
+            "posterior_physical_b12:12": "ac2a5aef411890e22029fbdd872dcbbdc5e698d8609dcf695863b736cbd38a18",
+            "posterior_physical_b12:16": "e5c3fd508c61d13c7415be2d8dbba2c4573bea27f713a7a5d12ec304bf68762d",
+            "posterior_physical_b12:20": "c111e6b0c8d7cf96b5a465f3f8da71960cf83b299b8dd4cd7ffcaa1794d6c80c",
+            "posterior_physical_b12:24": "7adcc12839ba271fae855b89e6c65f183862e2be99f186baf1d5dbde538894fe",
+            "posterior_physical_b12:4": "f9e63cc1a506ab7379480bf765b7b158e69919d5f85efeedd9058713e915768a",
+            "posterior_physical_b12:8": "177cfecb597f5e4923d620d78068eae5da900340264549b203f14b0c3d8abfa4",
+            "posterior_physical_b16:12": "772637ddaa2edfd3c9af9344913f8bb503a84f49fc95f7271cb485e93a8b81c2",
+            "posterior_physical_b16:16": "35c7162ccebff8268e8886c5088bc91ef43cbe50fc5693eb47eb7c8a37d3f911",
+            "posterior_physical_b16:20": "32213af2aa15951a9186707ad072abcddd78a52b934fbace49d1a7f2c91c37ce",
+            "posterior_physical_b16:24": "e673c23deb812cf3efa5cf05464e4b3758571d3f0417c2a7622ceae0325ef516",
+            "posterior_physical_b16:4": "1c2ec235ddb43f70f0203653210ddd57639aa5b922f955d18a9f6b51f71facaa",
+            "posterior_physical_b16:8": "dce0bc226f5ff06331c5f20acc5fa7a61169ac5c022e0eadc6039e1b04907ff7"
+          },
+          "4": {
+            "posterior_only_b12:12": "430b023c13fe7ca592f6eb89b291b1c59432edb180de4cd1e7de37c474fede18",
+            "posterior_only_b12:16": "041912869c3c8cbd4c9ceb8601f14de0a9a5c70359624408a3eae4d178313aca",
+            "posterior_only_b12:20": "9b30a567814de127acbe74efe8441221960e80de307d8553f54a9a13c589c9bd",
+            "posterior_only_b12:24": "4e580b7d3c3da888ce8bde64b857e83b24e34a26d343ca38b623d2117af976cc",
+            "posterior_only_b12:4": "573a1ce2868358db9de2c4a816b09ac60563f7610d9279aeb28b5fa28a9a76d5",
+            "posterior_only_b12:8": "77560b94f57bf1caeea4d9198f5ef49c2c661a419b7164acb5b680eeaf0d8267",
+            "posterior_physical_b12:12": "dfbc607e79f0f33198b922f04648efbb3ff368b3d4ddd4000647670aa64a820e",
+            "posterior_physical_b12:16": "e8b8c348348c80abcf6d031e599ea574ab8674f249c78c1ac9a4dd3dc9c86480",
+            "posterior_physical_b12:20": "d30aa34f5e3b0b3bc7ba6c64935db36950a45b6c70fe4175de07d350eb51ace0",
+            "posterior_physical_b12:24": "290574b7cfbf95485dd19d790604b683128b7fc22126c342b7ba051cc995c7c7",
+            "posterior_physical_b12:4": "65b678d593aa422683ce8cb5697ea8cae16029912465b3090e2449cdb439a9d9",
+            "posterior_physical_b12:8": "0be9a7d47ad5a70fded172d390151906965c8da2900b8bf5efac2e671c454a43",
+            "posterior_physical_b16:12": "2e9f5dd0de93931117ee0d42d94d4fa91b36aac375aaf02e0d15bc98ae25e457",
+            "posterior_physical_b16:16": "029f384f35227c0f53e9293556e8efa5485f61a0573c58daee0a6a87a3c77e7d",
+            "posterior_physical_b16:20": "dda1dac8514a6d134801ade1ec4b396643b3f9d66459b2609498e65cd9dcd23a",
+            "posterior_physical_b16:24": "b243f2d5b340b15c878ce6692c22afcdaaa83338811e5ee5c7a71e9a04199d82",
+            "posterior_physical_b16:4": "b6e93122e4d65385ed1a2cb1512b2d5af55b1b982280db944c689849151421d3",
+            "posterior_physical_b16:8": "29f375bd823f48f1a34efc1650f7d9f34e99efbee7c496c953699628811c1b83"
+          }
+        }
+      },
+      "ridge": {
+        "candidate_count": 7,
+        "eligible": true,
+        "mean_complete_well_gain": 0.027231638584619508,
+        "minimum_role_gain": 0.02152746776518555,
+        "pooled_gain": 0.035289292750433354,
+        "refit_weights": {
+          "protected_mode_bank": 0.0,
+          "protected_posterior_incremental": 0.5
+        },
+        "ridge": 0.1,
+        "validation_gains": {
+          "0": 0.02152746776518555,
+          "1": 0.022756770886865674,
+          "2": 0.06072696292485347,
+          "4": 0.03925002391964494
+        },
+        "validation_weights": {
+          "0": [
+            0.5,
+            0.0
+          ],
+          "1": [
+            0.5,
+            0.0
+          ],
+          "2": [
+            0.5,
+            0.0
+          ],
+          "4": [
+            0.5,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "D570_amplitude": {
+        "amplitude": 2.0,
+        "candidate_count": 7,
+        "eligible": true,
+        "fold_gain_vs_amplitude_one": {
+          "0": 0.014798276735287885,
+          "1": 0.0337079931827029,
+          "2": 0.008875590807431166,
+          "3": 0.036086464749747194
+        },
+        "fold_rmse": {
+          "0": 5.824601412874663,
+          "1": 6.0879542796968735,
+          "2": 5.331607422019764,
+          "3": 6.088987896429003
+        },
+        "mean_rank": 2.0,
+        "metric_ranks": {
+          "endpoint_rmse": 5.0,
+          "mean_well_rmse": 1.0,
+          "pooled_rmse": 1.0,
+          "toe_quartile_rmse": 1.0
+        },
+        "metrics": {
+          "endpoint_rmse": 10.53486255715451,
+          "mean_well_rmse": 4.36308945173343,
+          "pooled_rmse": 5.842061205078005,
+          "toe_quartile_rmse": 8.164910401246363
+        }
+      },
+      "local_lineage": {
+        "candidate_count": 75,
+        "selected_prediction_sha256": [
+          "f0cec94f3945145e00bea6697480c33f703effae368bed141e7543665f9cad41",
+          "a49e5db0ca6cabeb641d9a14467e6ff0d08b65fc27463f08cdd8608b24526e75"
+        ]
+      },
+      "local_residual": {
+        "blend_rmse": 5.865993072039768,
+        "endpoint_rmse": 10.493965148925781,
+        "mean_rank": 9.75,
+        "metric_ranks": {
+          "blend_rmse": 2.0,
+          "endpoint_rmse": 4.0,
+          "standalone_rmse": 26.0,
+          "toe_quartile_rmse": 7.0
+        },
+        "snapshot": 16,
+        "standalone_rmse": 6.071563039873746,
+        "temperature": 1.5,
+        "toe_quartile_rmse": 8.196833610534668,
+        "treatment": "equal_seed_bag",
+        "weight": 0.2
+      },
+      "mode_components": [
+        {
+          "metric": "corr_s0_d8",
+          "selector_index": 2,
+          "training_gain": 0.07527531706156765,
+          "weight": 0.2
+        },
+        {
+          "metric": "diff_corr_s32_d8",
+          "selector_index": 49,
+          "training_gain": 0.024918335309023654,
+          "weight": 0.15
+        },
+        {
+          "metric": "diff_corr_s0_d32",
+          "selector_index": 14,
+          "training_gain": 0.010709276353180641,
+          "weight": 0.1
+        }
+      ],
+      "outer_fold": 4,
+      "positive_inner_weight_roles": 0,
+      "posterior": {
+        "amplitude": 4.0,
+        "blend_rmse": 5.796205819615839,
+        "effective_scale": 0.2,
+        "eligible": true,
+        "endpoint_rmse": 10.425518880762162,
+        "mean_rank": 14.25,
+        "mean_well_rmse": 4.34114136308918,
+        "metric_ranks": {
+          "blend_rmse": 2.0,
+          "endpoint_rmse": 6.0,
+          "mean_well_rmse": 47.0,
+          "toe_quartile_rmse": 2.0
+        },
+        "selector_fold_non_regressive": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "share": 0.05,
+        "snapshot": 12,
+        "temperature": 1.5,
+        "toe_quartile_rmse": 8.067278498290666,
+        "treatment": "posterior_physical_b12"
+      },
+      "posterior_lineage": {
+        "candidate_count": 7560,
+        "outer_prediction_sha256": {
+          "posterior_only_b12:12": "3f613b3bad9c39e217ca36c10b6b7c01447de226beadb3feb1c9ea1157db2bf8",
+          "posterior_only_b12:16": "46ac1e73c23d4d3937dd4cbd81e91f521c66668d801286e9366981d1a4427b4a",
+          "posterior_only_b12:20": "00c869a56dc2d74199e801a6b3fd2f8317a669e55e5165b1a35f2c3c5aa4eddc",
+          "posterior_only_b12:24": "597ef905d27c3153164f50809e0562b3a4e99f986abf56e14749a98e54aea7ec",
+          "posterior_only_b12:4": "1b35861ff2faa4fa766db0404344a5d57fb6c1d7f0b129fe68419a37b5e092e1",
+          "posterior_only_b12:8": "e568dcb966621c6cff72aa1e75f03a5a03616cb3fcf77fdcea031b98170eb4fb",
+          "posterior_physical_b12:12": "66a34311e19f341b385265b7af5645e7e81108d6c5f85bc63728e6e1b9ffabc8",
+          "posterior_physical_b12:16": "897933d60e83cc96f70ccb3fde39ea3780c069f531eb1e433c2993ad2485d642",
+          "posterior_physical_b12:20": "c91d0069025eacfc0dd5da7688d61ab95c9c52f2042f1aeefd9d5209360b00a7",
+          "posterior_physical_b12:24": "98204a15dea2556d61286f5840d6aae2754fc06660de809893bd6922237057b9",
+          "posterior_physical_b12:4": "bd7645299b1ee264170cce2700ad8cfed79a3218785fce17e5a3555f290d367d",
+          "posterior_physical_b12:8": "b5d486cc280630def2d4a89bb9308bc71d0a6d7bc7551aaade1787aa715da7be",
+          "posterior_physical_b16:12": "e7e9a2822d1d70bf51e8d006be484c15a4f068470aac78515efa349e5b78f2bb",
+          "posterior_physical_b16:16": "fa93b2ab6992a232a56d91098661abed4ea71380f4f5d75d3ef056e5d83cbfe8",
+          "posterior_physical_b16:20": "e19c840af52d44e9b50c82a589d4b9f26ff2ade25d4af494559d03f0992d871c",
+          "posterior_physical_b16:24": "e8ad904d67bf39a9e35f6859a16071e014f851a3f19f494d8b5e5ab82baddf04",
+          "posterior_physical_b16:4": "7f0fbe7f898dc91741fbc16ccad95dc6e90a9c780e8cdb9812e9c5e12a004c60",
+          "posterior_physical_b16:8": "343d1374600b2a2db76cb37d94680ccd7e20bb474dd144ebdb0c977e2d59814b"
+        },
+        "pair_prediction_sha256": {
+          "0": {
+            "posterior_only_b12:12": "8b0fe781235e049006ae21ae73fd77962efc69a6b5a4d123940853e149e55c62",
+            "posterior_only_b12:16": "e1946a2c10cd176196d98ed3f84dfc24cb0749e172c08c8369b08c218246e3bb",
+            "posterior_only_b12:20": "f9517ca21cfa2407fe91b5037c6ac7302c98c401112b74f3dc42e1f62f1c67b6",
+            "posterior_only_b12:24": "50886203b51b4f32cfb6780340cd61f0688a560913a4a6ee769c5ac3c7779e28",
+            "posterior_only_b12:4": "a7bf8c7f6264e55c8c255cfe49943995cd54ebc9af6d1e7961536964cdb2e008",
+            "posterior_only_b12:8": "c01b13c267fe9ccd9af4f8cd1b1715f4da30271b12f0478aa6598b26aabe7456",
+            "posterior_physical_b12:12": "508ac8f66a52481b8f2b76c9067de7f0409517708bea2b6cb0a7c8c5be0e0bdf",
+            "posterior_physical_b12:16": "581a2d4f2a3c082c0e86b49a67ee1ac13a098f96935027ad3ede00daeebcde4a",
+            "posterior_physical_b12:20": "e7938fdfca791cfd105fbadde5ac9d8ff92db591a93dab52a85e4f60f4e6607e",
+            "posterior_physical_b12:24": "130db2d07bdce8cdb359689233af0c219aaf6a67ca66e90eac80d6ddd1e6423c",
+            "posterior_physical_b12:4": "300601fe9c02a76f250f3e5ec0597c25f365406892b2df72987c3c4863e5bb79",
+            "posterior_physical_b12:8": "ea3bc0bcc83f36a3c9076ca69f032fe578e9ae108bd71b65139a698b139b4a2c",
+            "posterior_physical_b16:12": "7aedee637f5cbded85b9648306621bd46b4c40695760dc9647e3da8394c3327f",
+            "posterior_physical_b16:16": "84d60b507ef4853598605249016399a53f5cac2d4706c8a3f822b5cbabbc29cb",
+            "posterior_physical_b16:20": "2a70224e92b2c8483e1519bd6efbede674b659f994dbefbb49b74bb2b08b56ac",
+            "posterior_physical_b16:24": "4b1a31b08238d5af1326660aa413af2ad7f2ccbc0fbd977d25928deb0b0398e2",
+            "posterior_physical_b16:4": "220ed52a5aca46881609b6bdc2ec42bb14a3b689ac45942a2325375015cca10a",
+            "posterior_physical_b16:8": "6d19219183e1c938746f150ceacadf7cfb7b5daad4211002565145a5c107546f"
+          },
+          "1": {
+            "posterior_only_b12:12": "6452c71f128b9709559054345da5134be3eb76dba0de8433c4a37fce82d5bbb4",
+            "posterior_only_b12:16": "186ff87acec59b6c2ae9301586773741097ae482e3bb7800ec9d81297a672ec4",
+            "posterior_only_b12:20": "9dd72dcd3b8f0373b0cbb2b1abe7456013c9c2a7041c83bc645db32d6a98bd52",
+            "posterior_only_b12:24": "65c0d3ea4c140e32ea8a36b19a937e8876f8689be2b0b4c4fd17236e6798b28b",
+            "posterior_only_b12:4": "c9948f2fc1349442d00e5d70ff04985a0d5e5eda49e52dabff10c8d2632f8d56",
+            "posterior_only_b12:8": "361cf3a0c41fbfdc79e87f02f2bb6dad30f78907ccccd35053e62b1489c8e4fa",
+            "posterior_physical_b12:12": "95ae0f840435247fb60f00ce9e171b6ca98f8c0efbc270d42a125770e0c99cc3",
+            "posterior_physical_b12:16": "df17c5ae9d1e91d45d50cb387d1b3a162a0e4ce6c6a2152c2f3d730c001a5f28",
+            "posterior_physical_b12:20": "3a74002fa6b19e734786038f8b36a9cb772ccd060844ed0192f9751fa2bbc402",
+            "posterior_physical_b12:24": "2d8de4785ebb4363d94ce71f21cb6743a5b8734264bbb4b038e007770c0031ee",
+            "posterior_physical_b12:4": "30e102fba53d9a68d0084ead820bc836b85884805c64483e99805c34a1747ed5",
+            "posterior_physical_b12:8": "3ebe3f4dd3f28f72e1f5e27bf82ee2ca8b99ce3ae9bdc460fb860f060a5f45d4",
+            "posterior_physical_b16:12": "145436524d69dd36b07906b1efd2542e2f35d45744503ff917ef1f09261b23e2",
+            "posterior_physical_b16:16": "7700b73d4a98ab5c1c35c48b594a6104ad29171741294e68f6787181a63394ad",
+            "posterior_physical_b16:20": "35214052d08b62fae98f58339467dee1639ebac63ff3373f94ebebed910c95b0",
+            "posterior_physical_b16:24": "1998314d3e2d53f0d61dfd694cc7cbdc2495100d4d142441daf4267ea63ce9f9",
+            "posterior_physical_b16:4": "8c03ad6706230d1a0f684462e99d292a8ead800a9ce2abc12f67fa6d4c95b9e2",
+            "posterior_physical_b16:8": "62be0db531fb1707e987de193fec7aaaf9a069f91e5e9559e13c346922809299"
+          },
+          "2": {
+            "posterior_only_b12:12": "fa7b230d5468e6205c56424ec41b6496d84247bfdf6fa584bddaf0a38c931890",
+            "posterior_only_b12:16": "f4dd47c091788c1170d760483ce0608aa16f1391f3e0859cd950ad97346d48d2",
+            "posterior_only_b12:20": "98e3b766bf595295ae7cf7fae9b1bd2da436d4badc5b45c043b9e085698f663c",
+            "posterior_only_b12:24": "01b6bb836c69a222024aca9f32c8c3a99c5b51dfb822e8b83099637c3bdbfce9",
+            "posterior_only_b12:4": "d04ab89c63e0d53d04a13ee2ea2391e76f16ef881994440071e28ed30e4c2729",
+            "posterior_only_b12:8": "5c20b46a2b6935908de5c606c0b9baefb0eefefc83b5529bbe53f6da80c24407",
+            "posterior_physical_b12:12": "75f3b6bb6ed99946913be32da9f1027bbd02a666c863d275d64d847a0d8654b7",
+            "posterior_physical_b12:16": "c997c106464655cb8f974235f6c8c28663be874c5031617f0d63a59cad767b18",
+            "posterior_physical_b12:20": "c7450c7ccc36a8619bf94bf7d09ad3e881b38b9eb766ba4c729dba7fece8bc8e",
+            "posterior_physical_b12:24": "5d58289af552ca853c6be5582e7de3c740a64e34e2f31f3568774019eae093ea",
+            "posterior_physical_b12:4": "a9b40921ad3b242a15131d0f80ce47cc6ed4589166e0a623729dd5edc1d58877",
+            "posterior_physical_b12:8": "5346dcb1f18105c118c8dce1075babc512bf827ea112d9d06d9171a88508f381",
+            "posterior_physical_b16:12": "a165937a64da0f48edebf6d3dd0d795be1f8ee9909cbd44932d8dd2abe4642c8",
+            "posterior_physical_b16:16": "b3fbfffa5a93325dc9b6f31df1a9a6082a6e9f82c8f7d7170774ed78d3042bd8",
+            "posterior_physical_b16:20": "ecf25660e426473ba8ec7a8178637bc2bb706c12502626ddd74fdfc25672450e",
+            "posterior_physical_b16:24": "ae2bba0022fa77ff68e372cc618ed49e35a7ec3c4567b2c8baaa149f76f84f7f",
+            "posterior_physical_b16:4": "7faf7b6596ccb513cc31fbd6606dfdd2ef8613d703a3fc65e19c43e96f34af49",
+            "posterior_physical_b16:8": "f8e2d2ff830c643a32dee452875ca30f3f4163f57945a4c0445f032354007d35"
+          },
+          "3": {
+            "posterior_only_b12:12": "430b023c13fe7ca592f6eb89b291b1c59432edb180de4cd1e7de37c474fede18",
+            "posterior_only_b12:16": "041912869c3c8cbd4c9ceb8601f14de0a9a5c70359624408a3eae4d178313aca",
+            "posterior_only_b12:20": "9b30a567814de127acbe74efe8441221960e80de307d8553f54a9a13c589c9bd",
+            "posterior_only_b12:24": "4e580b7d3c3da888ce8bde64b857e83b24e34a26d343ca38b623d2117af976cc",
+            "posterior_only_b12:4": "573a1ce2868358db9de2c4a816b09ac60563f7610d9279aeb28b5fa28a9a76d5",
+            "posterior_only_b12:8": "77560b94f57bf1caeea4d9198f5ef49c2c661a419b7164acb5b680eeaf0d8267",
+            "posterior_physical_b12:12": "dfbc607e79f0f33198b922f04648efbb3ff368b3d4ddd4000647670aa64a820e",
+            "posterior_physical_b12:16": "e8b8c348348c80abcf6d031e599ea574ab8674f249c78c1ac9a4dd3dc9c86480",
+            "posterior_physical_b12:20": "d30aa34f5e3b0b3bc7ba6c64935db36950a45b6c70fe4175de07d350eb51ace0",
+            "posterior_physical_b12:24": "290574b7cfbf95485dd19d790604b683128b7fc22126c342b7ba051cc995c7c7",
+            "posterior_physical_b12:4": "65b678d593aa422683ce8cb5697ea8cae16029912465b3090e2449cdb439a9d9",
+            "posterior_physical_b12:8": "0be9a7d47ad5a70fded172d390151906965c8da2900b8bf5efac2e671c454a43",
+            "posterior_physical_b16:12": "2e9f5dd0de93931117ee0d42d94d4fa91b36aac375aaf02e0d15bc98ae25e457",
+            "posterior_physical_b16:16": "029f384f35227c0f53e9293556e8efa5485f61a0573c58daee0a6a87a3c77e7d",
+            "posterior_physical_b16:20": "dda1dac8514a6d134801ade1ec4b396643b3f9d66459b2609498e65cd9dcd23a",
+            "posterior_physical_b16:24": "b243f2d5b340b15c878ce6692c22afcdaaa83338811e5ee5c7a71e9a04199d82",
+            "posterior_physical_b16:4": "b6e93122e4d65385ed1a2cb1512b2d5af55b1b982280db944c689849151421d3",
+            "posterior_physical_b16:8": "29f375bd823f48f1a34efc1650f7d9f34e99efbee7c496c953699628811c1b83"
+          }
+        }
+      },
+      "ridge": {
+        "candidate_count": 7,
+        "eligible": true,
+        "mean_complete_well_gain": 0.0,
+        "minimum_role_gain": 0.0,
+        "pooled_gain": 0.0,
+        "refit_weights": {
+          "protected_mode_bank": 0.0,
+          "protected_posterior_incremental": 0.0
+        },
+        "ridge": null,
+        "validation_gains": {
+          "0": 0.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0
+        },
+        "validation_weights": {
+          "0": [
+            0.0,
+            0.0
+          ],
+          "1": [
+            0.0,
+            0.0
+          ],
+          "2": [
+            0.0,
+            0.0
+          ],
+          "3": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    }
+  ],
+  "positive_inner_weight_roles": 4,
+  "prediction": "limited_query_cv/runs/v5_batch2_run_025_goal_050/promotion_audit/sealed/outer_predictions.npz",
+  "prediction_sha256": "737711c483cc3ce81ba94fa8e5dfb9c307f75c7691fd06be33631d80c355fad1",
+  "protected_metrics_emitted": false,
+  "run_id": "v5_batch2_run_025_goal_050",
+  "schema_version": 1,
+  "source_sha256": "e1871a3e8eca9bb86c443d6c0a26daf80a95cd78f380d1e1a2ed2fdca41cbe29",
+  "stage": "sealed_nested_selector",
+  "status": "complete_all_outer_predictions_frozen",
+  "truth_stored_in_prediction": false
+}

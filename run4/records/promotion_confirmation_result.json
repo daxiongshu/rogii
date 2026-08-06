@@ -1,0 +1,79 @@
+{
+  "assignment": "limited_query_cv/runs/v5_batch3_run_004_goal_020/promotion_confirmation_assignment.json",
+  "assignment_sha256": "37f8b058001edaf40d00f758b81e6d1d554f1c1b33d7ad0fb6e1a6b291429daf",
+  "candidate": "clean boosted whole-well utility router",
+  "exception_entry_threshold": 0.17,
+  "firewall": {
+    "F4_loaded": false,
+    "F4_metric_computed": false,
+    "development_original_folds_loaded": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "kaggle_dataset_authorized": false,
+    "kaggle_kernel_authorized": false,
+    "kaggle_submission_authorized": false,
+    "protected_reveal_spent": false
+  },
+  "fresh_confirmation_passed": false,
+  "gates": {
+    "all_five_groups_positive": false,
+    "maximum_held_group_regression_0p01": false,
+    "minimum_pooled_gain_0p10": true
+  },
+  "preregistration": "limited_query_cv/runs/v5_batch3_run_004_goal_020/boosted_router_confirmation_preregistration.json",
+  "preregistration_sha256": "28e2659278ede8188ade7122c1d69c0615c1d057e7936c1ef1fda17be126f9e2",
+  "protocol_name": "cv-protocol-v5",
+  "protocol_revision": 11,
+  "result": {
+    "candidate_rmse": 5.750373621200256,
+    "clean_C016_rmse": 5.869105573928044,
+    "gain_vs_clean_C016": 0.11873195272778769,
+    "groups": [
+      {
+        "candidate_rmse": 6.478837777865781,
+        "clean_C016_rmse": 6.41586067451939,
+        "gain_vs_clean_C016": -0.06297710334639106,
+        "held_group": 0,
+        "rows": 600422
+      },
+      {
+        "candidate_rmse": 5.844512398849715,
+        "clean_C016_rmse": 6.195903879312238,
+        "gain_vs_clean_C016": 0.35139148046252267,
+        "held_group": 1,
+        "rows": 615193
+      },
+      {
+        "candidate_rmse": 4.977630151577568,
+        "clean_C016_rmse": 5.263513248053917,
+        "gain_vs_clean_C016": 0.2858830964763488,
+        "held_group": 2,
+        "rows": 621192
+      },
+      {
+        "candidate_rmse": 6.06707923241631,
+        "clean_C016_rmse": 6.0991124662638825,
+        "gain_vs_clean_C016": 0.03203323384757262,
+        "held_group": 3,
+        "rows": 588311
+      },
+      {
+        "candidate_rmse": 5.297010339708579,
+        "clean_C016_rmse": 5.301443948636025,
+        "gain_vs_clean_C016": 0.004433608927445931,
+        "held_group": 4,
+        "rows": 613470
+      }
+    ],
+    "rows": 3038588
+  },
+  "run_id": "v5_batch3_run_004_goal_020",
+  "schema_version": 1,
+  "stage": "promotion_fresh_confirmation_result",
+  "status": "fresh_confirmation_failed",
+  "stored_effective_readiness_target": 0.2,
+  "stored_goal_changed": false
+}

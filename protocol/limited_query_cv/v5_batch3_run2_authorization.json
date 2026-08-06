@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "protocol_name": "cv-protocol-v5",
+  "authorized_utc": "2026-07-30",
+  "status": "authorized",
+  "literal_user_authorization": "Authorize V5 Batch 3 Run 2 for c016_buda_delayed_dip_cluster_surface, development goal +0.20 over the original c016 baseline, using the unspent protected reveal. Do not submit.",
+  "scope": {
+    "batch": 3,
+    "run_number": 2,
+    "candidate_family": "c016_buda_delayed_dip_cluster_surface",
+    "parent": "promoted_clean_c016",
+    "readiness_baseline": "original_clean_c016_selection_clean_F0_F3",
+    "readiness_baseline_rmse": 5.869105573928044,
+    "requested_incremental_rmse_gain": 0.2,
+    "maximum_candidate_rmse": 5.669105573928044,
+    "equivalent_minimum_gain_over_protected_v20": 0.2710854363677842,
+    "reuse_batch3_unspent_protected_joint_outer_reveal": true,
+    "additional_protected_joint_outer_reveals": 0,
+    "maximum_protected_joint_outer_reveals_for_batch": 1,
+    "kaggle_dataset_authorized": false,
+    "kaggle_kernel_authorized": false,
+    "kaggle_competition_submission_authorized": false
+  },
+  "unchanged_boundaries": {
+    "manual_target_derived_development_folds": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "manual_audit_fold": 4,
+    "f4_target_derived_access_before_global_freeze": false,
+    "all_outer_predictions_frozen_before_joint_reveal": true,
+    "post_reveal_recipe_changes": false,
+    "separate_authorization_required_for_kaggle_artifacts": true,
+    "separate_explicit_authorization_required_for_submission": true
+  }
+}

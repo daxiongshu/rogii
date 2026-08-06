@@ -8,6 +8,7 @@ __pycache__/
 *.pth
 *.cbm
 *.npz
+*.joblib
 
 # Generated inference output.
 submission.csv

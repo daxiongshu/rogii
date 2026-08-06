@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "protocol_name": "cv-protocol-v5",
+  "protocol_revision": 11,
+  "run_id": "v5_batch3_run_004_goal_020",
+  "stage": "uniform_nested_selector_source_freeze",
+  "status": "frozen_before_selector_execution",
+  "parent_preregistration": "limited_query_cv/runs/v5_batch3_run_004_goal_020/uniform_deployment_repair_preregistration.json",
+  "parent_preregistration_sha256": "c26d06781c58db0bab3280b4180049a46c16115b8b8072fb02322e1e101c97c8",
+  "selector_source": "limited_query_cv/select_v5_batch3_run4_physics_nested.py",
+  "selector_source_sha256": "ea5c2e7a94cb032243c27768723c98ebb0dba4977946ead02b6e094c1db4ee61",
+  "selection_rule": "For each outer fold, rank the fixed snapshot-temperature grid across its four symmetric-pair inner validation roles using the preregistered physics selector; then apply the selected snapshot, temperature, and blend weight to that outer role's target-free prediction.",
+  "all_15_roles_required_before_execution": true,
+  "outer_held_truth_selects_own_recipe": false,
+  "prediction_archives_store_truth": false,
+  "F4_metric_must_not_be_recomputed": true,
+  "kaggle_submission_authorized": false
+}

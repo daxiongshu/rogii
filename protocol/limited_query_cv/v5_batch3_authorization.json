@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "protocol_name": "cv-protocol-v5",
+  "authorized_utc": "2026-07-30",
+  "status": "authorized",
+  "literal_user_authorization": "Authorize V5 Batch 3 with one protected reveal for c016_residual_gr_path_pool, development goal +0.20. Do not submit.",
+  "scope": {
+    "batch": 3,
+    "candidate_family": "c016_residual_gr_path_pool",
+    "requested_development_rmse_gain": 0.2,
+    "protocol_floor": 0.2,
+    "effective_readiness_target": 0.2,
+    "additional_protected_joint_outer_reveals": 1,
+    "maximum_protected_joint_outer_reveals_for_batch": 1,
+    "kaggle_dataset_authorized": false,
+    "kaggle_kernel_authorized": false,
+    "kaggle_competition_submission_authorized": false
+  },
+  "source_review": "limited_query_cv/KA_E80_C016_SOURCE_REVIEW.md",
+  "source_review_sha256": "ea6413b2924b7d7bbf54d05ae352a3dd6c39a84bd09754031b10c38c2d1a8861",
+  "experiment_proposal": "limited_query_cv/ka_e80_c016_experiment_proposal.json",
+  "experiment_proposal_sha256": "ff5025a959ea6f31b6370a5680b48bc354ba0afe8eb2b37251d0b27bde5096e0",
+  "unchanged_boundaries": {
+    "manual_target_derived_development_folds": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "manual_audit_fold": 4,
+    "f4_target_derived_access_before_global_freeze": false,
+    "all_outer_predictions_frozen_before_joint_reveal": true,
+    "post_reveal_recipe_changes": false,
+    "separate_authorization_required_for_kaggle_artifacts": true,
+    "separate_explicit_authorization_required_for_submission": true
+  }
+}

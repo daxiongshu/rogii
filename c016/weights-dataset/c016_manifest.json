@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "candidate": "clean_c016_without_quarantined_d072",
+  "run_id": "v5_batch2_run_025_goal_050",
+  "checkpoint_count": 11,
+  "checkpoint_bytes": 187900137,
+  "v20_parent_dataset": "jiweiliu/rogii-compact-alignment-cv5-weights",
+  "v20_parent_manifest_sha256": "145fe76ca0a4fa48003d755ddcb661786dfe48e2ecfa9a83a2bd9b9e553e19d5",
+  "selector_record_sha256": "d1a8097fb56a356a109e95658928b319ff78e6ae7d8b647e1d6f77498641efb2",
+  "promotion_result_sha256": "d1b729e6207c4459f03a0523f6dc4bb329a7fe35eed9e11de6cdcaf410cc520b",
+  "production_parity_repair_sha256": "b45382e7a36bb29d06b23035c205788e5522d8b2ee2d4f554ab678fb8f91c35b",
+  "legal_production_oof_rmse": 6.1272727841976,
+  "legal_production_oof_gain": 0.062211983956711236,
+  "legal_production_strong_gate_passed": true,
+  "production_authorization_sha256": "d4203b38cba52b305411d64fc5c8f12d1709c6426f0fa87fb86c87ea54c8eed6",
+  "sha256": {
+    "c016_outer0_local_seed20260831_epoch016.pt": "6c7f6befcbb36bb61acd7603c65f48ed7a727f5123425b620b8c58e852a39317",
+    "c016_outer0_local_seed20261043_epoch016.pt": "fed41872424a9b2bcf455850b8423cc04f9afe428b6b1df09d95bd05e2ad6d01",
+    "c016_outer1_local_seed20260831_epoch016.pt": "eb05d3ea3d78b5343b8e9e0d70c0c7260eda830cda08db84cfc6df97f41b32f4",
+    "c016_outer1_local_seed20261043_epoch016.pt": "edb2e356b5c57930947ae70febd4423531575ed9780abbcf9c28c220f9b46a51",
+    "c016_outer2_local_seed20260831_epoch016.pt": "70989af0c329a20bd02eeabc3263cd83db92795c78ad356d8a3e21ac9d4247d1",
+    "c016_outer2_local_seed20261043_epoch016.pt": "2a329ff3a3e7f789d2def7c7d2e2d255acc89631a0ca2448b4afb71d81d87dbc",
+    "c016_outer3_local_seed20260831_epoch016.pt": "257d09e9c89ad1e19b8a81945360c44684d34fe3bbc1d85f1e40627032b3c83c",
+    "c016_outer3_local_seed20261043_epoch016.pt": "2e1df61c1c321071984e6e409c620bab3e550538276dd8ce2972b4fca7912297",
+    "c016_outer3_posterior_physical_b16_epoch020.pt": "9f76986c29203837aa6e88b63097fa29a6e52c22bcda2c406bf9c05aa1eaa983",
+    "c016_outer4_local_seed20260831_epoch016.pt": "f0ae61fc85c52ab0da86a12f019b127eebc5dd27d5a49b93879bd67e81652865",
+    "c016_outer4_local_seed20261043_epoch016.pt": "b28475d724f53347e773953c244162b58feff0d48cdc5dda7903fa848f7cc39e"
+  },
+  "excluded": {
+    "pair_role_checkpoints": "all",
+    "mode_bank_checkpoints": "final selected weight is exactly zero",
+    "posterior_outer_folds": [
+      0,
+      1,
+      2,
+      4
+    ]
+  }
+}

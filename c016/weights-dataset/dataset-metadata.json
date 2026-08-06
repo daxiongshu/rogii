@@ -1,0 +1,16 @@
+{
+  "id": "jiweiliu/rogii-v5-promoted-c016-weights",
+  "title": "ROGII V5 Promoted C016 Weights",
+  "subtitle": "Clean five-outer production checkpoints for promoted C016",
+  "description": "Private checksum-locked production weights for V5-promoted C016. Pair-role checkpoints and zero-weight mode-bank artifacts are excluded.",
+  "isPrivate": true,
+  "licenses": [
+    {
+      "name": "MIT"
+    }
+  ],
+  "keywords": [
+    "geology",
+    "unet"
+  ]
+}

@@ -19,7 +19,26 @@ the two private Datasets documented below.
   (submission `54986657`)
 - Five-fold whole-well OOF RMSE: `6.189484768154311`
 
-No V5 research, post-v20 candidate, or checkpoint is included.
+Everything outside `c016/` and `run4/` is v20 only: no V5 research, no post-v20
+candidate, and no post-v20 checkpoint participates in it.
+
+`c016/` and `run4/` add the two approved successors, each a correction layered
+on the one before it rather than a replacement for it:
+
+| Solution | Parent | Pooled OOF | Public LB | Directory |
+|---|---|---:|---:|---|
+| v20 | — | 6.189484768154311 | 6.263 | this repository root |
+| C016 | v20 | 6.1272727841976 | 6.127 | [c016/](c016/README.md) |
+| Run4 | C016 | 6.066500604210546 | 5.962 | [run4/](run4/README.md) |
+
+Each is self-contained — its own sources, recipe, kernel, manifests, and
+verifier — so the v20 hash locks and `reproduce.py verify` are unaffected by
+either.
+
+`protocol/` snapshots the CV Protocol v5 governance surface those three were
+developed under: the cookbook, the protocol specification, the machine policy,
+the query ledger, the frozen-parent registry, and every active amendment. See
+[protocol/README.md](protocol/README.md).
 
 ## Related best leaderboard result
 
@@ -109,7 +128,8 @@ V5 protocol.
 ```bash
 git clone git@github.com:daxiongshu/rogii.git
 cd rogii
-python -m pip install -r requirements.txt
+python -m pip install -r requirements.txt   # v20 and C016
+python -m pip install -r run4/requirements.txt   # adds what Run4 needs
 
 mkdir -p artifacts/runtime-weights artifacts/oof
 kaggle datasets download \
@@ -304,3 +324,70 @@ The historical kernel metadata is retained in `kaggle/kernel-metadata.json`.
 The artifact Datasets were created separately and are read-only inputs here.
 No repository command automatically creates a Dataset or kernel, and nothing
 submits a competition entry.
+
+## Approved successor: C016
+
+C016 (`clean_c016_without_quarantined_d072`, run `v5_batch2_run_025_goal_050`,
+source commit `64e1cf12320274ef2c26f2bf465e6346b57aa88a`) caches the nine
+weighted v20 component paths per fold, trains eleven small residual and
+posterior networks against the v20 baseline, and averages five clean outer
+corrections. It moved the pooled OOF from `6.189484768154311` to
+`6.1272727841976` and the public leaderboard from `6.263` to `6.127`.
+
+```bash
+python c016/reproduce_c016.py verify
+python c016/reproduce_c016.py list-recipe
+```
+
+`c016/README.md` documents the pipeline order, the external artifacts, and why
+`c016/pipeline/rogii/` exists as a separate copy of the shared library.
+
+## Current frozen parent: Run4
+
+Run4 (`run4_structural_surface_router_s06`, run `v5_batch3_run_004_goal_020`,
+build commit `524eb22ceb56503eaf1bdca0762c67119eb68916`) routes each well
+between a structural candidate blend and a raw surface candidate blend and adds
+the selected correction to the C016 parent at production scale `0.6`. Its
+deploy-parity OOF is `6.066500604210546` and its public leaderboard score is
+`5.962` (submission `55147410`).
+
+```bash
+python run4/reproduce_run4.py verify
+python run4/reproduce_run4.py list-recipe
+```
+
+Run4 consumes the C016 sealed prediction as a hash-pinned input and reads the
+v20 component caches directly, so verifying it exercises all three generations.
+
+Its pipeline is closed over both imports and the caches its candidate bank
+reads by path, so the 18 candidates rebuild from competition data rather than
+being assumed present. That costs extra dependencies — `joblib`, `xgboost`,
+`lightgbm`, and for the SegFormer candidates `transformers`, `torchvision`,
+`opencv-python` — which is why `run4/requirements.txt` exists, and one external
+pretrained backbone, `nvidia/mit-b0`.
+
+`run4/README.md` explains the deploy-parity reconstruction, the deployment
+source snapshot the kernel loads at run time, the path-versus-import closure,
+and the pipeline order.
+
+## Protocol snapshot
+
+The three subtrees preserve artifacts; `protocol/` preserves the process. It is
+a point-in-time copy of CV Protocol v5 revision 14 as of source commit
+`c34b92124faad762b469aba6408f00f224addf29` — 55 hash-locked files covering the
+cookbook, the specification, the policy, the ledger, the frozen-parent registry,
+the 8 active amendments with their documentation and authorizations, the
+validation boundaries and their builders, and the per-run source reviews the
+ledger cites.
+
+```bash
+python protocol/verify_protocol_snapshot.py verify
+```
+
+Besides the hashes, that check asserts the frozen-parent registry still records
+`v20 -> c016 -> run4` with user-approved-only activation, and that each entry's
+score agrees with the matching subtree's provenance manifest. If the
+reproductions and the governance record ever drift apart, it fails.
+
+The ledger, registry, and amendment set are live files in the source
+repository. This is what they contained at the snapshot commit, not a mirror.

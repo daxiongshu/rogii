@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "protocol_name": "cv-protocol-v5",
+  "protocol_revision": 11,
+  "run_id": "v5_batch3_run_004_goal_020",
+  "batch": 3,
+  "candidate": "clean boosted whole-well utility router",
+  "status": "authorized_candidate_specific_exception_promotion_audit",
+  "authorized_utc": "2026-07-31",
+  "user_instruction": "0.17+ is good enough. make an exception and proceed and promote",
+  "exception_scope": {
+    "entry_threshold": 0.17,
+    "stored_run_goal": 0.2,
+    "stored_run_goal_changed": false,
+    "global_protocol_floor_changed": false,
+    "ordinary_outer_promotion_gates_changed": false,
+    "F4_nonnegative_gain_veto_retained": true,
+    "single_family_batch_exception_authorized": true,
+    "fresh_F0_F3_confirmation_required_before_F4": true,
+    "fresh_confirmation_minimum_gain": 0.1,
+    "fresh_confirmation_all_groups_positive": true
+  },
+  "development_evidence": {
+    "original_gain_over_clean_C016": 0.18408007609896604,
+    "balanced_gain_over_clean_C016": 0.19558352563446935,
+    "independent_gain_over_clean_C016": 0.17312524495105652,
+    "former_fresh_gain_over_clean_C016": 0.1728923861617382,
+    "minimum_exposed_geometry_gain": 0.1728923861617382,
+    "all_held_groups_positive": true,
+    "minimum_held_group_gain": 0.045940004886435126,
+    "development_result": "limited_query_cv/runs/v5_batch3_run_004_goal_020/clean_boosted_well_utility_router_development.json",
+    "development_result_sha256": "3fd53bd8059c7c5b90c62a1b3ba587a292207a5d1bdc07dff3880dc23f9a7377"
+  },
+  "protected_F4_reveal_authorized_after_confirmation_pass": true,
+  "maximum_protected_reveals": 1,
+  "previous_protected_reveals_spent_in_batch3": 0,
+  "kaggle_dataset_authorized": false,
+  "kaggle_kernel_authorized": false,
+  "kaggle_submission_authorized": false
+}

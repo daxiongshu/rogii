@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "status": "awaiting_protocol_authorization",
+  "created_utc": "2026-07-30",
+  "source": {
+    "kernel": "dott1718/ka-e80-v2-s65",
+    "script_version_id": 338390204,
+    "kernel_version_number": 1,
+    "kernel_source_sha256": "fd02d9607355cbe389f0c68078556ec7f5af1139e21571974062f712e848d403",
+    "code_dataset": "dott1718/ka-e80-v2-s65-code",
+    "weights_dataset": "dott1718/ka-e80-v2-s65-weights",
+    "public_lb_rmse": 8.223,
+    "documented_cv_pooled_rmse": 6.054
+  },
+  "family": "c016_residual_gr_path_pool",
+  "parent": "promoted_clean_c016",
+  "hypothesis": "A large paired-seed pool of smooth GR-consistent residual trajectories around fold-safe C016 can provide a conservative, diverse correction that transfers better than a single residual Viterbi path.",
+  "legal_inputs": [
+    "MD",
+    "X",
+    "Y",
+    "Z",
+    "GR",
+    "TVT_input",
+    "typewell_TVT",
+    "typewell_GR",
+    "fold_safe_C016_prediction"
+  ],
+  "forbidden_inputs_and_artifacts": [
+    "BUDA",
+    "buda_pool.npz",
+    "full_data_cluster_enrich.pkl",
+    "held_or_excluded_well_hidden_TVT",
+    "public_LB_feedback_for_selection"
+  ],
+  "variants": [
+    "self_prefix",
+    "datum_pool",
+    "datum_pool_z"
+  ],
+  "controls": [
+    "exact_C016_zero_share",
+    "zero_residual_path_exact_C016",
+    "hidden_target_replacement_invariance",
+    "fold_purge_invariance",
+    "synthetic_planted_path_recovery",
+    "circular_shift_GR_negative_control",
+    "CPU_FP64_GPU_residual_smoothing_parity"
+  ],
+  "blend_weight_grid": [
+    0.0,
+    0.025,
+    0.05,
+    0.1,
+    0.15,
+    0.2
+  ],
+  "development_scope_when_authorized": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "protected_fold_opened": false,
+  "new_target_metric_computed": false,
+  "kaggle_dataset_authorized": false,
+  "kaggle_kernel_authorized": false,
+  "kaggle_submission_authorized": false,
+  "blocker": "The active V5 ledger has consumed both protected batches and both protected reveals; resolve_v5_goal.py cannot allocate another compliant run."
+}

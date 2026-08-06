@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "protocol_name": "cv-protocol-v5",
+  "amendment_id": "kickstart-configurable-development-goal",
+  "status": "active",
+  "effective_from_batch": 2,
+  "authorized_utc": "2026-07-25",
+  "authorization": "User requested that a kickstart prompt alone be able to choose a development goal such as +0.20 or +0.50 without editing policy files.",
+  "documentation": "limited_query_cv/V5_KICKSTART_GOAL_AMENDMENT.md",
+  "goal_parameter": {
+    "name": "requested_development_rmse_gain",
+    "unit": "pooled F0-F3 cross-fitted RMSE gain over protected v20",
+    "source": "current user kickstart prompt",
+    "environment_variable": "ROGII_V5_DEVELOPMENT_GOAL",
+    "resolver": "limited_query_cv/resolve_v5_goal.py",
+    "explicit_natural_language_value_allowed": true,
+    "example_explicit_values": [
+      0.2,
+      0.5
+    ],
+    "default_when_omitted": 0.2,
+    "must_be_finite": true,
+    "must_be_positive": true,
+    "ambiguous_or_conflicting_values": "request clarification before target-derived development begins"
+  },
+  "runtime_interface": {
+    "agent_transfers_clear_prompt_value_to_environment": true,
+    "environment_variable_is_durable_record": false,
+    "frozen_resolver_output_is_durable_record": true,
+    "cli_goal_fallback_allowed": true,
+    "environment_and_cli_disagreement": "error",
+    "policy_values_loaded_from_consolidated_policy": true
+  },
+  "prompt_capture": {
+    "resolver_flag": "--prompt-save",
+    "saved_filename": "kickstart_prompt.txt",
+    "input_scope": "literal user kickstart message only",
+    "hidden_system_or_developer_context_captured": false,
+    "digest_computed_by_resolver": true,
+    "user_supplied_digest_allowed": false,
+    "authorization_role": "audit metadata only",
+    "validation_gate": false,
+    "mismatch_may_abandon_or_renumber_run": false,
+    "existing_hash_only_records_grandfathered": true
+  },
+  "run_allocation": {
+    "resolver_flag": "--new-run",
+    "protected_batch_and_development_run_are_independent": true,
+    "active_batch_source": "completed_batches + 1 within the protected batch budget",
+    "directory_pattern": "limited_query_cv/runs/v5_batch{batch}_run_{run:03d}_goal_{goal_code}",
+    "run_number_scope": "within protected batch and numbering epoch",
+    "run_numbering_epoch_recorded": true,
+    "current_numbering_epoch": 2,
+    "run_number_monotonic": true,
+    "run_number_reuse_after_cleanup": false,
+    "run_number_reuse_across_explicit_reset_epochs": true,
+    "explicit_user_authorized_full_numbering_reset_allowed": true,
+    "full_numbering_reset_requires_empty_run_namespace": true,
+    "durable_high_watermark_in_ledger": true,
+    "goal_code_examples": {
+      "0.50": "050",
+      "0.30": "030",
+      "0.125": "0125"
+    },
+    "resolver_creates_directory_and_registration": true,
+    "resolver_updates_run_ledger": true,
+    "directory_and_ledger_committed_before_target_derived_metrics": true,
+    "archived_numbering_epoch_1_high_watermark": 9,
+    "numbering_epoch_2_first_run": 1
+  },
+  "readiness_resolution": {
+    "protocol_floor": 0.2,
+    "effective_readiness_target": "max(requested_development_rmse_gain, protocol_floor)",
+    "prompt_value_above_floor_raises_gate": true,
+    "prompt_value_below_floor_lowers_gate": false,
+    "all_revision_4_stability_clauses_remain_required": true,
+    "applies_to_final_batch_ensemble": true
+  },
+  "run_registration": {
+    "required_before_target_derived_development_metrics": true,
+    "required_fields": [
+      "parsed requested goal",
+      "explicit or default source",
+      "protocol floor",
+      "effective readiness target"
+    ],
+    "prompt_capture_recommended_but_not_authoritative": true,
+    "repository_policy_edit_required_for_clear_prompt_value": false,
+    "effective_target_fixed_for_run": true,
+    "later_user_change_requires_new_run_goal_record": true,
+    "prior_trials_and_goal_record_remain_immutable": true,
+    "silent_post_metric_goal_reduction_allowed": false
+  },
+  "unchanged_boundaries": {
+    "f4_manual_analysis_firewall": true,
+    "f4_nonnegative_gain_promotion_veto": true,
+    "logical_inner_roles": 20,
+    "unique_inner_training_trajectories": 10,
+    "outer_training_trajectories": 5,
+    "normal_deployed_outer_checkpoints": 5,
+    "strong_and_small_diverse_promotion_gates": true,
+    "kaggle_artifact_or_submission_authorized": false
+  }
+}

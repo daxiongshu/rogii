@@ -1,0 +1,25 @@
+{
+  "id": "jiweiliu/rogii-v5-promoted-c016-dual-t4",
+  "title": "ROGII V5 Promoted C016 Dual-T4",
+  "code_file": "infer.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "machine_shape": "NvidiaTeslaT4",
+  "keywords": [
+    "geology",
+    "unet"
+  ],
+  "dataset_sources": [
+    "jiweiliu/rogii-compact-alignment-cv5-weights",
+    "jiweiliu/rogii-v5-promoted-c016-weights"
+  ],
+  "kernel_sources": [],
+  "competition_sources": [
+    "rogii-wellbore-geology-prediction"
+  ],
+  "model_sources": []
+}

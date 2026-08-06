@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <title>CV Protocol v5 — ensemble weights and production</title>
+  <desc>How a candidate is blended into the frozen parent: a preregistered weight mode capped at 0.20, weights estimated only inside each outer fold's four-fold training pool under three groupings, the median rounded down to the grid and applied unchanged to the held fold, the production blend and test-time averaging, and what is packaged.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#8a8983"/></marker>
+    <g id="cross"><path d="M 0.6 0.6 L 8.4 8.4 M 8.4 0.6 L 0.6 8.4" fill="none" stroke="#d03b3b" stroke-width="2" stroke-linecap="round"/></g>
+  </defs>
+  <rect width="1600" height="900" fill="#fcfcfb"/>
+
+  <text x="48" y="52" font-size="26" font-weight="600" fill="#0b0b0b">06 · Ensemble weights and production</text>
+  <text x="48" y="78" font-size="14" fill="#52514e">A candidate never replaces the parent. It is blended in at a weight fitted without the fold it is applied to, then rounded down.</text>
+  <line x1="48" y1="98" x2="1552" y2="98" stroke="#e4e3de"/>
+
+  <!-- step 1 : weight mode -->
+  <rect x="48" y="122" width="470" height="252" rx="8" fill="#ffffff" stroke="#e4e3de"/>
+  <circle cx="70" cy="150" r="11" fill="#2a78d6"/><text x="70" y="154" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">1</text>
+  <text x="90" y="155" font-size="15" font-weight="600" fill="#0b0b0b">One weight mode, preregistered</text>
+  <text x="70" y="182" font-size="11.5" fill="#52514e">Chosen before the run, not after seeing scores.</text>
+
+  <text x="70" y="212" font-size="12" font-weight="600" fill="#0b0b0b">dense grid</text>
+  <g font-size="11">
+    <rect x="70" y="222" width="42" height="26" rx="4" fill="#f0efec"/><text x="91" y="239" text-anchor="middle" fill="#52514e">0</text>
+    <rect x="118" y="222" width="42" height="26" rx="4" fill="#eaf2fd"/><text x="139" y="239" text-anchor="middle" fill="#0b0b0b">.01</text>
+    <rect x="166" y="222" width="42" height="26" rx="4" fill="#eaf2fd"/><text x="187" y="239" text-anchor="middle" fill="#0b0b0b">.02</text>
+    <rect x="214" y="222" width="42" height="26" rx="4" fill="#eaf2fd"/><text x="235" y="239" text-anchor="middle" fill="#0b0b0b">.03</text>
+    <rect x="262" y="222" width="42" height="26" rx="4" fill="#cde2fb"/><text x="283" y="239" text-anchor="middle" fill="#0b0b0b">.05</text>
+    <rect x="310" y="222" width="46" height="26" rx="4" fill="#cde2fb"/><text x="333" y="239" text-anchor="middle" fill="#0b0b0b">.075</text>
+    <rect x="362" y="222" width="42" height="26" rx="4" fill="#9ec5f4"/><text x="383" y="239" text-anchor="middle" fill="#0b0b0b">.10</text>
+    <rect x="410" y="222" width="42" height="26" rx="4" fill="#9ec5f4"/><text x="431" y="239" text-anchor="middle" fill="#0b0b0b">.15</text>
+    <rect x="458" y="222" width="42" height="26" rx="4" fill="#6da7ec"/><text x="479" y="239" text-anchor="middle" fill="#0b0b0b">.20</text>
+  </g>
+  <text x="70" y="278" font-size="12" font-weight="600" fill="#0b0b0b">or nonnegative ridge</text>
+  <text x="70" y="298" font-size="11.5" fill="#52514e">with a preregistered regularisation grid</text>
+
+  <rect x="70" y="316" width="426" height="42" rx="6" fill="#fdf0ea"/>
+  <text x="283" y="342" font-size="12" font-weight="600" fill="#eb6834" text-anchor="middle">either way, maximum candidate weight 0.20</text>
+
+  <!-- step 2 : estimation -->
+  <rect x="542" y="122" width="1010" height="252" rx="8" fill="#ffffff" stroke="#e4e3de"/>
+  <circle cx="564" cy="150" r="11" fill="#2a78d6"/><text x="564" y="154" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">2</text>
+  <text x="584" y="155" font-size="15" font-weight="600" fill="#0b0b0b">Estimated per outer fold, inside its own training pool</text>
+  <text x="564" y="182" font-size="11.5" fill="#52514e">The specification applies to whichever mode is registered: for outer fold h the weight is fitted only on the other four folds, under all three groupings, then reduced to one number.</text>
+
+  <g>
+    <rect x="564" y="200" width="150" height="30" rx="4" fill="#cde2fb" stroke="#2a78d6"/><text x="639" y="220" font-size="11.5" text-anchor="middle" fill="#0b0b0b">original</text>
+    <rect x="564" y="238" width="150" height="30" rx="4" fill="#e8f1fc" stroke="#9ec5f4"/><text x="639" y="258" font-size="11.5" text-anchor="middle" fill="#0b0b0b">balanced</text>
+    <rect x="564" y="276" width="150" height="30" rx="4" fill="#f2f7fe" stroke="#b7d3f6"/><text x="639" y="296" font-size="11.5" text-anchor="middle" fill="#0b0b0b">independent</text>
+    <text x="639" y="326" font-size="10.5" fill="#8a8983" text-anchor="middle">three estimates</text>
+  </g>
+
+  <line x1="724" y1="253" x2="756" y2="253" stroke="#8a8983" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="766" y="228" width="130" height="50" rx="6" fill="#f6f6f3"/>
+  <text x="831" y="250" font-size="12" font-weight="600" fill="#0b0b0b" text-anchor="middle">median</text>
+  <text x="831" y="268" font-size="10.5" fill="#52514e" text-anchor="middle">of the three</text>
+
+  <line x1="906" y1="253" x2="938" y2="253" stroke="#8a8983" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="948" y="228" width="150" height="50" rx="6" fill="#fdf0ea"/>
+  <text x="1023" y="250" font-size="12" font-weight="600" fill="#eb6834" text-anchor="middle">round DOWN</text>
+  <text x="1023" y="268" font-size="10.5" fill="#52514e" text-anchor="middle">to the registered grid</text>
+
+  <line x1="1108" y1="253" x2="1140" y2="253" stroke="#8a8983" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="1150" y="212" width="180" height="82" rx="6" fill="#eaf2fd" stroke="#2a78d6"/>
+  <text x="1240" y="240" font-size="12" font-weight="600" fill="#0b0b0b" text-anchor="middle">w_h</text>
+  <text x="1240" y="262" font-size="11" fill="#52514e" text-anchor="middle">applied unchanged</text>
+  <text x="1240" y="280" font-size="11" fill="#52514e" text-anchor="middle">to held fold h</text>
+
+  <rect x="1352" y="200" width="178" height="106" rx="6" fill="#faf9f6" stroke="#e4e3de"/>
+  <text x="1441" y="224" font-size="11.5" font-weight="600" fill="#0b0b0b" text-anchor="middle">Two shrinkages</text>
+  <text x="1441" y="248" font-size="11" fill="#52514e" text-anchor="middle">the median discards</text>
+  <text x="1441" y="264" font-size="11" fill="#52514e" text-anchor="middle">the optimistic grouping</text>
+  <text x="1441" y="286" font-size="11" fill="#52514e" text-anchor="middle">rounding down never</text>
+  <text x="1441" y="302" font-size="11" fill="#52514e" text-anchor="middle">rounds toward more</text>
+
+  <text x="564" y="352" font-size="11.5" fill="#52514e">The groupings re-partition cached component predictions and refit only the weights — no model is retrained, which is why three groupings do not cost three sets of training runs.</text>
+
+  <!-- step 3 : production -->
+  <rect x="48" y="398" width="760" height="242" rx="8" fill="#ffffff" stroke="#eb6834"/>
+  <circle cx="70" cy="426" r="11" fill="#eb6834"/><text x="70" y="430" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">3</text>
+  <text x="90" y="431" font-size="15" font-weight="600" fill="#0b0b0b">Production is five fold-local blends, averaged</text>
+
+  <rect x="70" y="452" width="716" height="80" rx="6" fill="#f6f6f3"/>
+  <text x="92" y="482" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#0b0b0b">fold_h = (1 − w_h) · frozen_parent_h + w_h · candidate_h</text>
+  <text x="92" y="512" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#0b0b0b">test   = mean(fold_0, fold_1, fold_2, fold_3, fold_4)</text>
+
+  <text x="70" y="558" font-size="11.5" fill="#52514e">There is no full-data refit. The five fold-local weights and the five outer checkpoints are what ships, exactly as</text>
+  <text x="70" y="576" font-size="11.5" fill="#52514e">they were frozen. At test time all five models see every row, so the deployed prediction is an average of five.</text>
+
+  <rect x="70" y="586" width="716" height="46" rx="6" fill="#fdf0ea"/>
+  <text x="90" y="606" font-size="11.5" fill="#52514e">OOF gives each well one excluding model; test inference averages five.</text>
+  <text x="90" y="624" font-size="11.5" fill="#52514e">So OOF is conservative about exactly one thing: test-time fold-averaging variance reduction.</text>
+
+  <!-- packaging -->
+  <rect x="832" y="398" width="720" height="242" rx="8" fill="#ffffff" stroke="#e4e3de"/>
+  <circle cx="854" cy="426" r="11" fill="#2f2e2b"/><text x="854" y="430" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">4</text>
+  <text x="874" y="431" font-size="15" font-weight="600" fill="#0b0b0b">What is packaged, and what never is</text>
+
+  <g font-size="11.5">
+    <rect x="854" y="452" width="320" height="76" rx="6" fill="#eaf7f1"/>
+    <text x="874" y="476" font-weight="600" fill="#0b0b0b">shipped</text>
+    <text x="874" y="498" fill="#52514e">the 5 outer checkpoints</text>
+    <text x="874" y="518" fill="#52514e">the 5 frozen fold weights, checksummed</text>
+
+    <rect x="1194" y="452" width="336" height="76" rx="6" fill="#fbeeee"/>
+    <text x="1214" y="476" font-weight="600" fill="#0b0b0b">never shipped</text>
+    <text x="1214" y="498" fill="#a33d18">the 10 inner pair trajectories</text>
+    <text x="1214" y="518" fill="#a33d18">any artifact produced after the reveal</text>
+  </g>
+
+  <text x="854" y="556" font-size="11.5" fill="#52514e">A candidate checkpoint whose frozen weight is exactly zero may be omitted from the package —</text>
+  <text x="854" y="574" font-size="11.5" fill="#52514e">it is still loaded by the historical kernel, which is why v20 ships 85 checkpoints but only 80 contribute.</text>
+  <text x="854" y="602" font-size="11.5" font-weight="600" fill="#0b0b0b">Every deployed artifact and weight is checksummed, and local–Kaggle parity is verified before the run is called done.</text>
+
+  <!-- real examples -->
+  <rect x="48" y="664" width="1504" height="164" rx="8" fill="#faf9f6" stroke="#e4e3de"/>
+  <text x="70" y="692" font-size="15" font-weight="600" fill="#0b0b0b">The two accepted candidates, as configured</text>
+
+  <rect x="70" y="708" width="716" height="102" rx="6" fill="#ffffff" stroke="#d8d7d1"/>
+  <text x="90" y="732" font-size="12" font-weight="600" fill="#0b0b0b">C016 — the cap, used in full</text>
+  <text x="90" y="754" font-size="11.5" fill="#52514e">local weight 0.200 on all five outer folds — the grid maximum, so the cap</text>
+  <text x="90" y="772" font-size="11.5" fill="#52514e">bound on every fold. Outer 3 adds a posterior term at production scale</text>
+  <text x="90" y="790" font-size="11.5" fill="#52514e">0.05; the mode-bank family was frozen at exactly zero and dropped.</text>
+
+  <rect x="812" y="708" width="740" height="102" rx="6" fill="#ffffff" stroke="#d8d7d1"/>
+  <text x="832" y="732" font-size="12" font-weight="600" fill="#0b0b0b">Run4 — a router instead of a scalar</text>
+  <text x="832" y="754" font-size="11.5" fill="#52514e">a per-well route between a structural and a raw-surface blend, with 18 candidate</text>
+  <text x="832" y="772" font-size="11.5" fill="#52514e">weights per outer fold and a production correction scale of 0.6. Same rule underneath:</text>
+  <text x="832" y="790" font-size="11.5" fill="#52514e">every weight fitted without the fold it is applied to, frozen before the reveal.</text>
+
+  <text x="48" y="866" font-size="11" fill="#8a8983">Rules from CV_PROTOCOL_V5.md § Ensemble and production · configurations from c016_recipe.json and deploy/kaggle/run4-sr-weights-dataset/recipe.json</text>
+</svg>

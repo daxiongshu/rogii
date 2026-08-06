@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "protocol_name": "cv-protocol-v5",
+  "protocol_revision": 11,
+  "run_id": "v5_batch3_run_004_goal_020",
+  "stage": "recipe_frozen_before_F1_F3_metrics",
+  "status": "frozen_for_complete_development_evaluation",
+  "candidate": "clean two-stage router plus bounded row surface router",
+  "falsification_control": {
+    "held_fold": 0,
+    "clean_C016_rmse": 5.825838246041426,
+    "clean_stacked_base_rmse": 5.717474938570494,
+    "two_stage_routed_rmse": 5.653167542054905,
+    "selected_candidate_rmse": 5.631202371481463,
+    "incremental_gain": 0.021965170573441828,
+    "screen": "limited_query_cv/runs/v5_batch3_run_004_goal_020/row_surface_amplitude_f0_screen.npz",
+    "screen_sha256": "63264161f2abe5dfc4549faf887c3d69f4fc58b5994e9b576d813a3a40492a78"
+  },
+  "fixed_recipe": {
+    "surface_candidate_index": 12,
+    "surface_candidate_name": "surface_raw_global_n10_bw1_d0_r138",
+    "amplitude_cap": 0.2,
+    "training_stride": 4,
+    "target": "bounded pointwise optimal amplitude relative to the clean stacked base",
+    "target_sample_weight": "surface correction energy capped at the within-fold 99th percentile",
+    "model": "CatBoost RMSE depth 6, 900 iterations, learning rate 0.04, l2_leaf_reg 12, random_strength 0.3",
+    "smoothing_sigma": 127.0,
+    "fade_rows": 128,
+    "row_share": 0.5,
+    "base_router": "limited_query_cv/runs/v5_batch3_run_004_goal_020/two_stage_router_screen_best.npz",
+    "base_router_sha256": "ed56dcd6e3de4c317b5bc1ddcd6c07d0252cd4ee57ba669f17951896a4ce9348"
+  },
+  "source": {
+    "trainer": "limited_query_cv/train_v5_batch3_run4_row_surface_router.py",
+    "trainer_sha256": "e20733b17f47b2fdc212c4285fee44f817b2a9cd6e3b723cfa97ffd3c5a29bc6",
+    "evaluator": "limited_query_cv/evaluate_v5_batch3_run4_row_surface_router.py",
+    "evaluator_sha256": "a4e2bcee840c9e8c402d280e9a489a01db80285035e0b6c9071daa6ebaf8c993"
+  },
+  "fold_artifacts": [
+    {
+      "fold": 0,
+      "cache_sha256": "d28bfe958f818e480c95ea3bb61f819a63a07da9c37928354ae989ae66ceb181",
+      "model_sha256": "5e6f4ec2ad8e2b169fbeb944b5314c76abb68ed246f877cbcf611b836b00c5d9"
+    },
+    {
+      "fold": 1,
+      "cache_sha256": "16b3966ae322685d6743a8fd4b07994e69c0526dd79f780b78e08f5fc747353f",
+      "model_sha256": "f7459d10e8bcfdc0d86ea01b3f0dca8860abc926576896f0f8001c0b1ba9b60e"
+    },
+    {
+      "fold": 2,
+      "cache_sha256": "b5f1e1a373941f9a35f2a16fa5acbc6748d4467b1b782ae1bdfd22b35f491128",
+      "model_sha256": "8e5daba6e8bf079799348373a2fa7994e302f7e34ed24acf7cb855b8d4c92e2d"
+    },
+    {
+      "fold": 3,
+      "cache_sha256": "7ab80afebe30bb27470a41985af679d8fbadbd3cb442f1551a1b317eee8326c4",
+      "model_sha256": "143f5ab7bdc172a46a368fd07727a7e65f74edaeef2ceb318c43c6d029651405"
+    }
+  ],
+  "metrics_opened_at_freeze": {
+    "F0": true,
+    "F1": false,
+    "F2": false,
+    "F3": false,
+    "F4": false
+  },
+  "firewall": {
+    "F4_loaded": false,
+    "F4_metric_computed": false,
+    "protected_reveal_spent": false
+  },
+  "kaggle_dataset_authorized": false,
+  "kaggle_kernel_authorized": false,
+  "kaggle_submission_authorized": false
+}

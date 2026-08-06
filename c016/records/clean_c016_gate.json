@@ -1,0 +1,56 @@
+{
+  "audit_fold_loaded": false,
+  "checks": {
+    "D072_absent_from_components": true,
+    "all_sources_rehashed": true,
+    "common_layout_exact": true,
+    "corrupted_archive_rejected": true,
+    "exact_parent_zero_noop": true,
+    "excluded_held_truth_invariant": true,
+    "forbidden_stratified_parent_absent": true,
+    "negative_safe_replacement_record_rehashed": true,
+    "planted_weights_recovered": true,
+    "protected_flags_false": true,
+    "quarantine_record_rehashed": true
+  },
+  "components": [
+    "protected_posterior_incremental",
+    "protected_mode_bank"
+  ],
+  "confirmation_regroupings_loaded": false,
+  "family": "clean_c016_without_quarantined_d072",
+  "half_amplitude": 0.5,
+  "held_target_metric_computed": false,
+  "maximum_component_weight": 0.5,
+  "planted_selection": {
+    "active_components": 2,
+    "eligible": true,
+    "mean_complete_well_gain": 0.23005872170887867,
+    "minimum_role_gain": 0.22049033519779326,
+    "pooled_gain": 0.2311152193370768,
+    "ridge": 0.0,
+    "role_gains": [
+      0.24045223731117923,
+      0.2319686778082085,
+      0.22049033519779326
+    ],
+    "sum_weights": 0.29999999999999816,
+    "weights": {
+      "protected_mode_bank": 0.09999999999998108,
+      "protected_posterior_incremental": 0.20000000000001708
+    }
+  },
+  "ridge_grid": [
+    0.0,
+    1e-05,
+    0.0001,
+    0.001,
+    0.01,
+    0.1,
+    1.0
+  ],
+  "run_id": "v5_batch2_run_025_goal_050",
+  "schema_version": 1,
+  "source_sha256": "066541735d21cdd0dfd708c4f14d7c933edabdc26dbbbecf9f570601ea744864",
+  "status": "metric_free_gate_passed"
+}

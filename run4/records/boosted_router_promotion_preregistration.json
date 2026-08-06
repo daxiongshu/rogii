@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "protocol_name": "cv-protocol-v5",
+  "protocol_revision": 11,
+  "run_id": "v5_batch3_run_004_goal_020",
+  "batch": 3,
+  "family": "clean_boosted_whole_well_utility_router",
+  "candidate": "clean boosted whole-well utility router",
+  "stage": "protected_outer_promotion_preregistration",
+  "status": "frozen_before_single_protected_outer_reveal",
+  "created_utc": "2026-07-31",
+  "authorization": "limited_query_cv/runs/v5_batch3_run_004_goal_020/user_authorized_confirmation_waiver.json",
+  "authorization_sha256": "da56137ca4c0697d8379246f72554a45500fba3aac836d179a5e47d2fd629f8b",
+  "policy_amendment": "limited_query_cv/runs/v5_batch3_run_004_goal_020/confirmation_waiver_policy_amendment.json",
+  "policy_amendment_sha256": "8adbc7cec0546584f433bb8d6452cba34ac1d745be79d52c9d285ae2f108ed59",
+  "failed_confirmation": "limited_query_cv/runs/v5_batch3_run_004_goal_020/promotion_confirmation_result.json",
+  "failed_confirmation_sha256": "89918fd0bdb8734792bc11b7b8d1e3f083c0f7e75e51a442490fdb67e468c5ac",
+  "exception_scope": {
+    "entry_threshold": 0.17,
+    "minimum_exposed_geometry_gain": 0.1728923861617382,
+    "fresh_confirmation_gain": 0.11873195272778769,
+    "fresh_confirmation_worst_group_gain": -0.06297710334639106,
+    "failed_confirmation_waived_by_user": true,
+    "stored_goal": 0.2,
+    "stored_goal_changed": false,
+    "ordinary_outer_promotion_gates_changed": false,
+    "F4_nonnegative_gain_veto_retained": true
+  },
+  "fixed_recipe": {
+    "base": {
+      "historical_amplitude": 0.75,
+      "relative_l2": 0.0001,
+      "original_cap": 0.75,
+      "reverse_cap": 0.75,
+      "global_shrinkage": 0.875,
+      "nuisance_index_suppressed": 17
+    },
+    "surface_route": {
+      "model": "XGBRegressor",
+      "n_estimators": 600,
+      "learning_rate": 0.025,
+      "max_depth": 1,
+      "min_child_weight": 10,
+      "subsample": 0.85,
+      "colsample_bytree": 0.6,
+      "reg_lambda": 15.0,
+      "reg_alpha": 0.1,
+      "candidate_indices": [12, 13, 14, 15],
+      "amplitude_cap": 0.3,
+      "utility_threshold": 0.2,
+      "applied_scale": 0.625
+    },
+    "second_route": {
+      "model": "ExtraTreesRegressor",
+      "n_estimators": 700,
+      "min_samples_leaf": 16,
+      "max_features": 0.7,
+      "candidate_scope": "structural and reverse directions",
+      "amplitude_cap": 0.2,
+      "utility_threshold": 0.01,
+      "applied_scale": 1.25
+    },
+    "target": "negative clean-stacked-base error projection normalized by candidate energy and well rows",
+    "held_outer_truth_selects_own_route": false,
+    "same_automatic_rule_for_all_outer_contexts": true
+  },
+  "deployment_availability_rule": {
+    "rule": "A candidate correction is eligible only when its target-free prediction artifact exists and passes its checksum; otherwise its correction is exactly zero.",
+    "F4_available_reverse_candidates": [
+      "reverse_protected_mode_maximin"
+    ],
+    "F4_unavailable_reverse_candidates": [
+      "reverse_physics_prior_mixed",
+      "reverse_local_residual_seed_bag",
+      "reverse_multiscale_residual_bag",
+      "reverse_target_surface",
+      "reverse_local_residual_snapshot_bag",
+      "reverse_multi_anchor_phase",
+      "reverse_hardtail",
+      "reverse_mtp",
+      "reverse_trajectory_direction_projection"
+    ],
+    "unavailable_corrections_exact_zero": true,
+    "rule_frozen_before_F4": true,
+    "post_reveal_regeneration_allowed": false
+  },
+  "sealed_assembly": {
+    "logical_inner_roles": 20,
+    "unique_symmetric_pair_models": 10,
+    "outer_models": 5,
+    "F4_truth_may_train_router_and_base_for_outer_0_to_3": true,
+    "F4_truth_may_train_or_select_outer_4_prediction": false,
+    "all_outer_predictions_frozen_before_joint_evaluator": true,
+    "prediction_archive_stores_truth": false
+  },
+  "promotion_gates": {
+    "strong": {
+      "minimum_pooled_gain_over_v20": 0.03,
+      "minimum_improved_original_folds": 4,
+      "all_original_balanced_independent_gains_nonnegative": true,
+      "maximum_held_group_regression": 0.01
+    },
+    "small_diverse": {
+      "available": false,
+      "reason": "No preregistered fold-local incremental weight estimates for this complete postprocessor."
+    },
+    "F4_nonnegative_gain_over_v20_veto": true
+  },
+  "bootstrap": {
+    "unit": "complete well",
+    "paired": true,
+    "resamples": 2000,
+    "seed": 20260725
+  },
+  "protected_outer_reveal": {
+    "batch": 3,
+    "maximum_reveals": 1,
+    "previously_spent": false,
+    "F4_metric_previously_computed_for_this_batch": false,
+    "single_evaluator_after_manifest_freeze": true
+  },
+  "frozen_source": "limited_query_cv/promote_v5_batch3_run4_boosted_router.py",
+  "frozen_source_sha256": "8c505adef872b6ffe1914d26c44039820a8d85de5820a7cafd35d6fa32170e9d",
+  "kaggle_dataset_authorized": false,
+  "kaggle_kernel_authorized": false,
+  "kaggle_submission_authorized": false
+}

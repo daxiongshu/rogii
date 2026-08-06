@@ -1,0 +1,246 @@
+{
+  "schema_version": 1,
+  "protocol_name": "cv-protocol-v5",
+  "protocol_revision": 9,
+  "run_id": "v5_batch2_run_025_goal_050",
+  "batch": 2,
+  "stage": "clean_c016_exception_promotion_preregistration",
+  "status": "preregistered_clean_c016_exception_audit",
+  "created_utc": "2026-07-29T00:00:00Z",
+  "baseline_commit": "f32712b",
+  "exception_authorization": "limited_query_cv/runs/v5_batch2_run_025_goal_050/user_authorized_clean_c016_scope_exception.json",
+  "exception_authorization_sha256": "6da5dd6d331f593aa6386e0e2338ef2d1570620779efafcb44ed67792c88f281",
+  "exception_scope": {
+    "clean_c016_treated_as_ready_for_this_audit": true,
+    "observed_clean_development_gain": 0.1210103266375624,
+    "candidate_specific_entry_threshold": 0.121,
+    "stored_goal_0p50_changed": false,
+    "global_v5_floor_0p20_changed": false,
+    "ordinary_promotion_gates_changed": false
+  },
+  "candidate": {
+    "name": "original-fold-safe C016",
+    "development_result": "limited_query_cv/runs/v5_batch2_run_025_goal_050/original_safe_c016_result.json",
+    "development_result_sha256": "24a5d88e2706ccde354127a445f3324a004fa8b379070625f71a3b9458e87cc0",
+    "development_archive": "limited_query_cv/runs/v5_batch2_run_025_goal_050/original_safe_c016_clean.npz",
+    "development_archive_sha256": "dcf7d139252ad9ba72a73f240a9827e2078ce2e658cf0a52369131142f8a96bb",
+    "mode_leak_repair": "limited_query_cv/runs/v5_batch2_run_025_goal_050/c016_mode_leak_repair.json",
+    "mode_leak_repair_sha256": "8ed09f360e8893f374c6af0d55a5db1eed3b7383db13fcb91403541914cd5fe6",
+    "D072_allowed": false,
+    "stratified_parent_allowed": false,
+    "transitive_quarantined_lineage_allowed": false
+  },
+  "fixed_pipeline": {
+    "baseline": "checksummed v20 OOF prediction and original-fold checkpoints",
+    "D570": {
+      "family": "local residual categorical U-Net",
+      "base_channels": 12,
+      "seeds": [
+        20260831,
+        20261043
+      ],
+      "seed_treatments": [
+        "seed20260831",
+        "seed20261043",
+        "equal_seed_bag"
+      ],
+      "epochs": 16,
+      "snapshots": [
+        2,
+        4,
+        8,
+        12,
+        16
+      ],
+      "temperatures": [
+        0.5,
+        0.75,
+        1.0,
+        1.5,
+        2.0
+      ],
+      "blend_weights": [
+        0.0,
+        0.01,
+        0.02,
+        0.03,
+        0.05,
+        0.075,
+        0.1,
+        0.15,
+        0.2
+      ],
+      "amplitudes": [
+        0.75,
+        1.0,
+        1.25,
+        1.5,
+        1.75,
+        2.0,
+        2.5
+      ]
+    },
+    "protected_posterior": {
+      "variants": [
+        "posterior_only_b12",
+        "posterior_physical_b12",
+        "posterior_physical_b16"
+      ],
+      "epochs": 24,
+      "snapshots": [
+        4,
+        8,
+        12,
+        16,
+        20,
+        24
+      ],
+      "temperatures": [
+        0.75,
+        1.0,
+        1.5,
+        2.0
+      ],
+      "amplitudes": [
+        1.0,
+        1.5,
+        2.0,
+        3.0,
+        4.0
+      ],
+      "shares": [
+        0.0,
+        0.01,
+        0.02,
+        0.03,
+        0.05,
+        0.075,
+        0.1,
+        0.15,
+        0.2
+      ]
+    },
+    "mode_bank": {
+      "parents": 15,
+      "candidate_corrections": 240,
+      "maximum_greedy_components": 3,
+      "stratified_parent_removed": true,
+      "parent_checkpoints_retrained": false,
+      "reason_parent_checkpoints_not_retrained": "They are the immutable locked v20 baseline families. C016 trains only its residual and posterior submodels; mode selection is nested over fixed target-free v20 inference views."
+    },
+    "final_bounded_ridge": {
+      "components": [
+        "protected_posterior_incremental",
+        "protected_mode_bank"
+      ],
+      "ridge_grid": [
+        0.0,
+        1e-05,
+        0.0001,
+        0.001,
+        0.01,
+        0.1,
+        1.0
+      ],
+      "maximum_component_weight": 0.5,
+      "final_interpolation_amplitude": 0.5
+    }
+  },
+  "nested_rerun": {
+    "outer_folds": 5,
+    "inner_roles_per_outer": 4,
+    "logical_inner_roles": 20,
+    "unique_pair_roles": 10,
+    "outer_roles": 5,
+    "reciprocal_pair_reuse": true,
+    "local_residual_seed_trajectories": 30,
+    "posterior_variant_trajectories": 45,
+    "total_neural_trajectories": 75,
+    "all_candidate_checkpoints_and_predictions_frozen_before_selector": true,
+    "all_five_outer_predictions_frozen_before_joint_evaluator": true,
+    "outer_held_truth_selects_own_recipe": false,
+    "pair_validation_predictions_select_outer_recipe": true
+  },
+  "confirmations": {
+    "required_before_nested_training": true,
+    "groupings": [
+      "balanced",
+      "independent"
+    ],
+    "minimum_each_gain_versus_v20": 0.1,
+    "confirmation_result": "limited_query_cv/runs/v5_batch2_run_025_goal_050/promotion_audit/confirmation_result.json"
+  },
+  "confirmation_result": "limited_query_cv/runs/v5_batch2_run_025_goal_050/promotion_audit/confirmation_result.json",
+  "promotion_gates": {
+    "strong": {
+      "minimum_pooled_gain": 0.03,
+      "minimum_improved_original_folds": 4,
+      "all_original_balanced_independent_gains_nonnegative": true,
+      "maximum_held_group_regression": 0.01
+    },
+    "small_diverse": {
+      "pooled_gain_positive": true,
+      "all_original_balanced_independent_gains_positive": true,
+      "minimum_positive_fold_local_inner_weights": 10,
+      "maximum_held_group_regression": 0.01,
+      "minimum_bootstrap_probability_gain_positive": 0.8,
+      "minimum_bootstrap_gain_quantile_0_10": -0.005
+    },
+    "f4_nonnegative_gain_veto": true,
+    "f4_bootstrap_additional_threshold": null
+  },
+  "bootstrap": {
+    "unit": "complete well",
+    "paired": true,
+    "resamples": 2000,
+    "seed": 20260725
+  },
+  "data_fingerprints": {
+    "layout_sha256": "546a12d53498fd7a816742c351abaa4e6e96ae5536eb8885081948fbe10d4c9e",
+    "v20_prediction_sha256": "ee94cbc42d9378514fa8d3e8cb23f9a42fea999c7ec457009c99fbc65fb9ebe0",
+    "v20_checkpoint_manifest_sha256": "145fe76ca0a4fa48003d755ddcb661786dfe48e2ecfa9a83a2bd9b9e553e19d5",
+    "balanced_assignment_sha256": "8250a71706ea45022b905ed740ac2a4b485059dbc623ed64da1a4b584ecb62e2",
+    "independent_assignment_sha256": "4bd21dbfb6e2815c2ffb25478c3dab4e264298bda2a76bc48aad14392cd7be54"
+  },
+  "frozen_source_sha256": {
+    "limited_query_cv/prepare_v5_run25_c016_nested.py": "4c90f0e7f2fc6d83a562c95971fab24d29d404e8c8e3ef3bcac638e847ec8af3",
+    "limited_query_cv/train_v5_run25_c016_nested.py": "9300ec2d66cd0a608715fc039f3947a60e6150ea8ac88edf869d8d2bdf63d559",
+    "limited_query_cv/assemble_v5_run25_c016_nested.py": "e1871a3e8eca9bb86c443d6c0a26daf80a95cd78f380d1e1a2ed2fdca41cbe29",
+    "limited_query_cv/evaluate_v5_run25_c016_promotion.py": "24647550459a2257de74efc8b5d489300cf56d1317bf681eae6ea262d6c4d8e0",
+    "limited_query_cv/train_v5_run6_local_v20_residual.py": "2947806f6e83526a8c8559b4d0374c297e12dbf6e04ec54b67889a468c56efce",
+    "limited_query_cv/train_v5_run6_protected_posterior_fusion.py": "62bb48fd63adb994df23a997f35eb5bfc0882cccd3ea8a26127c11aecf9454e8",
+    "limited_query_cv/evaluate_v5_run6_local_residual_seed_bag.py": "29a031ddad5d70c21d3e1dbf024b02feaa52fda6982405d7d8cbdd6ff4838b6a",
+    "limited_query_cv/evaluate_v5_run6_d209_amplitude.py": "1c5602cc77a0d633f039fba672400c23c67c61a8b8f2b29643430f140fbf83d6",
+    "limited_query_cv/evaluate_v5_run6_protected_posterior_clean.py": "3eda8246e655b25c07674804350b0571e61f3b273bc6a3e33caf966dc3d5864f",
+    "limited_query_cv/evaluate_v5_run6_protected_mode_bank.py": "1abbff6a8eca8bf79b9d6cd4e4fa92483f269aa7a56f29691ee98d65355fbe67",
+    "limited_query_cv/evaluate_v5_run8_clean_multimodel_ridge.py": "d2663969427236c05d8658273b12dff1d26c7ef0a0dcb308931cd2e984a4ef4e",
+    "rogii/alignment.py": "c2df8df7d25fe78deb958f97461261dfd5cfa034069aa58525210d0df05c778f",
+    "rogii/data.py": "d50bf8db439a175a8d0786b0bad3b325da311fa18a2da5774f527986a85d20af",
+    "rogii/sequence.py": "6018e9852edb7f560ce41a8944b66986604697af43583c270b5cf0ad2fc59ea0",
+    "cache_alignment_oof_predictions.py": "2cd064767dd39b6aa028ee8591074a1da2b1f75da6e98784e4a273acddde970b"
+  },
+  "implementation_gate": {
+    "result": "limited_query_cv/runs/v5_batch2_run_025_goal_050/c016_nested_selector_gate.json",
+    "result_sha256": "470c54c21cf39cda776a12b79144cc6f5fbebd323ca0695986a96a5cb3bd0982",
+    "status": "passed",
+    "real_f4_target_loaded": false
+  },
+  "evaluator_source_sha256": "24647550459a2257de74efc8b5d489300cf56d1317bf681eae6ea262d6c4d8e0",
+  "firewall": {
+    "f4_target_derived_training_logs_redirected_and_not_opened": true,
+    "candidate_prediction_archives_store_no_truth": true,
+    "sealed_selector_stdout_redirected_and_not_opened": true,
+    "selector_record_not_opened_before_joint_evaluator": true,
+    "single_evaluator_is_first_agent_facing_f4_metric": true,
+    "pipeline_changes_after_sealed_selector": false
+  },
+  "reveal": {
+    "maximum_joint_reveals": 1,
+    "authorized_after_confirmation_and_complete_manifest": true,
+    "protected_outer_reveal_spent": false,
+    "f4_metric_computed": false
+  },
+  "kaggle_dataset_authorized": false,
+  "kaggle_kernel_authorized": false,
+  "kaggle_submission_authorized": false
+}

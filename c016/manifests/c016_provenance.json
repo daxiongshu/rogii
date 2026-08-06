@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "competition": "rogii-wellbore-geology-prediction",
+  "solution": "c016",
+  "candidate": "clean_c016_without_quarantined_d072",
+  "parent_solution": "v20",
+  "run_id": "v5_batch2_run_025_goal_050",
+  "protocol": "cv-protocol-v5",
+  "source_commit": "64e1cf12320274ef2c26f2bf465e6346b57aa88a",
+  "relationship_to_v20": "C016 does not retrain v20. It caches the nine weighted v20 component predictions per fold, trains eleven small residual/posterior networks on top of them, and adds a selected correction to the v20 baseline. The v20 checkpoint manifest is re-hashed by the pipeline before any stage runs.",
+  "metrics": {
+    "v20_baseline_pooled_oof_rmse": 6.189484768154311,
+    "legal_production_oof_rmse": 6.1272727841976,
+    "original_reported_oof_rmse": 6.124619174007348,
+    "legal_production_oof_gain": 0.062211983956711236,
+    "fold_rmse": [
+      5.825838246041426,
+      6.119897279692428,
+      5.339144043108915,
+      6.16663405157052,
+      7.071313664328342
+    ],
+    "all_five_original_folds_improve": true,
+    "public_lb_rmse": 6.127,
+    "public_lb_gain_vs_v20": 0.136
+  },
+  "kaggle": {
+    "weights_dataset": "jiweiliu/rogii-v5-promoted-c016-weights",
+    "kernel": "jiweiliu/rogii-v5-promoted-c016-dual-t4",
+    "submission_reference": 55115834,
+    "submitted_utc": "2026-07-30T17:35:25.720000",
+    "submission_csv_sha256": "0b2dc90f1ede1c9d8755bf2bdb179f260dce2f514f9decb600f9765199b079db",
+    "inference_source_sha256": "610f8f704c790d4f28a826b14d18f4bcdb7073af8f13eeecf82c93350c595121"
+  },
+  "manifests": {
+    "sources": "manifests/c016_sources.json",
+    "artifacts": "manifests/c016_artifacts.json",
+    "recipe": "weights-dataset/c016_recipe.json",
+    "weights": "weights-dataset/c016_manifest.json"
+  }
+}
