@@ -1,4 +1,4 @@
-# [5.962] A Distributional U-Net for Whole-Well Geological Alignment
+# A Distributional U-Net for Whole-Well Geological Alignment
 
 **Jiwei Liu · Team Kaggle Agent**
 
@@ -10,13 +10,13 @@ Our central decision was to stop treating each hidden row as an independent regr
 2. a **Residual refiner** that learned a small, bounded correction to that path; and
 3. a **Routed ensemble** that applied sparse structural or cross-well surface corrections only when inference-visible evidence supported them.
 
-| Stage | Five-fold whole-well OOF RMSE | Public LB RMSE |
-|---|---:|---:|
-| Core alignment | 6.1895 | 6.263 |
-| Residual refiner | 6.1273 | 6.127 |
-| Routed ensemble | **6.0665** | **5.962** |
+| Stage | Five-fold whole-well OOF RMSE | Public LB RMSE | Private LB RMSE |
+|---|---:|---:|---:|
+| Core alignment | 6.1895 | 6.263 | 6.985 |
+| Residual refiner | 6.1273 | 6.127 | 6.918 |
+| Routed ensemble | **6.0665** | **5.962** | **6.729** |
 
-The improvement was gradual, but it was consistent: every fold improved from the first stage to the final one. More importantly, every prediction used by validation was generated without reading that well's held-out target.
+The improvement was gradual, but it was consistent: every fold improved from the first stage to the final one, and the same ordering held on both leaderboard splits. The private set was harder in absolute RMSE, but the final system still improved by `0.256` over Core alignment there. More importantly, every prediction used by validation was generated without reading that well's held-out target.
 
 ## 1. Reframing the target as a geological path
 
@@ -134,7 +134,7 @@ Each residual-training batch mixed real out-of-fold residual records and synthet
 
 This stage used nested whole-well cross-validation. For each protected outer fold, all model and recipe choices were made only with the other four folds. Reciprocal excluded-pair roles let us represent 20 logical inner roles with 10 unique pair trainings. We then trained five outer models, each excluding the fold it predicted.
 
-The deployed residual stage averaged five clean outer paths. Its neural package contained 10 local residual networks—two seeds for each outer role—plus one physical posterior network. This improved pooled OOF RMSE from `6.1895` to `6.1273` and public LB from `6.263` to `6.127`.
+The deployed residual stage averaged five clean outer paths. Its neural package contained 10 local residual networks—two seeds for each outer role—plus one physical posterior network. This improved pooled OOF RMSE from `6.1895` to `6.1273`, public LB from `6.263` to `6.127`, and private LB from `6.985` to `6.918`.
 
 ## 6. Structural candidates from the target well
 
@@ -213,14 +213,17 @@ The final routed correction improved all five held-out folds:
 | F4 | 7.1159 | 7.0713 | **7.0704** | +0.0455 |
 | **Pooled OOF** | **6.1895** | **6.1273** | **6.0665** | **+0.1230** |
 | **Public LB** | **6.263** | **6.127** | **5.962** | **+0.301** |
+| **Private LB** | **6.985** | **6.918** | **6.729** | **+0.256** |
 
-The final public score corresponds to Kaggle submission `55147410`.
+The Core alignment, Residual refiner, and Routed ensemble leaderboard scores correspond to Kaggle submissions `54893107`, `55115834`, and `55147410`, respectively.
 
 ![Fold RMSE for the three solution stages.](https://raw.githubusercontent.com/daxiongshu/rogii/main/writeup/plots/fold_rmse.png)
 
 ![Per-fold gains from residual refinement and routed geometry.](https://raw.githubusercontent.com/daxiongshu/rogii/main/writeup/plots/fold_gain.png)
 
-Across 11 non-buggy submitted milestones, CV and public LB preserved the exact same rank order (`Spearman ρ = 1.00`). This does not make the public leaderboard a validation set; it is a useful retrospective check that the whole-well protocol tracked the competition distribution.
+Across 11 non-buggy submitted milestones, CV and public LB preserved the exact same rank order (`Spearman ρ = 1.000`). After the competition, the private scores retained nearly the same ordering (`Spearman ρ = 0.991`); the only inversion was between the first two, weakest milestones. The three headline stages remained strictly ordered on private LB, including a `0.189` gain from Residual refiner to Routed ensemble.
+
+The private scores were uniformly higher than the public scores for these milestones, so the private split was harder for this model lineage. The important retrospective result is not the public score alone, but that the leakage-controlled OOF ordering and both refinement gains survived on private LB. The public leaderboard was still used only for monitoring, never for training or blend selection.
 
 ![OOF CV and public leaderboard RMSE across submitted milestones.](https://raw.githubusercontent.com/daxiongshu/rogii/main/writeup/plots/cv_lb_history.png)
 
